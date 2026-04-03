@@ -124,7 +124,7 @@
     </section>
 
     <!-- Section 2: Philosophy -->
-    <section class="relative py-[200px] px-8 md:px-24 bg-surface" id="philosophy">
+    <section class="relative py-[200px] px-8 md:px-24" id="philosophy">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
             <div class="md:col-span-8 space-y-[102px]">
                 <div class="space-y-8 reveal-container">
@@ -134,11 +134,11 @@
                     </h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-16 reveal-container">
-                    <div class="space-y-4">
+                    <div class="space-y-4" id="artha">
                         <div class="overflow-hidden"><h3 class="font-headline italic text-3xl text-orange-200 reveal-item">Artha</h3></div>
                         <div class="overflow-hidden"><p class="text-sm leading-relaxed text-on-surface-variant/80 tracking-tight reveal-item">Purpose-driven manifestation. We align every byte with the core objective of your commercial existence.</p></div>
                     </div>
-                    <div class="space-y-4">
+                    <div class="space-y-4" id="rasa">
                         <div class="overflow-hidden"><h3 class="font-headline italic text-3xl text-orange-200 reveal-item">Rasa</h3></div>
                         <div class="overflow-hidden"><p class="text-sm leading-relaxed text-on-surface-variant/80 tracking-tight reveal-item">The essence of aesthetic emotion. We craft interfaces that evoke deep resonance within the user's psyche.</p></div>
                     </div>
@@ -152,7 +152,7 @@
     </section>
 
     <!-- Section 3: The Arsenal (Services) -->
-    <section class="py-[153px] px-8 bg-surface-container-low" id="yukti">
+    <section class="py-[153px] px-8" id="yukti">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8 reveal-container">
                 <div class="max-w-2xl overflow-hidden">
@@ -190,7 +190,7 @@
     </section>
 
     <!-- Section 4: The Archive (Portfolio) -->
-    <section class="py-[153px] bg-surface" id="portfolio">
+    <section class="py-[153px]" id="portfolio">
         <div class="max-w-7xl mx-auto px-8">
             <div class="mb-32 reveal-container">
                 <div class="overflow-hidden"><h2 class="font-headline italic text-7xl md:text-9xl tracking-tighter reveal-item">The Archive</h2></div>
@@ -235,25 +235,49 @@
     </section>
 
     <!-- Footer / CTA -->
-    <footer class="bg-zinc-950 w-full pt-32 pb-12 px-8 flex flex-col items-start space-y-16" id="connect">
+    <footer class="w-full pt-32 pb-12 px-8 flex flex-col items-start space-y-16" id="connect">
         <div class="w-full reveal-container">
             <h2 class="font-serif text-5xl md:text-[10rem] uppercase leading-none tracking-tighter font-headline text-orange-400 reveal-item">
                 START YOUR <br/><span class="editorial-reveal inline-block">TRANSFORMATION<span class="text-[#B35D44]">.</span></span>
             </h2>
         </div>
 
-        <!-- Hidden Contact Section (Reveals via Initiate Protocol) -->
+        <!-- Hidden Contact Section (Reveals via Initiate Protocol) - Terminal UI -->
         <div id="contact-expansion" class="w-full max-w-7xl mx-auto my-8">
-            <div class="glass-card rounded-xl p-10 max-w-lg mx-auto border border-white/5">
-                <h3 class="font-headline text-3xl text-[#E1E4E7] mb-2">Initiate Dialogue</h3>
-                <p class="font-body text-sm text-[#E1E4E7]/60 mb-8">Connect with our architects to begin your brand's transformation.</p>
-                
-                <form class="flex flex-col gap-6">
-                    <input type="email" placeholder="Your Email" class="bg-black/20 border border-white/10 rounded-lg p-4 text-[#E1E4E7] placeholder:text-[#E1E4E7]/40 focus:outline-none focus:border-[#B35D44] transition-colors" />
-                    <button type="submit" class="bg-[#B35D44] text-white rounded-lg p-4 font-label uppercase tracking-widest text-sm hover:-translate-y-1 transition-transform">
-                        Send Inquiry
-                    </button>
-                </form>
+            <div class="glass-card rounded-xl max-w-xl mx-auto border border-white/5 overflow-hidden shadow-2xl shadow-black/50">
+                <!-- Terminal Header Bar -->
+                <div class="flex items-center px-4 py-3 bg-[#000000]/40 border-b border-white/5">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <div class="mx-auto text-[10px] tracking-widest text-[#E1E4E7]/40 uppercase font-mono">nunik_init.sh</div>
+                    <div class="w-10"></div> <!-- Balance for flex centering -->
+                </div>
+                <!-- Terminal Body -->
+                <div class="p-8 space-y-6 text-[#E1E4E7]/80 text-xs font-mono">
+                    <div class="flex flex-col gap-2 opacity-80">
+                        <p><span class="text-[#B35D44]">></span> Executing sequence: <span class="text-white">transformation_protocol.exe</span></p>
+                        <p><span class="text-[#B35D44]">></span> Establishing secure encrypted data link...</p>
+                        <p class="text-green-500/80"><span class="text-[#B35D44]">></span> CONNECTION STABLE.</p>
+                    </div>
+                    <form class="flex flex-col gap-8 mt-6">
+                        <div class="flex flex-col gap-2">
+                            <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> INPUT: TARGET_IDENTIFIER [NAME]</label>
+                            <input type="text" class="bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_" required/>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> INPUT: SECURE_COMM_CHANNEL [EMAIL]</label>
+                            <input type="email" class="bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_" required/>
+                        </div>
+                        <button type="submit" class="mt-4 self-start flex items-center gap-2 group text-[#B35D44] hover:text-[#ffb5a0] transition-colors">
+                            <span class="opacity-0 group-hover:opacity-100 transition-opacity">>></span>
+                            <span class="tracking-widest">[ TRANSMIT_DATA ]</span>
+                            <span class="animate-pulse block w-2 h-4 bg-[#B35D44] group-hover:bg-[#ffb5a0] ml-1"></span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
         

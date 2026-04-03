@@ -32,11 +32,15 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if(targetId === '#') return;
-            lenis.scrollTo(targetId, {
-                offset: -100, // Account for fixed navbar
-                duration: 1.5,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-            });
+            
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                lenis.scrollTo(targetElement, {
+                    offset: -100, // Account for fixed navbar
+                    duration: 1.5,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+                });
+            }
         });
     });
 
@@ -198,9 +202,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 ease: "power3.inOut",
                 onComplete: () => {
                     // Smoothly scroll down to show the new panel
-                    lenis.scrollTo("#connect", {
-                        duration: 1.2,
-                        offset: -50
+                    lenis.scrollTo(contactExpansion, {
+                        duration: 1.5,
+                        offset: -200,
+                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
                     });
                 }
             });
