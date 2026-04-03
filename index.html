@@ -92,18 +92,20 @@
     <div id="webgl-background"></div>
 
     <!-- Top Navigation Shell -->
-    <nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 md:px-12 py-6 glass-card border-b border-white/5 text-orange-200 w-full">
-        <div class="text-xl tracking-[0.3em] font-serif uppercase text-orange-200">N U N I K  C O .</div>
-        <div class="hidden md:flex items-center space-x-12">
-            <a class="nav-link text-slate-300 hover:text-white transition-colors text-xs font-medium tracking-tighter uppercase" href="#artha">Artha</a>
-            <a class="nav-link text-slate-300 hover:text-white transition-colors text-xs font-medium tracking-tighter uppercase" href="#rasa">Rasa</a>
-            <a class="nav-link text-slate-300 hover:text-white transition-colors text-xs font-medium tracking-tighter uppercase" href="#yukti">Yukti</a>
-            <a class="nav-link text-slate-300 hover:text-white transition-colors text-xs font-medium tracking-tighter uppercase" href="#portfolio">Portfolio</a>
-            <a class="nav-link text-orange-300 border-b-2 border-orange-300 pb-1 text-xs font-medium tracking-tighter uppercase" href="#connect">Connect</a>
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav-bar">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-8 md:px-12 py-5">
+            <a href="#" class="text-xl tracking-[0.3em] font-headline uppercase text-[#E1E4E7] nav-link">N U N I K  C O .</a>
+            <div class="hidden md:flex items-center space-x-12">
+                <a class="nav-link text-[#E1E4E7]/60 hover:text-[#E1E4E7] transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#artha">Artha</a>
+                <a class="nav-link text-[#E1E4E7]/60 hover:text-[#E1E4E7] transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#rasa">Rasa</a>
+                <a class="nav-link text-[#E1E4E7]/60 hover:text-[#E1E4E7] transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#yukti">Yukti</a>
+                <a class="nav-link text-[#E1E4E7]/60 hover:text-[#E1E4E7] transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#portfolio">Portfolio</a>
+                <a class="nav-link text-[#B35D44] hover:text-[#ffb5a0] transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase border-b border-[#B35D44]/50 pb-1" href="#connect">Connect</a>
+            </div>
+            <button class="md:hidden p-2 hover:bg-white/10 rounded-xl transition-all nav-link text-[#E1E4E7]">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
         </div>
-        <button class="md:hidden p-2 hover:bg-white/10 rounded-lg transition-all nav-link">
-            <span class="material-symbols-outlined">menu</span>
-        </button>
     </nav>
     
     <!-- Hero Section -->
@@ -134,11 +136,11 @@
                     </h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-16 reveal-container">
-                    <div class="space-y-4" id="artha">
+                    <div class="space-y-4">
                         <div class="overflow-hidden"><h3 class="font-headline italic text-3xl text-orange-200 reveal-item">Artha</h3></div>
                         <div class="overflow-hidden"><p class="text-sm leading-relaxed text-on-surface-variant/80 tracking-tight reveal-item">Purpose-driven manifestation. We align every byte with the core objective of your commercial existence.</p></div>
                     </div>
-                    <div class="space-y-4" id="rasa">
+                    <div class="space-y-4">
                         <div class="overflow-hidden"><h3 class="font-headline italic text-3xl text-orange-200 reveal-item">Rasa</h3></div>
                         <div class="overflow-hidden"><p class="text-sm leading-relaxed text-on-surface-variant/80 tracking-tight reveal-item">The essence of aesthetic emotion. We craft interfaces that evoke deep resonance within the user's psyche.</p></div>
                     </div>
@@ -152,7 +154,7 @@
     </section>
 
     <!-- Section 3: The Arsenal (Services) -->
-    <section class="py-[153px] px-8" id="yukti">
+    <section class="py-[153px] px-8" id="arsenal">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8 reveal-container">
                 <div class="max-w-2xl overflow-hidden">
@@ -164,26 +166,26 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-container">
-                <!-- Card 01 -->
-                <div class="group relative p-12 glass-card rounded-xl shadow-2xl border border-white/5 reveal-item nav-link">
-                    <span class="text-xs font-mono text-primary/60 mb-8 block">01 / YUKTI</span>
-                    <h4 class="font-headline text-3xl mb-6 italic">Strategic Automation</h4>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-12">Deployment of elite workflow architectures that replace mundane cycles with precision-engineered algorithmic logic.</p>
-                    <div class="w-12 h-px bg-primary transition-all duration-500 group-hover:w-full"></div>
-                </div>
-                <!-- Card 02 -->
-                <div class="group relative p-12 glass-card rounded-xl shadow-2xl border border-white/5 reveal-item nav-link">
-                    <span class="text-xs font-mono text-primary/60 mb-8 block">02 / RASA</span>
-                    <h4 class="font-headline text-3xl mb-6 italic">Elite Brand Identity</h4>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-12">Visual systems that transcend modern trends, rooting your brand in timeless cultural sophistication and digital luxury.</p>
-                    <div class="w-12 h-px bg-primary transition-all duration-500 group-hover:w-full"></div>
-                </div>
-                <!-- Card 03 -->
-                <div class="group relative p-12 glass-card rounded-xl shadow-2xl border border-white/5 reveal-item nav-link">
-                    <span class="text-xs font-mono text-primary/60 mb-8 block">03 / ARTHA</span>
+                <!-- Card 01: Artha -->
+                <div id="artha" class="group relative p-12 glass-card rounded-xl reveal-item">
+                    <span class="text-xs font-mono text-[#B35D44]/60 mb-8 block">01 / ARTHA</span>
                     <h4 class="font-headline text-3xl mb-6 italic">High-Performance Web</h4>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-12">Bespoke digital experiences built for extreme scale, utilizing modern frameworks and low-latency global infrastructures.</p>
-                    <div class="w-12 h-px bg-primary transition-all duration-500 group-hover:w-full"></div>
+                    <p class="text-sm text-[#E1E4E7]/60 leading-relaxed mb-12">Bespoke digital experiences built for extreme scale, utilizing modern frameworks and low-latency global infrastructures.</p>
+                    <div class="w-12 h-px bg-[#B35D44] transition-all duration-500 group-hover:w-full"></div>
+                </div>
+                <!-- Card 02: Rasa -->
+                <div id="rasa" class="group relative p-12 glass-card rounded-xl reveal-item">
+                    <span class="text-xs font-mono text-[#B35D44]/60 mb-8 block">02 / RASA</span>
+                    <h4 class="font-headline text-3xl mb-6 italic">Elite Brand Identity</h4>
+                    <p class="text-sm text-[#E1E4E7]/60 leading-relaxed mb-12">Visual systems that transcend modern trends, rooting your brand in timeless cultural sophistication and digital luxury.</p>
+                    <div class="w-12 h-px bg-[#B35D44] transition-all duration-500 group-hover:w-full"></div>
+                </div>
+                <!-- Card 03: Yukti -->
+                <div id="yukti" class="group relative p-12 glass-card rounded-xl reveal-item">
+                    <span class="text-xs font-mono text-[#B35D44]/60 mb-8 block">03 / YUKTI</span>
+                    <h4 class="font-headline text-3xl mb-6 italic">Strategic Automation</h4>
+                    <p class="text-sm text-[#E1E4E7]/60 leading-relaxed mb-12">Deployment of elite workflow architectures that replace mundane cycles with precision-engineered algorithmic logic.</p>
+                    <div class="w-12 h-px bg-[#B35D44] transition-all duration-500 group-hover:w-full"></div>
                 </div>
             </div>
         </div>
@@ -244,7 +246,7 @@
 
         <!-- Hidden Contact Section (Reveals via Initiate Protocol) - Terminal UI -->
         <div id="contact-expansion" class="w-full max-w-7xl mx-auto my-8">
-            <div class="glass-card rounded-xl max-w-xl mx-auto border border-white/5 overflow-hidden shadow-2xl shadow-black/50">
+            <div class="glass-card rounded-xl max-w-2xl mx-auto overflow-hidden shadow-2xl shadow-black/50">
                 <!-- Terminal Header Bar -->
                 <div class="flex items-center px-4 py-3 bg-[#000000]/40 border-b border-white/5">
                     <div class="flex space-x-2">
@@ -253,27 +255,58 @@
                         <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
                     </div>
                     <div class="mx-auto text-[10px] tracking-widest text-[#E1E4E7]/40 uppercase font-mono">nunik_init.sh</div>
-                    <div class="w-10"></div> <!-- Balance for flex centering -->
+                    <div class="w-10"></div>
                 </div>
                 <!-- Terminal Body -->
-                <div class="p-8 space-y-6 text-[#E1E4E7]/80 text-xs font-mono">
-                    <div class="flex flex-col gap-2 opacity-80">
-                        <p><span class="text-[#B35D44]">></span> Executing sequence: <span class="text-white">transformation_protocol.exe</span></p>
-                        <p><span class="text-[#B35D44]">></span> Establishing secure encrypted data link...</p>
-                        <p class="text-green-500/80"><span class="text-[#B35D44]">></span> CONNECTION STABLE.</p>
-                    </div>
-                    <form class="flex flex-col gap-8 mt-6">
-                        <div class="flex flex-col gap-2">
-                            <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> INPUT: TARGET_IDENTIFIER [NAME]</label>
-                            <input type="text" class="bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_" required/>
+                <div class="p-8 md:p-10 text-[#E1E4E7]/80 text-xs font-mono">
+                    <!-- Animated boot sequence (populated by JS) -->
+                    <div id="terminal-boot" class="flex flex-col gap-2 mb-8"></div>
+                    <!-- Form (hidden until boot completes) -->
+                    <form id="terminal-form" class="flex flex-col gap-7 opacity-0" style="transform: translateY(20px);">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+                            <div class="flex flex-col gap-2">
+                                <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> FULL_NAME *</label>
+                                <input type="text" class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_" required/>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> EMAIL *</label>
+                                <input type="email" class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_" required/>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+                            <div class="flex flex-col gap-2">
+                                <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> PHONE *</label>
+                                <input type="tel" class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_" required/>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> WEBSITE <span class="text-[#E1E4E7]/30">[optional]</span></label>
+                                <input type="url" class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_"/>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+                            <div class="flex flex-col gap-2">
+                                <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> BUSINESS_NAME <span class="text-[#E1E4E7]/30">[optional]</span></label>
+                                <input type="text" class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_"/>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> QUERY_TYPE *</label>
+                                <select class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors appearance-none" required>
+                                    <option value="" class="bg-[#1B1E22]">Select...</option>
+                                    <option value="brand" class="bg-[#1B1E22]">Brand Identity</option>
+                                    <option value="automation" class="bg-[#1B1E22]">Automation</option>
+                                    <option value="web" class="bg-[#1B1E22]">Web Development</option>
+                                    <option value="full" class="bg-[#1B1E22]">Full Transformation</option>
+                                    <option value="other" class="bg-[#1B1E22]">Other</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="flex flex-col gap-2">
-                            <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> INPUT: SECURE_COMM_CHANNEL [EMAIL]</label>
-                            <input type="email" class="bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_" required/>
+                            <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> MISSION_BRIEF *</label>
+                            <textarea rows="4" class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10 resize-none" placeholder="Describe your vision..." required></textarea>
                         </div>
-                        <button type="submit" class="mt-4 self-start flex items-center gap-2 group text-[#B35D44] hover:text-[#ffb5a0] transition-colors">
+                        <button type="submit" class="mt-4 self-start flex items-center gap-2 group text-[#B35D44] hover:text-[#ffb5a0] transition-colors nav-link">
                             <span class="opacity-0 group-hover:opacity-100 transition-opacity">>></span>
-                            <span class="tracking-widest">[ TRANSMIT_DATA ]</span>
+                            <span class="tracking-widest uppercase">[ TRANSMIT_DATA ]</span>
                             <span class="animate-pulse block w-2 h-4 bg-[#B35D44] group-hover:bg-[#ffb5a0] ml-1"></span>
                         </button>
                     </form>
@@ -297,17 +330,17 @@
                     <a class="text-slate-500 uppercase text-xs hover:text-orange-200 transition-colors tracking-widest nav-link" href="#">LinkedIn</a>
                     <a class="text-slate-500 uppercase text-xs hover:text-orange-200 transition-colors tracking-widest nav-link" href="#">Twitter</a>
                 </div>
-                <p class="text-slate-600 font-sans text-[10px] tracking-widest">© 2024 NUNIK CO. ALL RIGHTS RESERVED.</p>
+                <p class="text-slate-600 font-sans text-[10px] tracking-widest">© 2026 NUNIK CO. ALL RIGHTS RESERVED.</p>
             </div>
         </div>
     </footer>
 
     <!-- Floating Action Element -->
     <div id="initiate-btn" class="fixed bottom-8 right-8 z-40 md:flex hidden nav-link">
-        <div class="glass-card p-4 rounded-full flex items-center gap-4 cursor-pointer border border-[#E1E4E7]/5">
-            <span class="text-[10px] font-bold tracking-widest px-4 uppercase">Initiate Protocol</span>
-            <div class="w-10 h-10 bg-[#5b1b07] rounded-full flex items-center justify-center">
-                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">bolt</span>
+        <div class="initiate-pulse p-4 rounded-full flex items-center gap-4 cursor-pointer bg-[#B35D44] border border-[#B35D44]/30 shadow-lg shadow-[#B35D44]/20 hover:shadow-xl hover:shadow-[#B35D44]/30 transition-all duration-500 hover:scale-105">
+            <span class="text-[10px] font-bold tracking-widest px-4 uppercase text-white">Initiate Protocol</span>
+            <div class="w-10 h-10 bg-white/15 rounded-full flex items-center justify-center">
+                <span class="material-symbols-outlined text-lg text-white" style="font-variation-settings: 'FILL' 1;">bolt</span>
             </div>
         </div>
     </div>

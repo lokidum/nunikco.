@@ -116,17 +116,19 @@ document.addEventListener("DOMContentLoaded", () => {
         // React to mouse
         heroTitle.addEventListener("mousemove", (e) => {
             const rect = heroTitle.getBoundingClientRect();
-            const relX = (e.clientX - rect.left) / rect.width; // 0 to 1
-            const normalizedX = (relX - 0.5) * 2; // -1 to 1
+            const relX = (e.clientX - rect.left) / rect.width;
+            const relY = (e.clientY - rect.top) / rect.height;
+            const normalizedX = (relX - 0.5) * 2;
+            const normalizedY = (relY - 0.5) * 2;
 
             gsap.to(chars, {
                 x: (i) => {
-                    // Push characters outwards based on mouse
                     const centerDist = (i / chars.length) - 0.5;
-                    return (normalizedX - centerDist) * -30;
+                    return (normalizedX - centerDist) * -50;
                 },
-                skewX: normalizedX * 20,
-                duration: 0.5,
+                y: normalizedY * 8,
+                skewX: normalizedX * 12,
+                duration: 0.6,
                 ease: "power2.out"
             });
         });
@@ -134,8 +136,9 @@ document.addEventListener("DOMContentLoaded", () => {
         heroTitle.addEventListener("mouseleave", () => {
             gsap.to(chars, {
                 x: 0,
+                y: 0,
                 skewX: 0,
-                duration: 1,
+                duration: 1.2,
                 ease: "elastic.out(1, 0.3)"
             });
         });
@@ -189,31 +192,114 @@ document.addEventListener("DOMContentLoaded", () => {
     // ----------------------------------------------------
     const initiateBtn = document.getElementById("initiate-btn");
     const contactExpansion = document.getElementById("contact-expansion");
-    
-    if (initiateBtn && contactExpansion) {
-        initiateBtn.addEventListener("click", () => {
-            // Expand the hidden panel using GSAP
-            gsap.to(contactExpansion, {
-                height: "auto",
-                opacity: 1,
-                paddingTop: "2rem",
-                paddingBottom: "2rem",
-                duration: 0.8,
-                ease: "power3.inOut",
-                onComplete: () => {
-                    // Smoothly scroll down to show the new panel
-                    lenis.scrollTo(contactExpansion, {
-                        duration: 1.5,
-                        offset: -200,
-                        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-                    });
+    const terminalBoot = document.getElementById("terminal-boot");
+    const terminalForm = document.getElementById("terminal-form");
+    let protocolInitiated = false;
+
+    function typeTerminalLine(text, color, parent) {
+        return new Promise((resolve) => {
+            const line = document.createElement("p");
+            line.style.color = color;
+            parent.appendChild(line);
+            let i = 0;
+            const speed = 18;
+            function type() {
+                if (i < text.length) {
+                    line.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    resolve();
                 }
-            });
-            
-            // Optionally, fade out the floating button once initiated
-            gsap.to(initiateBtn, { opacity: 0, scale: 0.8, duration: 0.4, pointerEvents: "none" });
+            }
+            type();
         });
     }
+
+    function expandAndBoot() {
+        gsap.to(contactExpansion, {
+            height: "auto",
+            opacity: 1,
+            paddingTop: "2rem",
+            paddingBottom: "2rem",
+            duration: 0.6,
+            ease: "power3.inOut",
+            onComplete: runBootSequence
+        });
+    }
+
+    async function runBootSequence() {
+        if (!terminalBoot || !terminalForm) return;
+        terminalBoot.innerHTML = "";
+
+        await typeTerminalLine("> Initiating transformation protocol...", "#B35D44", terminalBoot);
+        await new Promise(r => setTimeout(r, 400));
+
+        await typeTerminalLine("> Loading secure data link...", "rgba(225,228,231,0.6)", terminalBoot);
+        await new Promise(r => setTimeout(r, 300));
+
+        await typeTerminalLine("> Preparing interface...", "rgba(225,228,231,0.6)", terminalBoot);
+        await new Promise(r => setTimeout(r, 500));
+
+        const counts = ["3", "2", "1"];
+        for (const c of counts) {
+            const countLine = document.createElement("p");
+            countLine.style.cssText = "color:#B35D44; font-size:1.5rem; font-weight:700;";
+            countLine.textContent = c;
+            terminalBoot.appendChild(countLine);
+            gsap.fromTo(countLine, { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3 });
+            await new Promise(r => setTimeout(r, 600));
+            gsap.to(countLine, { opacity: 0.3, duration: 0.2 });
+        }
+
+        await new Promise(r => setTimeout(r, 200));
+        await typeTerminalLine("> CONNECTION ESTABLISHED.", "#4ade80", terminalBoot);
+        await new Promise(r => setTimeout(r, 300));
+
+        gsap.to(terminalForm, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out"
+        });
+
+        lenis.scrollTo(contactExpansion, {
+            duration: 1.2,
+            offset: -120,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+    }
+
+    if (initiateBtn && contactExpansion) {
+        initiateBtn.addEventListener("click", () => {
+            if (protocolInitiated) return;
+            protocolInitiated = true;
+
+            gsap.to(initiateBtn, { opacity: 0, scale: 0.8, duration: 0.4, pointerEvents: "none" });
+
+            const connectSection = document.getElementById("connect");
+            lenis.scrollTo(connectSection || contactExpansion, {
+                duration: 1.5,
+                offset: -100,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+            });
+
+            setTimeout(expandAndBoot, 1600);
+        });
+    }
+
+    document.querySelectorAll('a[href="#connect"]').forEach(link => {
+        link.addEventListener("click", () => {
+            if (protocolInitiated) return;
+            setTimeout(() => {
+                if (!protocolInitiated) {
+                    protocolInitiated = true;
+                    gsap.to(initiateBtn, { opacity: 0, scale: 0.8, duration: 0.4, pointerEvents: "none" });
+                    expandAndBoot();
+                }
+            }, 1600);
+        });
+    });
 
     // ----------------------------------------------------
     // 7. Three.js Fluid WebGL Background

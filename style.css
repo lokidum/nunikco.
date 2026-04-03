@@ -5,19 +5,34 @@ body {
     overflow-x: hidden; 
 }
 
+/* Full-width frosted navbar */
+.glass-nav-bar {
+    background: rgba(44, 49, 54, 0.35);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border-bottom: 1px solid rgba(225, 228, 231, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
 /* Base Glass State */
 .glass-card {
     background: rgba(44, 49, 54, 0.4); 
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
-    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.7s ease, background 0.7s ease;
+    border: 1px solid rgba(225, 228, 231, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), 
+                box-shadow 0.7s ease, 
+                background 0.7s ease,
+                border-color 0.7s ease;
 }
 
 /* Hover/Anti-Gravity State */
 .glass-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-4px);
     background: rgba(44, 49, 54, 0.3);
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 16px 56px rgba(0, 0, 0, 0.4);
+    border-color: rgba(225, 228, 231, 0.08);
 }
 
 /* Specific class to force hiding initially for GSAP expansion */
@@ -79,6 +94,15 @@ body {
     color: white;
 }
 
+/* Initiate Protocol pulsing glow */
+.initiate-pulse {
+    animation: protocolPulse 3s ease-in-out infinite;
+}
+@keyframes protocolPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(179, 93, 68, 0.2); }
+    50% { box-shadow: 0 4px 40px rgba(179, 93, 68, 0.45); }
+}
+
 /* WebGL Background */
 #webgl-background {
     position: fixed;
@@ -88,6 +112,20 @@ body {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
+}
+
+/* Terminal form inputs */
+.terminal-input {
+    font-family: 'Inter', monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+}
+.terminal-input:focus {
+    border-color: #B35D44 !important;
+}
+select.terminal-input option {
+    background: #1B1E22;
+    color: #E1E4E7;
 }
 
 /* Lenis Specifics */
