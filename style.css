@@ -1,41 +1,107 @@
-/* Custom Styling Overrides */
-body { 
-    background-color: #111417; 
-    color: #e1e2e8; 
-    overflow-x: hidden; 
+/* ================================================
+   Nunik Co. | Theming & Core Styles
+   ================================================ */
+
+/* --- Light Mode (default root) --- */
+:root {
+    --bg: #F8F6F3;
+    --text: #1B1E22;
+    --text-muted: rgba(27, 30, 34, 0.5);
+    --text-faint: rgba(27, 30, 34, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-bg-hover: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(27, 30, 34, 0.06);
+    --glass-border-hover: rgba(27, 30, 34, 0.1);
+    --glass-shadow: rgba(0, 0, 0, 0.06);
+    --glass-shadow-hover: rgba(0, 0, 0, 0.12);
+    --nav-glass: rgba(255, 255, 255, 0.7);
+    --nav-border: rgba(27, 30, 34, 0.06);
+    --accent: #B35D44;
+    --accent-light: #974730;
+    --accent-glow: rgba(179, 93, 68, 0.15);
+    --accent-glow-strong: rgba(179, 93, 68, 0.3);
+    --teal: #5A8A8A;
+    --heading-sub: #8B5E3C;
+    --cursor-color: #1B1E22;
+    --select-bg: #F0EDE8;
+    --footer-muted: rgba(27, 30, 34, 0.4);
+    --divider: rgba(27, 30, 34, 0.08);
+    --terminal-green: #2d8a4e;
 }
 
-/* Full-width frosted navbar */
+/* --- Dark Mode --- */
+.dark {
+    --bg: #111417;
+    --text: #E1E4E7;
+    --text-muted: rgba(225, 228, 231, 0.6);
+    --text-faint: rgba(225, 228, 231, 0.15);
+    --glass-bg: rgba(44, 49, 54, 0.4);
+    --glass-bg-hover: rgba(44, 49, 54, 0.3);
+    --glass-border: rgba(225, 228, 231, 0.05);
+    --glass-border-hover: rgba(225, 228, 231, 0.08);
+    --glass-shadow: rgba(0, 0, 0, 0.2);
+    --glass-shadow-hover: rgba(0, 0, 0, 0.4);
+    --nav-glass: rgba(44, 49, 54, 0.35);
+    --nav-border: rgba(225, 228, 231, 0.05);
+    --accent: #B35D44;
+    --accent-light: #ffb5a0;
+    --accent-glow: rgba(179, 93, 68, 0.2);
+    --accent-glow-strong: rgba(179, 93, 68, 0.45);
+    --teal: #2c4c4c;
+    --heading-sub: #E8C9A0;
+    --cursor-color: #E1E4E7;
+    --select-bg: #1B1E22;
+    --footer-muted: rgba(225, 228, 231, 0.35);
+    --divider: rgba(225, 228, 231, 0.06);
+    --terminal-green: #4ade80;
+}
+
+/* ================================================
+   Base
+   ================================================ */
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+/* ================================================
+   Full-width frosted navbar
+   ================================================ */
 .glass-nav-bar {
-    background: rgba(44, 49, 54, 0.35);
+    background: var(--nav-glass);
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
-    border-bottom: 1px solid rgba(225, 228, 231, 0.05);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid var(--nav-border);
+    box-shadow: 0 8px 32px var(--glass-shadow);
+    transition: background 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease;
 }
 
-/* Base Glass State */
+/* ================================================
+   Glass Card
+   ================================================ */
 .glass-card {
-    background: rgba(44, 49, 54, 0.4); 
+    background: var(--glass-bg);
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
-    border: 1px solid rgba(225, 228, 231, 0.05);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), 
-                box-shadow 0.7s ease, 
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px var(--glass-shadow);
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.7s ease,
                 background 0.7s ease,
                 border-color 0.7s ease;
 }
-
-/* Hover/Anti-Gravity State */
 .glass-card:hover {
     transform: translateY(-4px);
-    background: rgba(44, 49, 54, 0.3);
-    box-shadow: 0 16px 56px rgba(0, 0, 0, 0.4);
-    border-color: rgba(225, 228, 231, 0.08);
+    background: var(--glass-bg-hover);
+    box-shadow: 0 16px 56px var(--glass-shadow-hover);
+    border-color: var(--glass-border-hover);
 }
 
-/* Specific class to force hiding initially for GSAP expansion */
+/* ================================================
+   Contact expansion (hidden by default for GSAP)
+   ================================================ */
 #contact-expansion {
     height: 0;
     opacity: 0;
@@ -44,22 +110,26 @@ body {
     padding-bottom: 0;
 }
 
-.editorial-reveal { 
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
+/* ================================================
+   Editorial clip mask
+   ================================================ */
+.editorial-reveal {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-/* Custom Cursor Rules */
+/* ================================================
+   Custom Cursor
+   ================================================ */
 .custom-cursor-active, .custom-cursor-active * {
     cursor: none !important;
 }
-
 #custom-cursor {
     position: fixed;
     top: 0;
     left: 0;
     width: 12px;
     height: 12px;
-    background-color: #E1E4E7;
+    background-color: var(--cursor-color);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -70,22 +140,19 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 #custom-cursor.hovering {
     width: 60px;
     height: 60px;
     background-color: transparent;
-    border: 1px solid #E1E4E7;
+    border: 1px solid var(--cursor-color);
 }
-
 #custom-cursor.view-project {
     width: 100px;
     height: 100px;
-    background-color: #B35D44;
+    background-color: var(--accent);
     border: none;
     mix-blend-mode: normal;
 }
-
 #custom-cursor.view-project::after {
     content: "VIEW";
     font-size: 10px;
@@ -94,16 +161,20 @@ body {
     color: white;
 }
 
-/* Initiate Protocol pulsing glow */
+/* ================================================
+   Initiate Protocol pulsing glow
+   ================================================ */
 .initiate-pulse {
     animation: protocolPulse 3s ease-in-out infinite;
 }
 @keyframes protocolPulse {
-    0%, 100% { box-shadow: 0 4px 20px rgba(179, 93, 68, 0.2); }
-    50% { box-shadow: 0 4px 40px rgba(179, 93, 68, 0.45); }
+    0%, 100% { box-shadow: 0 4px 20px var(--accent-glow); }
+    50% { box-shadow: 0 4px 40px var(--accent-glow-strong); }
 }
 
-/* WebGL Background */
+/* ================================================
+   WebGL Background
+   ================================================ */
 #webgl-background {
     position: fixed;
     top: 0;
@@ -112,23 +183,50 @@ body {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
+    transition: opacity 0.6s ease;
 }
 
-/* Terminal form inputs */
+/* ================================================
+   Terminal form inputs
+   ================================================ */
 .terminal-input {
     font-family: 'Inter', monospace;
     font-size: 13px;
     letter-spacing: 0.02em;
 }
 .terminal-input:focus {
-    border-color: #B35D44 !important;
+    border-color: var(--accent) !important;
 }
 select.terminal-input option {
-    background: #1B1E22;
-    color: #E1E4E7;
+    background: var(--select-bg);
+    color: var(--text);
 }
 
-/* Lenis Specifics */
+/* ================================================
+   Theme-aware utility classes
+   ================================================ */
+.t-text       { color: var(--text); }
+.t-muted      { color: var(--text-muted); }
+.t-faint      { color: var(--text-faint); }
+.t-accent     { color: var(--accent); }
+.t-accent-lt  { color: var(--accent-light); }
+.t-heading    { color: var(--heading-sub); }
+.t-teal       { color: var(--teal); }
+.t-footer     { color: var(--footer-muted); }
+.t-divider    { border-color: var(--divider); }
+.t-bg         { background-color: var(--bg); }
+
+/* Nav link hover states */
+a.nav-link.t-muted:hover {
+    color: var(--text) !important;
+}
+a.nav-link.t-accent:hover {
+    color: var(--accent-light) !important;
+}
+
+/* ================================================
+   Lenis
+   ================================================ */
 html.lenis, html.lenis body {
     height: auto;
 }

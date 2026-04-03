@@ -1,216 +1,240 @@
 <!DOCTYPE html>
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>NUNIK CO. | Premium Digital Collective</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>NUNIK CO. | Premium Digital Collective</title>
 
-<!-- GSAP, ScrollTrigger, Lenis, and Three.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Prevent theme flash -->
+    <script>
+        (function(){
+            var t = localStorage.getItem('nunik-theme');
+            if (t === 'light') document.documentElement.classList.remove('dark');
+            else document.documentElement.classList.add('dark');
+        })();
+    </script>
 
-<script id="tailwind-config">
-    tailwind.config = {
-    darkMode: "class",
-    theme: {
-        extend: {
-        "colors": {
-            "on-background": "#e1e2e8",
-            "surface-bright": "#36393e",
-            "surface-dim": "#111417",
-            "error-container": "#93000a",
-            "on-primary": "#5b1b07",
-            "inverse-primary": "#974730",
-            "on-secondary-container": "#9abbbb",
-            "background": "#111417",
-            "surface-container": "#1d2024",
-            "outline": "#a28c86",
-            "surface-container-high": "#272a2e",
-            "tertiary": "#c4c7ca",
-            "on-secondary-fixed": "#002020",
-            "on-error-container": "#ffdad6",
-            "tertiary-fixed-dim": "#c4c7ca",
-            "on-secondary-fixed-variant": "#2c4c4c",
-            "on-secondary": "#143536",
-            "on-primary-container": "#fffdff",
-            "tertiary-container": "#727679",
-            "inverse-surface": "#e1e2e8",
-            "on-tertiary": "#2d3133",
-            "primary-fixed-dim": "#ffb5a0",
-            "inverse-on-surface": "#2e3135",
-            "tertiary-fixed": "#e0e3e6",
-            "on-tertiary-fixed": "#181c1e",
-            "on-tertiary-container": "#fefeff",
-            "on-surface": "#e1e2e8",
-            "error": "#ffb4ab",
-            "primary": "#ffb5a0",
-            "primary-fixed": "#ffdbd1",
-            "on-primary-fixed": "#3b0900",
-            "primary-container": "#b35d44",
-            "on-surface-variant": "#dbc1ba",
-            "surface-tint": "#ffb5a0",
-            "secondary-fixed": "#c6e9e9",
-            "secondary-container": "#2c4c4c",
-            "on-primary-fixed-variant": "#78301b",
-            "surface-variant": "#323539",
-            "surface-container-lowest": "#0b0e12",
-            "secondary": "#abcdcd",
-            "surface-container-low": "#191c20",
-            "secondary-fixed-dim": "#abcdcd",
-            "on-error": "#690005",
-            "surface-container-highest": "#323539",
-            "outline-variant": "#55433e",
-            "on-tertiary-fixed-variant": "#43474a",
-            "surface": "#111417"
-        },
-        "borderRadius": {
-            "DEFAULT": "0.125rem",
-            "lg": "0.25rem",
-            "xl": "0.5rem",
-            "full": "0.75rem"
-        },
-        "fontFamily": {
-            "headline": ["Newsreader", "serif"],
-            "body": ["Inter", "sans-serif"],
-            "label": ["Inter", "sans-serif"]
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#e1e2e8",
+                        "surface-bright": "#36393e",
+                        "surface-dim": "#111417",
+                        "error-container": "#93000a",
+                        "on-primary": "#5b1b07",
+                        "inverse-primary": "#974730",
+                        "on-secondary-container": "#9abbbb",
+                        "background": "#111417",
+                        "surface-container": "#1d2024",
+                        "outline": "#a28c86",
+                        "surface-container-high": "#272a2e",
+                        "tertiary": "#c4c7ca",
+                        "on-secondary-fixed": "#002020",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c4c7ca",
+                        "on-secondary-fixed-variant": "#2c4c4c",
+                        "on-secondary": "#143536",
+                        "on-primary-container": "#fffdff",
+                        "tertiary-container": "#727679",
+                        "inverse-surface": "#e1e2e8",
+                        "on-tertiary": "#2d3133",
+                        "primary-fixed-dim": "#ffb5a0",
+                        "inverse-on-surface": "#2e3135",
+                        "tertiary-fixed": "#e0e3e6",
+                        "on-tertiary-fixed": "#181c1e",
+                        "on-tertiary-container": "#fefeff",
+                        "on-surface": "#e1e2e8",
+                        "error": "#ffb4ab",
+                        "primary": "#ffb5a0",
+                        "primary-fixed": "#ffdbd1",
+                        "on-primary-fixed": "#3b0900",
+                        "primary-container": "#b35d44",
+                        "on-surface-variant": "#dbc1ba",
+                        "surface-tint": "#ffb5a0",
+                        "secondary-fixed": "#c6e9e9",
+                        "secondary-container": "#2c4c4c",
+                        "on-primary-fixed-variant": "#78301b",
+                        "surface-variant": "#323539",
+                        "surface-container-lowest": "#0b0e12",
+                        "secondary": "#abcdcd",
+                        "surface-container-low": "#191c20",
+                        "secondary-fixed-dim": "#abcdcd",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#323539",
+                        "outline-variant": "#55433e",
+                        "on-tertiary-fixed-variant": "#43474a",
+                        "surface": "#111417"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
         }
-        },
-    },
-    }
-</script>
-<link href="style.css" rel="stylesheet"/>
+    </script>
+    <link href="style.css" rel="stylesheet"/>
 </head>
 <body class="font-body selection:bg-primary-container selection:text-white custom-cursor-active">
-    <!-- Custom Cursor Target -->
+
+    <!-- Custom Cursor -->
     <div id="custom-cursor"></div>
 
-    <!-- WebGL Background Target -->
+    <!-- WebGL Background -->
     <div id="webgl-background"></div>
 
-    <!-- Top Navigation Shell -->
+    <!-- ============================
+         NAVIGATION
+         ============================ -->
     <nav class="fixed top-0 left-0 right-0 z-50 glass-nav-bar">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-8 md:px-12 py-5">
-            <a href="#" class="text-xl tracking-[0.3em] font-headline uppercase text-[#E1E4E7] nav-link">N U N I K  C O .</a>
-            <div class="hidden md:flex items-center space-x-12">
-                <a class="nav-link text-[#E1E4E7]/60 hover:text-[#E1E4E7] transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#artha">Artha</a>
-                <a class="nav-link text-[#E1E4E7]/60 hover:text-[#E1E4E7] transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#rasa">Rasa</a>
-                <a class="nav-link text-[#E1E4E7]/60 hover:text-[#E1E4E7] transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#yukti">Yukti</a>
-                <a class="nav-link text-[#E1E4E7]/60 hover:text-[#E1E4E7] transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#portfolio">Portfolio</a>
-                <a class="nav-link text-[#B35D44] hover:text-[#ffb5a0] transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase border-b border-[#B35D44]/50 pb-1" href="#connect">Connect</a>
+            <a href="#" class="text-xl tracking-[0.3em] font-headline uppercase t-text nav-link">N U N I K  C O .</a>
+            <div class="hidden md:flex items-center space-x-10">
+                <a class="nav-link t-muted transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#artha">Artha</a>
+                <a class="nav-link t-muted transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#rasa">Rasa</a>
+                <a class="nav-link t-muted transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#yukti">Yukti</a>
+                <a class="nav-link t-muted transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#portfolio">Portfolio</a>
+                <a class="nav-link t-accent transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" style="border-bottom:1px solid var(--accent); padding-bottom:4px;" href="#connect">Connect</a>
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="nav-link p-2 rounded-xl transition-all duration-300 hover:bg-white/10 dark:hover:bg-white/10" aria-label="Toggle theme">
+                    <span class="material-symbols-outlined text-lg t-text theme-icon" style="font-variation-settings:'FILL' 1;">dark_mode</span>
+                </button>
             </div>
-            <button class="md:hidden p-2 hover:bg-white/10 rounded-xl transition-all nav-link text-[#E1E4E7]">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
+            <div class="flex items-center gap-3 md:hidden">
+                <button id="theme-toggle-mobile" class="nav-link p-2 rounded-xl transition-all" aria-label="Toggle theme">
+                    <span class="material-symbols-outlined text-lg t-text theme-icon-mobile" style="font-variation-settings:'FILL' 1;">dark_mode</span>
+                </button>
+                <button class="p-2 hover:bg-white/10 rounded-xl transition-all nav-link t-text">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
         </div>
     </nav>
-    
-    <!-- Hero Section -->
+
+    <!-- ============================
+         HERO
+         ============================ -->
     <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-8">
-        <!-- Replaced fluid-bg with the WebGL overlay underneath it -->
         <div class="relative z-10 text-center max-w-6xl">
-            <h1 id="hero-title" class="font-headline italic text-7xl md:text-[12rem] leading-none tracking-tighter transition-all duration-700 hover:scale-[1.02] cursor-default select-none" style="perspective: 1000px;">
-                <span class="word">N U N I K</span> <span class="text-primary-fixed-dim word">C O .</span>
+            <h1 id="hero-title" class="font-headline italic text-7xl md:text-[12rem] leading-none tracking-tighter cursor-default select-none t-text" style="perspective: 1000px;">
+                <span class="word">N U N I K</span> <span class="t-accent-lt word">C O .</span>
             </h1>
-            <p class="mt-8 text-xs md:text-sm uppercase tracking-[0.5em] font-medium text-on-surface-variant opacity-70">
+            <p class="mt-8 text-xs md:text-sm uppercase tracking-[0.5em] font-medium t-muted">
                 A Digital Collective of South Asian Heritage &amp; Elite Engineering
             </p>
         </div>
         <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
-            <span class="text-[10px] uppercase tracking-widest opacity-40">Scroll to Explore</span>
-            <div class="w-px h-16 bg-gradient-to-b from-primary to-transparent"></div>
+            <span class="text-[10px] uppercase tracking-widest t-faint">Scroll to Explore</span>
+            <div class="w-px h-16" style="background: linear-gradient(to bottom, var(--accent), transparent);"></div>
         </div>
     </section>
 
-    <!-- Section 2: Philosophy -->
+    <!-- ============================
+         PHILOSOPHY
+         ============================ -->
     <section class="relative py-[200px] px-8 md:px-24" id="philosophy">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
             <div class="md:col-span-8 space-y-[102px]">
                 <div class="space-y-8 reveal-container">
-                    <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase reveal-item">The Foundation</span>
-                    <h2 class="font-headline italic text-5xl md:text-8xl leading-tight reveal-item">
-                        We build at the intersection of <span class="text-primary-fixed-dim">Ancestral Wisdom</span> and <span class="italic text-secondary">Advanced Logic</span>.
+                    <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item">The Foundation</span>
+                    <h2 class="font-headline italic text-5xl md:text-8xl leading-tight reveal-item t-text">
+                        We build at the intersection of <span class="t-accent-lt">Ancestral Wisdom</span> and <span class="italic t-teal">Advanced Logic</span>.
                     </h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-16 reveal-container">
                     <div class="space-y-4">
-                        <div class="overflow-hidden"><h3 class="font-headline italic text-3xl text-orange-200 reveal-item">Artha</h3></div>
-                        <div class="overflow-hidden"><p class="text-sm leading-relaxed text-on-surface-variant/80 tracking-tight reveal-item">Purpose-driven manifestation. We align every byte with the core objective of your commercial existence.</p></div>
+                        <div class="overflow-hidden"><h3 class="font-headline italic text-3xl t-heading reveal-item">Artha</h3></div>
+                        <div class="overflow-hidden"><p class="text-sm leading-relaxed t-muted tracking-tight reveal-item">Purpose-driven manifestation. We align every byte with the core objective of your commercial existence.</p></div>
                     </div>
                     <div class="space-y-4">
-                        <div class="overflow-hidden"><h3 class="font-headline italic text-3xl text-orange-200 reveal-item">Rasa</h3></div>
-                        <div class="overflow-hidden"><p class="text-sm leading-relaxed text-on-surface-variant/80 tracking-tight reveal-item">The essence of aesthetic emotion. We craft interfaces that evoke deep resonance within the user's psyche.</p></div>
+                        <div class="overflow-hidden"><h3 class="font-headline italic text-3xl t-heading reveal-item">Rasa</h3></div>
+                        <div class="overflow-hidden"><p class="text-sm leading-relaxed t-muted tracking-tight reveal-item">The essence of aesthetic emotion. We craft interfaces that evoke deep resonance within the user's psyche.</p></div>
                     </div>
                     <div class="space-y-4">
-                        <div class="overflow-hidden"><h3 class="font-headline italic text-3xl text-orange-200 reveal-item">Yukti</h3></div>
-                        <div class="overflow-hidden"><p class="text-sm leading-relaxed text-on-surface-variant/80 tracking-tight reveal-item">Intelligent execution. Engineering solutions that are as strategically sound as they are technically flawless.</p></div>
+                        <div class="overflow-hidden"><h3 class="font-headline italic text-3xl t-heading reveal-item">Yukti</h3></div>
+                        <div class="overflow-hidden"><p class="text-sm leading-relaxed t-muted tracking-tight reveal-item">Intelligent execution. Engineering solutions that are as strategically sound as they are technically flawless.</p></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: The Arsenal (Services) -->
+    <!-- ============================
+         ARSENAL (Services)
+         ============================ -->
     <section class="py-[153px] px-8" id="arsenal">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8 reveal-container">
                 <div class="max-w-2xl overflow-hidden">
-                    <h2 class="font-headline text-6xl md:text-8xl uppercase tracking-tighter reveal-item">The <br/><span class="text-primary">Arsenal</span></h2>
+                    <h2 class="font-headline text-6xl md:text-8xl uppercase tracking-tighter reveal-item t-text">The <br/><span class="t-accent">Arsenal</span></h2>
                 </div>
                 <div class="text-right overflow-hidden">
-                    <p class="text-xs uppercase tracking-widest text-outline reveal-item">Capabilities &amp; Craft</p>
+                    <p class="text-xs uppercase tracking-widest t-muted reveal-item">Capabilities &amp; Craft</p>
                 </div>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-container">
                 <!-- Card 01: Artha -->
                 <div id="artha" class="group relative p-12 glass-card rounded-xl reveal-item">
-                    <span class="text-xs font-mono text-[#B35D44]/60 mb-8 block">01 / ARTHA</span>
-                    <h4 class="font-headline text-3xl mb-6 italic">High-Performance Web</h4>
-                    <p class="text-sm text-[#E1E4E7]/60 leading-relaxed mb-12">Bespoke digital experiences built for extreme scale, utilizing modern frameworks and low-latency global infrastructures.</p>
-                    <div class="w-12 h-px bg-[#B35D44] transition-all duration-500 group-hover:w-full"></div>
+                    <span class="text-xs font-mono t-accent mb-8 block" style="opacity:0.6;">01 / ARTHA</span>
+                    <h4 class="font-headline text-3xl mb-6 italic t-text">High-Performance Web</h4>
+                    <p class="text-sm t-muted leading-relaxed mb-12">Bespoke digital experiences built for extreme scale, utilizing modern frameworks and low-latency global infrastructures.</p>
+                    <div class="w-12 h-px transition-all duration-500 group-hover:w-full" style="background:var(--accent);"></div>
                 </div>
                 <!-- Card 02: Rasa -->
                 <div id="rasa" class="group relative p-12 glass-card rounded-xl reveal-item">
-                    <span class="text-xs font-mono text-[#B35D44]/60 mb-8 block">02 / RASA</span>
-                    <h4 class="font-headline text-3xl mb-6 italic">Elite Brand Identity</h4>
-                    <p class="text-sm text-[#E1E4E7]/60 leading-relaxed mb-12">Visual systems that transcend modern trends, rooting your brand in timeless cultural sophistication and digital luxury.</p>
-                    <div class="w-12 h-px bg-[#B35D44] transition-all duration-500 group-hover:w-full"></div>
+                    <span class="text-xs font-mono t-accent mb-8 block" style="opacity:0.6;">02 / RASA</span>
+                    <h4 class="font-headline text-3xl mb-6 italic t-text">Elite Brand Identity</h4>
+                    <p class="text-sm t-muted leading-relaxed mb-12">Visual systems that transcend modern trends, rooting your brand in timeless cultural sophistication and digital luxury.</p>
+                    <div class="w-12 h-px transition-all duration-500 group-hover:w-full" style="background:var(--accent);"></div>
                 </div>
                 <!-- Card 03: Yukti -->
                 <div id="yukti" class="group relative p-12 glass-card rounded-xl reveal-item">
-                    <span class="text-xs font-mono text-[#B35D44]/60 mb-8 block">03 / YUKTI</span>
-                    <h4 class="font-headline text-3xl mb-6 italic">Strategic Automation</h4>
-                    <p class="text-sm text-[#E1E4E7]/60 leading-relaxed mb-12">Deployment of elite workflow architectures that replace mundane cycles with precision-engineered algorithmic logic.</p>
-                    <div class="w-12 h-px bg-[#B35D44] transition-all duration-500 group-hover:w-full"></div>
+                    <span class="text-xs font-mono t-accent mb-8 block" style="opacity:0.6;">03 / YUKTI</span>
+                    <h4 class="font-headline text-3xl mb-6 italic t-text">Strategic Automation</h4>
+                    <p class="text-sm t-muted leading-relaxed mb-12">Deployment of elite workflow architectures that replace mundane cycles with precision-engineered algorithmic logic.</p>
+                    <div class="w-12 h-px transition-all duration-500 group-hover:w-full" style="background:var(--accent);"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 4: The Archive (Portfolio) -->
+    <!-- ============================
+         ARCHIVE (Portfolio)
+         ============================ -->
     <section class="py-[153px]" id="portfolio">
         <div class="max-w-7xl mx-auto px-8">
             <div class="mb-32 reveal-container">
-                <div class="overflow-hidden"><h2 class="font-headline italic text-7xl md:text-9xl tracking-tighter reveal-item">The Archive</h2></div>
+                <div class="overflow-hidden"><h2 class="font-headline italic text-7xl md:text-9xl tracking-tighter reveal-item t-text">The Archive</h2></div>
             </div>
-            
+
             <div class="space-y-[204px]">
                 <!-- Project 01 -->
                 <div class="group flex flex-col md:flex-row items-center gap-16 reveal-container">
-                    <div class="w-full md:w-3/5 overflow-hidden rounded-xl bg-surface-container-high aspect-video reveal-item relative isolate cursor-project">
-                        <img class="parallax-img absolute top-[-10%] left-0 w-full h-[120%] object-cover transition-opacity duration-1000 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-4XXffoSzCM7yA7VUEJRGRL_hSjTNlrOBOkA9ywS1Yn4aHbSD47jeI9iI2RM5fUZu3QOid2inrtbprMltPwXtkPX1Sl72kqC1QpQzhzdp6Sdims1DE9naX69PsZDCmhEhO19F75OrK7cZHmKg27rzqKpgnqK10s2ug33oXfkwWincaX6UzfsirHStwunq3LCTJUjdY_6OaZDLwId9WHVoASqczXvVdKsVhmLF3Lac-nK430NMTvLcpIyu3RoDvhCZXhRsPsTWnGs"/>
-                        <div class="absolute inset-0 border border-outline/10 rounded-xl pointer-events-none"></div>
+                    <div class="w-full md:w-3/5 overflow-hidden rounded-xl aspect-video reveal-item relative isolate cursor-project" style="background:var(--glass-bg);">
+                        <img class="parallax-img absolute top-[-10%] left-0 w-full h-[120%] object-cover transition-opacity duration-1000 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-4XXffoSzCM7yA7VUEJRGRL_hSjTNlrOBOkA9ywS1Yn4aHbSD47jeI9iI2RM5fUZu3QOid2inrtbprMltPwXtkPX1Sl72kqC1QpQzhzdp6Sdims1DE9naX69PsZDCmhEhO19F75OrK7cZHmKg27rzqKpgnqK10s2ug33oXfkwWincaX6UzfsirHStwunq3LCTJUjdY_6OaZDLwId9WHVoASqczXvVdKsVhmLF3Lac-nK430NMTvLcpIyu3RoDvhCZXhRsPsTWnGs" alt="Vedic Neural Networks project"/>
+                        <div class="absolute inset-0 rounded-xl pointer-events-none" style="border:1px solid var(--glass-border);"></div>
                     </div>
                     <div class="w-full md:w-2/5 space-y-6">
-                        <span class="text-xs font-mono text-outline reveal-item">Project — 001</span>
-                        <div class="overflow-hidden"><h3 class="font-headline italic text-4xl md:text-5xl reveal-item">Vedic Neural Networks</h3></div>
-                        <div class="overflow-hidden"><p class="text-on-surface-variant text-sm leading-loose reveal-item">A custom-built AI implementation for a high-end textile heritage brand, bridging data science with artisanal craft.</p></div>
-                        <button class="mt-8 flex items-center gap-4 text-xs tracking-widest uppercase group-hover:text-primary transition-colors reveal-item nav-link">
-                            Explore Case Study 
+                        <span class="text-xs font-mono t-muted reveal-item">Project — 001</span>
+                        <div class="overflow-hidden"><h3 class="font-headline italic text-4xl md:text-5xl reveal-item t-text">Vedic Neural Networks</h3></div>
+                        <div class="overflow-hidden"><p class="t-muted text-sm leading-loose reveal-item">A custom-built AI implementation for a high-end textile heritage brand, bridging data science with artisanal craft.</p></div>
+                        <button class="mt-8 flex items-center gap-4 text-xs tracking-widest uppercase transition-colors reveal-item nav-link t-muted" style="--tw-text-opacity:1;" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
+                            Explore Case Study
                             <span class="material-symbols-outlined text-sm">arrow_outward</span>
                         </button>
                     </div>
@@ -218,16 +242,16 @@
 
                 <!-- Project 02 -->
                 <div class="group flex flex-col md:flex-row-reverse items-center gap-16 reveal-container">
-                    <div class="w-full md:w-3/5 overflow-hidden rounded-xl bg-surface-container-high aspect-video reveal-item relative isolate cursor-project">
-                        <img class="parallax-img absolute top-[-10%] left-0 w-full h-[120%] object-cover transition-opacity duration-1000 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxjF-xHS8TGhdHZvtD2GsSWluYz5fuoGI9lgl-jkt9_x_7cjSuat4z_DiRXhKl6eZYxrZ7t--bl8picHES5JHEAfrI45tt0YECuajdCUYVEz78_QMJ4-tdCKF32UNat0IANLBx5fp15zr3d-9WWw0Jj1a-kWnaJ9ayPD86Vr3Yte49qE1zlbdBnuEDPFt1yawJKOngFcSyKVI1cTnr4c0OqW0UN5jaE9OKvvWNiQgvKLD651oxMS0Pd6A1rUZnCUJWQRT6oU0QoUg"/>
-                        <div class="absolute inset-0 border border-outline/10 rounded-xl pointer-events-none"></div>
+                    <div class="w-full md:w-3/5 overflow-hidden rounded-xl aspect-video reveal-item relative isolate cursor-project" style="background:var(--glass-bg);">
+                        <img class="parallax-img absolute top-[-10%] left-0 w-full h-[120%] object-cover transition-opacity duration-1000 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxjF-xHS8TGhdHZvtD2GsSWluYz5fuoGI9lgl-jkt9_x_7cjSuat4z_DiRXhKl6eZYxrZ7t--bl8picHES5JHEAfrI45tt0YECuajdCUYVEz78_QMJ4-tdCKF32UNat0IANLBx5fp15zr3d-9WWw0Jj1a-kWnaJ9ayPD86Vr3Yte49qE1zlbdBnuEDPFt1yawJKOngFcSyKVI1cTnr4c0OqW0UN5jaE9OKvvWNiQgvKLD651oxMS0Pd6A1rUZnCUJWQRT6oU0QoUg" alt="Indigo Commerce project"/>
+                        <div class="absolute inset-0 rounded-xl pointer-events-none" style="border:1px solid var(--glass-border);"></div>
                     </div>
                     <div class="w-full md:w-2/5 space-y-6">
-                        <span class="text-xs font-mono text-outline reveal-item">Project — 002</span>
-                        <div class="overflow-hidden"><h3 class="font-headline italic text-4xl md:text-5xl reveal-item">Indigo Commerce</h3></div>
-                        <div class="overflow-hidden"><p class="text-on-surface-variant text-sm leading-loose reveal-item">High-performance e-commerce engine for luxury slow-fashion, optimized for extreme aesthetic fidelity and instant load speeds.</p></div>
-                        <button class="mt-8 flex items-center gap-4 text-xs tracking-widest uppercase group-hover:text-primary transition-colors reveal-item nav-link">
-                            Explore Case Study 
+                        <span class="text-xs font-mono t-muted reveal-item">Project — 002</span>
+                        <div class="overflow-hidden"><h3 class="font-headline italic text-4xl md:text-5xl reveal-item t-text">Indigo Commerce</h3></div>
+                        <div class="overflow-hidden"><p class="t-muted text-sm leading-loose reveal-item">High-performance e-commerce engine for luxury slow-fashion, optimized for extreme aesthetic fidelity and instant load speeds.</p></div>
+                        <button class="mt-8 flex items-center gap-4 text-xs tracking-widest uppercase transition-colors reveal-item nav-link t-muted" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
+                            Explore Case Study
                             <span class="material-symbols-outlined text-sm">arrow_outward</span>
                         </button>
                     </div>
@@ -236,108 +260,108 @@
         </div>
     </section>
 
-    <!-- Footer / CTA -->
+    <!-- ============================
+         FOOTER / CTA
+         ============================ -->
     <footer class="w-full pt-32 pb-12 px-8 flex flex-col items-start space-y-16" id="connect">
         <div class="w-full reveal-container">
-            <h2 class="font-serif text-5xl md:text-[10rem] uppercase leading-none tracking-tighter font-headline text-orange-400 reveal-item">
-                START YOUR <br/><span class="editorial-reveal inline-block">TRANSFORMATION<span class="text-[#B35D44]">.</span></span>
+            <h2 class="text-5xl md:text-[10rem] uppercase leading-none tracking-tighter font-headline t-accent reveal-item">
+                START YOUR <br/><span class="editorial-reveal inline-block">TRANSFORMATION<span style="color:var(--accent);">.</span></span>
             </h2>
         </div>
 
-        <!-- Hidden Contact Section (Reveals via Initiate Protocol) - Terminal UI -->
+        <!-- Hidden Contact Section (Terminal UI) -->
         <div id="contact-expansion" class="w-full max-w-7xl mx-auto my-8">
-            <div class="glass-card rounded-xl max-w-2xl mx-auto overflow-hidden shadow-2xl shadow-black/50">
+            <div class="glass-card rounded-xl max-w-2xl mx-auto overflow-hidden">
                 <!-- Terminal Header Bar -->
-                <div class="flex items-center px-4 py-3 bg-[#000000]/40 border-b border-white/5">
+                <div class="flex items-center px-4 py-3 border-b" style="background:rgba(0,0,0,0.15); border-color:var(--glass-border);">
                     <div class="flex space-x-2">
                         <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
                         <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
                         <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
                     </div>
-                    <div class="mx-auto text-[10px] tracking-widest text-[#E1E4E7]/40 uppercase font-mono">nunik_init.sh</div>
+                    <div class="mx-auto text-[10px] tracking-widest uppercase font-mono t-faint">nunik_init.sh</div>
                     <div class="w-10"></div>
                 </div>
                 <!-- Terminal Body -->
-                <div class="p-8 md:p-10 text-[#E1E4E7]/80 text-xs font-mono">
-                    <!-- Animated boot sequence (populated by JS) -->
+                <div class="p-8 md:p-10 text-xs font-mono">
                     <div id="terminal-boot" class="flex flex-col gap-2 mb-8"></div>
-                    <!-- Form (hidden until boot completes) -->
                     <form id="terminal-form" class="flex flex-col gap-7 opacity-0" style="transform: translateY(20px);">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
                             <div class="flex flex-col gap-2">
-                                <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> FULL_NAME *</label>
-                                <input type="text" class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_" required/>
+                                <label class="t-muted uppercase tracking-widest text-[10px]">> FULL_NAME *</label>
+                                <input type="text" class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required/>
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> EMAIL *</label>
-                                <input type="email" class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_" required/>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
-                            <div class="flex flex-col gap-2">
-                                <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> PHONE *</label>
-                                <input type="tel" class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_" required/>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> WEBSITE <span class="text-[#E1E4E7]/30">[optional]</span></label>
-                                <input type="url" class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_"/>
+                                <label class="t-muted uppercase tracking-widest text-[10px]">> EMAIL *</label>
+                                <input type="email" class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required/>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
                             <div class="flex flex-col gap-2">
-                                <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> BUSINESS_NAME <span class="text-[#E1E4E7]/30">[optional]</span></label>
-                                <input type="text" class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10" placeholder="_"/>
+                                <label class="t-muted uppercase tracking-widest text-[10px]">> PHONE *</label>
+                                <input type="tel" class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required/>
                             </div>
                             <div class="flex flex-col gap-2">
-                                <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> QUERY_TYPE *</label>
-                                <select class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors appearance-none" required>
-                                    <option value="" class="bg-[#1B1E22]">Select...</option>
-                                    <option value="brand" class="bg-[#1B1E22]">Brand Identity</option>
-                                    <option value="automation" class="bg-[#1B1E22]">Automation</option>
-                                    <option value="web" class="bg-[#1B1E22]">Web Development</option>
-                                    <option value="full" class="bg-[#1B1E22]">Full Transformation</option>
-                                    <option value="other" class="bg-[#1B1E22]">Other</option>
+                                <label class="t-muted uppercase tracking-widest text-[10px]">> WEBSITE <span class="t-faint">[optional]</span></label>
+                                <input type="url" class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors" style="border-bottom:1px solid var(--glass-border);" placeholder="_"/>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+                            <div class="flex flex-col gap-2">
+                                <label class="t-muted uppercase tracking-widest text-[10px]">> BUSINESS_NAME <span class="t-faint">[optional]</span></label>
+                                <input type="text" class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors" style="border-bottom:1px solid var(--glass-border);" placeholder="_"/>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="t-muted uppercase tracking-widest text-[10px]">> QUERY_TYPE *</label>
+                                <select class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors appearance-none" style="border-bottom:1px solid var(--glass-border);" required>
+                                    <option value="">Select...</option>
+                                    <option value="brand">Brand Identity</option>
+                                    <option value="automation">Automation</option>
+                                    <option value="web">Web Development</option>
+                                    <option value="full">Full Transformation</option>
+                                    <option value="other">Other</option>
                                 </select>
                             </div>
                         </div>
                         <div class="flex flex-col gap-2">
-                            <label class="text-[#E1E4E7]/50 uppercase tracking-widest text-[10px]">> MISSION_BRIEF *</label>
-                            <textarea rows="4" class="terminal-input bg-transparent border-b border-[#E1E4E7]/20 pb-2 text-[#E1E4E7] focus:outline-none focus:border-[#B35D44] transition-colors placeholder:text-[#E1E4E7]/10 resize-none" placeholder="Describe your vision..." required></textarea>
+                            <label class="t-muted uppercase tracking-widest text-[10px]">> MISSION_BRIEF *</label>
+                            <textarea rows="4" class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors resize-none" style="border-bottom:1px solid var(--glass-border);" placeholder="Describe your vision..." required></textarea>
                         </div>
-                        <button type="submit" class="mt-4 self-start flex items-center gap-2 group text-[#B35D44] hover:text-[#ffb5a0] transition-colors nav-link">
+                        <button type="submit" class="mt-4 self-start flex items-center gap-2 group t-accent transition-colors nav-link" onmouseenter="this.style.color='var(--accent-light)'" onmouseleave="this.style.color=''">
                             <span class="opacity-0 group-hover:opacity-100 transition-opacity">>></span>
                             <span class="tracking-widest uppercase">[ TRANSMIT_DATA ]</span>
-                            <span class="animate-pulse block w-2 h-4 bg-[#B35D44] group-hover:bg-[#ffb5a0] ml-1"></span>
+                            <span class="animate-pulse block w-2 h-4 ml-1" style="background:var(--accent);"></span>
                         </button>
                     </form>
                 </div>
             </div>
         </div>
-        
-        <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-12 pt-12 border-t border-outline-variant/10">
+
+        <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-12 pt-12 t-divider" style="border-top:1px solid var(--divider);">
             <div class="md:col-span-6 space-y-8">
-                <a class="group flex items-center gap-4 text-2xl md:text-4xl font-headline italic hover:text-primary transition-colors nav-link" href="mailto:hello@nunik.co">
+                <a class="group flex items-center gap-4 text-2xl md:text-4xl font-headline italic t-text transition-colors nav-link" href="mailto:hello@nunik.co" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
                     hello@nunik.co
-                    <span class="material-symbols-outlined text-primary-container group-hover:translate-x-2 transition-transform">arrow_forward</span>
+                    <span class="material-symbols-outlined t-accent group-hover:translate-x-2 transition-transform">arrow_forward</span>
                 </a>
-                <p class="text-slate-500 uppercase text-xs tracking-widest max-w-sm">
+                <p class="t-footer uppercase text-xs tracking-widest max-w-sm">
                     Inquiries regarding elite digital transformations are processed with absolute discretion.
                 </p>
             </div>
             <div class="md:col-span-6 flex flex-col md:items-end justify-between gap-12">
                 <div class="flex space-x-12">
-                    <a class="text-slate-500 uppercase text-xs hover:text-orange-200 transition-colors tracking-widest nav-link" href="#">Instagram</a>
-                    <a class="text-slate-500 uppercase text-xs hover:text-orange-200 transition-colors tracking-widest nav-link" href="#">LinkedIn</a>
-                    <a class="text-slate-500 uppercase text-xs hover:text-orange-200 transition-colors tracking-widest nav-link" href="#">Twitter</a>
+                    <a class="t-footer uppercase text-xs transition-colors tracking-widest nav-link" href="#" onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">Instagram</a>
+                    <a class="t-footer uppercase text-xs transition-colors tracking-widest nav-link" href="#" onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">LinkedIn</a>
+                    <a class="t-footer uppercase text-xs transition-colors tracking-widest nav-link" href="#" onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">Twitter</a>
                 </div>
-                <p class="text-slate-600 font-sans text-[10px] tracking-widest">© 2026 NUNIK CO. ALL RIGHTS RESERVED.</p>
+                <p class="t-faint font-sans text-[10px] tracking-widest">&copy; 2026 NUNIK CO. ALL RIGHTS RESERVED.</p>
             </div>
         </div>
     </footer>
 
     <!-- Floating Action Element -->
     <div id="initiate-btn" class="fixed bottom-8 right-8 z-40 md:flex hidden nav-link">
-        <div class="initiate-pulse p-4 rounded-full flex items-center gap-4 cursor-pointer bg-[#B35D44] border border-[#B35D44]/30 shadow-lg shadow-[#B35D44]/20 hover:shadow-xl hover:shadow-[#B35D44]/30 transition-all duration-500 hover:scale-105">
+        <div class="initiate-pulse p-4 rounded-full flex items-center gap-4 cursor-pointer transition-all duration-500 hover:scale-105" style="background:var(--accent); border:1px solid rgba(255,255,255,0.15);">
             <span class="text-[10px] font-bold tracking-widest px-4 uppercase text-white">Initiate Protocol</span>
             <div class="w-10 h-10 bg-white/15 rounded-full flex items-center justify-center">
                 <span class="material-symbols-outlined text-lg text-white" style="font-variation-settings: 'FILL' 1;">bolt</span>
@@ -345,6 +369,11 @@
         </div>
     </div>
 
+    <!-- CDN Scripts (bottom of body for reliable loading) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
