@@ -92,7 +92,7 @@
     <div id="webgl-background"></div>
 
     <!-- Top Navigation Shell -->
-    <nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-4 bg-teal-900/40 backdrop-blur-3xl rounded-lg mt-4 mx-auto w-[95%] max-w-7xl shadow-2xl shadow-black/20 text-orange-200">
+    <nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 md:px-12 py-6 glass-card border-b border-white/5 text-orange-200 w-full">
         <div class="text-xl tracking-[0.3em] font-serif uppercase text-orange-200">N U N I K  C O .</div>
         <div class="hidden md:flex items-center space-x-12">
             <a class="nav-link text-slate-300 hover:text-white transition-colors text-xs font-medium tracking-tighter uppercase" href="#artha">Artha</a>
@@ -165,21 +165,21 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-container">
                 <!-- Card 01 -->
-                <div class="group relative p-12 bg-secondary-container/40 backdrop-blur-3xl rounded-[8px] shadow-2xl border border-outline-variant/15 transition-all duration-500 hover:-translate-y-2 hover:bg-secondary-container/30 reveal-item nav-link">
+                <div class="group relative p-12 glass-card rounded-xl shadow-2xl border border-white/5 reveal-item nav-link">
                     <span class="text-xs font-mono text-primary/60 mb-8 block">01 / YUKTI</span>
                     <h4 class="font-headline text-3xl mb-6 italic">Strategic Automation</h4>
                     <p class="text-sm text-on-surface-variant leading-relaxed mb-12">Deployment of elite workflow architectures that replace mundane cycles with precision-engineered algorithmic logic.</p>
                     <div class="w-12 h-px bg-primary transition-all duration-500 group-hover:w-full"></div>
                 </div>
                 <!-- Card 02 -->
-                <div class="group relative p-12 bg-secondary-container/40 backdrop-blur-3xl rounded-[8px] shadow-2xl border border-outline-variant/15 transition-all duration-500 hover:-translate-y-2 hover:bg-secondary-container/30 reveal-item nav-link">
+                <div class="group relative p-12 glass-card rounded-xl shadow-2xl border border-white/5 reveal-item nav-link">
                     <span class="text-xs font-mono text-primary/60 mb-8 block">02 / RASA</span>
                     <h4 class="font-headline text-3xl mb-6 italic">Elite Brand Identity</h4>
                     <p class="text-sm text-on-surface-variant leading-relaxed mb-12">Visual systems that transcend modern trends, rooting your brand in timeless cultural sophistication and digital luxury.</p>
                     <div class="w-12 h-px bg-primary transition-all duration-500 group-hover:w-full"></div>
                 </div>
                 <!-- Card 03 -->
-                <div class="group relative p-12 bg-secondary-container/40 backdrop-blur-3xl rounded-[8px] shadow-2xl border border-outline-variant/15 transition-all duration-500 hover:-translate-y-2 hover:bg-secondary-container/30 reveal-item nav-link">
+                <div class="group relative p-12 glass-card rounded-xl shadow-2xl border border-white/5 reveal-item nav-link">
                     <span class="text-xs font-mono text-primary/60 mb-8 block">03 / ARTHA</span>
                     <h4 class="font-headline text-3xl mb-6 italic">High-Performance Web</h4>
                     <p class="text-sm text-on-surface-variant leading-relaxed mb-12">Bespoke digital experiences built for extreme scale, utilizing modern frameworks and low-latency global infrastructures.</p>
@@ -241,8 +241,23 @@
                 START YOUR <br/><span class="editorial-reveal inline-block">TRANSFORMATION<span class="text-[#B35D44]">.</span></span>
             </h2>
         </div>
+
+        <!-- Hidden Contact Section (Reveals via Initiate Protocol) -->
+        <div id="contact-expansion" class="w-full max-w-7xl mx-auto my-8">
+            <div class="glass-card rounded-xl p-10 max-w-lg mx-auto border border-white/5">
+                <h3 class="font-headline text-3xl text-[#E1E4E7] mb-2">Initiate Dialogue</h3>
+                <p class="font-body text-sm text-[#E1E4E7]/60 mb-8">Connect with our architects to begin your brand's transformation.</p>
+                
+                <form class="flex flex-col gap-6">
+                    <input type="email" placeholder="Your Email" class="bg-black/20 border border-white/10 rounded-lg p-4 text-[#E1E4E7] placeholder:text-[#E1E4E7]/40 focus:outline-none focus:border-[#B35D44] transition-colors" />
+                    <button type="submit" class="bg-[#B35D44] text-white rounded-lg p-4 font-label uppercase tracking-widest text-sm hover:-translate-y-1 transition-transform">
+                        Send Inquiry
+                    </button>
+                </form>
+            </div>
+        </div>
         
-        <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-12 pt-24 border-t border-outline-variant/10">
+        <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-12 pt-12 border-t border-outline-variant/10">
             <div class="md:col-span-6 space-y-8">
                 <a class="group flex items-center gap-4 text-2xl md:text-4xl font-headline italic hover:text-primary transition-colors nav-link" href="mailto:hello@nunik.co">
                     hello@nunik.co
@@ -264,8 +279,8 @@
     </footer>
 
     <!-- Floating Action Element -->
-    <div class="fixed bottom-8 right-8 z-40 md:flex hidden nav-link">
-        <div class="bg-[#B35D44] bg-opacity-90 backdrop-blur-md text-white p-4 rounded-full shadow-2xl flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer border border-[#E1E4E7]/10">
+    <div id="initiate-btn" class="fixed bottom-8 right-8 z-40 md:flex hidden nav-link">
+        <div class="glass-card p-4 rounded-full flex items-center gap-4 cursor-pointer border border-[#E1E4E7]/5">
             <span class="text-[10px] font-bold tracking-widest px-4 uppercase">Initiate Protocol</span>
             <div class="w-10 h-10 bg-[#5b1b07] rounded-full flex items-center justify-center">
                 <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">bolt</span>

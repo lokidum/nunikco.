@@ -17,12 +17,28 @@ document.addEventListener("DOMContentLoaded", () => {
         touchMultiplier: 2,
     });
 
-    lenis.on('scroll', ScrollTrigger.update);
+    // Sync GSAP ScrollTrigger with Lenis
+    if (typeof ScrollTrigger !== 'undefined') {
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+    }
 
-    gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
+    // Anchor Link Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') return;
+            lenis.scrollTo(targetId, {
+                offset: -100, // Account for fixed navbar
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+            });
+        });
     });
-    gsap.ticker.lagSmoothing(0);
 
     // ----------------------------------------------------
     // 2. Custom Cursor
@@ -165,7 +181,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ----------------------------------------------------
-    // 6. Three.js Fluid WebGL Background
+    // 6. Initiate Protocol / Contact Reveal
+    // ----------------------------------------------------
+    const initiateBtn = document.getElementById("initiate-btn");
+    const contactExpansion = document.getElementById("contact-expansion");
+    
+    if (initiateBtn && contactExpansion) {
+        initiateBtn.addEventListener("click", () => {
+            // Expand the hidden panel using GSAP
+            gsap.to(contactExpansion, {
+                height: "auto",
+                opacity: 1,
+                paddingTop: "2rem",
+                paddingBottom: "2rem",
+                duration: 0.8,
+                ease: "power3.inOut",
+                onComplete: () => {
+                    // Smoothly scroll down to show the new panel
+                    lenis.scrollTo("#connect", {
+                        duration: 1.2,
+                        offset: -50
+                    });
+                }
+            });
+            
+            // Optionally, fade out the floating button once initiated
+            gsap.to(initiateBtn, { opacity: 0, scale: 0.8, duration: 0.4, pointerEvents: "none" });
+        });
+    }
+
+    // ----------------------------------------------------
+    // 7. Three.js Fluid WebGL Background
     // ----------------------------------------------------
     initWebGLBackground(lenis);
 });
