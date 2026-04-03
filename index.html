@@ -1,187 +1,278 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nunik Co. | High-End Digital Collective</title>
-    <meta name="description" content="Crafting Distinct Digital Identities. Powered by Culture. Guided by Innovation.">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN (Play CDN for v4 styling capabilities / rapid development) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              nunik: {
-                terracotta: '#B35D44',
-                teal: '#7A9B9B',
-                mist: '#E1E4E7',
-                obsidian: '#1B1E22'
-              }
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['"Cormorant Garamond"', 'serif'],
-            }
-          }
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NUNIK CO. | Premium Digital Collective</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<!-- GSAP, ScrollTrigger, Lenis, and Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script id="tailwind-config">
+    tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+        "colors": {
+            "on-background": "#e1e2e8",
+            "surface-bright": "#36393e",
+            "surface-dim": "#111417",
+            "error-container": "#93000a",
+            "on-primary": "#5b1b07",
+            "inverse-primary": "#974730",
+            "on-secondary-container": "#9abbbb",
+            "background": "#111417",
+            "surface-container": "#1d2024",
+            "outline": "#a28c86",
+            "surface-container-high": "#272a2e",
+            "tertiary": "#c4c7ca",
+            "on-secondary-fixed": "#002020",
+            "on-error-container": "#ffdad6",
+            "tertiary-fixed-dim": "#c4c7ca",
+            "on-secondary-fixed-variant": "#2c4c4c",
+            "on-secondary": "#143536",
+            "on-primary-container": "#fffdff",
+            "tertiary-container": "#727679",
+            "inverse-surface": "#e1e2e8",
+            "on-tertiary": "#2d3133",
+            "primary-fixed-dim": "#ffb5a0",
+            "inverse-on-surface": "#2e3135",
+            "tertiary-fixed": "#e0e3e6",
+            "on-tertiary-fixed": "#181c1e",
+            "on-tertiary-container": "#fefeff",
+            "on-surface": "#e1e2e8",
+            "error": "#ffb4ab",
+            "primary": "#ffb5a0",
+            "primary-fixed": "#ffdbd1",
+            "on-primary-fixed": "#3b0900",
+            "primary-container": "#b35d44",
+            "on-surface-variant": "#dbc1ba",
+            "surface-tint": "#ffb5a0",
+            "secondary-fixed": "#c6e9e9",
+            "secondary-container": "#2c4c4c",
+            "on-primary-fixed-variant": "#78301b",
+            "surface-variant": "#323539",
+            "surface-container-lowest": "#0b0e12",
+            "secondary": "#abcdcd",
+            "surface-container-low": "#191c20",
+            "secondary-fixed-dim": "#abcdcd",
+            "on-error": "#690005",
+            "surface-container-highest": "#323539",
+            "outline-variant": "#55433e",
+            "on-tertiary-fixed-variant": "#43474a",
+            "surface": "#111417"
+        },
+        "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+        },
+        "fontFamily": {
+            "headline": ["Newsreader", "serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"]
         }
-      }
-    </script>
-    
-    <!-- External CSS -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- GSAP, ScrollTrigger, Lenis, and Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        },
+    },
+    }
+</script>
+<link href="style.css" rel="stylesheet"/>
 </head>
-<body class="relative min-h-screen w-full">
-    
-    <!-- WebGL Background Canvas Target -->
+<body class="font-body selection:bg-primary-container selection:text-white custom-cursor-active">
+    <!-- Custom Cursor Target -->
+    <div id="custom-cursor"></div>
+
+    <!-- WebGL Background Target -->
     <div id="webgl-background"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 w-full z-50 p-6 md:p-10 pointer-events-none">
-        <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
-            <!-- Logo Concept -->
-            <div class="glass-panel px-6 py-4 pointer-events-auto flex items-center gap-4">
-                <div class="w-8 h-8 rounded-[8px] border border-nunik-mist/20 flex items-center justify-center p-1 bg-gradient-to-br from-[#B35D4433] to-[#7A9B9B33] backdrop-blur-md">
-                    <svg viewBox="0 0 24 24" fill="none" class="w-full h-full stroke-[#E1E4E7]" stroke-width="1.5">
-                        <path d="M8 12 C 8 8, 16 8, 16 12 C 16 16, 8 16, 8 12" />
-                    </svg>
-                </div>
-                <span class="font-sans font-medium tracking-[0.2em] text-sm uppercase text-nunik-mist">
-                    N u n i k <span class="text-nunik-terracotta">.</span> C o <span class="text-nunik-terracotta">.</span>
-                </span>
-            </div>
-            <button class="glass-panel hoverable-glass px-8 py-4 pointer-events-auto hover:text-nunik-terracotta transition-colors font-sans text-sm tracking-widest uppercase">
-                Menu
-            </button>
+    <!-- Top Navigation Shell -->
+    <nav class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-4 bg-teal-900/40 backdrop-blur-3xl rounded-lg mt-4 mx-auto w-[95%] max-w-7xl shadow-2xl shadow-black/20 text-orange-200">
+        <div class="text-xl tracking-[0.3em] font-serif uppercase text-orange-200">N U N I K  C O .</div>
+        <div class="hidden md:flex items-center space-x-12">
+            <a class="nav-link text-slate-300 hover:text-white transition-colors text-xs font-medium tracking-tighter uppercase" href="#artha">Artha</a>
+            <a class="nav-link text-slate-300 hover:text-white transition-colors text-xs font-medium tracking-tighter uppercase" href="#rasa">Rasa</a>
+            <a class="nav-link text-slate-300 hover:text-white transition-colors text-xs font-medium tracking-tighter uppercase" href="#yukti">Yukti</a>
+            <a class="nav-link text-slate-300 hover:text-white transition-colors text-xs font-medium tracking-tighter uppercase" href="#portfolio">Portfolio</a>
+            <a class="nav-link text-orange-300 border-b-2 border-orange-300 pb-1 text-xs font-medium tracking-tighter uppercase" href="#connect">Connect</a>
         </div>
+        <button class="md:hidden p-2 hover:bg-white/10 rounded-lg transition-all nav-link">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
     </nav>
-
+    
     <!-- Hero Section -->
-    <section class="min-h-screen flex flex-col justify-center items-center px-6 md:px-20 pt-32 pb-16 relative z-10 w-full max-w-7xl mx-auto">
-        <div class="mt-auto flex flex-col items-center text-center">
-            <h1 id="interactive-title" class="font-serif tracking-tight cursor-default text-6xl md:text-[8rem] leading-[0.9] text-nunik-mist" style="perspective: 1000px;">
-                Heritage & Growth
+    <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-8">
+        <!-- Replaced fluid-bg with the WebGL overlay underneath it -->
+        <div class="relative z-10 text-center max-w-6xl">
+            <h1 id="hero-title" class="font-headline italic text-7xl md:text-[12rem] leading-none tracking-tighter transition-all duration-700 hover:scale-[1.02] cursor-default select-none" style="perspective: 1000px;">
+                <span class="word">N U N I K</span> <span class="text-primary-fixed-dim word">C O .</span>
             </h1>
-            <h2 class="font-serif text-4xl md:text-6xl italic text-white/50 mt-4 md:mt-2">
-                by Design.
-            </h2>
-        </div>
-        <div class="mt-auto w-full flex justify-between items-end pb-10">
-            <p class="font-sans text-white/70 max-w-sm text-sm leading-relaxed tracking-wide">
-                We are a premium digital agency that stands at the intersection of heritage, strategy, and cutting-edge technology.
+            <p class="mt-8 text-xs md:text-sm uppercase tracking-[0.5em] font-medium text-on-surface-variant opacity-70">
+                A Digital Collective of South Asian Heritage &amp; Elite Engineering
             </p>
-            <div class="hidden md:flex gap-6 text-sm tracking-widest uppercase text-white/50">
-                <span>Scroll</span>
-                <span>↓</span>
-            </div>
+        </div>
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+            <span class="text-[10px] uppercase tracking-widest opacity-40">Scroll to Explore</span>
+            <div class="w-px h-16 bg-gradient-to-b from-primary to-transparent"></div>
         </div>
     </section>
 
-    <!-- Core Services -->
-    <section class="min-h-screen flex flex-col justify-center px-6 md:px-20 py-32 md:py-[15vh] relative z-10 max-w-7xl mx-auto">
-        <div class="mb-24 md:mb-40">
-            <h3 class="font-serif text-5xl md:text-7xl text-nunik-mist max-w-3xl hero-text-reveal">
-                Cultural Sophistication. <br />
-                <span class="italic text-nunik-terracotta">Precise Execution.</span>
-            </h3>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 w-full">
-            <div class="glass-panel hoverable-glass p-8 md:p-12 flex flex-col gap-6 group">
-                <svg viewBox="0 0 24 24" fill="none" class="w-8 h-8 stroke-nunik-terracotta group-hover:scale-110 transition-transform duration-300" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
-                    <path d="M2 2l7.586 7.586"></path>
-                    <circle cx="11" cy="11" r="2"></circle>
-                </svg>
-                <h4 class="font-serif text-2xl text-nunik-mist">Deep-Rooted Brand Identity & Strategy</h4>
-                <p class="font-sans text-white/70 leading-relaxed font-light mt-auto pt-8 border-t border-white/10">
-                    We define the core 'Artha' (purpose) and 'Rasa' (essence) of a brand, creating comprehensive identity packs that resonate.
-                </p>
-            </div>
-            
-            <div class="glass-panel hoverable-glass p-8 md:p-12 flex flex-col gap-6 group">
-                <svg viewBox="0 0 24 24" fill="none" class="w-8 h-8 stroke-nunik-teal group-hover:scale-110 transition-transform duration-300" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="16 18 22 12 16 6"></polyline>
-                    <polyline points="8 6 2 12 8 18"></polyline>
-                </svg>
-                <h4 class="font-serif text-2xl text-nunik-mist">Artistic Design & User Experience</h4>
-                <p class="font-sans text-white/70 leading-relaxed font-light mt-auto pt-8 border-t border-white/10">
-                    We build interactive, visually immersive, and highly intuitive digital products with a language that is clean and modern.
-                </p>
-            </div>
-            
-            <div class="glass-panel hoverable-glass p-8 md:p-12 flex flex-col gap-6 lg:col-start-2 lg:col-span-2 group">
-                <div class="flex justify-between items-start">
-                    <svg viewBox="0 0 24 24" fill="none" class="w-8 h-8 stroke-nunik-mist group-hover:scale-110 transition-transform duration-300" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-                        <rect x="9" y="9" width="6" height="6"></rect>
-                        <line x1="9" y1="1" x2="9" y2="4"></line>
-                        <line x1="15" y1="1" x2="15" y2="4"></line>
-                        <line x1="9" y1="20" x2="9" y2="23"></line>
-                        <line x1="15" y1="20" x2="15" y2="23"></line>
-                        <line x1="20" y1="9" x2="23" y2="9"></line>
-                        <line x1="20" y1="14" x2="23" y2="14"></line>
-                        <line x1="1" y1="9" x2="4" y2="9"></line>
-                        <line x1="1" y1="14" x2="4" y2="14"></line>
-                    </svg>
-                    <div class="px-4 py-1.5 rounded-full border border-[#B35D4480] text-nunik-terracotta font-sans text-xs tracking-widest uppercase">
-                        New
+    <!-- Section 2: Philosophy -->
+    <section class="relative py-[200px] px-8 md:px-24 bg-surface" id="philosophy">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div class="md:col-span-8 space-y-[102px]">
+                <div class="space-y-8 reveal-container">
+                    <span class="text-primary text-xs font-bold tracking-[0.3em] uppercase reveal-item">The Foundation</span>
+                    <h2 class="font-headline italic text-5xl md:text-8xl leading-tight reveal-item">
+                        We build at the intersection of <span class="text-primary-fixed-dim">Ancestral Wisdom</span> and <span class="italic text-secondary">Advanced Logic</span>.
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 reveal-container">
+                    <div class="space-y-4">
+                        <div class="overflow-hidden"><h3 class="font-headline italic text-3xl text-orange-200 reveal-item">Artha</h3></div>
+                        <div class="overflow-hidden"><p class="text-sm leading-relaxed text-on-surface-variant/80 tracking-tight reveal-item">Purpose-driven manifestation. We align every byte with the core objective of your commercial existence.</p></div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="overflow-hidden"><h3 class="font-headline italic text-3xl text-orange-200 reveal-item">Rasa</h3></div>
+                        <div class="overflow-hidden"><p class="text-sm leading-relaxed text-on-surface-variant/80 tracking-tight reveal-item">The essence of aesthetic emotion. We craft interfaces that evoke deep resonance within the user's psyche.</p></div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="overflow-hidden"><h3 class="font-headline italic text-3xl text-orange-200 reveal-item">Yukti</h3></div>
+                        <div class="overflow-hidden"><p class="text-sm leading-relaxed text-on-surface-variant/80 tracking-tight reveal-item">Intelligent execution. Engineering solutions that are as strategically sound as they are technically flawless.</p></div>
                     </div>
                 </div>
-                <h4 class="font-serif text-3xl md:text-4xl text-nunik-mist max-w-md mt-4">Intelligent Business Automation</h4>
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mt-auto pt-8 border-t border-white/10">
-                    <p class="font-sans text-white/70 leading-relaxed font-light max-w-sm">
-                        Leveraging 'Yukti' (skillful strategy) to streamline complex workflows via bespoke automation systems.
-                    </p>
-                    <button class="flex items-center gap-3 font-sans text-sm tracking-widest uppercase text-nunik-mist hover:text-nunik-terracotta transition-colors">
-                        <span>Explore</span>
-                        <span class="p-2 rounded-full border border-white/20 transition-colors">
-                            <svg viewBox="0 0 24 24" fill="none" class="w-4 h-4 stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="7" y1="17" x2="17" y2="7"></line>
-                                <polyline points="7 7 17 7 17 17"></polyline>
-                            </svg>
-                        </span>
-                    </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: The Arsenal (Services) -->
+    <section class="py-[153px] px-8 bg-surface-container-low" id="yukti">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8 reveal-container">
+                <div class="max-w-2xl overflow-hidden">
+                    <h2 class="font-headline text-6xl md:text-8xl uppercase tracking-tighter reveal-item">The <br/><span class="text-primary">Arsenal</span></h2>
+                </div>
+                <div class="text-right overflow-hidden">
+                    <p class="text-xs uppercase tracking-widest text-outline reveal-item">Capabilities &amp; Craft</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-container">
+                <!-- Card 01 -->
+                <div class="group relative p-12 bg-secondary-container/40 backdrop-blur-3xl rounded-[8px] shadow-2xl border border-outline-variant/15 transition-all duration-500 hover:-translate-y-2 hover:bg-secondary-container/30 reveal-item nav-link">
+                    <span class="text-xs font-mono text-primary/60 mb-8 block">01 / YUKTI</span>
+                    <h4 class="font-headline text-3xl mb-6 italic">Strategic Automation</h4>
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-12">Deployment of elite workflow architectures that replace mundane cycles with precision-engineered algorithmic logic.</p>
+                    <div class="w-12 h-px bg-primary transition-all duration-500 group-hover:w-full"></div>
+                </div>
+                <!-- Card 02 -->
+                <div class="group relative p-12 bg-secondary-container/40 backdrop-blur-3xl rounded-[8px] shadow-2xl border border-outline-variant/15 transition-all duration-500 hover:-translate-y-2 hover:bg-secondary-container/30 reveal-item nav-link">
+                    <span class="text-xs font-mono text-primary/60 mb-8 block">02 / RASA</span>
+                    <h4 class="font-headline text-3xl mb-6 italic">Elite Brand Identity</h4>
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-12">Visual systems that transcend modern trends, rooting your brand in timeless cultural sophistication and digital luxury.</p>
+                    <div class="w-12 h-px bg-primary transition-all duration-500 group-hover:w-full"></div>
+                </div>
+                <!-- Card 03 -->
+                <div class="group relative p-12 bg-secondary-container/40 backdrop-blur-3xl rounded-[8px] shadow-2xl border border-outline-variant/15 transition-all duration-500 hover:-translate-y-2 hover:bg-secondary-container/30 reveal-item nav-link">
+                    <span class="text-xs font-mono text-primary/60 mb-8 block">03 / ARTHA</span>
+                    <h4 class="font-headline text-3xl mb-6 italic">High-Performance Web</h4>
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-12">Bespoke digital experiences built for extreme scale, utilizing modern frameworks and low-latency global infrastructures.</p>
+                    <div class="w-12 h-px bg-primary transition-all duration-500 group-hover:w-full"></div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- Footer -->
-    <footer class="px-6 md:px-20 py-24 relative z-10 max-w-7xl mx-auto border-t border-white/10 mt-20">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
-            <div>
-                <h2 class="font-serif text-4xl text-nunik-mist mb-6">Let's craft your legacy.</h2>
-                <a href="mailto:hello@nunik.co" class="font-sans text-2xl font-light text-nunik-terracotta hover:text-nunik-mist transition-colors">
-                    hello@nunik.co
-                </a>
+
+    <!-- Section 4: The Archive (Portfolio) -->
+    <section class="py-[153px] bg-surface" id="portfolio">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="mb-32 reveal-container">
+                <div class="overflow-hidden"><h2 class="font-headline italic text-7xl md:text-9xl tracking-tighter reveal-item">The Archive</h2></div>
             </div>
             
-            <div class="flex gap-8 font-sans text-sm tracking-widest uppercase">
-                <a href="https://linkedin.com/company/nunik-co" target="_blank" class="text-white/70 hover:text-nunik-mist transition-colors">
-                    LinkedIn
+            <div class="space-y-[204px]">
+                <!-- Project 01 -->
+                <div class="group flex flex-col md:flex-row items-center gap-16 reveal-container">
+                    <div class="w-full md:w-3/5 overflow-hidden rounded-xl bg-surface-container-high aspect-video reveal-item relative isolate cursor-project">
+                        <img class="parallax-img absolute top-[-10%] left-0 w-full h-[120%] object-cover transition-opacity duration-1000 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-4XXffoSzCM7yA7VUEJRGRL_hSjTNlrOBOkA9ywS1Yn4aHbSD47jeI9iI2RM5fUZu3QOid2inrtbprMltPwXtkPX1Sl72kqC1QpQzhzdp6Sdims1DE9naX69PsZDCmhEhO19F75OrK7cZHmKg27rzqKpgnqK10s2ug33oXfkwWincaX6UzfsirHStwunq3LCTJUjdY_6OaZDLwId9WHVoASqczXvVdKsVhmLF3Lac-nK430NMTvLcpIyu3RoDvhCZXhRsPsTWnGs"/>
+                        <div class="absolute inset-0 border border-outline/10 rounded-xl pointer-events-none"></div>
+                    </div>
+                    <div class="w-full md:w-2/5 space-y-6">
+                        <span class="text-xs font-mono text-outline reveal-item">Project — 001</span>
+                        <div class="overflow-hidden"><h3 class="font-headline italic text-4xl md:text-5xl reveal-item">Vedic Neural Networks</h3></div>
+                        <div class="overflow-hidden"><p class="text-on-surface-variant text-sm leading-loose reveal-item">A custom-built AI implementation for a high-end textile heritage brand, bridging data science with artisanal craft.</p></div>
+                        <button class="mt-8 flex items-center gap-4 text-xs tracking-widest uppercase group-hover:text-primary transition-colors reveal-item nav-link">
+                            Explore Case Study 
+                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 02 -->
+                <div class="group flex flex-col md:flex-row-reverse items-center gap-16 reveal-container">
+                    <div class="w-full md:w-3/5 overflow-hidden rounded-xl bg-surface-container-high aspect-video reveal-item relative isolate cursor-project">
+                        <img class="parallax-img absolute top-[-10%] left-0 w-full h-[120%] object-cover transition-opacity duration-1000 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxjF-xHS8TGhdHZvtD2GsSWluYz5fuoGI9lgl-jkt9_x_7cjSuat4z_DiRXhKl6eZYxrZ7t--bl8picHES5JHEAfrI45tt0YECuajdCUYVEz78_QMJ4-tdCKF32UNat0IANLBx5fp15zr3d-9WWw0Jj1a-kWnaJ9ayPD86Vr3Yte49qE1zlbdBnuEDPFt1yawJKOngFcSyKVI1cTnr4c0OqW0UN5jaE9OKvvWNiQgvKLD651oxMS0Pd6A1rUZnCUJWQRT6oU0QoUg"/>
+                        <div class="absolute inset-0 border border-outline/10 rounded-xl pointer-events-none"></div>
+                    </div>
+                    <div class="w-full md:w-2/5 space-y-6">
+                        <span class="text-xs font-mono text-outline reveal-item">Project — 002</span>
+                        <div class="overflow-hidden"><h3 class="font-headline italic text-4xl md:text-5xl reveal-item">Indigo Commerce</h3></div>
+                        <div class="overflow-hidden"><p class="text-on-surface-variant text-sm leading-loose reveal-item">High-performance e-commerce engine for luxury slow-fashion, optimized for extreme aesthetic fidelity and instant load speeds.</p></div>
+                        <button class="mt-8 flex items-center gap-4 text-xs tracking-widest uppercase group-hover:text-primary transition-colors reveal-item nav-link">
+                            Explore Case Study 
+                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / CTA -->
+    <footer class="bg-zinc-950 w-full pt-32 pb-12 px-8 flex flex-col items-start space-y-16" id="connect">
+        <div class="w-full reveal-container">
+            <h2 class="font-serif text-5xl md:text-[10rem] uppercase leading-none tracking-tighter font-headline text-orange-400 reveal-item">
+                START YOUR <br/><span class="editorial-reveal inline-block">TRANSFORMATION<span class="text-[#B35D44]">.</span></span>
+            </h2>
+        </div>
+        
+        <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-12 pt-24 border-t border-outline-variant/10">
+            <div class="md:col-span-6 space-y-8">
+                <a class="group flex items-center gap-4 text-2xl md:text-4xl font-headline italic hover:text-primary transition-colors nav-link" href="mailto:hello@nunik.co">
+                    hello@nunik.co
+                    <span class="material-symbols-outlined text-primary-container group-hover:translate-x-2 transition-transform">arrow_forward</span>
                 </a>
-                <a href="https://instagram.com/nunik.co" target="_blank" class="text-white/70 hover:text-nunik-mist transition-colors">
-                    Instagram
-                </a>
+                <p class="text-slate-500 uppercase text-xs tracking-widest max-w-sm">
+                    Inquiries regarding elite digital transformations are processed with absolute discretion.
+                </p>
+            </div>
+            <div class="md:col-span-6 flex flex-col md:items-end justify-between gap-12">
+                <div class="flex space-x-12">
+                    <a class="text-slate-500 uppercase text-xs hover:text-orange-200 transition-colors tracking-widest nav-link" href="#">Instagram</a>
+                    <a class="text-slate-500 uppercase text-xs hover:text-orange-200 transition-colors tracking-widest nav-link" href="#">LinkedIn</a>
+                    <a class="text-slate-500 uppercase text-xs hover:text-orange-200 transition-colors tracking-widest nav-link" href="#">Twitter</a>
+                </div>
+                <p class="text-slate-600 font-sans text-[10px] tracking-widest">© 2024 NUNIK CO. ALL RIGHTS RESERVED.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Main Logic -->
+    <!-- Floating Action Element -->
+    <div class="fixed bottom-8 right-8 z-40 md:flex hidden nav-link">
+        <div class="bg-[#B35D44] bg-opacity-90 backdrop-blur-md text-white p-4 rounded-full shadow-2xl flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer border border-[#E1E4E7]/10">
+            <span class="text-[10px] font-bold tracking-widest px-4 uppercase">Initiate Protocol</span>
+            <div class="w-10 h-10 bg-[#5b1b07] rounded-full flex items-center justify-center">
+                <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">bolt</span>
+            </div>
+        </div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>
