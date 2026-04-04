@@ -368,9 +368,17 @@ html.lenis, html.lenis body {
     transform: translateY(12px);
 }
 
-/* Reduce pill size on small screens */
+/* Mobile: full-width glass bar replaces hidden pill */
 @media (max-width: 767px) {
     .glass-nav-pill { display: none !important; }
+    #site-header {
+        background: var(--nav-glass);
+        backdrop-filter: blur(24px) saturate(160%);
+        -webkit-backdrop-filter: blur(24px) saturate(160%);
+        border-bottom: 1px solid var(--nav-border);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        min-height: 56px;
+    }
     #initiate-btn .initiate-inner { padding: 0.75rem 1rem; }
     #initiate-btn .initiate-label { display: none; }
 }
