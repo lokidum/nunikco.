@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>NUNIK CO. | Premium Digital Collective</title>
+    <title>Nunik Co. | Digital Agency — nunik.co</title>
 
     <!-- Prevent theme flash -->
     <script>
@@ -91,190 +91,473 @@
 </head>
 <body class="font-body selection:bg-primary-container selection:text-white custom-cursor-active">
 
-    <!-- Custom Cursor -->
+    <!-- Custom Cursor (desktop only, hidden on touch via CSS) -->
     <div id="custom-cursor"></div>
 
-    <!-- WebGL Background -->
+    <!-- WebGL Fluid Background (z-index: -2) -->
     <div id="webgl-background"></div>
 
-    <!-- ============================
-         NAVIGATION
-         ============================ -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav-bar">
-        <div class="max-w-7xl mx-auto flex justify-between items-center px-8 md:px-12 py-5">
-            <a href="#" class="text-xl tracking-[0.3em] font-headline uppercase t-text nav-link">N U N I K  C O .</a>
-            <div class="hidden md:flex items-center space-x-10">
-                <a class="nav-link t-muted transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#artha">Artha</a>
-                <a class="nav-link t-muted transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#rasa">Rasa</a>
-                <a class="nav-link t-muted transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#yukti">Yukti</a>
-                <a class="nav-link t-muted transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" href="#portfolio">Portfolio</a>
-                <a class="nav-link t-accent transition-colors duration-300 text-[11px] font-medium tracking-[0.15em] uppercase" style="border-bottom:1px solid var(--accent); padding-bottom:4px;" href="#connect">Connect</a>
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" class="nav-link p-2 rounded-xl transition-all duration-300 hover:bg-white/10 dark:hover:bg-white/10" aria-label="Toggle theme">
-                    <span class="material-symbols-outlined text-lg t-text theme-icon" style="font-variation-settings:'FILL' 1;">dark_mode</span>
-                </button>
-            </div>
-            <div class="flex items-center gap-3 md:hidden">
-                <button id="theme-toggle-mobile" class="nav-link p-2 rounded-xl transition-all" aria-label="Toggle theme">
-                    <span class="material-symbols-outlined text-lg t-text theme-icon-mobile" style="font-variation-settings:'FILL' 1;">dark_mode</span>
-                </button>
-                <button class="p-2 hover:bg-white/10 rounded-xl transition-all nav-link t-text">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
-            </div>
-        </div>
-    </nav>
+    <!-- 3D Chakra Canvas (z-index: -1, opacity: 0.22) -->
+    <div id="chakra-canvas"></div>
 
-    <!-- ============================
+    <!-- ============================================================
+         HEADER: Logo left / Pill nav centre / Controls right
+         ============================================================ -->
+    <header class="fixed top-0 left-0 right-0 z-50" style="pointer-events:none;">
+
+        <!-- Logo: top-left -->
+        <a href="#"
+           class="absolute left-0 top-0 px-6 md:px-8 py-4 md:py-5 text-base md:text-xl tracking-[0.25em] md:tracking-[0.3em] font-headline uppercase t-text nav-link"
+           style="pointer-events:auto;">N U N I K  C O .</a>
+
+        <!-- Centred pill nav (desktop only, hidden on mobile via CSS) -->
+        <div class="flex justify-center pt-3 md:pt-4" style="pointer-events:none;">
+            <nav class="glass-nav-pill flex items-center gap-5 lg:gap-8 px-5 lg:px-8 py-2.5 md:py-3 rounded-full" style="pointer-events:auto;">
+                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="#yukti">Automation</a>
+                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase" href="#rasa">Brand</a>
+                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase" href="#artha">Web</a>
+                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase" href="#archive">Archive</a>
+                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase" href="#research">Research</a>
+                <a class="nav-link t-accent text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase"
+                   style="border-bottom:1px solid var(--accent);padding-bottom:3px;" href="#connect">Connect</a>
+            </nav>
+        </div>
+
+        <!-- Right controls: theme toggle + hamburger -->
+        <div class="absolute top-0 right-0 px-4 md:px-8 py-3 md:py-5 flex items-center gap-2" style="pointer-events:auto;">
+            <!-- Theme toggle (desktop) -->
+            <button id="theme-toggle"
+                    class="nav-link p-2 rounded-xl hover:bg-white/10 transition-all"
+                    aria-label="Toggle theme">
+                <span class="material-symbols-outlined text-lg t-text theme-icon"
+                      style="font-variation-settings:'FILL' 1;">dark_mode</span>
+            </button>
+            <!-- Hamburger (mobile only) -->
+            <button id="hamburger-btn"
+                    class="md:hidden p-2 hover:bg-white/10 rounded-xl transition-all nav-link t-text"
+                    aria-label="Open navigation"
+                    aria-expanded="false">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+
+    </header>
+
+    <!-- ============================================================
+         MOBILE NAV DRAWER
+         ============================================================ -->
+    <div id="mobile-nav" class="glass-nav-bar md:hidden">
+        <nav class="flex flex-col gap-6 pt-2">
+            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase" href="#yukti">Automation</a>
+            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase" href="#rasa">Brand</a>
+            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase" href="#artha">Web</a>
+            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase" href="#archive">Archive</a>
+            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase" href="#research">Research</a>
+            <a class="nav-link t-accent text-sm font-medium tracking-[0.15em] uppercase" href="#connect">Connect</a>
+            <div class="pt-2 border-t" style="border-color:var(--divider);">
+                <button id="theme-toggle-mobile"
+                        class="nav-link flex items-center gap-3 text-xs t-muted uppercase tracking-widest"
+                        aria-label="Toggle theme">
+                    <span class="material-symbols-outlined text-base t-text theme-icon-mobile"
+                          style="font-variation-settings:'FILL' 1;">dark_mode</span>
+                    Toggle theme
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- ============================================================
          HERO
-         ============================ -->
-    <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-8">
+         ============================================================ -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 md:px-8">
         <div class="relative z-10 text-center max-w-6xl">
-            <h1 id="hero-title" class="font-headline italic text-7xl md:text-[12rem] leading-none tracking-tighter cursor-default select-none t-text" style="perspective: 1000px;">
+            <h1 id="hero-title"
+                class="font-headline italic leading-none tracking-tighter cursor-default select-none t-text">
                 <span class="word">N U N I K</span> <span class="t-accent-lt word">C O .</span>
             </h1>
-            <p class="mt-8 text-xs md:text-sm uppercase tracking-[0.5em] font-medium t-muted">
-                A Digital Collective of South Asian Heritage &amp; Elite Engineering
+            <p class="mt-6 md:mt-8 text-[10px] md:text-xs uppercase tracking-[0.4em] md:tracking-[0.5em] font-medium t-muted">
+                Digital Systems for Real Estate, Trades, Automotive and Hospitality
             </p>
         </div>
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
-            <span class="text-[10px] uppercase tracking-widest t-faint">Scroll to Explore</span>
-            <div class="w-px h-16" style="background: linear-gradient(to bottom, var(--accent), transparent);"></div>
+        <div class="absolute bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+            <span class="text-[9px] md:text-[10px] uppercase tracking-widest t-faint">Scroll to Explore</span>
+            <div class="w-px h-12 md:h-16" style="background:linear-gradient(to bottom,var(--accent),transparent);"></div>
         </div>
     </section>
 
-    <!-- ============================
+    <!-- ============================================================
          PHILOSOPHY
-         ============================ -->
-    <section class="relative py-[200px] px-8 md:px-24" id="philosophy">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
-            <div class="md:col-span-8 space-y-[102px]">
+         ============================================================ -->
+    <section class="relative" id="philosophy">
+        <div class="frosted-band">
+            <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+                <div class="space-y-16 md:space-y-[102px]">
+
+                    <div class="space-y-6 md:space-y-8 reveal-container">
+                        <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item">WHO WE ARE</span>
+                        <h2 class="font-headline italic text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-tight reveal-item t-text">
+                            We build <span class="t-accent-lt">elite automation systems</span>,
+                            <span class="italic t-teal">bespoke brand identities</span>, and
+                            <span class="t-accent-lt">high-performance web platforms</span>
+                            for Real Estate, Trades, Automotive, Hospitality, and Food and Beverage.
+                        </h2>
+                        <p class="text-sm md:text-base leading-relaxed t-muted max-w-3xl reveal-item">
+                            Nunik Co. is a digital collective rooted in South Asian heritage, built for the Western market.
+                            We serve growth-focused SMBs who need more than templates. They need custom n8n automation
+                            workflows, GoHighLevel CRM integrations, complete visual identity systems, and staff training
+                            programs that turn employees into in-house marketers.
+                        </p>
+                        <p class="text-sm md:text-base leading-relaxed t-muted max-w-3xl reveal-item">
+                            Our work is guided by three Sanskrit principles, not as decoration, but as operational philosophy.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-16 reveal-container">
+
+                        <div class="space-y-3 md:space-y-4">
+                            <div class="overflow-hidden">
+                                <h3 class="font-headline italic text-2xl md:text-3xl t-heading reveal-item">
+                                    <span class="font-mono text-xl md:text-2xl t-accent">[ युक्ति ]</span><br/>Yukti
+                                </h3>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-[10px] md:text-xs uppercase tracking-widest t-muted reveal-item">Strategic Execution</p>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-xs md:text-sm leading-relaxed t-muted tracking-tight reveal-item">
+                                    Method, precision, intelligent automation. We engineer n8n workflows that replace repetitive
+                                    manual tasks with algorithmic logic. Your CRM updates itself. Follow-ups send on schedule.
+                                    Data routes where it needs to go.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 md:space-y-4">
+                            <div class="overflow-hidden">
+                                <h3 class="font-headline italic text-2xl md:text-3xl t-heading reveal-item">
+                                    <span class="font-mono text-xl md:text-2xl t-accent">[ रस ]</span><br/>Rasa
+                                </h3>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-[10px] md:text-xs uppercase tracking-widest t-muted reveal-item">Aesthetic Emotion</p>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-xs md:text-sm leading-relaxed t-muted tracking-tight reveal-item">
+                                    The essence that makes brands memorable. We design comprehensive Tech Packs covering
+                                    logos, color systems, typography, and graphic templates. Every pixel carries intention.
+                                    Every interaction builds trust.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3 md:space-y-4">
+                            <div class="overflow-hidden">
+                                <h3 class="font-headline italic text-2xl md:text-3xl t-heading reveal-item">
+                                    <span class="font-mono text-xl md:text-2xl t-accent">[ अर्थ ]</span><br/>Artha
+                                </h3>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-[10px] md:text-xs uppercase tracking-widest t-muted reveal-item">Purpose and Prosperity</p>
+                            </div>
+                            <div class="overflow-hidden">
+                                <p class="text-xs md:text-sm leading-relaxed t-muted tracking-tight reveal-item">
+                                    Value creation through systematic growth. We build fast, scalable websites, provide
+                                    marketing consulting, and train your staff to produce professional-grade content
+                                    in-house. Your business operates like a machine built for profit.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         YUKTI — AI Automation and Workflow Engineering
+         ============================================================ -->
+    <section class="relative py-20 md:py-32 frosted-section" id="yukti">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start">
+
                 <div class="space-y-8 reveal-container">
-                    <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item">The Foundation</span>
-                    <h2 class="font-headline italic text-5xl md:text-8xl leading-tight reveal-item t-text">
-                        We build at the intersection of <span class="t-accent-lt">Ancestral Wisdom</span> and <span class="italic t-teal">Advanced Logic</span>.
-                    </h2>
+                    <div>
+                        <span class="font-mono text-xs t-accent block mb-2" style="opacity:0.6;">01 / युक्ति</span>
+                        <h2 class="font-headline italic text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none t-text reveal-item">Yukti</h2>
+                        <p class="text-[10px] md:text-xs uppercase tracking-widest t-muted mt-3 reveal-item">AI Automation and Workflow Engineering</p>
+                    </div>
+                    <p class="text-sm md:text-base leading-relaxed t-muted max-w-md reveal-item">
+                        We engineer intelligent automation systems for Real Estate, Trades, Automotive, and Hospitality
+                        businesses. Custom n8n workflows eliminate repetitive manual tasks. Your CRM updates itself.
+                        Follow-ups send on schedule. Data routes where it needs to go, without anyone touching a keyboard.
+                    </p>
+                    <p class="text-sm leading-relaxed t-muted max-w-md reveal-item">
+                        Every process that runs the same way every time is a candidate for automation. We map your
+                        operations, identify the bottlenecks, and engineer solutions that scale with your business.
+                    </p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 reveal-container">
-                    <div class="space-y-4">
-                        <div class="overflow-hidden"><h3 class="font-headline italic text-3xl t-heading reveal-item">Artha</h3></div>
-                        <div class="overflow-hidden"><p class="text-sm leading-relaxed t-muted tracking-tight reveal-item">Purpose-driven manifestation. We align every byte with the core objective of your commercial existence.</p></div>
+
+                <div class="space-y-5 reveal-container pt-0 md:pt-16">
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
+                        <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Core Services</p>
+                        <ul class="text-sm t-muted space-y-3">
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>n8n workflow architecture and deployment</li>
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>GoHighLevel CRM setup and integration</li>
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Zapier and Make enterprise automation</li>
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>API development and webhook systems</li>
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Database design with Airtable and PostgreSQL</li>
+                        </ul>
                     </div>
-                    <div class="space-y-4">
-                        <div class="overflow-hidden"><h3 class="font-headline italic text-3xl t-heading reveal-item">Rasa</h3></div>
-                        <div class="overflow-hidden"><p class="text-sm leading-relaxed t-muted tracking-tight reveal-item">The essence of aesthetic emotion. We craft interfaces that evoke deep resonance within the user's psyche.</p></div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="overflow-hidden"><h3 class="font-headline italic text-3xl t-heading reveal-item">Yukti</h3></div>
-                        <div class="overflow-hidden"><p class="text-sm leading-relaxed t-muted tracking-tight reveal-item">Intelligent execution. Engineering solutions that are as strategically sound as they are technically flawless.</p></div>
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
+                        <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Industries</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Real Estate</span>
+                            <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Plumbers</span>
+                            <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Electricians</span>
+                            <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Auto Repair</span>
+                            <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Hospitality</span>
+                            <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Landscaping</span>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ============================
-         ARSENAL (Services)
-         ============================ -->
-    <section class="py-[153px] px-8" id="arsenal">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8 reveal-container">
-                <div class="max-w-2xl overflow-hidden">
-                    <h2 class="font-headline text-6xl md:text-8xl uppercase tracking-tighter reveal-item t-text">The <br/><span class="t-accent">Arsenal</span></h2>
-                </div>
-                <div class="text-right overflow-hidden">
-                    <p class="text-xs uppercase tracking-widest t-muted reveal-item">Capabilities &amp; Craft</p>
-                </div>
-            </div>
+    <!-- ============================================================
+         RASA — Brand Identity and Visual Systems
+         ============================================================ -->
+    <section class="relative py-20 md:py-32" id="rasa">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start">
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-container">
-                <!-- Card 01: Artha -->
-                <div id="artha" class="group relative p-12 glass-card rounded-xl reveal-item">
-                    <span class="text-xs font-mono t-accent mb-8 block" style="opacity:0.6;">01 / ARTHA</span>
-                    <h4 class="font-headline text-3xl mb-6 italic t-text">High-Performance Web</h4>
-                    <p class="text-sm t-muted leading-relaxed mb-12">Bespoke digital experiences built for extreme scale, utilizing modern frameworks and low-latency global infrastructures.</p>
-                    <div class="w-12 h-px transition-all duration-500 group-hover:w-full" style="background:var(--accent);"></div>
-                </div>
-                <!-- Card 02: Rasa -->
-                <div id="rasa" class="group relative p-12 glass-card rounded-xl reveal-item">
-                    <span class="text-xs font-mono t-accent mb-8 block" style="opacity:0.6;">02 / RASA</span>
-                    <h4 class="font-headline text-3xl mb-6 italic t-text">Elite Brand Identity</h4>
-                    <p class="text-sm t-muted leading-relaxed mb-12">Visual systems that transcend modern trends, rooting your brand in timeless cultural sophistication and digital luxury.</p>
-                    <div class="w-12 h-px transition-all duration-500 group-hover:w-full" style="background:var(--accent);"></div>
-                </div>
-                <!-- Card 03: Yukti -->
-                <div id="yukti" class="group relative p-12 glass-card rounded-xl reveal-item">
-                    <span class="text-xs font-mono t-accent mb-8 block" style="opacity:0.6;">03 / YUKTI</span>
-                    <h4 class="font-headline text-3xl mb-6 italic t-text">Strategic Automation</h4>
-                    <p class="text-sm t-muted leading-relaxed mb-12">Deployment of elite workflow architectures that replace mundane cycles with precision-engineered algorithmic logic.</p>
-                    <div class="w-12 h-px transition-all duration-500 group-hover:w-full" style="background:var(--accent);"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================
-         ARCHIVE (Portfolio)
-         ============================ -->
-    <section class="py-[153px]" id="portfolio">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="mb-32 reveal-container">
-                <div class="overflow-hidden"><h2 class="font-headline italic text-7xl md:text-9xl tracking-tighter reveal-item t-text">The Archive</h2></div>
-            </div>
-
-            <div class="space-y-[204px]">
-                <!-- Project 01 -->
-                <div class="group flex flex-col md:flex-row items-center gap-16 reveal-container">
-                    <div class="w-full md:w-3/5 overflow-hidden rounded-xl aspect-video reveal-item relative isolate cursor-project" style="background:var(--glass-bg);">
-                        <img class="parallax-img absolute top-[-10%] left-0 w-full h-[120%] object-cover transition-opacity duration-1000 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-4XXffoSzCM7yA7VUEJRGRL_hSjTNlrOBOkA9ywS1Yn4aHbSD47jeI9iI2RM5fUZu3QOid2inrtbprMltPwXtkPX1Sl72kqC1QpQzhzdp6Sdims1DE9naX69PsZDCmhEhO19F75OrK7cZHmKg27rzqKpgnqK10s2ug33oXfkwWincaX6UzfsirHStwunq3LCTJUjdY_6OaZDLwId9WHVoASqczXvVdKsVhmLF3Lac-nK430NMTvLcpIyu3RoDvhCZXhRsPsTWnGs" alt="Vedic Neural Networks project"/>
-                        <div class="absolute inset-0 rounded-xl pointer-events-none" style="border:1px solid var(--glass-border);"></div>
+                <div class="space-y-5 reveal-container order-2 md:order-1 pt-0 md:pt-16">
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
+                        <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Core Services</p>
+                        <ul class="text-sm t-muted space-y-3">
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Logo design and brand mark systems</li>
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Full Tech Pack delivery in all file formats</li>
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Marketing collateral including menus, flyers, and business cards</li>
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>UX and UI design for web and mobile</li>
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Social media content templates and systems</li>
+                        </ul>
                     </div>
-                    <div class="w-full md:w-2/5 space-y-6">
-                        <span class="text-xs font-mono t-muted reveal-item">Project — 001</span>
-                        <div class="overflow-hidden"><h3 class="font-headline italic text-4xl md:text-5xl reveal-item t-text">Vedic Neural Networks</h3></div>
-                        <div class="overflow-hidden"><p class="t-muted text-sm leading-loose reveal-item">A custom-built AI implementation for a high-end textile heritage brand, bridging data science with artisanal craft.</p></div>
-                        <button class="mt-8 flex items-center gap-4 text-xs tracking-widest uppercase transition-colors reveal-item nav-link t-muted" style="--tw-text-opacity:1;" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
-                            Explore Case Study
-                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
-                        </button>
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
+                        <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">What You Receive</p>
+                        <p class="text-sm t-muted leading-relaxed">
+                            A complete Tech Pack: primary and secondary logos, full color palette, typography system,
+                            icon library, brand usage guidelines, and every template your team needs to produce
+                            consistent marketing materials independently.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Project 02 -->
-                <div class="group flex flex-col md:flex-row-reverse items-center gap-16 reveal-container">
-                    <div class="w-full md:w-3/5 overflow-hidden rounded-xl aspect-video reveal-item relative isolate cursor-project" style="background:var(--glass-bg);">
-                        <img class="parallax-img absolute top-[-10%] left-0 w-full h-[120%] object-cover transition-opacity duration-1000 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxjF-xHS8TGhdHZvtD2GsSWluYz5fuoGI9lgl-jkt9_x_7cjSuat4z_DiRXhKl6eZYxrZ7t--bl8picHES5JHEAfrI45tt0YECuajdCUYVEz78_QMJ4-tdCKF32UNat0IANLBx5fp15zr3d-9WWw0Jj1a-kWnaJ9ayPD86Vr3Yte49qE1zlbdBnuEDPFt1yawJKOngFcSyKVI1cTnr4c0OqW0UN5jaE9OKvvWNiQgvKLD651oxMS0Pd6A1rUZnCUJWQRT6oU0QoUg" alt="Indigo Commerce project"/>
-                        <div class="absolute inset-0 rounded-xl pointer-events-none" style="border:1px solid var(--glass-border);"></div>
+                <div class="space-y-8 reveal-container order-1 md:order-2">
+                    <div>
+                        <span class="font-mono text-xs t-accent block mb-2" style="opacity:0.6;">02 / रस</span>
+                        <h2 class="font-headline italic text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none t-text reveal-item">Rasa</h2>
+                        <p class="text-[10px] md:text-xs uppercase tracking-widest t-muted mt-3 reveal-item">Brand Identity and Visual Systems</p>
                     </div>
-                    <div class="w-full md:w-2/5 space-y-6">
-                        <span class="text-xs font-mono t-muted reveal-item">Project — 002</span>
-                        <div class="overflow-hidden"><h3 class="font-headline italic text-4xl md:text-5xl reveal-item t-text">Indigo Commerce</h3></div>
-                        <div class="overflow-hidden"><p class="t-muted text-sm leading-loose reveal-item">High-performance e-commerce engine for luxury slow-fashion, optimized for extreme aesthetic fidelity and instant load speeds.</p></div>
-                        <button class="mt-8 flex items-center gap-4 text-xs tracking-widest uppercase transition-colors reveal-item nav-link t-muted" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
-                            Explore Case Study
-                            <span class="material-symbols-outlined text-sm">arrow_outward</span>
-                        </button>
-                    </div>
+                    <p class="text-sm md:text-base leading-relaxed t-muted max-w-md reveal-item">
+                        Complete visual systems for businesses that need to look premium. We deliver comprehensive Tech
+                        Packs covering logos, color systems, typography, collateral templates, and social media assets.
+                        Your brand gets a visual language that builds immediate customer trust.
+                    </p>
+                    <p class="text-sm leading-relaxed t-muted max-w-md reveal-item">
+                        Fortune 500 companies invest millions in brand consistency. We give SMBs the same level of visual
+                        infrastructure at a price that makes sense. Once delivered, your team can produce professional
+                        materials without briefing a designer every time.
+                    </p>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- ============================
-         FOOTER / CTA
-         ============================ -->
-    <footer class="w-full pt-32 pb-12 px-8 flex flex-col items-start space-y-16" id="connect">
+    <!-- ============================================================
+         ARTHA — High-Performance Web and Strategic Consulting
+         ============================================================ -->
+    <section class="relative py-20 md:py-32 frosted-section" id="artha">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start">
+
+                <div class="space-y-8 reveal-container">
+                    <div>
+                        <span class="font-mono text-xs t-accent block mb-2" style="opacity:0.6;">03 / अर्थ</span>
+                        <h2 class="font-headline italic text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-none t-text reveal-item">Artha</h2>
+                        <p class="text-[10px] md:text-xs uppercase tracking-widest t-muted mt-3 reveal-item">High-Performance Web and Strategic Consulting</p>
+                    </div>
+                    <p class="text-sm md:text-base leading-relaxed t-muted max-w-md reveal-item">
+                        Custom websites built for speed, conversion, and search. We develop in React, Next.js, and
+                        WordPress, backed by SEO strategy, marketing consulting, and staff training programs. Your
+                        team learns to produce professional marketing content in-house.
+                    </p>
+                    <p class="text-sm leading-relaxed t-muted max-w-md reveal-item">
+                        A website that loads in under two seconds and ranks on page one of Google is not a luxury.
+                        For a plumber, a restaurant, or a property agent, it is the difference between a full
+                        calendar and a quiet phone. We build for outcomes.
+                    </p>
+                </div>
+
+                <div class="space-y-5 reveal-container pt-0 md:pt-16">
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
+                        <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Core Services</p>
+                        <ul class="text-sm t-muted space-y-3">
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Custom web development in React, Next.js, WordPress</li>
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>SEO and site performance optimisation</li>
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Marketing strategy consulting</li>
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Staff training and upskilling programs</li>
+                            <li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Growth roadmaps and KPI tracking</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
+                        <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Full Transformation</p>
+                        <p class="text-sm t-muted leading-relaxed">
+                            Combine all three services for a complete business upgrade: automated operations through
+                            Yukti, a premium visual identity through Rasa, and a high-performance web presence
+                            through Artha.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         ARCHIVE — Client Work
+         ============================================================ -->
+    <section class="relative py-20 md:py-32" id="archive">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+
+            <div class="mb-12 md:mb-20 reveal-container">
+                <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item">Previous Work</span>
+                <h2 class="font-headline italic text-6xl sm:text-7xl md:text-9xl tracking-tighter reveal-item t-text">The Archive</h2>
+                <p class="t-muted text-sm max-w-xl mt-3 md:mt-4 reveal-item">
+                    Client projects, brand transformations, and digital builds. The archive grows with every engagement.
+                </p>
+            </div>
+
+            <!-- Client logo grid (scalable: add new entries as you grow) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4 mb-16 md:mb-24 reveal-container">
+                <div class="glass-card rounded-xl p-5 md:p-8 flex flex-col items-center justify-center aspect-square cursor-project reveal-item">
+                    <div class="w-full flex items-center justify-center" style="height:60px;">
+                        <span class="font-headline italic text-base md:text-lg t-text text-center leading-tight">Vedic Neural</span>
+                    </div>
+                    <span class="text-[10px] md:text-xs font-mono t-muted mt-3 text-center">AI Implementation</span>
+                </div>
+                <div class="glass-card rounded-xl p-5 md:p-8 flex flex-col items-center justify-center aspect-square cursor-project reveal-item">
+                    <div class="w-full flex items-center justify-center" style="height:60px;">
+                        <span class="font-headline italic text-base md:text-lg t-text text-center leading-tight">Indigo Commerce</span>
+                    </div>
+                    <span class="text-[10px] md:text-xs font-mono t-muted mt-3 text-center">E-Commerce Engine</span>
+                </div>
+                <!-- Incoming slots (fade progressively to suggest depth) -->
+                <div class="glass-card rounded-xl p-5 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.35;">
+                    <span class="font-mono text-[10px] md:text-xs t-muted text-center">INCOMING</span>
+                    <span class="font-mono text-[9px] md:text-[10px] t-faint mt-1.5 text-center">// 2026</span>
+                </div>
+                <div class="glass-card rounded-xl p-5 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.35;">
+                    <span class="font-mono text-[10px] md:text-xs t-muted text-center">INCOMING</span>
+                    <span class="font-mono text-[9px] md:text-[10px] t-faint mt-1.5 text-center">// 2026</span>
+                </div>
+                <div class="glass-card rounded-xl p-5 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.22;">
+                    <span class="font-mono text-[10px] md:text-xs t-muted text-center">INCOMING</span>
+                    <span class="font-mono text-[9px] md:text-[10px] t-faint mt-1.5 text-center">// 2026</span>
+                </div>
+                <div class="glass-card rounded-xl p-5 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.22;">
+                    <span class="font-mono text-[10px] md:text-xs t-muted text-center">INCOMING</span>
+                    <span class="font-mono text-[9px] md:text-[10px] t-faint mt-1.5 text-center">// 2026</span>
+                </div>
+                <div class="glass-card rounded-xl p-5 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.12;">
+                    <span class="font-mono text-[10px] md:text-xs t-muted text-center">INCOMING</span>
+                    <span class="font-mono text-[9px] md:text-[10px] t-faint mt-1.5 text-center">// 2026</span>
+                </div>
+                <div class="glass-card rounded-xl p-5 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.12;">
+                    <span class="font-mono text-[10px] md:text-xs t-muted text-center">INCOMING</span>
+                    <span class="font-mono text-[9px] md:text-[10px] t-faint mt-1.5 text-center">// 2026</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+         RESEARCH — Market Analysis and Insights
+         ============================================================ -->
+    <section class="relative py-20 md:py-32 frosted-section" id="research">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+
+            <div class="mb-12 md:mb-20 reveal-container">
+                <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item">Intelligence</span>
+                <h2 class="font-headline italic text-6xl sm:text-7xl md:text-9xl tracking-tighter reveal-item t-text">Research</h2>
+                <p class="t-muted text-sm max-w-xl mt-3 md:mt-4 reveal-item">
+                    Market analysis, industry reports, and strategic intelligence for growth-focused businesses.
+                    New reports published regularly.
+                </p>
+            </div>
+
+            <!-- Featured placeholder -->
+            <div class="glass-card rounded-xl p-8 md:p-12 mb-8 md:mb-12 reveal-container">
+                <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
+                    <div class="flex-1">
+                        <span class="font-mono text-xs t-accent block mb-3 reveal-item" style="opacity:0.6;">Featured Report</span>
+                        <h3 class="font-headline italic text-3xl md:text-5xl t-text mb-4 reveal-item">Digital Transformation in Australian SMBs: 2026 Benchmarks</h3>
+                        <p class="t-muted text-sm leading-relaxed max-w-lg reveal-item">
+                            Analysis of digital adoption rates, automation ROI benchmarks, and brand investment patterns
+                            across Real Estate, Trades, Automotive, and Hospitality sectors. Publishing Q2 2026.
+                        </p>
+                    </div>
+                    <div class="flex-shrink-0 reveal-item">
+                        <span class="font-mono text-xs t-muted block">Publishing</span>
+                        <span class="font-headline italic text-3xl t-accent">Q2 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post grid (grows over time) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-8 reveal-container">
+                <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
+                    <span class="font-mono text-xs t-accent block mb-4" style="opacity:0.6;">Industry Analysis</span>
+                    <h4 class="font-headline italic text-xl md:text-2xl t-text mb-3">Real Estate Lead Automation: What Actually Works in 2026</h4>
+                    <p class="text-xs t-muted mb-5 leading-relaxed">A breakdown of which automation platforms deliver the best ROI for real estate agencies under 20 people.</p>
+                    <span class="font-mono text-[10px] t-faint">Coming Q2 2026</span>
+                </div>
+                <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
+                    <span class="font-mono text-xs t-accent block mb-4" style="opacity:0.6;">Brand Strategy</span>
+                    <h4 class="font-headline italic text-xl md:text-2xl t-text mb-3">Why Trades Businesses Lose Clients Before the First Call</h4>
+                    <p class="text-xs t-muted mb-5 leading-relaxed">How brand presentation affects conversion rates for plumbers, electricians, and landscapers seeking residential contracts.</p>
+                    <span class="font-mono text-[10px] t-faint">Coming Q3 2026</span>
+                </div>
+                <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
+                    <span class="font-mono text-xs t-accent block mb-4" style="opacity:0.6;">Web Performance</span>
+                    <h4 class="font-headline italic text-xl md:text-2xl t-text mb-3">Page Speed and Restaurant Booking Rates: A Direct Correlation</h4>
+                    <p class="text-xs t-muted mb-5 leading-relaxed">Data from 40 hospitality venues shows a clear link between load time and online reservation volume.</p>
+                    <span class="font-mono text-[10px] t-faint">Coming Q3 2026</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER / CONNECT
+         ============================================================ -->
+    <footer class="w-full pt-20 md:pt-32 pb-10 md:pb-12 px-6 md:px-8 flex flex-col items-start space-y-12 md:space-y-16" id="connect">
+
         <div class="w-full reveal-container">
-            <h2 class="text-5xl md:text-[10rem] uppercase leading-none tracking-tighter font-headline t-accent reveal-item">
+            <h2 class="text-4xl sm:text-5xl md:text-[8rem] lg:text-[10rem] uppercase leading-none tracking-tighter font-headline t-accent reveal-item">
                 START YOUR <br/><span class="editorial-reveal inline-block">TRANSFORMATION<span style="color:var(--accent);">.</span></span>
             </h2>
         </div>
 
-        <!-- Hidden Contact Section (Terminal UI) -->
-        <div id="contact-expansion" class="w-full max-w-7xl mx-auto my-8">
-            <div class="glass-card rounded-xl max-w-2xl mx-auto overflow-hidden">
-                <!-- Terminal Header Bar -->
-                <div class="flex items-center px-4 py-3 border-b" style="background:rgba(0,0,0,0.15); border-color:var(--glass-border);">
+        <!-- Terminal contact form (hidden until triggered) -->
+        <div id="contact-expansion" class="w-full max-w-[1440px] mx-auto my-4 md:my-8">
+            <div class="glass-card rounded-xl w-full md:max-w-2xl mx-auto overflow-hidden">
+                <!-- Terminal window chrome -->
+                <div class="flex items-center px-4 py-3 border-b" style="background:rgba(0,0,0,0.15);border-color:var(--glass-border);">
                     <div class="flex space-x-2">
                         <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
                         <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
@@ -283,52 +566,60 @@
                     <div class="mx-auto text-[10px] tracking-widest uppercase font-mono t-faint">nunik_init.sh</div>
                     <div class="w-10"></div>
                 </div>
-                <!-- Terminal Body -->
-                <div class="p-8 md:p-10 text-xs font-mono">
-                    <div id="terminal-boot" class="flex flex-col gap-2 mb-8"></div>
-                    <form id="terminal-form" class="flex flex-col gap-7 opacity-0" style="transform: translateY(20px);">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+                <!-- Terminal body -->
+                <div class="p-6 md:p-10 text-xs font-mono">
+                    <div id="terminal-boot" class="flex flex-col gap-2 mb-6 md:mb-8"></div>
+                    <form id="terminal-form" class="flex flex-col gap-5 md:gap-7 opacity-0" style="transform:translateY(20px);">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
                             <div class="flex flex-col gap-2">
                                 <label class="t-muted uppercase tracking-widest text-[10px]">> FULL_NAME *</label>
-                                <input type="text" class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required/>
+                                <input type="text" name="name" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
+                                       style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="name"/>
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="t-muted uppercase tracking-widest text-[10px]">> EMAIL *</label>
-                                <input type="email" class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required/>
+                                <input type="email" name="email" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
+                                       style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="email"/>
                             </div>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
                             <div class="flex flex-col gap-2">
                                 <label class="t-muted uppercase tracking-widest text-[10px]">> PHONE *</label>
-                                <input type="tel" class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required/>
+                                <input type="tel" name="phone" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
+                                       style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="tel"/>
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="t-muted uppercase tracking-widest text-[10px]">> WEBSITE <span class="t-faint">[optional]</span></label>
-                                <input type="url" class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors" style="border-bottom:1px solid var(--glass-border);" placeholder="_"/>
+                                <input type="url" name="website" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
+                                       style="border-bottom:1px solid var(--glass-border);" placeholder="_" autocomplete="url"/>
                             </div>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
                             <div class="flex flex-col gap-2">
                                 <label class="t-muted uppercase tracking-widest text-[10px]">> BUSINESS_NAME <span class="t-faint">[optional]</span></label>
-                                <input type="text" class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors" style="border-bottom:1px solid var(--glass-border);" placeholder="_"/>
+                                <input type="text" name="business" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
+                                       style="border-bottom:1px solid var(--glass-border);" placeholder="_" autocomplete="organization"/>
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label class="t-muted uppercase tracking-widest text-[10px]">> QUERY_TYPE *</label>
-                                <select class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors appearance-none" style="border-bottom:1px solid var(--glass-border);" required>
+                                <select name="service" class="terminal-input bg-transparent pb-2 t-text focus:outline-none appearance-none"
+                                        style="border-bottom:1px solid var(--glass-border);" required>
                                     <option value="">Select...</option>
-                                    <option value="brand">Brand Identity</option>
-                                    <option value="automation">Automation</option>
-                                    <option value="web">Web Development</option>
-                                    <option value="full">Full Transformation</option>
-                                    <option value="other">Other</option>
+                                    <option value="Brand Identity">Brand Identity</option>
+                                    <option value="Automation">Automation</option>
+                                    <option value="Web Development">Web Development</option>
+                                    <option value="Full Transformation">Full Transformation</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
                         </div>
                         <div class="flex flex-col gap-2">
                             <label class="t-muted uppercase tracking-widest text-[10px]">> MISSION_BRIEF *</label>
-                            <textarea rows="4" class="terminal-input bg-transparent pb-2 t-text focus:outline-none transition-colors resize-none" style="border-bottom:1px solid var(--glass-border);" placeholder="Describe your vision..." required></textarea>
+                            <textarea rows="4" name="message" class="terminal-input bg-transparent pb-2 t-text focus:outline-none resize-none"
+                                      style="border-bottom:1px solid var(--glass-border);" placeholder="Describe your vision..." required></textarea>
                         </div>
-                        <button type="submit" class="mt-4 self-start flex items-center gap-2 group t-accent transition-colors nav-link" onmouseenter="this.style.color='var(--accent-light)'" onmouseleave="this.style.color=''">
+                        <button type="submit" class="mt-2 md:mt-4 self-start flex items-center gap-2 group t-accent nav-link"
+                                onmouseenter="this.style.color='var(--accent-light)'" onmouseleave="this.style.color=''">
                             <span class="opacity-0 group-hover:opacity-100 transition-opacity">>></span>
                             <span class="tracking-widest uppercase">[ TRANSMIT_DATA ]</span>
                             <span class="animate-pulse block w-2 h-4 ml-1" style="background:var(--accent);"></span>
@@ -338,9 +629,13 @@
             </div>
         </div>
 
-        <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-12 pt-12 t-divider" style="border-top:1px solid var(--divider);">
-            <div class="md:col-span-6 space-y-8">
-                <a class="group flex items-center gap-4 text-2xl md:text-4xl font-headline italic t-text transition-colors nav-link" href="mailto:hello@nunik.co" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
+        <!-- Footer grid -->
+        <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pt-8 md:pt-12"
+             style="border-top:1px solid var(--divider);">
+            <div class="md:col-span-6 space-y-6 md:space-y-8">
+                <a class="group flex items-center gap-3 md:gap-4 text-xl sm:text-2xl md:text-4xl font-headline italic t-text nav-link"
+                   href="mailto:hello@nunik.co"
+                   onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
                     hello@nunik.co
                     <span class="material-symbols-outlined t-accent group-hover:translate-x-2 transition-transform">arrow_forward</span>
                 </a>
@@ -348,28 +643,35 @@
                     Inquiries regarding elite digital transformations are processed with absolute discretion.
                 </p>
             </div>
-            <div class="md:col-span-6 flex flex-col md:items-end justify-between gap-12">
-                <div class="flex space-x-12">
-                    <a class="t-footer uppercase text-xs transition-colors tracking-widest nav-link" href="#" onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">Instagram</a>
-                    <a class="t-footer uppercase text-xs transition-colors tracking-widest nav-link" href="#" onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">LinkedIn</a>
-                    <a class="t-footer uppercase text-xs transition-colors tracking-widest nav-link" href="#" onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">Twitter</a>
+            <div class="md:col-span-6 flex flex-col md:items-end justify-between gap-8 md:gap-12">
+                <div class="flex space-x-8 md:space-x-12">
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#"
+                       onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">Instagram</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#"
+                       onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">LinkedIn</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#"
+                       onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">Twitter</a>
                 </div>
-                <p class="t-faint font-sans text-[10px] tracking-widest">&copy; 2026 NUNIK CO. ALL RIGHTS RESERVED.</p>
+                <p class="t-faint font-sans text-[9px] md:text-[10px] tracking-widest">&copy; 2026 NUNIK CO. ALL RIGHTS RESERVED.</p>
             </div>
         </div>
+
     </footer>
 
-    <!-- Floating Action Element -->
-    <div id="initiate-btn" class="fixed bottom-8 right-8 z-40 md:flex hidden nav-link">
-        <div class="initiate-pulse p-4 rounded-full flex items-center gap-4 cursor-pointer transition-all duration-500 hover:scale-105" style="background:var(--accent); border:1px solid rgba(255,255,255,0.15);">
-            <span class="text-[10px] font-bold tracking-widest px-4 uppercase text-white">Initiate Protocol</span>
-            <div class="w-10 h-10 bg-white/15 rounded-full flex items-center justify-center">
-                <span class="material-symbols-outlined text-lg text-white" style="font-variation-settings: 'FILL' 1;">bolt</span>
+    <!-- ============================================================
+         FLOATING INITIATE PROTOCOL (all screen sizes)
+         ============================================================ -->
+    <div id="initiate-btn" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 nav-link">
+        <div class="initiate-pulse initiate-inner cursor-pointer flex items-center gap-2 md:gap-4 rounded-full"
+             style="background:var(--accent);border:1px solid rgba(255,255,255,0.15);padding:0.75rem 1rem;">
+            <span class="initiate-label text-[9px] md:text-[10px] font-bold tracking-widest px-1 md:px-4 uppercase text-white whitespace-nowrap">Initiate Protocol</span>
+            <div class="w-8 h-8 md:w-10 md:h-10 bg-white/15 rounded-full flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-base md:text-lg text-white" style="font-variation-settings:'FILL' 1;">bolt</span>
             </div>
         </div>
     </div>
 
-    <!-- CDN Scripts (bottom of body for reliable loading) -->
+    <!-- CDN Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>

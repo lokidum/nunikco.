@@ -27,6 +27,8 @@
     --footer-muted: rgba(27, 30, 34, 0.4);
     --divider: rgba(27, 30, 34, 0.08);
     --terminal-green: #2d8a4e;
+    --frosted-bg: rgba(248, 246, 243, 0.75);
+    --frosted-border: rgba(27, 30, 34, 0.08);
 }
 
 /* --- Dark Mode --- */
@@ -54,6 +56,8 @@
     --footer-muted: rgba(225, 228, 231, 0.35);
     --divider: rgba(225, 228, 231, 0.06);
     --terminal-green: #4ade80;
+    --frosted-bg: rgba(17, 20, 23, 0.75);
+    --frosted-border: rgba(225, 228, 231, 0.06);
 }
 
 /* ================================================
@@ -67,15 +71,55 @@ body {
 }
 
 /* ================================================
-   Full-width frosted navbar
+   Full-width frosted navbar (kept for mobile drawer)
    ================================================ */
 .glass-nav-bar {
     background: var(--nav-glass);
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
     border-bottom: 1px solid var(--nav-border);
-    box-shadow: 0 8px 32px var(--glass-shadow);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
     transition: background 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease;
+}
+
+/* ================================================
+   Glass nav pill (centered floating pill)
+   ================================================ */
+.glass-nav-pill {
+    background: var(--nav-glass);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid var(--nav-border);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255,255,255,0.05) inset;
+    transition: background 0.6s ease, border-color 0.6s ease;
+}
+
+/* ================================================
+   Frosted section (full-section backdrop, no margin)
+   ================================================ */
+.frosted-section {
+    background: var(--frosted-bg);
+    backdrop-filter: blur(40px) saturate(120%);
+    -webkit-backdrop-filter: blur(40px) saturate(120%);
+    border-top: 1px solid var(--frosted-border);
+    border-bottom: 1px solid var(--frosted-border);
+}
+
+/* ================================================
+   Mobile nav drawer
+   ================================================ */
+#mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 45;
+    padding: 5rem 2rem 2rem;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+#mobile-nav.open {
+    transform: translateY(0);
 }
 
 /* ================================================
@@ -86,16 +130,16 @@ body {
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
     border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px var(--glass-shadow);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
                 box-shadow 0.7s ease,
                 background 0.7s ease,
                 border-color 0.7s ease;
 }
 .glass-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px) scale(1.02);
     background: var(--glass-bg-hover);
-    box-shadow: 0 16px 56px var(--glass-shadow-hover);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
     border-color: var(--glass-border-hover);
 }
 
@@ -171,9 +215,12 @@ body {
     0%, 100% { box-shadow: 0 4px 20px var(--accent-glow); }
     50% { box-shadow: 0 4px 40px var(--accent-glow-strong); }
 }
+.initiate-pulse:hover {
+    transform: scale(1.05) rotate(-2deg) !important;
+}
 
 /* ================================================
-   WebGL Background
+   WebGL Fluid Background (bottom layer)
    ================================================ */
 #webgl-background {
     position: fixed;
@@ -181,16 +228,69 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
+    z-index: -2;
     pointer-events: none;
     transition: opacity 0.6s ease;
+}
+
+/* ================================================
+   3D Chakra Canvas (subtle overlay above fluid)
+   ================================================ */
+#chakra-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.22;
+    transition: opacity 0.6s ease;
+}
+
+/* ================================================
+   Frosted Glass Section Band
+   ================================================ */
+.frosted-band {
+    position: relative;
+    width: 100%;
+    padding: 8rem 0;
+    background: var(--frosted-bg);
+    backdrop-filter: blur(40px) saturate(120%);
+    -webkit-backdrop-filter: blur(40px) saturate(120%);
+    border-top: 1px solid var(--frosted-border);
+    border-bottom: 1px solid var(--frosted-border);
+    margin: 4rem 0;
+}
+
+/* ================================================
+   Hero Title Pulse & 3D
+   ================================================ */
+@keyframes heroPulse {
+    0%, 100% { transform: scale(1) translateY(0); }
+    50% { transform: scale(1.02) translateY(-2px); }
+}
+#hero-title {
+    perspective: 1000px;
+    animation: heroPulse 4s ease-in-out infinite;
+    transform-style: preserve-3d;
+    font-size: 3.5rem;
+}
+@media (min-width: 768px) {
+    #hero-title { font-size: 12rem; }
+}
+
+/* ================================================
+   Global smooth transitions
+   ================================================ */
+a, button, .glass-card, .nav-link, input, textarea, select {
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ================================================
    Terminal form inputs
    ================================================ */
 .terminal-input {
-    font-family: 'Inter', monospace;
     font-size: 13px;
     letter-spacing: 0.02em;
 }
@@ -241,4 +341,26 @@ html.lenis, html.lenis body {
 }
 .lenis.lenis-smooth iframe {
     pointer-events: none;
+}
+
+/* ================================================
+   Touch/mobile: hide custom cursor, show normal
+   ================================================ */
+@media (pointer: coarse) {
+    .custom-cursor-active, .custom-cursor-active * { cursor: auto !important; }
+    #custom-cursor { display: none !important; }
+}
+
+/* ================================================
+   Initiate protocol: visible on all screen sizes
+   ================================================ */
+#initiate-btn {
+    display: flex !important;
+}
+
+/* Reduce pill size on small screens */
+@media (max-width: 767px) {
+    .glass-nav-pill { display: none !important; }
+    #initiate-btn .initiate-inner { padding: 0.75rem 1rem; }
+    #initiate-btn .initiate-label { display: none; }
 }
