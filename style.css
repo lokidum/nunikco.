@@ -6,8 +6,8 @@
 :root {
     --bg: #F8F6F3;
     --text: #1B1E22;
-    --text-muted: rgba(27, 30, 34, 0.5);
-    --text-faint: rgba(27, 30, 34, 0.3);
+    --text-muted: rgba(27, 30, 34, 0.65);
+    --text-faint: rgba(27, 30, 34, 0.52);
     --glass-bg: rgba(255, 255, 255, 0.65);
     --glass-bg-hover: rgba(255, 255, 255, 0.8);
     --glass-border: rgba(27, 30, 34, 0.06);
@@ -24,10 +24,10 @@
     --heading-sub: #8B5E3C;
     --cursor-color: #1B1E22;
     --select-bg: #F0EDE8;
-    --footer-muted: rgba(27, 30, 34, 0.4);
+    --footer-muted: rgba(27, 30, 34, 0.58);
     --divider: rgba(27, 30, 34, 0.08);
     --terminal-green: #2d8a4e;
-    --frosted-bg: rgba(248, 246, 243, 0.75);
+    --frosted-bg: rgba(248, 246, 243, 0.725);
     --frosted-border: rgba(27, 30, 34, 0.08);
 }
 
@@ -56,13 +56,17 @@
     --footer-muted: rgba(225, 228, 231, 0.35);
     --divider: rgba(225, 228, 231, 0.06);
     --terminal-green: #4ade80;
-    --frosted-bg: rgba(17, 20, 23, 0.75);
+    --frosted-bg: rgba(17, 20, 23, 0.725);
     --frosted-border: rgba(225, 228, 231, 0.06);
 }
 
 /* ================================================
    Base
    ================================================ */
+html {
+    overflow-x: hidden;
+}
+
 body {
     background-color: var(--bg);
     color: var(--text);
@@ -356,6 +360,12 @@ html.lenis, html.lenis body {
    ================================================ */
 #initiate-btn {
     display: flex !important;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+#initiate-btn.footer-visible {
+    opacity: 0 !important;
+    pointer-events: none;
+    transform: translateY(12px);
 }
 
 /* Reduce pill size on small screens */
@@ -363,4 +373,16 @@ html.lenis, html.lenis body {
     .glass-nav-pill { display: none !important; }
     #initiate-btn .initiate-inner { padding: 0.75rem 1rem; }
     #initiate-btn .initiate-label { display: none; }
+}
+
+/* ================================================
+   Footer glass bar (social + copyright row)
+   ================================================ */
+.footer-glass-bar {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    padding: 1rem 1.5rem;
 }

@@ -326,6 +326,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initiateBtn?.addEventListener("click", triggerProtocol);
 
+    // Hide Initiate button when footer scrolls into view
+    const connectFooter = document.getElementById("connect");
+    if (connectFooter && initiateBtn) {
+        const footerObs = new IntersectionObserver(
+            ([entry]) => initiateBtn.classList.toggle("footer-visible", entry.isIntersecting),
+            { threshold: 0.06 }
+        );
+        footerObs.observe(connectFooter);
+    }
+
     // Connect nav links trigger protocol on first visit
     document.querySelectorAll('a[href="#connect"]').forEach(link => {
         link.addEventListener("click", (e) => {
