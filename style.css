@@ -2,6 +2,25 @@
    Nunik Co. | Theming & Core Styles
    ================================================ */
 
+/* Theme icon swap (Material Symbols replaced with inline SVG).
+   Default (dark mode active): show sun icon (click → light).
+   Light mode active: show moon icon (click → dark).
+   No JS textContent swap needed; CSS handles it. */
+.theme-icon,
+.theme-icon-mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.theme-icon .icon-moon,
+.theme-icon-mobile .icon-moon { display: none; }
+.theme-icon .icon-sun,
+.theme-icon-mobile .icon-sun { display: inline-block; }
+html:not(.dark) .theme-icon .icon-sun,
+html:not(.dark) .theme-icon-mobile .icon-sun { display: none; }
+html:not(.dark) .theme-icon .icon-moon,
+html:not(.dark) .theme-icon-mobile .icon-moon { display: inline-block; }
+
 /* --- Light Mode (default root) --- */
 :root {
     --bg: #F8F6F3;
@@ -16,10 +35,10 @@
     --glass-shadow-hover: rgba(0, 0, 0, 0.12);
     --nav-glass: rgba(255, 255, 255, 0.7);
     --nav-border: rgba(27, 30, 34, 0.06);
-    --accent: #B35D44;
+    --accent: #B45E45;
     --accent-light: #974730;
-    --accent-glow: rgba(179, 93, 68, 0.15);
-    --accent-glow-strong: rgba(179, 93, 68, 0.3);
+    --accent-glow: rgba(180, 94, 69, 0.15);
+    --accent-glow-strong: rgba(180, 94, 69, 0.3);
     --teal: #5A8A8A;
     --heading-sub: #8B5E3C;
     --cursor-color: #1B1E22;
@@ -29,6 +48,13 @@
     --terminal-green: #2d8a4e;
     --frosted-bg: rgba(248, 246, 243, 0.725);
     --frosted-border: rgba(27, 30, 34, 0.08);
+
+    /* --- Canonical brand palette (from brand kit) --- */
+    --brand-teal: #2D4D4D;
+    --brand-tan:  #C3875A;
+    --brand-ink:  #141619;
+    --brand-bone: #E1E3E9;
+    --brand-rust: #B45E45;
 }
 
 /* --- Dark Mode --- */
@@ -45,10 +71,10 @@
     --glass-shadow-hover: rgba(0, 0, 0, 0.4);
     --nav-glass: rgba(44, 49, 54, 0.35);
     --nav-border: rgba(225, 228, 231, 0.05);
-    --accent: #B35D44;
+    --accent: #B45E45;
     --accent-light: #ffb5a0;
-    --accent-glow: rgba(179, 93, 68, 0.2);
-    --accent-glow-strong: rgba(179, 93, 68, 0.45);
+    --accent-glow: rgba(180, 94, 69, 0.2);
+    --accent-glow-strong: rgba(180, 94, 69, 0.45);
     --teal: #2c4c4c;
     --heading-sub: #E8C9A0;
     --cursor-color: #E1E4E7;
@@ -99,14 +125,41 @@ body {
 }
 
 /* ================================================
-   Frosted section (full-section backdrop, no margin)
+   Frosted section (full-section backdrop)
+   Borders removed; frosted backdrop already creates
+   visual separation. A single hairline divider sits
+   between adjacent sections via `.section-divider`.
    ================================================ */
 .frosted-section {
     background: var(--frosted-bg);
     backdrop-filter: blur(40px) saturate(120%);
     -webkit-backdrop-filter: blur(40px) saturate(120%);
-    border-top: 1px solid var(--frosted-border);
-    border-bottom: 1px solid var(--frosted-border);
+    position: relative;
+}
+/* Soft fade at top/bottom of every frosted section, no harsh line */
+.frosted-section::before,
+.frosted-section::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 64px;
+    pointer-events: none;
+    z-index: 0;
+}
+.frosted-section::before {
+    top: 0;
+    background: linear-gradient(to bottom, var(--frosted-border), transparent);
+    opacity: 0.4;
+}
+.frosted-section::after {
+    bottom: 0;
+    background: linear-gradient(to top, var(--frosted-border), transparent);
+    opacity: 0.4;
+}
+.frosted-section > * {
+    position: relative;
+    z-index: 1;
 }
 
 /* ================================================
@@ -268,7 +321,7 @@ body {
 }
 
 /* ================================================
-   Hero Title Pulse & 3D
+   Hero Title Pulse & 3D (SVG wordmark)
    ================================================ */
 @keyframes heroPulse {
     0%, 100% { transform: scale(1) translateY(0); }
@@ -278,10 +331,29 @@ body {
     perspective: 1000px;
     animation: heroPulse 4s ease-in-out infinite;
     transform-style: preserve-3d;
-    font-size: 3.5rem;
+    display: block;
 }
-@media (min-width: 768px) {
-    #hero-title { font-size: 12rem; }
+#hero-title .hero-wordmark {
+    width: clamp(220px, 80vw, 1100px);
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    overflow: visible;
+}
+#hero-title .char {
+    transform-box: fill-box;
+    transform-origin: center;
+    will-change: transform;
+    transition: fill 0.6s ease;
+}
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* ================================================
@@ -299,6 +371,31 @@ a, button, .glass-card, .nav-link, input, textarea, select {
     letter-spacing: 0.02em;
 }
 .terminal-input:focus {
+    border-color: var(--accent) !important;
+}
+
+/* ================================================
+   Keyboard focus polish.
+   Mouse users see no ring (focus-visible only).
+   Keyboard users get a 2px brand-accent ring with
+   2px breathing offset; never removed.
+   ================================================ */
+:focus { outline: none; }
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.brand-lockup:focus-visible,
+.archive-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+    transition: outline-offset 0.2s ease;
+}
+.terminal-input:focus-visible {
+    outline: none;
     border-color: var(--accent) !important;
 }
 select.terminal-input option {
@@ -393,4 +490,138 @@ html.lenis, html.lenis body {
     border: 1px solid var(--glass-border);
     border-radius: 14px;
     padding: 1rem 1.5rem;
+}
+
+/* ================================================
+   Brand mark (chakra), footer / archive only
+   Header uses .brand-type typographic wordmark.
+   ================================================ */
+.brand-lockup {
+    text-decoration: none;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.brand-lockup.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+}
+
+/* Header brand wordmark SVG */
+.brand-type {
+    display: block;
+    width: clamp(56px, 4.5vw, 82px);
+    height: auto;
+    overflow: visible;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.5s ease,
+                color 0.6s ease;
+    will-change: transform;
+}
+.brand-lockup:hover .brand-type {
+    filter: drop-shadow(0 0 14px var(--accent-glow-strong));
+    transform: scale(1.06);
+}
+
+/* Footer/archive chakra marks (unchanged) */
+.brand-mark {
+    display: inline-block;
+    flex-shrink: 0;
+    color: var(--text);
+    transition: color 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+    will-change: transform;
+}
+
+@keyframes chakraSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* Footer mark: low-opacity watermark next to copyright */
+.brand-mark-footer {
+    color: var(--text);
+    opacity: 0.32;
+    animation: chakraSpin 90s linear infinite;
+}
+
+/* Archive client cards using the brand mark */
+.archive-mark {
+    color: var(--accent);
+    opacity: 0.85;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.7s ease,
+                opacity 0.5s ease;
+}
+.archive-card:hover .archive-mark {
+    transform: rotate(45deg) scale(1.08);
+    opacity: 1;
+    filter: drop-shadow(0 0 20px var(--accent-glow-strong));
+}
+
+/* ================================================
+   Section eyebrow rule, thin hairline sits ABOVE
+   the eyebrow text, aligned to the natural left
+   edge of the column. Eyebrow then aligns cleanly
+   with the heading directly below it.
+   The margin-bottom is the single source of truth
+   for the eyebrow → heading vertical rhythm; do
+   not add `mb-*` to eyebrow spans in markup.
+   ================================================ */
+.eyebrow-rule {
+    display: block;
+    width: fit-content;
+    position: relative;
+    padding-top: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+@media (min-width: 768px) {
+    .eyebrow-rule { margin-bottom: 2rem; }
+}
+.eyebrow-rule::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.55;
+}
+
+/* ================================================
+   Brand-token utility classes
+   ================================================ */
+.t-brand-teal { color: var(--brand-teal); }
+.t-brand-tan  { color: var(--brand-tan); }
+.t-brand-ink  { color: var(--brand-ink); }
+.t-brand-bone { color: var(--brand-bone); }
+.t-brand-rust { color: var(--brand-rust); }
+
+/* ================================================
+   Reduced motion: pause chakra spin
+   ================================================ */
+@media (prefers-reduced-motion: reduce) {
+    .brand-mark,
+    .brand-mark-footer {
+        animation: none !important;
+    }
+    .brand-lockup:hover .brand-mark {
+        animation: none !important;
+        transform: none;
+    }
+    #hero-title {
+        animation: none !important;
+    }
+    .initiate-pulse {
+        animation: none !important;
+    }
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+    }
 }

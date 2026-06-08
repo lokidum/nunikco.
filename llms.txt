@@ -1,0 +1,16 @@
+# Nunik Co.
+
+> AI agency based in Australia, working with growth-focused businesses anywhere. We build custom automations, brand identity systems and high-performance websites for real estate, trades, automotive, hospitality and food and beverage.
+
+Nunik Co. is a South Asian heritage digital collective based in Canberra, Australia, delivering remotely worldwide. We work with anyone, anywhere, on one condition: you want execution like no one else. We operate under three principles: Yukti (automation), Rasa (brand), Artha (web and consulting). Contact: hello@nunik.co.
+
+## Services
+- [Automation (Yukti)](https://nunik.co/services/automation): n8n workflow development, GoHighLevel (GHL) CRM setup and integration, Zapier and Make automation, API and webhook systems, Airtable and PostgreSQL databases.
+- [Brand (Rasa)](https://nunik.co/services/brand): logo and brand mark systems, full Tech Pack delivery, marketing collateral, UX and UI design, social media templates.
+- [Web (Artha)](https://nunik.co/services/web): custom websites in React, Next.js and WordPress, SEO and performance, marketing strategy consulting, staff training.
+
+## Industries
+Real estate, trades (plumbers, electricians, landscapers), automotive, hospitality, food and beverage.
+
+## Research
+- Digital Transformation in Australian SMBs: 2026 Benchmarks (publishing Q2 2026).

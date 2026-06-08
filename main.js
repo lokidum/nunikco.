@@ -13,9 +13,9 @@ let chakraMaterial = null;  // 3D chakra material reference
    Theme palettes (fluid background colours)
    ================================================ */
 const THEME_COLORS = {
-    dark:  { base: "#111417", accent1: "#b35d44", accent2: "#2c4c4c" },
-    // Light mode: warm amber second accent makes the fluid feel rich, not washed out
-    light: { base: "#F8F6F3", accent1: "#B35D44", accent2: "#C4875A" }
+    dark:  { base: "#111417", accent1: "#B45E45", accent2: "#2D4D4D" },
+    // Light mode: warm tan second accent makes the fluid feel rich, not washed out
+    light: { base: "#F8F6F3", accent1: "#B45E45", accent2: "#C3875A" }
 };
 
 /* ================================================
@@ -26,10 +26,8 @@ function isDark() {
 }
 
 function applyThemeIcons() {
-    const icon = isDark() ? "light_mode" : "dark_mode";
-    document.querySelectorAll(".theme-icon, .theme-icon-mobile").forEach(el => {
-        el.textContent = icon;
-    });
+    // No-op: icon swap is now driven by CSS based on html.dark class.
+    // Kept as a stub to avoid breaking call sites that invoke it.
 }
 
 function setWebGLTheme(animate) {
@@ -187,48 +185,83 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ── Hero 3D kinetic typography ────────────────────
+    // ── Hero 3D kinetic typography (brand wordmark SVG, per-path tilt) ──
     const heroTitle = document.getElementById("hero-title");
-    if (heroTitle && !isTouch) {
-        const letters = ["N", "U", "N", "I", "K", " ", "C", "O", "."];
-        let html = "";
-        letters.forEach(ch => {
-            if (ch === " ") {
-                html += '<span class="char inline-block">&nbsp;</span>';
-            } else if ("CO.".includes(ch)) {
-                html += `<span class="char inline-block t-accent-lt" style="display:inline-block;transform-style:preserve-3d;">${ch}</span>`;
-            } else {
-                html += `<span class="char inline-block" style="display:inline-block;transform-style:preserve-3d;">${ch}</span>`;
-            }
-        });
-        heroTitle.innerHTML = html;
-        const chars = heroTitle.querySelectorAll(".char");
+    if (heroTitle) {
+        const wordmarkSVG = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="180 465 700 145" fill="currentColor" role="img" aria-label="Nunik Co. logo, AI agency in Australia" class="hero-wordmark">
+  <path class="char char-swoosh" fill="var(--accent)" d="M749.4,560.9c0.9,1.4,2,2.8,2.8,4.3c9.6,17.8,23.3,30.9,43.1,36.5c12.6,3.5,25.2,3.9,37.1-2.7c5.9-3.3,10.5-8,11.9-15.1c0.8-3.8-0.1-7-2.4-10c-3.4-4.3-4.3-9.3-3.1-14.6c1.6-7.1,7.4-11.5,14.4-11c6.1,0.4,10.4,5.3,11.2,12.5c1.7,15.3-6.8,30.2-21.3,38.6c-23.2,13.4-55.2,7.9-74.2-9.6c-7.8-7.2-14.2-15.6-19.2-24.9c-0.6-1-1-2.1-1.5-3.2C748.6,561.4,749,561.2,749.4,560.9z"/>
+  <path class="char char-N" d="M298.2,475v2.6c-3,0.1-5.3,0.5-6.8,1.3c-1.5,0.8-2.6,2.1-3.1,3.8c-0.5,1.8-0.8,4.3-0.8,7.5V569c-0.5,0-1,0-1.5,0c-0.5,0-1,0-1.5,0l-55.4-85.6v69.6c0,3.2,0.3,5.7,0.9,7.5c0.6,1.8,1.7,3.1,3.4,3.8c1.7,0.7,4.3,1.2,7.7,1.4v2.6c-1.6-0.2-3.6-0.3-6.2-0.3c-2.6,0-5-0.1-7.3-0.1c-2.2,0-4.4,0-6.7,0.1c-2.2,0-4.1,0.2-5.6,0.3v-2.6c3-0.2,5.3-0.6,6.8-1.4c1.5-0.7,2.6-2,3.1-3.8c0.5-1.8,0.8-4.3,0.8-7.5V489c0-3.3-0.3-5.6-0.8-7.2c-0.5-1.5-1.6-2.6-3.1-3.2c-1.5-0.6-3.8-0.9-6.8-1V475c1.5,0.1,3.4,0.2,5.6,0.3c2.2,0.1,4.5,0.1,6.7,0.1c1.9,0,3.8,0,5.5-0.1c1.8-0.1,3.3-0.2,4.7-0.3l46.6,71.8v-56.5c0-3.3-0.3-5.8-0.9-7.5c-0.6-1.8-1.7-3-3.4-3.8c-1.7-0.8-4.3-1.2-7.7-1.3V475c1.6,0.1,3.7,0.2,6.3,0.3c2.6,0.1,5,0.1,7.2,0.1c2.3,0,4.6,0,6.8-0.1C295,475.2,296.8,475.1,298.2,475z"/>
+  <path class="char char-u" d="M389.4,475v2.6c-3,0.1-5.3,0.5-6.8,1.3c-1.5,0.8-2.6,2.1-3.1,3.8c-0.5,1.8-0.8,4.3-0.8,7.5V530c0,6.2-0.4,11.5-1.2,16.1c-0.8,4.6-2.2,8.5-4.2,11.9c-2.2,3.7-5.4,6.7-9.6,8.9c-4.2,2.2-9.1,3.4-14.5,3.4c-4.2,0-8.2-0.5-12.1-1.5s-7.2-2.9-10.1-5.6c-2.6-2.5-4.6-5.1-6-7.8c-1.5-2.7-2.4-6.1-3-10c-0.5-4-0.8-8.9-0.8-14.9V489c0-3.3-0.3-5.6-0.8-7.2c-0.5-1.5-1.6-2.6-3.1-3.2c-1.5-0.6-3.8-0.9-6.8-1V475c1.8,0.1,4.3,0.2,7.3,0.3c3,0.1,6.2,0.1,9.6,0.1c3.1,0,6.1,0,9.2-0.1c3-0.1,5.6-0.2,7.6-0.3v2.6c-3,0.1-5.3,0.4-6.8,1c-1.5,0.6-2.6,1.6-3.1,3.2c-0.5,1.5-0.8,3.9-0.8,7.2v43.7c0,4.5,0.2,8.7,0.7,12.7c0.4,4,1.3,7.5,2.7,10.6c1.4,3,3.5,5.4,6.3,7.1c2.8,1.7,6.5,2.6,11.2,2.6c6.7,0,11.8-1.5,15.5-4.4c3.6-2.9,6.2-7,7.7-12.2c1.5-5.2,2.2-11,2.2-17.5v-41.2c0-3.3-0.4-5.8-1.1-7.5c-0.7-1.8-2-3-3.8-3.8c-1.8-0.8-4.1-1.2-7.1-1.3V475c1.6,0.1,3.7,0.2,6.3,0.3c2.6,0.1,5,0.1,7.2,0.1c2.3,0,4.6,0,6.8-0.1C386.1,475.2,388,475.1,389.4,475z"/>
+  <path class="char char-n" d="M481.3,475v2.6c-3,0.1-5.3,0.5-6.8,1.3c-1.5,0.8-2.6,2.1-3.1,3.8c-0.5,1.8-0.8,4.3-0.8,7.5V569c-0.5,0-1,0-1.5,0c-0.5,0-1,0-1.5,0l-55.4-85.6v69.6c0,3.2,0.3,5.7,0.9,7.5c0.6,1.8,1.7,3.1,3.4,3.8c1.7,0.7,4.3,1.2,7.7,1.4v2.6c-1.6-0.2-3.6-0.3-6.2-0.3c-2.6,0-5-0.1-7.3-0.1c-2.2,0-4.4,0-6.7,0.1c-2.2,0-4.1,0.2-5.6,0.3v-2.6c3-0.2,5.3-0.6,6.8-1.4c1.5-0.7,2.6-2,3.1-3.8c0.5-1.8,0.8-4.3,0.8-7.5V489c0-3.3-0.3-5.6-0.8-7.2c-0.5-1.5-1.6-2.6-3.1-3.2c-1.5-0.6-3.8-0.9-6.8-1V475c1.5,0.1,3.4,0.2,5.6,0.3c2.2,0.1,4.5,0.1,6.7,0.1c1.9,0,3.8,0,5.5-0.1c1.8-0.1,3.3-0.2,4.7-0.3l46.6,71.8v-56.5c0-3.3-0.3-5.8-0.9-7.5c-0.6-1.8-1.7-3-3.4-3.8c-1.7-0.8-4.3-1.2-7.7-1.3V475c1.6,0.1,3.7,0.2,6.3,0.3c2.6,0.1,5,0.1,7.2,0.1c2.3,0,4.6,0,6.8-0.1C478.1,475.2,479.9,475.1,481.3,475z"/>
+  <path class="char char-i" d="M525.2,475v2.6c-3,0.1-5.3,0.4-6.8,1c-1.5,0.6-2.6,1.6-3.1,3.2c-0.5,1.5-0.8,3.9-0.8,7.2v65.4c0,3.2,0.3,5.5,0.8,7.1c0.5,1.6,1.6,2.6,3.1,3.2c1.5,0.5,3.8,0.9,6.8,1.1v2.6c-2-0.2-4.6-0.3-7.6-0.3c-3,0-6.1-0.1-9.2-0.1c-3.4,0-6.6,0-9.6,0.1c-3,0-5.4,0.2-7.3,0.3v-2.6c3-0.2,5.3-0.5,6.8-1.1c1.5-0.5,2.6-1.6,3.1-3.2c0.5-1.6,0.8-4,0.8-7.1V489c0-3.3-0.3-5.6-0.8-7.2c-0.5-1.5-1.6-2.6-3.1-3.2c-1.5-0.6-3.8-0.9-6.8-1V475c1.8,0.1,4.3,0.2,7.3,0.3c3,0.1,6.2,0.1,9.6,0.1c3.1,0,6.1,0,9.2-0.1C520.7,475.2,523.2,475.1,525.2,475z"/>
+  <path class="char char-k" d="M570,475v2.6c-3,0.1-5.3,0.4-6.8,1c-1.5,0.6-2.6,1.6-3.1,3.2c-0.5,1.5-0.8,3.9-0.8,7.2v65.4c0,3.2,0.3,5.5,0.8,7.1c0.5,1.6,1.6,2.6,3.1,3.2c1.5,0.5,3.8,0.9,6.8,1.1v2.6c-2-0.2-4.6-0.3-7.6-0.3c-3,0-6.1-0.1-9.2-0.1c-3.4,0-6.6,0-9.6,0.1c-3,0-5.4,0.2-7.3,0.3v-2.6c3-0.2,5.3-0.5,6.8-1.1c1.5-0.5,2.6-1.6,3.1-3.2c0.5-1.6,0.8-4,0.8-7.1V489c0-3.3-0.3-5.6-0.8-7.2c-0.5-1.5-1.6-2.6-3.1-3.2c-1.5-0.6-3.8-0.9-6.8-1V475c1.8,0.1,4.3,0.2,7.3,0.3c3,0.1,6.2,0.1,9.6,0.1c3.1,0,6.1,0,9.2-0.1C565.4,475.2,567.9,475.1,570,475z M611.9,475v2.6c-2.7,0.4-5.4,1.2-7.9,2.6c-2.6,1.4-5.1,3.7-7.7,7l-25.5,32.6l2.9-6.5l31.7,44.3c1.5,2.2,3.1,3.9,4.9,5.1c1.8,1.2,4,2.2,6.7,2.9v2.6c-2.1-0.2-4.7-0.3-7.8-0.3c-3.1,0-5.8-0.1-8-0.1c-1.5,0-3.3,0-5.5,0.1c-2.2,0-4.9,0.2-8.1,0.3v-2.6c3-0.2,4.9-0.7,5.7-1.6c0.8-0.9,0.5-2.3-0.9-4.4l-19.3-29c-1.8-2.7-3.3-4.8-4.7-6.1c-1.4-1.4-2.8-2.3-4.2-2.7c-1.5-0.4-3.3-0.7-5.5-0.8v-2.6c3.7-0.1,6.8-0.8,9.3-2.2c2.5-1.4,4.6-3.1,6.3-5.2L587,495c2.9-3.7,4.9-6.8,5.9-9.4c1.1-2.5,1-4.5-0.1-5.9c-1.1-1.4-3.6-2.1-7.3-2.2V475c1.7,0.1,3.4,0.2,5.1,0.2c1.8,0,3.5,0.1,5.2,0.1c1.7,0,3.3,0.1,4.8,0.1c2.3,0,4.4,0,6.3-0.1C609,475.2,610.6,475.1,611.9,475z"/>
+  <path class="char char-C" fill="var(--accent)" d="M699,473.1c5.8,0,10.6,0.9,14.3,2.6c3.7,1.7,7.1,3.7,10,6c1.8,1.3,3.1,1.5,4,0.5c0.9-1,1.6-3.4,1.9-7.2h3c-0.2,3.3-0.3,7.2-0.4,11.9c-0.1,4.7-0.1,10.8-0.1,18.5h-3c-0.6-3.8-1.2-6.8-1.7-9c-0.5-2.2-1.2-4.2-1.9-5.7c-0.7-1.6-1.7-3.2-3-4.7c-2.7-3.6-6.2-6.2-10.3-7.8c-4.1-1.6-8.5-2.4-13.1-2.4c-4.3,0-8.2,1.1-11.7,3.2c-3.5,2.2-6.5,5.3-9,9.3c-2.5,4-4.4,8.9-5.8,14.6c-1.4,5.7-2,12.1-2,19.3c0,7.4,0.7,13.9,2.2,19.6c1.5,5.7,3.6,10.4,6.3,14.3c2.7,3.9,5.8,6.8,9.5,8.8c3.6,2,7.6,3,11.8,3c4,0,8.1-0.8,12.4-2.4c4.3-1.6,7.7-4.1,10.2-7.7c1.9-2.5,3.3-5.3,4-8.3c0.7-3,1.4-7.2,2-12.5h3c0,8,0,14.4,0.1,19.3c0.1,4.9,0.2,9,0.4,12.3h-3c-0.4-3.8-0.9-6.2-1.8-7.1c-0.8-1-2.2-0.8-4.2,0.4c-3.3,2.3-6.7,4.3-10.4,6c-3.6,1.7-8.3,2.6-14,2.6c-8.4,0-15.7-1.9-22-5.7c-6.3-3.8-11.2-9.2-14.6-16.4c-3.5-7.1-5.2-15.7-5.2-25.7c0-9.8,1.8-18.5,5.4-25.9c3.6-7.4,8.6-13.1,14.8-17.3C683.5,475.2,690.8,473.1,699,473.1z"/>
+  <path class="char char-o" fill="var(--accent)" d="M789.7,473.1c8.4,0,15.7,1.9,22,5.7c6.3,3.8,11.2,9.2,14.6,16.3c3.5,7.1,5.2,15.7,5.2,25.8c0,9.8-1.8,18.5-5.3,25.9c-3.6,7.4-8.5,13.1-14.8,17.3c-6.3,4.1-13.6,6.2-21.8,6.2c-8.4,0-15.7-1.9-22-5.7c-6.3-3.8-11.2-9.2-14.6-16.4c-3.5-7.1-5.2-15.7-5.2-25.7c0-9.8,1.8-18.5,5.4-25.9c3.6-7.4,8.6-13.1,14.8-17.3C774.3,475.2,781.5,473.1,789.7,473.1z M789.2,475.5c-5.7,0-10.7,2-14.9,5.9c-4.2,4-7.5,9.4-9.8,16.4c-2.3,6.9-3.5,15-3.5,24.1c0,9.3,1.3,17.4,3.9,24.3c2.6,6.9,6.1,12.2,10.6,16c4.4,3.7,9.3,5.6,14.7,5.6c5.7,0,10.7-2,14.9-5.9c4.2-4,7.5-9.4,9.8-16.4c2.3-7,3.5-15,3.5-24.1c0-9.4-1.3-17.5-3.9-24.4c-2.6-6.9-6.1-12.2-10.5-15.9C799.6,477.4,794.6,475.5,789.2,475.5z"/>
+  <path class="char char-dot" fill="var(--accent)" d="M852.4,553.3c2.3,0,4.3,0.8,5.9,2.5c1.7,1.7,2.5,3.7,2.5,5.9c0,2.3-0.8,4.3-2.5,5.9c-1.7,1.7-3.6,2.5-5.9,2.5c-2.3,0-4.3-0.8-5.9-2.5c-1.7-1.7-2.5-3.6-2.5-5.9c0-2.3,0.8-4.3,2.5-5.9C848.1,554.2,850.1,553.3,852.4,553.3z"/>
+</svg>`;
+        heroTitle.innerHTML = wordmarkSVG;
 
-        heroTitle.addEventListener("mousemove", (e) => {
-            heroTitle.style.animationPlayState = "paused";
-            const rect = heroTitle.getBoundingClientRect();
-            const nx = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-            const ny = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-            chars.forEach((char, i) => {
-                const cr = char.getBoundingClientRect();
-                const dx = (e.clientX - (cr.left + cr.width / 2)) / rect.width;
-                const dy = (e.clientY - (cr.top + cr.height / 2)) / rect.height;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                gsap.to(char, {
-                    x: nx * -30 * (1 - i / chars.length),
-                    y: ny * 15,
-                    z: Math.max(0, 1 - dist * 2) * 80,
-                    rotateX: ny * -8,
-                    rotateY: nx * 12,
-                    duration: 0.6,
-                    ease: "power2.out"
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (!isTouch && !prefersReducedMotion) {
+            const chars = heroTitle.querySelectorAll(".char");
+            heroTitle.addEventListener("mousemove", (e) => {
+                heroTitle.style.animationPlayState = "paused";
+                const rect = heroTitle.getBoundingClientRect();
+                const nx = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+                const ny = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+                chars.forEach((char, i) => {
+                    const cr = char.getBoundingClientRect();
+                    const dx = (e.clientX - (cr.left + cr.width / 2)) / rect.width;
+                    const dy = (e.clientY - (cr.top + cr.height / 2)) / rect.height;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    gsap.to(char, {
+                        x: nx * -30 * (1 - i / chars.length),
+                        y: ny * 15,
+                        z: Math.max(0, 1 - dist * 2) * 80,
+                        rotateX: ny * -8,
+                        rotateY: nx * 12,
+                        duration: 0.6,
+                        ease: "power2.out"
+                    });
                 });
             });
+            heroTitle.addEventListener("mouseleave", () => {
+                heroTitle.style.animationPlayState = "running";
+                gsap.to(chars, { x: 0, y: 0, z: 0, rotateX: 0, rotateY: 0, duration: 1.2, ease: "elastic.out(1, 0.4)" });
+            });
+        }
+    }
+
+    // ── Scroll-triggered typographic header lockup ────
+    const brandLockup = document.querySelector(".brand-lockup");
+    const heroSection = document.querySelector("section.min-h-screen");
+    if (brandLockup && heroSection) {
+        ScrollTrigger.create({
+            trigger: heroSection,
+            start: "bottom 85%",
+            end: "bottom top",
+            onEnter:     () => brandLockup.classList.remove("is-hidden"),
+            onLeaveBack: () => brandLockup.classList.add("is-hidden"),
         });
-        heroTitle.addEventListener("mouseleave", () => {
-            heroTitle.style.animationPlayState = "running";
-            gsap.to(chars, { x: 0, y: 0, z: 0, rotateX: 0, rotateY: 0, duration: 1.2, ease: "elastic.out(1, 0.4)" });
-        });
+
+        if (!isTouch) {
+            const brandType = brandLockup.querySelector(".brand-type");
+            brandLockup.addEventListener("mousemove", (e) => {
+                const r = brandLockup.getBoundingClientRect();
+                const nx = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+                const ny = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+                gsap.to(brandType, {
+                    rotateX: ny * -10,
+                    rotateY: nx * 14,
+                    duration: 0.5,
+                    ease: "power2.out",
+                });
+            });
+            brandLockup.addEventListener("mouseleave", () => {
+                gsap.to(brandType, { rotateX: 0, rotateY: 0, duration: 1, ease: "elastic.out(1, 0.4)" });
+            });
+        }
     }
 
     // ── ScrollTrigger reveals ─────────────────────────
@@ -351,7 +384,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ── Form submission to hello@nunik.co ─────────────
-    // Using Web3Forms (web3forms.com — free, no backend needed).
+    // Using Web3Forms (web3forms.com, free, no backend needed).
     // 1. Go to web3forms.com and enter hello@nunik.co to get your access key.
     // 2. Replace "YOUR_WEB3FORMS_ACCESS_KEY" below with that key.
     // Until then, the form falls back to opening your mail client.
@@ -373,7 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 try {
                     const formData = new FormData(terminalForm);
                     formData.append("access_key", FORM_ACCESS_KEY);
-                    formData.append("subject", `New Inquiry from ${formData.get("name") || "Website"} — nunik.co`);
+                    formData.append("subject", `New Inquiry from ${formData.get("name") || "Website"} | nunik.co`);
                     formData.append("from_name", "Nunik Co. Website");
 
                     const res = await fetch("https://api.web3forms.com/submit", {
@@ -412,7 +445,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ``,
                     `${d.message || ""}`
                 ].join("\n");
-                window.location.href = `mailto:hello@nunik.co?subject=${encodeURIComponent(`New Inquiry — ${d.service || "nunik.co"}`)}&body=${encodeURIComponent(body)}`;
+                window.location.href = `mailto:hello@nunik.co?subject=${encodeURIComponent(`New Inquiry | ${d.service || "nunik.co"}`)}&body=${encodeURIComponent(body)}`;
             }
         });
     }
@@ -524,7 +557,7 @@ function initWebGLBackground(lenis) {
 }
 
 /* ================================================
-   3D Sudarshana Chakra — scroll-driven traversal
+   3D Sudarshana Chakra, scroll-driven traversal
    ================================================ */
 function initChakraBackground(lenis) {
     const container = document.getElementById("chakra-canvas");
