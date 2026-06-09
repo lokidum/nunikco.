@@ -30,6 +30,40 @@ function applyThemeIcons() {
     // Kept as a stub to avoid breaking call sites that invoke it.
 }
 
+function buildCalendlyURL() {
+    const dark = isDark();
+    const params = new URLSearchParams({
+        hide_event_type_details: "1",
+        hide_gdpr_banner: "1",
+        background_color: dark ? "111417" : "f8f6f3",
+        text_color: dark ? "e1e4e7" : "1b1e22",
+        primary_color: "b45e45"
+    });
+    return `https://calendly.com/hello-nunik/ai-strategy-call?${params.toString()}`;
+}
+
+function mountCalendly() {
+    const el = document.getElementById("calendly-widget");
+    if (!el) return;
+    el.setAttribute("data-url", buildCalendlyURL());
+    el.innerHTML = "";
+    if (window.Calendly && typeof window.Calendly.initInlineWidget === "function") {
+        window.Calendly.initInlineWidget({
+            url: buildCalendlyURL(),
+            parentElement: el,
+            prefill: {},
+            utm: {}
+        });
+    }
+}
+
+function remountCalendlyIfPresent() {
+    if (document.getElementById("calendly-widget")) {
+        // Defer so theme CSS variables settle, then rebuild the widget.
+        setTimeout(mountCalendly, 50);
+    }
+}
+
 function setWebGLTheme(animate) {
     if (!webglUniforms) return;
     const palette = isDark() ? THEME_COLORS.dark : THEME_COLORS.light;
@@ -87,6 +121,7 @@ function toggleTheme() {
     applyThemeIcons();
     setWebGLTheme(true);
     setChakraTheme(true);
+    remountCalendlyIfPresent();
 }
 
 /* ================================================
@@ -99,6 +134,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
     document.getElementById("theme-toggle-mobile")?.addEventListener("click", toggleTheme);
+
+    // Calendly: mount when widget script is ready
+    if (document.getElementById("calendly-widget")) {
+        if (window.Calendly) {
+            mountCalendly();
+        } else {
+            // Poll for Calendly to load (script is async)
+            const t0 = Date.now();
+            const tick = () => {
+                if (window.Calendly) { mountCalendly(); return; }
+                if (Date.now() - t0 < 8000) setTimeout(tick, 120);
+            };
+            tick();
+        }
+    }
 
     // ── Mobile nav ────────────────────────────────────
     const mobileNav = document.getElementById("mobile-nav");

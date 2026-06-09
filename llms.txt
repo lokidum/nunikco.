@@ -5,12 +5,25 @@
 Nunik Co. is a South Asian heritage digital collective based in Canberra, Australia, delivering remotely worldwide. We work with anyone, anywhere, on one condition: you want execution like no one else. We operate under three principles: Yukti (automation), Rasa (brand), Artha (web and consulting). Contact: hello@nunik.co.
 
 ## Services
-- [Automation (Yukti)](https://nunik.co/services/automation): n8n workflow development, GoHighLevel (GHL) CRM setup and integration, Zapier and Make automation, API and webhook systems, Airtable and PostgreSQL databases.
-- [Brand (Rasa)](https://nunik.co/services/brand): logo and brand mark systems, full Tech Pack delivery, marketing collateral, UX and UI design, social media templates.
-- [Web (Artha)](https://nunik.co/services/web): custom websites in React, Next.js and WordPress, SEO and performance, marketing strategy consulting, staff training.
+- [Automation (Yukti)](https://nunik.co/services/automation/): n8n workflow development, GoHighLevel (GHL) CRM setup and integration, Zapier and Make automation, API and webhook systems, Airtable and PostgreSQL databases.
+- [Brand (Rasa)](https://nunik.co/services/brand/): logo and brand mark systems, full Tech Pack delivery, marketing collateral, UX and UI design, social media templates.
+- [Web (Artha)](https://nunik.co/services/web/): custom websites in React, Next.js and WordPress, SEO and performance, marketing strategy consulting, staff training.
 
 ## Industries
-Real estate, trades (plumbers, electricians, landscapers), automotive, hospitality, food and beverage.
+- [Trades hub](https://nunik.co/industries/trades/): all trade specialisations, problem-first.
+- [Pest Control](https://nunik.co/industries/trades/pest-control/)
+- [Electrical](https://nunik.co/industries/trades/electrical/)
+- [Plumbing](https://nunik.co/industries/trades/plumbing/)
+- [Cleaning](https://nunik.co/industries/trades/cleaning/)
+- [Landscaping](https://nunik.co/industries/trades/landscaping/)
+
+Other sectors served: real estate, automotive (auto repair), hospitality, food and beverage, allied health, founder and product brands.
+
+## Locations
+- [Canberra (home base)](https://nunik.co/locations/canberra/): hospitality, trades, allied health, founder brands across the ACT. Remote delivery worldwide from this base.
+
+## Booking
+Direct Calendly: https://calendly.com/hello-nunik/ai-strategy-call
 
 ## Research
 - Digital Transformation in Australian SMBs: 2026 Benchmarks (publishing Q2 2026).

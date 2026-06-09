@@ -456,14 +456,20 @@
                     <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
                         <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Industries</p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Real Estate</span>
-                            <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Plumbers</span>
-                            <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Electricians</span>
+                            <a href="/industries/trades/" class="text-xs font-mono px-3 py-1.5 rounded-full t-text nav-link hover:bg-white/5" style="border:1px solid var(--glass-border);">Real Estate</a>
+                            <a href="/industries/trades/plumbing/" class="text-xs font-mono px-3 py-1.5 rounded-full t-text nav-link hover:bg-white/5" style="border:1px solid var(--glass-border);">Plumbers</a>
+                            <a href="/industries/trades/electrical/" class="text-xs font-mono px-3 py-1.5 rounded-full t-text nav-link hover:bg-white/5" style="border:1px solid var(--glass-border);">Electricians</a>
                             <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Auto Repair</span>
                             <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Hospitality</span>
-                            <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Landscaping</span>
+                            <a href="/industries/trades/landscaping/" class="text-xs font-mono px-3 py-1.5 rounded-full t-text nav-link hover:bg-white/5" style="border:1px solid var(--glass-border);">Landscaping</a>
                         </div>
                     </div>
+                    <a href="/services/automation/"
+                       class="reveal-item inline-flex items-center gap-2 self-start mt-2 text-xs md:text-sm uppercase tracking-[0.3em] font-semibold t-accent nav-link"
+                       style="border-bottom:1px solid var(--accent);padding-bottom:4px;">
+                        Explore Automation in Depth
+                        <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
+                    </a>
                 </div>
 
             </div>
@@ -496,6 +502,12 @@
                             produce consistent marketing materials independently.
                         </p>
                     </div>
+                    <a href="/services/brand/"
+                       class="reveal-item inline-flex items-center gap-2 self-start mt-2 text-xs md:text-sm uppercase tracking-[0.3em] font-semibold t-accent nav-link"
+                       style="border-bottom:1px solid var(--accent);padding-bottom:4px;">
+                        Explore Brand in Depth
+                        <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
+                    </a>
                 </div>
 
                 <div class="space-y-8 reveal-container order-1 md:order-2">
@@ -570,6 +582,12 @@
                             through Artha.
                         </p>
                     </div>
+                    <a href="/services/web/"
+                       class="reveal-item inline-flex items-center gap-2 self-start mt-2 text-xs md:text-sm uppercase tracking-[0.3em] font-semibold t-accent nav-link"
+                       style="border-bottom:1px solid var(--accent);padding-bottom:4px;">
+                        Explore Web in Depth
+                        <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
+                    </a>
                 </div>
 
             </div>
@@ -758,6 +776,31 @@
     </section>
 
     <!-- ============================================================
+         BOOK — Calendly inline widget (theme-aware)
+         ============================================================ -->
+    <section class="relative py-20 md:py-32" id="book">
+        <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+            <div class="mb-12 md:mb-16 reveal-container">
+                <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">Book directly</span>
+                <h2 class="font-headline italic text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter reveal-item t-text">Pick a time. Talk to us.</h2>
+                <p class="t-muted text-sm md:text-base max-w-2xl mt-4 md:mt-5 reveal-item leading-relaxed">
+                    Fifteen minutes. We map the slowest part of your operation and tell you whether
+                    automation, brand, or web is the right first move. No pitch deck.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-xl p-2 md:p-4 reveal-item overflow-hidden">
+                <div id="calendly-widget" class="calendly-inline-widget" data-url="https://calendly.com/hello-nunik/ai-strategy-call?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;background_color=111417&amp;text_color=e1e4e7&amp;primary_color=b45e45" style="width:100%;height:720px;"></div>
+            </div>
+
+            <p class="t-faint text-xs mt-6 max-w-2xl reveal-item leading-relaxed">
+                Prefer email? Use the brief form below or write to
+                <a href="mailto:hello@nunik.co" class="t-accent nav-link" style="border-bottom:1px solid var(--accent);">hello@nunik.co</a>.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================================
          FOOTER / CONNECT
          ============================================================ -->
     <footer class="w-full pt-20 md:pt-32 pb-10 md:pb-12 px-6 md:px-8 flex flex-col items-start space-y-12 md:space-y-16" id="connect">
@@ -897,6 +940,7 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
     <script defer src="main.min.js"></script>
 </body>
 </html>
