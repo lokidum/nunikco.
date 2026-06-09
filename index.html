@@ -455,13 +455,10 @@
                     </div>
                     <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
                         <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Industries</p>
-                        <div class="flex flex-wrap gap-2">
-                            <a href="/industries/trades/" class="text-xs font-mono px-3 py-1.5 rounded-full t-text nav-link hover:bg-white/5" style="border:1px solid var(--glass-border);">Real Estate</a>
-                            <a href="/industries/trades/plumbing/" class="text-xs font-mono px-3 py-1.5 rounded-full t-text nav-link hover:bg-white/5" style="border:1px solid var(--glass-border);">Plumbers</a>
-                            <a href="/industries/trades/electrical/" class="text-xs font-mono px-3 py-1.5 rounded-full t-text nav-link hover:bg-white/5" style="border:1px solid var(--glass-border);">Electricians</a>
-                            <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Auto Repair</span>
-                            <span class="text-xs font-mono px-3 py-1.5 rounded-full t-text" style="border:1px solid var(--glass-border);">Hospitality</span>
-                            <a href="/industries/trades/landscaping/" class="text-xs font-mono px-3 py-1.5 rounded-full t-text nav-link hover:bg-white/5" style="border:1px solid var(--glass-border);">Landscaping</a>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="/industries/trades/" class="industry-pill text-sm font-mono px-5 py-2 rounded-full t-text nav-link">Trades</a>
+                            <a href="/industries/hospitality/" class="industry-pill text-sm font-mono px-5 py-2 rounded-full t-text nav-link">Hospitality</a>
+                            <a href="/industries/automotive/" class="industry-pill text-sm font-mono px-5 py-2 rounded-full t-text nav-link">Automotive</a>
                         </div>
                     </div>
                     <a href="/services/automation/"
@@ -610,23 +607,33 @@
 
             <!-- Client logo grid (scalable: add new entries as you grow) -->
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4 mb-16 md:mb-24 reveal-container">
-                <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square cursor-project reveal-item archive-card">
+                <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square cursor-project reveal-item archive-card"
+                     data-project-url="https://rudygoel.com"
+                     data-project-name="Rudy Goel"
+                     data-project-tag="RASA / Brand Overhaul + Web"
+                     role="button" tabindex="0"
+                     aria-label="Open Rudy Goel project preview">
                     <div class="w-full flex items-center justify-center" style="height:60px;">
                         <svg class="brand-mark archive-mark" viewBox="0 0 1080 1080" fill="currentColor" role="img" aria-label="Case study" width="42" height="42">
                             <path d="M198.8,180.2c0,6.8,0,10.8,0,14.8c0.1,182.2,0.1,364.4,0.5,546.6c0.1,39.3,2.9,78.4,19.5,115c9.9,21.8,23.4,41.1,44.2,53.6c10,6,21.7,9.2,32.8,13.2c5.9,2.1,15.4,0.2,14.3,10.1c-1.1,9.4-9.9,7.1-16.3,7.2c-28,0.3-56,0.5-84,0.5c-43.7,0-87.4-0.1-131-0.8c-3.9-0.1-7.7-4.7-11.6-7.2c3.1-3,6-8,9.5-8.6c46.4-7.5,71.8-38.2,84.4-79.9c7.6-25.1,12.9-51.9,13.1-78c1.2-168,0.9-336,0.4-504.1c-0.1-31.3-2.3-62.7-14.1-92.4c-15.1-38-41.6-62.2-83.2-67.4c-6.4-0.8-12-3.2-10.3-9.8c0.8-3.3,7.4-7.3,11.4-7.4c82.9-0.5,165.8-0.5,248.7,0c4.7,0,10.6,4.7,14,8.8c43.2,51.4,86.5,102.8,128.8,155c10.3,12.7,18.6,15.8,35.3,10.8c104.5-30.9,209.4-33.3,314,0.5c2.1,0.7,4.3,0.9,10.1,2.1c-5-25.8-8.3-50.1-14.8-73.5c-4.1-14.8-12.1-28.9-20.2-42.1c-15.7-25.7-39.6-40-69.3-44.2c-6.3-0.9-12.7-1.7-11.9-9.9c0.7-8.2,7.4-7.9,13.6-7.9c72.8,0,145.6-0.1,218.4-0.2c6.3,0,12.9-0.1,13.2,8.1c0.3,7.8-5.9,9.1-12.2,10c-40.3,5.7-65.6,30.1-80.4,66.4c-12.1,29.8-15.5,61.4-16,93.2c0,3,2.1,8,4.4,8.9c29.4,10.7,58.5,22.7,88.7,30.6c27.3,7.1,40.3-1.2,54.8-25.8c1.7-2.8,6.2-3.9,9.5-5.8c2,3.8,5.8,7.6,5.8,11.5c0.3,63.8,0.1,127.7,0,191.5c0,10.5-0.3,20.9-0.1,31.4c0.1,6.4-2.6,11.2-8.7,10.1c-4-0.7-8.9-5.2-10.4-9.1c-2.3-6.1-1.8-13.2-3.1-19.8c-14.7-76.8-51.2-139.4-118.6-181.8c-5-3.2-10.5-5.8-15.8-8.5c-1.2-0.6-2.7-0.7-5.5-1.3c-0.3,5.3-0.8,10-0.8,14.7c0.3,197.9,0.6,395.8,0.8,593.7c0,8.2-17.3,24.6-24.8,22.6c-3.4-0.9-6.3-4.9-8.9-8c-39.9-47.4-79.4-95.1-119.4-142.4c-79.3-93.8-158.8-187.3-238.1-281.1c-2.7-3.2-5.1-9-4.1-12.5c15.3-54,40.8-102.4,80.3-142.8c1-1,2.3-1.7,3.6-2.7C633.9,448,728.2,560,822.5,672c1-0.4,2-0.8,2.9-1.2c0.4-3.9,1.1-7.8,1.1-11.7c0.1-122.5,0.2-244.9,0-367.4c0-3.7-3.4-9.7-6.5-10.7c-85.3-26.2-170.3-31.6-252.7,9.5c-54.8,27.4-90.9,73.1-114.6,128.5c-36.4,85.4-45.6,174.7-37,266.5c5.4,57.7,20.6,112.2,51.8,161.5c40.8,64.5,100.2,102.5,174.2,117.1c71,14,141,9.4,206.6-23.1c81.4-40.3,125.8-109.3,145-196.3c1.5-6.9-0.5-18.1,11.5-16.9c11.7,1.2,8,11.7,8,18.9c0.2,60.1,0.3,120.2-0.1,180.3c0,4.7-2.5,12.1-5.8,13.5c-3.4,1.4-10.4-1.8-13.8-5.1c-13.3-12.9-29.3-11.8-44.1-7.1c-25.5,8.1-50.5,18.2-75.3,28.3C785.4,993,694,1002,600.1,990.2c-71.4-8.9-138.7-30.3-197.4-72.8c-82.2-59.6-132.6-139.4-146.9-240.5c-16.4-116.2,11.2-220.7,85.6-312c4.3-5.3,4.9-8.9,0.4-14.3c-45.9-55.1-91.5-110.3-137.3-165.5C203.6,184,202.3,183.2,198.8,180.2z"/>
                         </svg>
                     </div>
-                    <span class="font-headline italic text-sm md:text-base t-text text-center leading-tight mt-2">Vedic Neural</span>
-                    <span class="text-[10px] md:text-xs font-mono t-muted mt-2 text-center">AI Implementation</span>
+                    <span class="font-headline italic text-sm md:text-base t-text text-center leading-tight mt-2">Rudy Goel</span>
+                    <span class="text-[10px] md:text-xs font-mono t-muted mt-2 text-center">RASA / Brand &amp; Web</span>
                 </div>
-                <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square cursor-project reveal-item archive-card">
+                <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square cursor-project reveal-item archive-card"
+                     data-project-url="https://networth-digital.com/"
+                     data-project-name="NetWorth Digital"
+                     data-project-tag="RASA / Web Design"
+                     role="button" tabindex="0"
+                     aria-label="Open NetWorth Digital project preview">
                     <div class="w-full flex items-center justify-center" style="height:60px;">
                         <svg class="brand-mark archive-mark" viewBox="0 0 1080 1080" fill="currentColor" role="img" aria-label="Case study" width="42" height="42">
                             <path d="M198.8,180.2c0,6.8,0,10.8,0,14.8c0.1,182.2,0.1,364.4,0.5,546.6c0.1,39.3,2.9,78.4,19.5,115c9.9,21.8,23.4,41.1,44.2,53.6c10,6,21.7,9.2,32.8,13.2c5.9,2.1,15.4,0.2,14.3,10.1c-1.1,9.4-9.9,7.1-16.3,7.2c-28,0.3-56,0.5-84,0.5c-43.7,0-87.4-0.1-131-0.8c-3.9-0.1-7.7-4.7-11.6-7.2c3.1-3,6-8,9.5-8.6c46.4-7.5,71.8-38.2,84.4-79.9c7.6-25.1,12.9-51.9,13.1-78c1.2-168,0.9-336,0.4-504.1c-0.1-31.3-2.3-62.7-14.1-92.4c-15.1-38-41.6-62.2-83.2-67.4c-6.4-0.8-12-3.2-10.3-9.8c0.8-3.3,7.4-7.3,11.4-7.4c82.9-0.5,165.8-0.5,248.7,0c4.7,0,10.6,4.7,14,8.8c43.2,51.4,86.5,102.8,128.8,155c10.3,12.7,18.6,15.8,35.3,10.8c104.5-30.9,209.4-33.3,314,0.5c2.1,0.7,4.3,0.9,10.1,2.1c-5-25.8-8.3-50.1-14.8-73.5c-4.1-14.8-12.1-28.9-20.2-42.1c-15.7-25.7-39.6-40-69.3-44.2c-6.3-0.9-12.7-1.7-11.9-9.9c0.7-8.2,7.4-7.9,13.6-7.9c72.8,0,145.6-0.1,218.4-0.2c6.3,0,12.9-0.1,13.2,8.1c0.3,7.8-5.9,9.1-12.2,10c-40.3,5.7-65.6,30.1-80.4,66.4c-12.1,29.8-15.5,61.4-16,93.2c0,3,2.1,8,4.4,8.9c29.4,10.7,58.5,22.7,88.7,30.6c27.3,7.1,40.3-1.2,54.8-25.8c1.7-2.8,6.2-3.9,9.5-5.8c2,3.8,5.8,7.6,5.8,11.5c0.3,63.8,0.1,127.7,0,191.5c0,10.5-0.3,20.9-0.1,31.4c0.1,6.4-2.6,11.2-8.7,10.1c-4-0.7-8.9-5.2-10.4-9.1c-2.3-6.1-1.8-13.2-3.1-19.8c-14.7-76.8-51.2-139.4-118.6-181.8c-5-3.2-10.5-5.8-15.8-8.5c-1.2-0.6-2.7-0.7-5.5-1.3c-0.3,5.3-0.8,10-0.8,14.7c0.3,197.9,0.6,395.8,0.8,593.7c0,8.2-17.3,24.6-24.8,22.6c-3.4-0.9-6.3-4.9-8.9-8c-39.9-47.4-79.4-95.1-119.4-142.4c-79.3-93.8-158.8-187.3-238.1-281.1c-2.7-3.2-5.1-9-4.1-12.5c15.3-54,40.8-102.4,80.3-142.8c1-1,2.3-1.7,3.6-2.7C633.9,448,728.2,560,822.5,672c1-0.4,2-0.8,2.9-1.2c0.4-3.9,1.1-7.8,1.1-11.7c0.1-122.5,0.2-244.9,0-367.4c0-3.7-3.4-9.7-6.5-10.7c-85.3-26.2-170.3-31.6-252.7,9.5c-54.8,27.4-90.9,73.1-114.6,128.5c-36.4,85.4-45.6,174.7-37,266.5c5.4,57.7,20.6,112.2,51.8,161.5c40.8,64.5,100.2,102.5,174.2,117.1c71,14,141,9.4,206.6-23.1c81.4-40.3,125.8-109.3,145-196.3c1.5-6.9-0.5-18.1,11.5-16.9c11.7,1.2,8,11.7,8,18.9c0.2,60.1,0.3,120.2-0.1,180.3c0,4.7-2.5,12.1-5.8,13.5c-3.4,1.4-10.4-1.8-13.8-5.1c-13.3-12.9-29.3-11.8-44.1-7.1c-25.5,8.1-50.5,18.2-75.3,28.3C785.4,993,694,1002,600.1,990.2c-71.4-8.9-138.7-30.3-197.4-72.8c-82.2-59.6-132.6-139.4-146.9-240.5c-16.4-116.2,11.2-220.7,85.6-312c4.3-5.3,4.9-8.9,0.4-14.3c-45.9-55.1-91.5-110.3-137.3-165.5C203.6,184,202.3,183.2,198.8,180.2z"/>
                         </svg>
                     </div>
-                    <span class="font-headline italic text-sm md:text-base t-text text-center leading-tight mt-2">Indigo Commerce</span>
-                    <span class="text-[10px] md:text-xs font-mono t-muted mt-2 text-center">E-Commerce Engine</span>
+                    <span class="font-headline italic text-sm md:text-base t-text text-center leading-tight mt-2">NetWorth Digital</span>
+                    <span class="text-[10px] md:text-xs font-mono t-muted mt-2 text-center">RASA / Web Design</span>
                 </div>
                 <!-- Incoming slots (fade progressively to suggest depth) -->
                 <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.35;">
@@ -776,7 +783,7 @@
     </section>
 
     <!-- ============================================================
-         BOOK — Calendly inline widget (theme-aware)
+         BOOK / Calendly inline widget (theme-aware)
          ============================================================ -->
     <section class="relative py-20 md:py-32" id="book">
         <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
@@ -806,7 +813,7 @@
     <footer class="w-full pt-20 md:pt-32 pb-10 md:pb-12 px-6 md:px-8 flex flex-col items-start space-y-12 md:space-y-16" id="connect">
 
         <div class="w-full reveal-container">
-            <h2 class="text-4xl sm:text-5xl md:text-[8rem] lg:text-[10rem] uppercase leading-none tracking-tighter font-headline t-accent reveal-item">
+            <h2 class="text-4xl sm:text-5xl md:text-[8rem] lg:text-[10rem] uppercase leading-none tracking-tight font-headline t-accent reveal-item">
                 START YOUR <br/><span class="editorial-reveal inline-block">TRANSFORMATION<span style="color:var(--accent);">.</span></span>
             </h2>
         </div>
@@ -890,8 +897,8 @@
         <!-- Footer grid -->
         <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pt-8 md:pt-12"
              style="border-top:1px solid var(--divider);">
-            <div class="md:col-span-6 space-y-6 md:space-y-8">
-                <a class="group flex items-center gap-3 md:gap-4 text-xl sm:text-2xl md:text-4xl font-headline italic t-text nav-link"
+            <div class="md:col-span-4 space-y-6 md:space-y-8">
+                <a class="group flex items-center gap-3 md:gap-4 text-xl sm:text-2xl md:text-3xl font-headline italic t-text nav-link"
                    href="mailto:hello@nunik.co"
                    onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
                     hello@nunik.co
@@ -901,6 +908,29 @@
                     Tell us what is slowing your business down. We reply with a scoped plan and a fixed price.
                     Enquiries are handled with absolute discretion.
                 </p>
+            </div>
+            <div class="md:col-span-3 space-y-3 md:space-y-4">
+                <p class="font-mono text-xs t-accent uppercase tracking-widest mb-2" style="opacity:0.6;">Services</p>
+                <ul class="space-y-2.5 t-footer text-xs uppercase tracking-widest">
+                    <li><a class="nav-link hover:t-text" href="/services/automation/">Automation</a></li>
+                    <li><a class="nav-link hover:t-text" href="/services/brand/">Brand</a></li>
+                    <li><a class="nav-link hover:t-text" href="/services/web/">Web</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-3 md:space-y-4">
+                <p class="font-mono text-xs t-accent uppercase tracking-widest mb-2" style="opacity:0.6;">Industries</p>
+                <ul class="space-y-2.5 t-footer text-xs uppercase tracking-widest">
+                    <li><a class="nav-link hover:t-text" href="/industries/trades/">Trades</a></li>
+                    <li><a class="nav-link hover:t-text" href="/industries/hospitality/">Hospitality</a></li>
+                    <li><a class="nav-link hover:t-text" href="/industries/automotive/">Automotive</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2 space-y-3 md:space-y-4">
+                <p class="font-mono text-xs t-accent uppercase tracking-widest mb-2" style="opacity:0.6;">Locations</p>
+                <ul class="space-y-2.5 t-footer text-xs uppercase tracking-widest">
+                    <li><a class="nav-link hover:t-text" href="/locations/canberra/">Canberra</a></li>
+                </ul>
+                <p class="t-faint text-[10px] tracking-widest mt-3">Delivered remotely worldwide.</p>
             </div>
             <div class="md:col-span-12 footer-glass-bar flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-2">
                 <div class="flex space-x-8 md:space-x-12">
@@ -931,6 +961,44 @@
             <span class="initiate-label text-[9px] md:text-[10px] font-bold tracking-widest px-1 md:px-4 uppercase text-white whitespace-nowrap">Initiate Protocol</span>
             <div class="w-8 h-8 md:w-10 md:h-10 bg-white/15 rounded-full flex items-center justify-center flex-shrink-0">
                 <svg class="text-white" width="18" height="18" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M440-80v-320H280l360-480v320h160L440-80Z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         PROJECT PREVIEW MODAL (Archive clicks open this)
+         ============================================================ -->
+    <div id="project-modal" class="hidden fixed inset-0 z-[100]" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+        <div id="project-modal-backdrop" class="absolute inset-0" style="background:rgba(11,14,18,0.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);"></div>
+        <div class="relative h-full flex items-center justify-center p-3 md:p-8">
+            <div class="glass-card rounded-xl w-full max-w-6xl flex flex-col overflow-hidden" style="height:min(90vh,900px);">
+                <div class="flex items-center justify-between gap-3 md:gap-5 px-4 md:px-7 py-3 md:py-4 border-b" style="border-color:var(--glass-border);">
+                    <div class="flex-1 min-w-0">
+                        <p id="project-modal-tag" class="font-mono text-[10px] md:text-xs t-accent uppercase tracking-widest truncate" style="opacity:0.7;"></p>
+                        <h3 id="project-modal-title" class="font-headline italic text-lg md:text-2xl t-text mt-0.5 truncate"></h3>
+                    </div>
+                    <a id="project-modal-open" href="#" target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-2 t-accent uppercase tracking-[0.2em] text-[10px] md:text-xs font-semibold whitespace-nowrap nav-link" style="border-bottom:1px solid var(--accent);padding-bottom:3px;">
+                        Open in new tab
+                        <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
+                    </a>
+                    <button id="project-modal-close" class="flex items-center justify-center w-10 h-10 rounded-xl hover:bg-white/10 transition-colors nav-link t-text flex-shrink-0" aria-label="Close preview">
+                        <svg width="20" height="20" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+                    </button>
+                </div>
+                <div class="flex-1 relative" style="background:var(--surface-container, #1d2024);">
+                    <iframe id="project-modal-iframe" class="absolute inset-0 w-full h-full border-0" src="about:blank" loading="lazy" referrerpolicy="no-referrer" title="Project preview"></iframe>
+                    <div id="project-modal-fallback" class="hidden absolute inset-0 flex items-center justify-center p-6 md:p-8" style="background:var(--bg);">
+                        <div class="max-w-md text-center">
+                            <p class="font-mono text-xs t-accent uppercase tracking-widest mb-3" style="opacity:0.6;">Preview blocked</p>
+                            <h4 class="font-headline italic text-2xl md:text-3xl t-text mb-4 leading-tight">This site does not allow embedding.</h4>
+                            <p class="t-muted text-sm mb-6 leading-relaxed">Most production sites block iframe previews for security. Open the live site in a new tab instead.</p>
+                            <a id="project-modal-fallback-link" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 t-accent uppercase tracking-[0.3em] text-xs md:text-sm font-semibold nav-link" style="border-bottom:1px solid var(--accent);padding-bottom:4px;">
+                                Open live site
+                                <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

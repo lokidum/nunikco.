@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Landscaping Business Automation and CRM | Nunik Co.</title>
-    <meta name="description" content="Custom website, GoHighLevel CRM and automation for landscaping businesses across Australia. Stop missing leads. Start charging properly."/>
+    <meta name="description" content="Landscaping business automation and CRM for Australian crews. Quote to invoice in one system, seasonal renewals, crew dispatch with photos, material tracking."/>
     <meta name="theme-color" content="#B45E45"/>
     <link rel="canonical" href="https://nunik.co/industries/trades/landscaping/"/>
     <link rel="alternate" hreflang="en-au" href="https://nunik.co/industries/trades/landscaping/"/>
@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/public/favicons/apple-touch-icon.png"/>
     <link rel="manifest" href="/public/favicons/site.webmanifest"/>
     <meta property="og:title" content="Landscaping Business Automation and CRM | Nunik Co."/>
-    <meta property="og:description" content="Custom website, GoHighLevel CRM and automation for landscaping businesses across Australia. Stop missing leads. Start charging properly."/>
+    <meta property="og:description" content="Landscaping business automation and CRM for Australian crews. Quote to invoice in one system, seasonal renewals, crew dispatch with photos, material tracking."/>
     <meta property="og:url" content="https://nunik.co/industries/trades/landscaping/"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://nunik.co/og-image.jpg"/>
@@ -23,9 +23,9 @@
     <meta property="og:site_name" content="Nunik Co."/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Landscaping Business Automation and CRM | Nunik Co."/>
-    <meta name="twitter:description" content="Custom website, GoHighLevel CRM and automation for landscaping businesses across Australia. Stop missing leads. Start charging properly."/>
+    <meta name="twitter:description" content="Landscaping business automation and CRM for Australian crews. Quote to invoice in one system, seasonal renewals, crew dispatch with photos, material tracking."/>
     <meta name="twitter:image" content="https://nunik.co/og-image.jpg"/>
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://nunik.co/industries/trades/landscaping/#service","name":"Automation and Web for Landscaping Businesses","serviceType":"Business automation for landscaping","provider":{"@type":"ProfessionalService","name":"Nunik Co.","url":"https://nunik.co/"},"areaServed":"Australia","url":"https://nunik.co/industries/trades/landscaping/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nunik.co/"},{"@type":"ListItem","position":2,"name":"Industries","item":"https://nunik.co/industries/"},{"@type":"ListItem","position":3,"name":"Trades","item":"https://nunik.co/industries/trades/"},{"@type":"ListItem","position":4,"name":"Landscaping","item":"https://nunik.co/industries/trades/landscaping/"}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://nunik.co/industries/trades/landscaping/#service","name":"Landscaping","serviceType":"Business automation for landscaping","provider":{"@type":"ProfessionalService","name":"Nunik Co.","url":"https://nunik.co/","email":"hello@nunik.co","address":{"@type":"PostalAddress","addressLocality":"Canberra","addressRegion":"ACT","addressCountry":"AU"}},"areaServed":"Australia","description":"Landscaping business automation and CRM for Australian crews. Quote to invoice in one system, seasonal renewals, crew dispatch with photos, material tracking.","url":"https://nunik.co/industries/trades/landscaping/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nunik.co/"},{"@type":"ListItem","position":2,"name":"Industries","item":"https://nunik.co/industries/"},{"@type":"ListItem","position":3,"name":"Trades","item":"https://nunik.co/industries/trades/"},{"@type":"ListItem","position":4,"name":"Landscaping","item":"https://nunik.co/industries/trades/landscaping/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"We do both one-off jobs and weekly maintenance rounds. Can the same system handle both?","acceptedAnswer":{"@type":"Answer","text":"Yes. One-off quotes flow through a standard pipeline with a single invoice at completion. Maintenance rounds sit on a recurring schedule with auto-generated visits, fixed monthly billing or per-visit invoicing, and a renewal flow at season change. The crew app shows both job types on the same daily run sheet so your team works one screen, not two."}},{"@type":"Question","name":"Our crews are not great with apps. Will they actually use this?","acceptedAnswer":{"@type":"Answer","text":"The crew view is built for gloves and sun glare. Big tap targets, three buttons per job (start, photos, complete), and offline mode for rural properties. We test it on the phones your team already uses, not a demo device. If a crew member can take a photo and tap done, they can run the day."}},{"@type":"Question","name":"What happens with seasonal contracts when summer ends?","acceptedAnswer":{"@type":"Answer","text":"The system flags expiring contracts 30 days out and drafts a renewal email with the next-season schedule and any price adjustment. The client clicks accept, the contract rolls over, and visits populate the calendar. Non-responders go into a follow-up sequence. You stop losing clients to admin gaps between seasons."}},{"@type":"Question","name":"Can we track materials like mulch and fertiliser against specific job sites?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each job pulls from a material list with default quantities by service type. Crews adjust on site if a property needed more mulch than quoted. Costs flow through to job profitability reports so you see which sites and which service lines actually pay. Reordering thresholds trigger supplier emails before you run out."}}]}]}</script>
     <script>
         (function(){
             var t = localStorage.getItem('nunik-theme');
@@ -38,7 +38,73 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
-        tailwind.config = { darkMode: "class", theme: { extend: { fontFamily: { headline: ["Newsreader","serif"], body: ["Inter","sans-serif"], label: ["Inter","sans-serif"] } } }, }
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#e1e2e8",
+                        "surface-bright": "#36393e",
+                        "surface-dim": "#111417",
+                        "error-container": "#93000a",
+                        "on-primary": "#5b1b07",
+                        "inverse-primary": "#974730",
+                        "on-secondary-container": "#9abbbb",
+                        "background": "#111417",
+                        "surface-container": "#1d2024",
+                        "outline": "#a28c86",
+                        "surface-container-high": "#272a2e",
+                        "tertiary": "#c4c7ca",
+                        "on-secondary-fixed": "#002020",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c4c7ca",
+                        "on-secondary-fixed-variant": "#2c4c4c",
+                        "on-secondary": "#143536",
+                        "on-primary-container": "#fffdff",
+                        "tertiary-container": "#727679",
+                        "inverse-surface": "#e1e2e8",
+                        "on-tertiary": "#2d3133",
+                        "primary-fixed-dim": "#ffb5a0",
+                        "inverse-on-surface": "#2e3135",
+                        "tertiary-fixed": "#e0e3e6",
+                        "on-tertiary-fixed": "#181c1e",
+                        "on-tertiary-container": "#fefeff",
+                        "on-surface": "#e1e2e8",
+                        "error": "#ffb4ab",
+                        "primary": "#ffb5a0",
+                        "primary-fixed": "#ffdbd1",
+                        "on-primary-fixed": "#3b0900",
+                        "primary-container": "#b35d44",
+                        "on-surface-variant": "#dbc1ba",
+                        "surface-tint": "#ffb5a0",
+                        "secondary-fixed": "#c6e9e9",
+                        "secondary-container": "#2c4c4c",
+                        "on-primary-fixed-variant": "#78301b",
+                        "surface-variant": "#323539",
+                        "surface-container-lowest": "#0b0e12",
+                        "secondary": "#abcdcd",
+                        "surface-container-low": "#191c20",
+                        "secondary-fixed-dim": "#abcdcd",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#323539",
+                        "outline-variant": "#55433e",
+                        "on-tertiary-fixed-variant": "#43474a",
+                        "surface": "#111417"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
     </script>
     <link href="/style.min.css" rel="stylesheet"/>
     <style>
@@ -116,41 +182,75 @@
                     <span class="font-mono text-xs t-accent block eyebrow-rule reveal-item" style="opacity:0.6;">Trades</span>
                     <h1 class="font-headline italic text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-none t-text reveal-item">Landscaping</h1>
                     <p class="text-[10px] md:text-xs uppercase tracking-widest t-muted mt-3 reveal-item">Built for landscaping and garden care</p>
-                    <p class="text-base md:text-xl leading-relaxed t-muted max-w-3xl mt-8 md:mt-12 reveal-item">Quotes drafted on the back of a hat. Seasonal contracts that never get renewed because the diary is already full. Crews showing up to jobs the office forgot to scope.</p>
+                    <p class="text-base md:text-xl leading-relaxed t-muted max-w-3xl mt-8 md:mt-12 reveal-item">Landscaping crews lose hours to paperwork that should already be done. Quotes sit in a notebook, the recurring round lives in someone's head, and invoices go out a week after the job. We build one system that handles quote, job, crew, and invoice from a single record, with a mobile app the team will actually open.</p>
                     <div class="flex flex-wrap items-center gap-4 mt-10 md:mt-12 reveal-item">
-                        <a href="#book" class="inline-flex items-center gap-2 t-accent uppercase tracking-[0.3em] text-xs md:text-sm font-semibold nav-link" style="border-bottom:1px solid var(--accent);padding-bottom:4px;">
-                            Book a 15-minute call
-                            <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
-                        </a>
-                        <a href="/#connect" class="inline-flex items-center gap-2 t-muted uppercase tracking-[0.3em] text-xs md:text-sm font-medium nav-link" style="border-bottom:1px solid var(--divider);padding-bottom:4px;">
-                            Send a brief instead
-                        </a>
+                        <a href="#book" class="inline-flex items-center gap-2 t-accent uppercase tracking-[0.3em] text-xs md:text-sm font-semibold nav-link" style="border-bottom:1px solid var(--accent);padding-bottom:4px;">Book a 15-minute call <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a>
+                        <a href="/#connect" class="inline-flex items-center gap-2 t-muted uppercase tracking-[0.3em] text-xs md:text-sm font-medium nav-link" style="border-bottom:1px solid var(--divider);padding-bottom:4px;">Send a brief instead</a>
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="relative py-20 md:py-28 frosted-section">
+        </section>        <section class="relative py-20 md:py-28 frosted-section">
+            <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start">
+                    <div class="reveal-container">
+                        <span class="font-mono text-xs t-accent block eyebrow-rule reveal-item">The shape of the day</span>
+                        <h2 class="font-headline italic text-3xl md:text-5xl leading-tight reveal-item t-text">*Quotes lost, rounds forgotten, invoices late.*</h2>
+                    </div>
+                    <div class="reveal-container space-y-4 max-w-2xl">
+                        <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Landscaping runs on memory and goodwill until it does not. The quote you scribbled at the Tuesday walk-through sits in a notebook on the ute dashboard. The recurring fortnightly round at the Yarralumla property lives in the foreman's head, and the foreman is on leave next week.</p>
+                            <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Invoices go out when someone has time on Friday night, which means some weeks they do not go out at all. Materials get bought on the company card without anyone matching them back to a job, so you find out at tax time which sites lost money.</p>
+                            <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Then there is the seasonal handover. Spring contracts roll into summer schedules, autumn brings hedge work, and winter is pruning and planning. Without a system, every season change is a manual rebuild of the calendar. Clients drop off because nobody followed up at renewal time.</p>
+                            <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">The crew on the ground is fine. The work is good. The bottleneck is the office, and the office is usually one person trying to do quotes, payroll, scheduling, and chasing late payers between phone calls. The business cannot grow past that one person without a different operating system underneath it.</p>
+                    </div>
+                </div>
+            </div>
+        </section>        <section class="relative py-20 md:py-28">
             <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start">
                     <div class="reveal-container">
                         <span class="font-mono text-xs t-accent block eyebrow-rule reveal-item">The build</span>
-                        <h2 class="font-headline italic text-3xl md:text-5xl leading-tight reveal-item t-text">What we ship.</h2>
-                        <p class="text-sm md:text-base leading-relaxed t-muted mt-6 reveal-item">Three to six weeks from brief to live. A clean website, the CRM behind it, and the automations that mean leads stop slipping through.</p>
+                        <h2 class="font-headline italic text-3xl md:text-5xl leading-tight reveal-item t-text">*One pipeline from quote to invoice.*</h2>
+                        <p class="text-sm md:text-base leading-relaxed t-muted mt-6 reveal-item">We build a single landscaping operations system that handles the quote, the recurring contract, the crew run sheet, and the invoice from one record. No double entry, no chasing crews for sign-off photos, no missed renewals when spring hits.</p>
                     </div>
                     <div class="space-y-5 reveal-container">
                         <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
                             <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Core build for landscaping</p>
-                            <ul class="text-sm t-muted space-y-3"><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Quote-to-job-to-invoice pipeline in GoHighLevel</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Seasonal contract auto-renewal with customer email confirmation</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Crew dispatch with job notes and photos sent to mobile</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Recurring maintenance bookings managed from a single calendar</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Customer review request triggered by paid invoice</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Material and time estimates tracked against quoted price</li></ul>
+                            <ul class="text-sm t-muted space-y-3"><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Quote builder with measured area pricing and material rates</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Quote to job conversion with one tap, no rekeying</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Seasonal contract auto-renewal with notice emails</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Crew dispatch app with route, notes, and before-after photos</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Material consumption logged against each job site</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Time tracking per crew member with start, travel, on-site</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Auto-invoice on job completion with photo attachments</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Customer portal showing visit history and next scheduled date</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Weather-aware rescheduling with client SMS notice</li></ul>
                         </div>
                         <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
                             <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Recurring care</p>
-                            <p class="text-sm t-muted leading-relaxed">Monthly retainer covers seasonal contract refreshes, new workflow requests, and quarterly pipeline review.</p>
+                            <p class="text-sm t-muted leading-relaxed">We keep the engine tuned each month. Schedule changes for weather windows, new service lines for hedge work or turf renovation, updated pricing tables, and crew onboarding flows when you hire. We monitor quote-to-job conversion, average ticket size, and recurring contract retention. When a pattern shows up, we adjust the system. Your office stays small while the route list grows.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-                <section class="relative py-20 md:py-28 frosted-section" id="book">
+        </section>        <section class="relative py-20 md:py-28 frosted-section">
+            <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+                <div class="mb-10 md:mb-14 reveal-container">
+                    <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">How it runs</span>
+                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-6xl tracking-tighter reveal-item t-text">*A day on the route, on one screen.*</h2>
+                </div>
+                <div class="reveal-container max-w-3xl space-y-4">
+                    <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Six in the morning, the foreman opens the crew app. The day's run sheet is already there, ordered by suburb, with drive time built in. Each job shows the gate code, the dog warning, the bin location, and a photo from last visit so they know what good looks like.</p>
+                    <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">At the first property the crew taps start. Two photos before, the mow and edge happens, two photos after. If they used extra mulch on the back bed, they bump the quantity on the material list. Tap complete. The invoice generates in the office system, the client gets a job-done SMS with the photos, and the next address loads.</p>
+                    <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Midday a thunderstorm warning hits the Bureau feed. The system flags three afternoon properties as weather-affected and drafts reschedule messages for your approval. One tap sends them. The crew gets a revised run sheet on the same screen, no phone calls, no confused clients.</p>
+                    <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">By five the day's invoices are sent, the photos are attached, materials are deducted from stock, and tomorrow's run sheet is built. The office did not chase a single crew member. The owner sees revenue, hours worked, and gross margin per job on one dashboard, with the week's renewals already queued for review.</p>
+                </div>
+            </div>
+        </section>        <section class="relative py-20 md:py-28">
+            <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+                <div class="mb-12 md:mb-16 reveal-container">
+                    <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">Common questions</span>
+                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-6xl tracking-tighter reveal-item t-text">Before you brief us.</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 reveal-container">
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item"><h3 class="font-headline italic text-xl md:text-2xl t-text mb-3">We do both one-off jobs and weekly maintenance rounds. Can the same system handle both?</h3><p class="text-sm t-muted leading-relaxed">Yes. One-off quotes flow through a standard pipeline with a single invoice at completion. Maintenance rounds sit on a recurring schedule with auto-generated visits, fixed monthly billing or per-visit invoicing, and a renewal flow at season change. The crew app shows both job types on the same daily run sheet so your team works one screen, not two.</p></div>
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item"><h3 class="font-headline italic text-xl md:text-2xl t-text mb-3">Our crews are not great with apps. Will they actually use this?</h3><p class="text-sm t-muted leading-relaxed">The crew view is built for gloves and sun glare. Big tap targets, three buttons per job (start, photos, complete), and offline mode for rural properties. We test it on the phones your team already uses, not a demo device. If a crew member can take a photo and tap done, they can run the day.</p></div>
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item"><h3 class="font-headline italic text-xl md:text-2xl t-text mb-3">What happens with seasonal contracts when summer ends?</h3><p class="text-sm t-muted leading-relaxed">The system flags expiring contracts 30 days out and drafts a renewal email with the next-season schedule and any price adjustment. The client clicks accept, the contract rolls over, and visits populate the calendar. Non-responders go into a follow-up sequence. You stop losing clients to admin gaps between seasons.</p></div>
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item"><h3 class="font-headline italic text-xl md:text-2xl t-text mb-3">Can we track materials like mulch and fertiliser against specific job sites?</h3><p class="text-sm t-muted leading-relaxed">Yes. Each job pulls from a material list with default quantities by service type. Crews adjust on site if a property needed more mulch than quoted. Costs flow through to job profitability reports so you see which sites and which service lines actually pay. Reordering thresholds trigger supplier emails before you run out.</p></div>
+                </div>
+            </div>
+        </section>        <section class="relative py-20 md:py-28 frosted-section" id="book">
             <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
                 <div class="mb-12 md:mb-16 reveal-container">
                     <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">Book directly</span>
@@ -161,39 +261,43 @@
                     <div id="calendly-widget" class="calendly-inline-widget" data-url="https://calendly.com/hello-nunik/ai-strategy-call?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;background_color=111417&amp;text_color=e1e4e7&amp;primary_color=b45e45" style="width:100%;height:720px;"></div>
                 </div>
             </div>
-        </section>
-        <section class="relative py-20 md:py-28">
+        </section>        <section class="relative py-20 md:py-28">
             <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
                 <div class="mb-12 md:mb-16 reveal-container">
                     <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">Related</span>
-                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-7xl tracking-tighter reveal-item t-text">More for trades.</h2>
+                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-6xl tracking-tighter reveal-item t-text">More.</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 reveal-container">
-                    <a href="/industries/trades/" class="glass-card rounded-xl p-6 md:p-8 reveal-item nav-link block group">
-                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">Hub</p>
-                        <h3 class="font-headline italic text-3xl t-text mb-3">All trades</h3>
-                        <p class="t-muted text-sm leading-relaxed">Browse the other trades we engineer for.</p>
-                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">Browse <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
-                    </a>
                     <a href="/services/automation/" class="glass-card rounded-xl p-6 md:p-8 reveal-item nav-link block group">
-                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">01 / युक्ति</p>
-                        <h3 class="font-headline italic text-3xl t-text mb-3">Yukti</h3>
-                        <p class="t-muted text-sm leading-relaxed">The automation service in full. n8n, GoHighLevel, integrations.</p>
-                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">Automation <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
+                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">Sister service</p>
+                        <h3 class="font-headline italic text-3xl t-text mb-3">Yukti automation</h3>
+                        <p class="t-muted text-sm leading-relaxed">The automation engine behind the crew app, dispatch logic, and recurring contract flows.</p>
+                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">More <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
+                    </a>
+                    <a href="/industries/trades/" class="glass-card rounded-xl p-6 md:p-8 reveal-item nav-link block group">
+                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">Parent hub</p>
+                        <h3 class="font-headline italic text-3xl t-text mb-3">All trades</h3>
+                        <p class="t-muted text-sm leading-relaxed">How we build operations systems for plumbing, electrical, cleaning, pest control, and landscaping crews.</p>
+                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">More <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
+                    </a>
+                    <a href="/industries/trades/cleaning/" class="glass-card rounded-xl p-6 md:p-8 reveal-item nav-link block group">
+                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">Sibling trade</p>
+                        <h3 class="font-headline italic text-3xl t-text mb-3">Cleaning</h3>
+                        <p class="t-muted text-sm leading-relaxed">Recurring-visit routing, crew checklists, and client portals for commercial and residential cleaning businesses.</p>
+                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">More <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
                     </a>
                 </div>
             </div>
-        </section>
-    </main>
+        </section>    </main>
     <footer class="w-full pt-20 md:pt-32 pb-10 md:pb-12 px-6 md:px-8 flex flex-col items-start space-y-12 md:space-y-16">
         <div class="w-full reveal-container">
-            <h2 class="text-4xl sm:text-5xl md:text-[8rem] lg:text-[10rem] uppercase leading-none tracking-tighter font-headline t-accent reveal-item">
+            <h2 class="text-4xl sm:text-5xl md:text-[8rem] lg:text-[10rem] uppercase leading-none tracking-tight font-headline t-accent reveal-item">
                 START YOUR <br/><span class="editorial-reveal inline-block">TRANSFORMATION<span style="color:var(--accent);">.</span></span>
             </h2>
         </div>
         <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pt-8 md:pt-12" style="border-top:1px solid var(--divider);">
-            <div class="md:col-span-6 space-y-6 md:space-y-8">
-                <a class="group flex items-center gap-3 md:gap-4 text-xl sm:text-2xl md:text-4xl font-headline italic t-text nav-link" href="mailto:hello@nunik.co" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
+            <div class="md:col-span-4 space-y-6 md:space-y-8">
+                <a class="group flex items-center gap-3 md:gap-4 text-xl sm:text-2xl md:text-3xl font-headline italic t-text nav-link" href="mailto:hello@nunik.co" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
                     hello@nunik.co
                     <svg class="t-accent group-hover:translate-x-2 transition-transform" width="24" height="24" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
                 </a>
@@ -201,6 +305,29 @@
                     Tell us what is slowing your business down. We reply with a scoped plan and a fixed price.
                     Enquiries are handled with absolute discretion.
                 </p>
+            </div>
+            <div class="md:col-span-3 space-y-3 md:space-y-4">
+                <p class="font-mono text-xs t-accent uppercase tracking-widest mb-2" style="opacity:0.6;">Services</p>
+                <ul class="space-y-2.5 t-footer text-xs uppercase tracking-widest">
+                    <li><a class="nav-link hover:t-text" href="/services/automation/">Automation</a></li>
+                    <li><a class="nav-link hover:t-text" href="/services/brand/">Brand</a></li>
+                    <li><a class="nav-link hover:t-text" href="/services/web/">Web</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-3 md:space-y-4">
+                <p class="font-mono text-xs t-accent uppercase tracking-widest mb-2" style="opacity:0.6;">Industries</p>
+                <ul class="space-y-2.5 t-footer text-xs uppercase tracking-widest">
+                    <li><a class="nav-link hover:t-text" href="/industries/trades/">Trades</a></li>
+                    <li><a class="nav-link hover:t-text" href="/industries/hospitality/">Hospitality</a></li>
+                    <li><a class="nav-link hover:t-text" href="/industries/automotive/">Automotive</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2 space-y-3 md:space-y-4">
+                <p class="font-mono text-xs t-accent uppercase tracking-widest mb-2" style="opacity:0.6;">Locations</p>
+                <ul class="space-y-2.5 t-footer text-xs uppercase tracking-widest">
+                    <li><a class="nav-link hover:t-text" href="/locations/canberra/">Canberra</a></li>
+                </ul>
+                <p class="t-faint text-[10px] tracking-widest mt-3">Delivered remotely worldwide.</p>
             </div>
             <div class="md:col-span-12 footer-glass-bar flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-2">
                 <div class="flex space-x-8 md:space-x-12">
@@ -219,7 +346,7 @@
     </footer>
 
     <div id="initiate-btn" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 nav-link">
-        <a href="#book" class="initiate-pulse initiate-inner flex items-center gap-2 md:gap-4 rounded-full" style="background:var(--accent);border:1px solid rgba(255,255,255,0.15);padding:0.75rem 1rem;">
+        <a href="#book" class="initiate-pulse initiate-inner cursor-pointer no-underline flex items-center gap-2 md:gap-4 rounded-full" style="background:var(--accent);border:1px solid rgba(255,255,255,0.15);padding:0.75rem 1rem;text-decoration:none;color:#fff;">
             <span class="initiate-label text-[9px] md:text-[10px] font-bold tracking-widest px-1 md:px-4 uppercase text-white whitespace-nowrap">Book a Call</span>
             <div class="w-8 h-8 md:w-10 md:h-10 bg-white/15 rounded-full flex items-center justify-center flex-shrink-0">
                 <svg class="text-white" width="18" height="18" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M440-80v-320H280l360-480v320h160L440-80Z"/></svg>

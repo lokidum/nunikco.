@@ -404,6 +404,117 @@ select.terminal-input option {
 }
 
 /* ================================================
+   Industry pills (Yukti section)
+   Solid rust base. A single bright comet head with
+   a short tail chases itself around the pill's
+   rounded border. The bright trail is restricted
+   to a thin ring on the perimeter via the classic
+   padding + mask-composite trick. Each pill starts
+   the chase at a different point on the loop.
+   ================================================ */
+
+/* @property lets us animate a conic-gradient angle
+   smoothly (without rotating the whole element,
+   which would break the perimeter mask). */
+@property --orbit-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.industry-pill {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: rgba(180, 94, 69, 0.48);
+    border: 1px solid rgba(180, 94, 69, 0.32) !important;
+    box-shadow:
+        0 0 14px rgba(180, 94, 69, 0.12);
+    transition:
+        border-color 0.5s ease,
+        box-shadow 0.5s ease,
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.industry-pill::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.25px;
+    background: conic-gradient(
+        from var(--orbit-angle),
+        transparent 0deg,
+        rgba(255, 225, 200, 0.55) 10deg,
+        rgba(255, 215, 190, 0.35) 28deg,
+        rgba(255, 200, 170, 0.15) 55deg,
+        transparent 90deg,
+        transparent 360deg
+    );
+    /* Two-layer mask + exclude composite: shows the
+       conic gradient only in the padding ring, not
+       the interior. */
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    animation: pill-orbit 5.5s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.industry-pill:hover {
+    border-color: rgba(180, 94, 69, 0.5) !important;
+    box-shadow:
+        0 0 22px rgba(180, 94, 69, 0.26);
+    transform: translateY(-1px);
+}
+
+/* Light-mode pill: lower-opacity rust base; the
+   comet shifts to a deeper rust so it reads on
+   the cream background. */
+html:not(.dark) .industry-pill {
+    background: rgba(180, 94, 69, 0.20);
+    border-color: rgba(180, 94, 69, 0.28) !important;
+    box-shadow:
+        0 0 12px rgba(180, 94, 69, 0.08);
+}
+html:not(.dark) .industry-pill::before {
+    background: conic-gradient(
+        from var(--orbit-angle),
+        transparent 0deg,
+        rgba(120, 50, 30, 0.42) 10deg,
+        rgba(160, 80, 55, 0.30) 28deg,
+        rgba(180, 94, 69, 0.13) 55deg,
+        transparent 90deg,
+        transparent 360deg
+    );
+}
+html:not(.dark) .industry-pill:hover {
+    border-color: rgba(180, 94, 69, 0.42) !important;
+    box-shadow:
+        0 0 18px rgba(180, 94, 69, 0.16);
+}
+
+/* Stagger the start so each pill's comet is at a
+   different point on the loop at any given moment.
+   5.5s loop / 3 pills = ~1.83s offset (120deg apart). */
+.industry-pill:nth-child(2)::before { animation-delay: -1.83s; }
+.industry-pill:nth-child(3)::before { animation-delay: -3.66s; }
+
+@keyframes pill-orbit {
+    to { --orbit-angle: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .industry-pill::before { animation: none; }
+}
+
+/* ================================================
    Theme-aware utility classes
    ================================================ */
 .t-text       { color: var(--text); }

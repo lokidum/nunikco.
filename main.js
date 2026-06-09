@@ -235,6 +235,77 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // ── Project preview modal (Archive cards) ──────────
+    const projectModal = document.getElementById("project-modal");
+    if (projectModal) {
+        const iframe   = document.getElementById("project-modal-iframe");
+        const titleEl  = document.getElementById("project-modal-title");
+        const tagEl    = document.getElementById("project-modal-tag");
+        const openLink = document.getElementById("project-modal-open");
+        const fbLink   = document.getElementById("project-modal-fallback-link");
+        const fbPanel  = document.getElementById("project-modal-fallback");
+        const closeBtn = document.getElementById("project-modal-close");
+        const backdrop = document.getElementById("project-modal-backdrop");
+
+        let fbTimer = null;
+        let lastFocus = null;
+
+        function openProjectModal(card) {
+            const url  = card.getAttribute("data-project-url");
+            const name = card.getAttribute("data-project-name") || "Project preview";
+            const tag  = card.getAttribute("data-project-tag")  || "";
+            if (!url) return;
+            lastFocus = document.activeElement;
+            titleEl.textContent = name;
+            tagEl.textContent   = tag;
+            openLink.href = url;
+            fbLink.href   = url;
+            fbPanel.classList.add("hidden");
+            iframe.src = url;
+            projectModal.classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+            if (lenis && typeof lenis.stop === "function") lenis.stop();
+            // If the iframe doesn't fire a load event within 6s (likely blocked), reveal the fallback.
+            clearTimeout(fbTimer);
+            let loaded = false;
+            iframe.addEventListener("load", () => { loaded = true; }, { once: true });
+            fbTimer = setTimeout(() => { if (!loaded) fbPanel.classList.remove("hidden"); }, 6000);
+            // Move focus into the modal for keyboard users.
+            setTimeout(() => closeBtn.focus(), 50);
+        }
+
+        function closeProjectModal() {
+            projectModal.classList.add("hidden");
+            iframe.src = "about:blank";
+            document.body.style.overflow = "";
+            fbPanel.classList.add("hidden");
+            clearTimeout(fbTimer);
+            if (lenis && typeof lenis.start === "function") lenis.start();
+            if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+        }
+
+        document.querySelectorAll(".archive-card[data-project-url]").forEach(card => {
+            card.addEventListener("click", (e) => {
+                e.preventDefault();
+                openProjectModal(card);
+            });
+            card.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openProjectModal(card);
+                }
+            });
+        });
+
+        closeBtn?.addEventListener("click", closeProjectModal);
+        backdrop?.addEventListener("click", closeProjectModal);
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && !projectModal.classList.contains("hidden")) {
+                closeProjectModal();
+            }
+        });
+    }
+
     // ── Hero 3D kinetic typography (brand wordmark SVG, per-path tilt) ──
     const heroTitle = document.getElementById("hero-title");
     if (heroTitle) {
@@ -409,14 +480,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initiateBtn?.addEventListener("click", triggerProtocol);
 
-    // Hide Initiate button when footer scrolls into view
-    const connectFooter = document.getElementById("connect");
-    if (connectFooter && initiateBtn) {
+    // Hide Initiate button when the footer scrolls into view.
+    // Home page has <footer id="connect">; subpages just have <footer>.
+    // Falling back to <footer> keeps the rule active on every page.
+    const initiateFooterTrigger =
+        document.getElementById("connect") ||
+        document.querySelector("footer");
+    if (initiateFooterTrigger && initiateBtn) {
         const footerObs = new IntersectionObserver(
             ([entry]) => initiateBtn.classList.toggle("footer-visible", entry.isIntersecting),
             { threshold: 0.06 }
         );
-        footerObs.observe(connectFooter);
+        footerObs.observe(initiateFooterTrigger);
     }
 
     // Connect nav links trigger protocol on first visit

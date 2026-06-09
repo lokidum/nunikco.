@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Pest Control Website and Automation Agency | Nunik Co.</title>
-    <meta name="description" content="Custom website, GoHighLevel CRM and automation for pest control businesses across Australia. Stop missing leads. Start charging properly."/>
+    <meta name="description" content="Custom website, recurring contract automation, SMS reminders, and review flows for Australian pest control businesses. Quarterly callbacks that book themselves."/>
     <meta name="theme-color" content="#B45E45"/>
     <link rel="canonical" href="https://nunik.co/industries/trades/pest-control/"/>
     <link rel="alternate" hreflang="en-au" href="https://nunik.co/industries/trades/pest-control/"/>
@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/public/favicons/apple-touch-icon.png"/>
     <link rel="manifest" href="/public/favicons/site.webmanifest"/>
     <meta property="og:title" content="Pest Control Website and Automation Agency | Nunik Co."/>
-    <meta property="og:description" content="Custom website, GoHighLevel CRM and automation for pest control businesses across Australia. Stop missing leads. Start charging properly."/>
+    <meta property="og:description" content="Custom website, recurring contract automation, SMS reminders, and review flows for Australian pest control businesses. Quarterly callbacks that book themselves."/>
     <meta property="og:url" content="https://nunik.co/industries/trades/pest-control/"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://nunik.co/og-image.jpg"/>
@@ -23,9 +23,9 @@
     <meta property="og:site_name" content="Nunik Co."/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Pest Control Website and Automation Agency | Nunik Co."/>
-    <meta name="twitter:description" content="Custom website, GoHighLevel CRM and automation for pest control businesses across Australia. Stop missing leads. Start charging properly."/>
+    <meta name="twitter:description" content="Custom website, recurring contract automation, SMS reminders, and review flows for Australian pest control businesses. Quarterly callbacks that book themselves."/>
     <meta name="twitter:image" content="https://nunik.co/og-image.jpg"/>
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://nunik.co/industries/trades/pest-control/#service","name":"Automation and Web for Pest Control Businesses","serviceType":"Business automation for pest control","provider":{"@type":"ProfessionalService","name":"Nunik Co.","url":"https://nunik.co/"},"areaServed":"Australia","url":"https://nunik.co/industries/trades/pest-control/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nunik.co/"},{"@type":"ListItem","position":2,"name":"Industries","item":"https://nunik.co/industries/"},{"@type":"ListItem","position":3,"name":"Trades","item":"https://nunik.co/industries/trades/"},{"@type":"ListItem","position":4,"name":"Pest Control","item":"https://nunik.co/industries/trades/pest-control/"}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://nunik.co/industries/trades/pest-control/#service","name":"Pest Control","serviceType":"Business automation for pest control","provider":{"@type":"ProfessionalService","name":"Nunik Co.","url":"https://nunik.co/","email":"hello@nunik.co","address":{"@type":"PostalAddress","addressLocality":"Canberra","addressRegion":"ACT","addressCountry":"AU"}},"areaServed":"Australia","description":"Custom website, recurring contract automation, SMS reminders, and review flows for Australian pest control businesses. Quarterly callbacks that book themselves.","url":"https://nunik.co/industries/trades/pest-control/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nunik.co/"},{"@type":"ListItem","position":2,"name":"Industries","item":"https://nunik.co/industries/"},{"@type":"ListItem","position":3,"name":"Trades","item":"https://nunik.co/industries/trades/"},{"@type":"ListItem","position":4,"name":"Pest Control","item":"https://nunik.co/industries/trades/pest-control/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I have to change the products or treatments I use?","acceptedAnswer":{"@type":"Answer","text":"No. We build the treatment selector and chemical register around your existing licence categories, your suppliers, and the products you already trust. The system reflects how you work, not the other way around. If you add a new product line later, we update the selector and the notes template so the change flows through to bookings, invoices, and the customer record without you having to remember three places to update."}},{"@type":"Question","name":"How do quarterly and monthly contracts get tracked?","acceptedAnswer":{"@type":"Answer","text":"Every recurring customer sits on a schedule with a next-due date, the treatment type, and the property notes. The system messages them inside their booking window with available slots, lets them self-book, and falls back to a call list if they do not respond. You see a single dashboard for what is due, what is overdue, and what has been confirmed, so a quarterly job never quietly slips a season."}},{"@type":"Question","name":"Can the SMS and review automation feel personal, not spammy?","acceptedAnswer":{"@type":"Answer","text":"Yes. SMS is timed to moments that genuinely matter: forty minutes out, on the way, job complete. The review request goes out shortly after the job, addressed by name, referencing the treatment, and only to customers who have not already left one. We tune the timing and wording with you, and any customer who replies is routed to a person, not a bot. The tone matches your business."}},{"@type":"Question","name":"What about my existing customer list and history?","acceptedAnswer":{"@type":"Answer","text":"We migrate your existing customers, their service history, and any recurring schedules from your current system, spreadsheet, or notebook. Property addresses, treatment notes, and contract terms come across cleanly. You start the new system with the relationships you have already built intact, so the first quarterly run after launch lands with the right customers on the right schedule."}}]}]}</script>
     <script>
         (function(){
             var t = localStorage.getItem('nunik-theme');
@@ -38,7 +38,73 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
-        tailwind.config = { darkMode: "class", theme: { extend: { fontFamily: { headline: ["Newsreader","serif"], body: ["Inter","sans-serif"], label: ["Inter","sans-serif"] } } }, }
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#e1e2e8",
+                        "surface-bright": "#36393e",
+                        "surface-dim": "#111417",
+                        "error-container": "#93000a",
+                        "on-primary": "#5b1b07",
+                        "inverse-primary": "#974730",
+                        "on-secondary-container": "#9abbbb",
+                        "background": "#111417",
+                        "surface-container": "#1d2024",
+                        "outline": "#a28c86",
+                        "surface-container-high": "#272a2e",
+                        "tertiary": "#c4c7ca",
+                        "on-secondary-fixed": "#002020",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c4c7ca",
+                        "on-secondary-fixed-variant": "#2c4c4c",
+                        "on-secondary": "#143536",
+                        "on-primary-container": "#fffdff",
+                        "tertiary-container": "#727679",
+                        "inverse-surface": "#e1e2e8",
+                        "on-tertiary": "#2d3133",
+                        "primary-fixed-dim": "#ffb5a0",
+                        "inverse-on-surface": "#2e3135",
+                        "tertiary-fixed": "#e0e3e6",
+                        "on-tertiary-fixed": "#181c1e",
+                        "on-tertiary-container": "#fefeff",
+                        "on-surface": "#e1e2e8",
+                        "error": "#ffb4ab",
+                        "primary": "#ffb5a0",
+                        "primary-fixed": "#ffdbd1",
+                        "on-primary-fixed": "#3b0900",
+                        "primary-container": "#b35d44",
+                        "on-surface-variant": "#dbc1ba",
+                        "surface-tint": "#ffb5a0",
+                        "secondary-fixed": "#c6e9e9",
+                        "secondary-container": "#2c4c4c",
+                        "on-primary-fixed-variant": "#78301b",
+                        "surface-variant": "#323539",
+                        "surface-container-lowest": "#0b0e12",
+                        "secondary": "#abcdcd",
+                        "surface-container-low": "#191c20",
+                        "secondary-fixed-dim": "#abcdcd",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#323539",
+                        "outline-variant": "#55433e",
+                        "on-tertiary-fixed-variant": "#43474a",
+                        "surface": "#111417"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
     </script>
     <link href="/style.min.css" rel="stylesheet"/>
     <style>
@@ -116,41 +182,75 @@
                     <span class="font-mono text-xs t-accent block eyebrow-rule reveal-item" style="opacity:0.6;">Trades</span>
                     <h1 class="font-headline italic text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-none t-text reveal-item">Pest Control</h1>
                     <p class="text-[10px] md:text-xs uppercase tracking-widest t-muted mt-3 reveal-item">Built for pest control businesses</p>
-                    <p class="text-base md:text-xl leading-relaxed t-muted max-w-3xl mt-8 md:mt-12 reveal-item">Quarterly callbacks lost. Recurring contracts that should auto-renew but get forgotten. The same customer chased three times because the CRM does not know what the technician already did.</p>
+                    <p class="text-base md:text-xl leading-relaxed t-muted max-w-3xl mt-8 md:mt-12 reveal-item">You run a pest control business that lives on recurring contracts and route density. The hard part is not the spray. The hard part is remembering who is due, which treatment matched the last callout, and chasing the review while the customer is still standing at the door. We build the website and the systems behind it so quarterly callbacks happen on their own.</p>
                     <div class="flex flex-wrap items-center gap-4 mt-10 md:mt-12 reveal-item">
-                        <a href="#book" class="inline-flex items-center gap-2 t-accent uppercase tracking-[0.3em] text-xs md:text-sm font-semibold nav-link" style="border-bottom:1px solid var(--accent);padding-bottom:4px;">
-                            Book a 15-minute call
-                            <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
-                        </a>
-                        <a href="/#connect" class="inline-flex items-center gap-2 t-muted uppercase tracking-[0.3em] text-xs md:text-sm font-medium nav-link" style="border-bottom:1px solid var(--divider);padding-bottom:4px;">
-                            Send a brief instead
-                        </a>
+                        <a href="#book" class="inline-flex items-center gap-2 t-accent uppercase tracking-[0.3em] text-xs md:text-sm font-semibold nav-link" style="border-bottom:1px solid var(--accent);padding-bottom:4px;">Book a 15-minute call <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a>
+                        <a href="/#connect" class="inline-flex items-center gap-2 t-muted uppercase tracking-[0.3em] text-xs md:text-sm font-medium nav-link" style="border-bottom:1px solid var(--divider);padding-bottom:4px;">Send a brief instead</a>
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="relative py-20 md:py-28 frosted-section">
+        </section>        <section class="relative py-20 md:py-28 frosted-section">
             <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start">
                     <div class="reveal-container">
-                        <span class="font-mono text-xs t-accent block eyebrow-rule reveal-item">The build</span>
-                        <h2 class="font-headline italic text-3xl md:text-5xl leading-tight reveal-item t-text">What we ship.</h2>
-                        <p class="text-sm md:text-base leading-relaxed t-muted mt-6 reveal-item">Three to six weeks from brief to live. A clean website, the CRM behind it, and the automations that mean leads stop slipping through.</p>
+                        <span class="font-mono text-xs t-accent block eyebrow-rule reveal-item">THE SHAPE OF THE DAY</span>
+                        <h2 class="font-headline italic text-3xl md:text-5xl leading-tight reveal-item t-text">Recurring revenue leaks through the cracks.</h2>
+                    </div>
+                    <div class="reveal-container space-y-4 max-w-2xl">
+                        <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">The phone rings while you are under a house in a respirator. A new lead asks for a quote, and by the time you can call back, they have booked someone else. Two suburbs over, a quarterly customer is overdue by six weeks. Nobody flagged it.</p>
+                            <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Your spreadsheet has the service history, but it does not know that the Mortdale ant job from March needs a follow-up before summer. The treatment notes live in three places: a notebook in the ute, a chemical register on the laptop, and a memory you trust until you do not.</p>
+                            <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Reviews are the same story. You finish a termite inspection, the customer is genuinely pleased, and you forget to ask. A week later, the moment is gone. Your competitor with worse work has more stars because they automated the ask and you did not.</p>
+                            <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">The job is not bigger trucks or more spray. The job is a system that books the recurring work, sequences the route, sends the SMS, and asks for the review at the right second. We build that system around your existing licence, products, and crew.</p>
+                    </div>
+                </div>
+            </div>
+        </section>        <section class="relative py-20 md:py-28">
+            <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start">
+                    <div class="reveal-container">
+                        <span class="font-mono text-xs t-accent block eyebrow-rule reveal-item">THE BUILD</span>
+                        <h2 class="font-headline italic text-3xl md:text-5xl leading-tight reveal-item t-text">Pest control website and automation, built once.</h2>
+                        <p class="text-sm md:text-base leading-relaxed t-muted mt-6 reveal-item">You get a fast public site that ranks for the suburbs you actually service, plus the operational layer that keeps quarterly contracts alive. Booking, treatment selection, SMS reminders, route sequencing, and review automation run from one place. Built around your licence categories and the products in your shed, not a generic template.</p>
                     </div>
                     <div class="space-y-5 reveal-container">
                         <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
                             <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Core build for pest control</p>
-                            <ul class="text-sm t-muted space-y-3"><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Booking page with treatment selection and pricing</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Quarterly callback automation tied to job completion</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Recurring contract management in GoHighLevel</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>SMS reminders forty-eight hours before the visit</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Review request sent the moment the job is closed</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Technician schedule and route optimisation</li></ul>
+                            <ul class="text-sm t-muted space-y-3"><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Custom website tuned for local pest control search</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Treatment selector matched to your licence categories</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Quarterly and monthly recurring contract automation</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>SMS reminders for due, en route, and complete</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Route optimisation across the day's bookings</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Review request triggered minutes after job close</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Chemical and treatment notes stored against each property</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Quote, invoice, and payment in one customer thread</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Lead capture from Google, Maps, and missed calls</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Dashboard for callbacks due, overdue, and won</li></ul>
                         </div>
                         <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
                             <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Recurring care</p>
-                            <p class="text-sm t-muted leading-relaxed">Monthly retainer covers monitoring, edge-case patches, and an ongoing review of where the recurring revenue is leaking.</p>
+                            <p class="text-sm t-muted leading-relaxed">Recurring contracts are not a launch event. They drift, change, and need tending. Our retainer covers system tuning as your service mix grows, new automation flows when you add a treatment line or a suburb, content updates for seasonal pests, and quiet monitoring of the booking, SMS, and review pipelines. You get a single point of contact who knows your setup and can move quickly when something breaks or a new opportunity opens.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-                <section class="relative py-20 md:py-28 frosted-section" id="book">
+        </section>        <section class="relative py-20 md:py-28 frosted-section">
+            <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+                <div class="mb-10 md:mb-14 reveal-container">
+                    <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">HOW IT RUNS</span>
+                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-6xl tracking-tighter reveal-item t-text">A week in the new system.</h2>
+                </div>
+                <div class="reveal-container max-w-3xl space-y-4">
+                    <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Monday morning starts with the day already sequenced. The booking screen shows seven jobs ordered by suburb, with the treatment type, last visit notes, and gate code attached to each address. You tap the first job, the customer gets an SMS that you are forty minutes out, and the route opens in your maps app.</p>
+                    <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">At the second stop, a general pest treatment for a long-term quarterly customer, the system already knows the products you used last time and flags that the back deck nest needs a second look. You finish, mark the job complete, and the invoice goes out before you reach the ute. The review request follows ninety minutes later, while the customer is still thinking about the work.</p>
+                    <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Wednesday afternoon, the dashboard shows three quarterly customers coming due next month. The system has already messaged them with available windows. Two have booked themselves in. The third gets a follow-up call from you, because the system flagged them as a higher value commercial account.</p>
+                    <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Friday, you are not sitting at the kitchen table chasing paperwork. The week ran itself, and the recurring revenue did not slip.</p>
+                </div>
+            </div>
+        </section>        <section class="relative py-20 md:py-28">
+            <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+                <div class="mb-12 md:mb-16 reveal-container">
+                    <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">Common questions</span>
+                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-6xl tracking-tighter reveal-item t-text">Before you brief us.</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 reveal-container">
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item"><h3 class="font-headline italic text-xl md:text-2xl t-text mb-3">Do I have to change the products or treatments I use?</h3><p class="text-sm t-muted leading-relaxed">No. We build the treatment selector and chemical register around your existing licence categories, your suppliers, and the products you already trust. The system reflects how you work, not the other way around. If you add a new product line later, we update the selector and the notes template so the change flows through to bookings, invoices, and the customer record without you having to remember three places to update.</p></div>
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item"><h3 class="font-headline italic text-xl md:text-2xl t-text mb-3">How do quarterly and monthly contracts get tracked?</h3><p class="text-sm t-muted leading-relaxed">Every recurring customer sits on a schedule with a next-due date, the treatment type, and the property notes. The system messages them inside their booking window with available slots, lets them self-book, and falls back to a call list if they do not respond. You see a single dashboard for what is due, what is overdue, and what has been confirmed, so a quarterly job never quietly slips a season.</p></div>
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item"><h3 class="font-headline italic text-xl md:text-2xl t-text mb-3">Can the SMS and review automation feel personal, not spammy?</h3><p class="text-sm t-muted leading-relaxed">Yes. SMS is timed to moments that genuinely matter: forty minutes out, on the way, job complete. The review request goes out shortly after the job, addressed by name, referencing the treatment, and only to customers who have not already left one. We tune the timing and wording with you, and any customer who replies is routed to a person, not a bot. The tone matches your business.</p></div>
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item"><h3 class="font-headline italic text-xl md:text-2xl t-text mb-3">What about my existing customer list and history?</h3><p class="text-sm t-muted leading-relaxed">We migrate your existing customers, their service history, and any recurring schedules from your current system, spreadsheet, or notebook. Property addresses, treatment notes, and contract terms come across cleanly. You start the new system with the relationships you have already built intact, so the first quarterly run after launch lands with the right customers on the right schedule.</p></div>
+                </div>
+            </div>
+        </section>        <section class="relative py-20 md:py-28 frosted-section" id="book">
             <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
                 <div class="mb-12 md:mb-16 reveal-container">
                     <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">Book directly</span>
@@ -161,39 +261,43 @@
                     <div id="calendly-widget" class="calendly-inline-widget" data-url="https://calendly.com/hello-nunik/ai-strategy-call?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;background_color=111417&amp;text_color=e1e4e7&amp;primary_color=b45e45" style="width:100%;height:720px;"></div>
                 </div>
             </div>
-        </section>
-        <section class="relative py-20 md:py-28">
+        </section>        <section class="relative py-20 md:py-28">
             <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
                 <div class="mb-12 md:mb-16 reveal-container">
                     <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">Related</span>
-                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-7xl tracking-tighter reveal-item t-text">More for trades.</h2>
+                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-6xl tracking-tighter reveal-item t-text">More.</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 reveal-container">
-                    <a href="/industries/trades/" class="glass-card rounded-xl p-6 md:p-8 reveal-item nav-link block group">
-                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">Hub</p>
-                        <h3 class="font-headline italic text-3xl t-text mb-3">All trades</h3>
-                        <p class="t-muted text-sm leading-relaxed">Browse the other trades we engineer for.</p>
-                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">Browse <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
-                    </a>
                     <a href="/services/automation/" class="glass-card rounded-xl p-6 md:p-8 reveal-item nav-link block group">
-                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">01 / युक्ति</p>
+                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">AUTOMATION</p>
                         <h3 class="font-headline italic text-3xl t-text mb-3">Yukti</h3>
-                        <p class="t-muted text-sm leading-relaxed">The automation service in full. n8n, GoHighLevel, integrations.</p>
-                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">Automation <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
+                        <p class="t-muted text-sm leading-relaxed">The automation layer behind the bookings, SMS, and review flows running on your site.</p>
+                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">More <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
+                    </a>
+                    <a href="/industries/trades/" class="glass-card rounded-xl p-6 md:p-8 reveal-item nav-link block group">
+                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">INDUSTRY HUB</p>
+                        <h3 class="font-headline italic text-3xl t-text mb-3">All trades</h3>
+                        <p class="t-muted text-sm leading-relaxed">Websites and automation built for owner-operated trade businesses across Australia.</p>
+                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">More <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
+                    </a>
+                    <a href="/services/web/" class="glass-card rounded-xl p-6 md:p-8 reveal-item nav-link block group">
+                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">WEB</p>
+                        <h3 class="font-headline italic text-3xl t-text mb-3">Custom websites</h3>
+                        <p class="t-muted text-sm leading-relaxed">Fast, local-search-ready sites that turn into the front door of your operating system.</p>
+                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">More <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
                     </a>
                 </div>
             </div>
-        </section>
-    </main>
+        </section>    </main>
     <footer class="w-full pt-20 md:pt-32 pb-10 md:pb-12 px-6 md:px-8 flex flex-col items-start space-y-12 md:space-y-16">
         <div class="w-full reveal-container">
-            <h2 class="text-4xl sm:text-5xl md:text-[8rem] lg:text-[10rem] uppercase leading-none tracking-tighter font-headline t-accent reveal-item">
+            <h2 class="text-4xl sm:text-5xl md:text-[8rem] lg:text-[10rem] uppercase leading-none tracking-tight font-headline t-accent reveal-item">
                 START YOUR <br/><span class="editorial-reveal inline-block">TRANSFORMATION<span style="color:var(--accent);">.</span></span>
             </h2>
         </div>
         <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pt-8 md:pt-12" style="border-top:1px solid var(--divider);">
-            <div class="md:col-span-6 space-y-6 md:space-y-8">
-                <a class="group flex items-center gap-3 md:gap-4 text-xl sm:text-2xl md:text-4xl font-headline italic t-text nav-link" href="mailto:hello@nunik.co" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
+            <div class="md:col-span-4 space-y-6 md:space-y-8">
+                <a class="group flex items-center gap-3 md:gap-4 text-xl sm:text-2xl md:text-3xl font-headline italic t-text nav-link" href="mailto:hello@nunik.co" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
                     hello@nunik.co
                     <svg class="t-accent group-hover:translate-x-2 transition-transform" width="24" height="24" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
                 </a>
@@ -201,6 +305,29 @@
                     Tell us what is slowing your business down. We reply with a scoped plan and a fixed price.
                     Enquiries are handled with absolute discretion.
                 </p>
+            </div>
+            <div class="md:col-span-3 space-y-3 md:space-y-4">
+                <p class="font-mono text-xs t-accent uppercase tracking-widest mb-2" style="opacity:0.6;">Services</p>
+                <ul class="space-y-2.5 t-footer text-xs uppercase tracking-widest">
+                    <li><a class="nav-link hover:t-text" href="/services/automation/">Automation</a></li>
+                    <li><a class="nav-link hover:t-text" href="/services/brand/">Brand</a></li>
+                    <li><a class="nav-link hover:t-text" href="/services/web/">Web</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-3 md:space-y-4">
+                <p class="font-mono text-xs t-accent uppercase tracking-widest mb-2" style="opacity:0.6;">Industries</p>
+                <ul class="space-y-2.5 t-footer text-xs uppercase tracking-widest">
+                    <li><a class="nav-link hover:t-text" href="/industries/trades/">Trades</a></li>
+                    <li><a class="nav-link hover:t-text" href="/industries/hospitality/">Hospitality</a></li>
+                    <li><a class="nav-link hover:t-text" href="/industries/automotive/">Automotive</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2 space-y-3 md:space-y-4">
+                <p class="font-mono text-xs t-accent uppercase tracking-widest mb-2" style="opacity:0.6;">Locations</p>
+                <ul class="space-y-2.5 t-footer text-xs uppercase tracking-widest">
+                    <li><a class="nav-link hover:t-text" href="/locations/canberra/">Canberra</a></li>
+                </ul>
+                <p class="t-faint text-[10px] tracking-widest mt-3">Delivered remotely worldwide.</p>
             </div>
             <div class="md:col-span-12 footer-glass-bar flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-2">
                 <div class="flex space-x-8 md:space-x-12">
@@ -219,7 +346,7 @@
     </footer>
 
     <div id="initiate-btn" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 nav-link">
-        <a href="#book" class="initiate-pulse initiate-inner flex items-center gap-2 md:gap-4 rounded-full" style="background:var(--accent);border:1px solid rgba(255,255,255,0.15);padding:0.75rem 1rem;">
+        <a href="#book" class="initiate-pulse initiate-inner cursor-pointer no-underline flex items-center gap-2 md:gap-4 rounded-full" style="background:var(--accent);border:1px solid rgba(255,255,255,0.15);padding:0.75rem 1rem;text-decoration:none;color:#fff;">
             <span class="initiate-label text-[9px] md:text-[10px] font-bold tracking-widest px-1 md:px-4 uppercase text-white whitespace-nowrap">Book a Call</span>
             <div class="w-8 h-8 md:w-10 md:h-10 bg-white/15 rounded-full flex items-center justify-center flex-shrink-0">
                 <svg class="text-white" width="18" height="18" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M440-80v-320H280l360-480v320h160L440-80Z"/></svg>

@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Plumbing Website and Booking Automation | Nunik Co.</title>
-    <meta name="description" content="Custom website, GoHighLevel CRM and automation for plumbing businesses across Australia. Stop missing leads. Start charging properly."/>
+    <meta name="description" content="Plumbing website and booking automation built for Australian owner-operators. After-hours triage, geofenced dispatch, landlord contracts, automatic payments."/>
     <meta name="theme-color" content="#B45E45"/>
     <link rel="canonical" href="https://nunik.co/industries/trades/plumbing/"/>
     <link rel="alternate" hreflang="en-au" href="https://nunik.co/industries/trades/plumbing/"/>
@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/public/favicons/apple-touch-icon.png"/>
     <link rel="manifest" href="/public/favicons/site.webmanifest"/>
     <meta property="og:title" content="Plumbing Website and Booking Automation | Nunik Co."/>
-    <meta property="og:description" content="Custom website, GoHighLevel CRM and automation for plumbing businesses across Australia. Stop missing leads. Start charging properly."/>
+    <meta property="og:description" content="Plumbing website and booking automation built for Australian owner-operators. After-hours triage, geofenced dispatch, landlord contracts, automatic payments."/>
     <meta property="og:url" content="https://nunik.co/industries/trades/plumbing/"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://nunik.co/og-image.jpg"/>
@@ -23,9 +23,9 @@
     <meta property="og:site_name" content="Nunik Co."/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Plumbing Website and Booking Automation | Nunik Co."/>
-    <meta name="twitter:description" content="Custom website, GoHighLevel CRM and automation for plumbing businesses across Australia. Stop missing leads. Start charging properly."/>
+    <meta name="twitter:description" content="Plumbing website and booking automation built for Australian owner-operators. After-hours triage, geofenced dispatch, landlord contracts, automatic payments."/>
     <meta name="twitter:image" content="https://nunik.co/og-image.jpg"/>
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://nunik.co/industries/trades/plumbing/#service","name":"Automation and Web for Plumbing Businesses","serviceType":"Business automation for plumbing","provider":{"@type":"ProfessionalService","name":"Nunik Co.","url":"https://nunik.co/"},"areaServed":"Australia","url":"https://nunik.co/industries/trades/plumbing/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nunik.co/"},{"@type":"ListItem","position":2,"name":"Industries","item":"https://nunik.co/industries/"},{"@type":"ListItem","position":3,"name":"Trades","item":"https://nunik.co/industries/trades/"},{"@type":"ListItem","position":4,"name":"Plumbing","item":"https://nunik.co/industries/trades/plumbing/"}]}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://nunik.co/industries/trades/plumbing/#service","name":"Plumbing","serviceType":"Business automation for plumbing","provider":{"@type":"ProfessionalService","name":"Nunik Co.","url":"https://nunik.co/","email":"hello@nunik.co","address":{"@type":"PostalAddress","addressLocality":"Canberra","addressRegion":"ACT","addressCountry":"AU"}},"areaServed":"Australia","description":"Plumbing website and booking automation built for Australian owner-operators. After-hours triage, geofenced dispatch, landlord contracts, automatic payments.","url":"https://nunik.co/industries/trades/plumbing/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nunik.co/"},{"@type":"ListItem","position":2,"name":"Industries","item":"https://nunik.co/industries/"},{"@type":"ListItem","position":3,"name":"Trades","item":"https://nunik.co/industries/trades/"},{"@type":"ListItem","position":4,"name":"Plumbing","item":"https://nunik.co/industries/trades/plumbing/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can the site actually take urgent jobs at 2am without me answering?","acceptedAnswer":{"@type":"Answer","text":"Yes. The after-hours flow asks three triage questions: what is leaking or blocked, what suburb, and how bad is it on a one to five scale. Severity four and five trigger an SMS to the on-call tech with the address and photos. Severity one to three books into the next business morning with an automated confirmation. You sleep. The customer gets a real response in under sixty seconds."}},{"@type":"Question","name":"How does the geofenced routing work if I have two or three techs?","acceptedAnswer":{"@type":"Answer","text":"We map your service zones during build and tag each tech to their home base suburb. When a job comes in, Yukti checks the postcode against active techs, current calendar load, and job type qualifications. The closest qualified tech gets the SMS first. If they do not accept within five minutes, it rolls to the next. No more group chats trying to work out who is closest to Tuggeranong."}},{"@type":"Question","name":"What about landlords and real estate agencies who want monthly invoicing?","acceptedAnswer":{"@type":"Answer","text":"The recurring contract portal handles this. Property managers log in, view all jobs across their managed addresses, download consolidated monthly invoices, and request new jobs without phoning. You set the agreed call-out rates per agency. Invoices generate automatically at month end and send through Xero or MYOB. It removes the Friday afternoon admin scramble."}},{"@type":"Question","name":"Do I need to learn new software or change how I quote on site?","acceptedAnswer":{"@type":"Answer","text":"No. You keep quoting how you always have. The site does the front-of-house work, customer intake, scheduling, payment links, follow-ups, and review requests. On site, you still write the job, take photos on your phone, and mark it complete. Yukti pulls those signals and triggers the payment link and rebook reminder. The job runs the same. The office just disappears."}}]}]}</script>
     <script>
         (function(){
             var t = localStorage.getItem('nunik-theme');
@@ -38,7 +38,73 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
-        tailwind.config = { darkMode: "class", theme: { extend: { fontFamily: { headline: ["Newsreader","serif"], body: ["Inter","sans-serif"], label: ["Inter","sans-serif"] } } }, }
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#e1e2e8",
+                        "surface-bright": "#36393e",
+                        "surface-dim": "#111417",
+                        "error-container": "#93000a",
+                        "on-primary": "#5b1b07",
+                        "inverse-primary": "#974730",
+                        "on-secondary-container": "#9abbbb",
+                        "background": "#111417",
+                        "surface-container": "#1d2024",
+                        "outline": "#a28c86",
+                        "surface-container-high": "#272a2e",
+                        "tertiary": "#c4c7ca",
+                        "on-secondary-fixed": "#002020",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c4c7ca",
+                        "on-secondary-fixed-variant": "#2c4c4c",
+                        "on-secondary": "#143536",
+                        "on-primary-container": "#fffdff",
+                        "tertiary-container": "#727679",
+                        "inverse-surface": "#e1e2e8",
+                        "on-tertiary": "#2d3133",
+                        "primary-fixed-dim": "#ffb5a0",
+                        "inverse-on-surface": "#2e3135",
+                        "tertiary-fixed": "#e0e3e6",
+                        "on-tertiary-fixed": "#181c1e",
+                        "on-tertiary-container": "#fefeff",
+                        "on-surface": "#e1e2e8",
+                        "error": "#ffb4ab",
+                        "primary": "#ffb5a0",
+                        "primary-fixed": "#ffdbd1",
+                        "on-primary-fixed": "#3b0900",
+                        "primary-container": "#b35d44",
+                        "on-surface-variant": "#dbc1ba",
+                        "surface-tint": "#ffb5a0",
+                        "secondary-fixed": "#c6e9e9",
+                        "secondary-container": "#2c4c4c",
+                        "on-primary-fixed-variant": "#78301b",
+                        "surface-variant": "#323539",
+                        "surface-container-lowest": "#0b0e12",
+                        "secondary": "#abcdcd",
+                        "surface-container-low": "#191c20",
+                        "secondary-fixed-dim": "#abcdcd",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#323539",
+                        "outline-variant": "#55433e",
+                        "on-tertiary-fixed-variant": "#43474a",
+                        "surface": "#111417"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
     </script>
     <link href="/style.min.css" rel="stylesheet"/>
     <style>
@@ -116,41 +182,75 @@
                     <span class="font-mono text-xs t-accent block eyebrow-rule reveal-item" style="opacity:0.6;">Trades</span>
                     <h1 class="font-headline italic text-5xl sm:text-6xl md:text-8xl lg:text-9xl leading-none t-text reveal-item">Plumbing</h1>
                     <p class="text-[10px] md:text-xs uppercase tracking-widest t-muted mt-3 reveal-item">Built for plumbing businesses</p>
-                    <p class="text-base md:text-xl leading-relaxed t-muted max-w-3xl mt-8 md:mt-12 reveal-item">Phone tag with after-hours callers. Two trucks dispatched to the same suburb. Invoices going out three days after the job. The owner doing all of it from a phone after dinner.</p>
+                    <p class="text-base md:text-xl leading-relaxed t-muted max-w-3xl mt-8 md:mt-12 reveal-item">After-hours calls flood in, jobs scatter across suburbs, and landlord invoicing eats your Sundays. We build the booking engine, the triage logic, and the dispatch flow so the office runs itself while you are under a sink. Real plumbing work stays manual. Everything around it stops being your problem.</p>
                     <div class="flex flex-wrap items-center gap-4 mt-10 md:mt-12 reveal-item">
-                        <a href="#book" class="inline-flex items-center gap-2 t-accent uppercase tracking-[0.3em] text-xs md:text-sm font-semibold nav-link" style="border-bottom:1px solid var(--accent);padding-bottom:4px;">
-                            Book a 15-minute call
-                            <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
-                        </a>
-                        <a href="/#connect" class="inline-flex items-center gap-2 t-muted uppercase tracking-[0.3em] text-xs md:text-sm font-medium nav-link" style="border-bottom:1px solid var(--divider);padding-bottom:4px;">
-                            Send a brief instead
-                        </a>
+                        <a href="#book" class="inline-flex items-center gap-2 t-accent uppercase tracking-[0.3em] text-xs md:text-sm font-semibold nav-link" style="border-bottom:1px solid var(--accent);padding-bottom:4px;">Book a 15-minute call <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></a>
+                        <a href="/#connect" class="inline-flex items-center gap-2 t-muted uppercase tracking-[0.3em] text-xs md:text-sm font-medium nav-link" style="border-bottom:1px solid var(--divider);padding-bottom:4px;">Send a brief instead</a>
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="relative py-20 md:py-28 frosted-section">
+        </section>        <section class="relative py-20 md:py-28 frosted-section">
+            <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start">
+                    <div class="reveal-container">
+                        <span class="font-mono text-xs t-accent block eyebrow-rule reveal-item">The shape of the day</span>
+                        <h2 class="font-headline italic text-3xl md:text-5xl leading-tight reveal-item t-text">The phone never stops, the office never closes.</h2>
+                    </div>
+                    <div class="reveal-container space-y-4 max-w-2xl">
+                        <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Owner-operated plumbing in Australia runs on a brutal rhythm. You are under a house at 7am, on a roof at 11, and back in the ute writing quotes during a servo lunch. The phone rings through all of it. Every missed call is a job that went to the next listing on Google.</p>
+                            <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">After hours is worse. A burst pipe at 9pm needs a real human voice. Voicemail loses the job. Answering it yourself costs you the evening with family and the energy for tomorrow.</p>
+                            <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Then there is the paperwork tail. Quotes that need following up. Invoices that need chasing. Property managers who want consolidated monthly statements with job photos attached. Landlords who want quarterly maintenance scheduled across a portfolio of twelve houses. None of it is the actual plumbing work, but all of it has to happen or the cash flow seizes.</p>
+                            <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Most plumbing sites are a phone number and a list of services. They do not triage. They do not route. They do not collect payment. They are a billboard, not a business system. You deserve the system.</p>
+                    </div>
+                </div>
+            </div>
+        </section>        <section class="relative py-20 md:py-28">
             <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 items-start">
                     <div class="reveal-container">
                         <span class="font-mono text-xs t-accent block eyebrow-rule reveal-item">The build</span>
-                        <h2 class="font-headline italic text-3xl md:text-5xl leading-tight reveal-item t-text">What we ship.</h2>
-                        <p class="text-sm md:text-base leading-relaxed t-muted mt-6 reveal-item">Three to six weeks from brief to live. A clean website, the CRM behind it, and the automations that mean leads stop slipping through.</p>
+                        <h2 class="font-headline italic text-3xl md:text-5xl leading-tight reveal-item t-text">What we ship for plumbers.</h2>
+                        <p class="text-sm md:text-base leading-relaxed t-muted mt-6 reveal-item">A plumbing site engineered around the after-hours call, the geofenced dispatch, and the recurring landlord contract. Customers book or trigger urgent intake from any page. Yukti triages by job type, suburb, and time of day. Quotes, payment links, and follow-ups send themselves. You stop running the office from the ute.</p>
                     </div>
                     <div class="space-y-5 reveal-container">
                         <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
                             <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Core build for plumbing</p>
-                            <ul class="text-sm t-muted space-y-3"><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>After-hours intake with intelligent triage</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Route to nearest available technician via geofenced GoHighLevel logic</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Invoice sent the moment the job is closed on the mobile app</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Payment link, follow-up reminder, review request automated</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Recurring service contracts for landlords and property managers</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Owner dashboard showing real-time pipeline and revenue</li></ul>
+                            <ul class="text-sm t-muted space-y-3"><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Mobile-first site with urgent and standard intake paths</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>After-hours triage flow with severity routing</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Geofenced job routing to the nearest available tech</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Automatic quote builder with photo upload from the customer</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Stripe and PayID payment links sent on job completion</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Recurring contract portal for landlords and property managers</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Google Business Profile sync and review request automation</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>SMS confirmations, ETA updates, and rebook reminders</li><li class="flex items-start gap-3"><span class="t-accent flex-shrink-0">+</span>Job history and invoice archive per property address</li></ul>
                         </div>
                         <div class="glass-card rounded-xl p-6 md:p-8 reveal-item">
                             <p class="font-mono text-xs t-accent mb-4" style="opacity:0.6;">Recurring care</p>
-                            <p class="text-sm t-muted leading-relaxed">Monthly retainer covers logs review, edge cases, new workflow requests, and a quarterly review of where time is still leaking.</p>
+                            <p class="text-sm t-muted leading-relaxed">Monthly retainer keeps the booking engine accurate as your service area and pricing shift. We update suburb coverage, after-hours rates, and trade categories. We monitor Google Business reviews, fix broken Stripe webhooks, and add new property manager intake forms when you sign a new agency. Seasonal copy swaps cover hot water spikes in winter and blocked drains after storms. You get monthly performance notes, not a PDF nobody reads.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-                <section class="relative py-20 md:py-28 frosted-section" id="book">
+        </section>        <section class="relative py-20 md:py-28 frosted-section">
+            <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+                <div class="mb-10 md:mb-14 reveal-container">
+                    <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">How it runs</span>
+                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-6xl tracking-tighter reveal-item t-text">A week on the tools, not in the office.</h2>
+                </div>
+                <div class="reveal-container max-w-3xl space-y-4">
+                    <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Monday morning starts with the dashboard, not the inbox. Yukti has already booked Tuesday and Wednesday from weekend enquiries, sent quote follow-ups to the three jobs you priced last Thursday, and routed an emergency hot water failure in Belconnen to your second tech who was closest.</p>
+                    <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">A burst pipe call comes in at 11am from a property manager. The intake form captures the address, the photos, and the urgency. Because the agency is on your recurring contract, the job auto-books, the tech gets the SMS with directions, and the invoice will roll into the monthly statement. You do not touch it.</p>
+                    <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Wednesday afternoon, you finish a hot water replacement in Gungahlin. You mark the job complete in the app. The customer gets a payment link via SMS within thirty seconds. They pay before you have packed the ute. A review request goes out the next morning, timed for when they are most likely to respond.</p>
+                    <p class="text-sm md:text-base leading-relaxed t-muted reveal-item">Friday, you check the weekly summary. Twenty-two jobs booked, eighteen completed, four scheduled for next week. Three new Google reviews. One property manager added a second building to your contract. You did not write a single follow-up email. You did the plumbing.</p>
+                </div>
+            </div>
+        </section>        <section class="relative py-20 md:py-28">
+            <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
+                <div class="mb-12 md:mb-16 reveal-container">
+                    <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">Common questions</span>
+                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-6xl tracking-tighter reveal-item t-text">Before you brief us.</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 reveal-container">
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item"><h3 class="font-headline italic text-xl md:text-2xl t-text mb-3">Can the site actually take urgent jobs at 2am without me answering?</h3><p class="text-sm t-muted leading-relaxed">Yes. The after-hours flow asks three triage questions: what is leaking or blocked, what suburb, and how bad is it on a one to five scale. Severity four and five trigger an SMS to the on-call tech with the address and photos. Severity one to three books into the next business morning with an automated confirmation. You sleep. The customer gets a real response in under sixty seconds.</p></div>
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item"><h3 class="font-headline italic text-xl md:text-2xl t-text mb-3">How does the geofenced routing work if I have two or three techs?</h3><p class="text-sm t-muted leading-relaxed">We map your service zones during build and tag each tech to their home base suburb. When a job comes in, Yukti checks the postcode against active techs, current calendar load, and job type qualifications. The closest qualified tech gets the SMS first. If they do not accept within five minutes, it rolls to the next. No more group chats trying to work out who is closest to Tuggeranong.</p></div>
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item"><h3 class="font-headline italic text-xl md:text-2xl t-text mb-3">What about landlords and real estate agencies who want monthly invoicing?</h3><p class="text-sm t-muted leading-relaxed">The recurring contract portal handles this. Property managers log in, view all jobs across their managed addresses, download consolidated monthly invoices, and request new jobs without phoning. You set the agreed call-out rates per agency. Invoices generate automatically at month end and send through Xero or MYOB. It removes the Friday afternoon admin scramble.</p></div>
+                    <div class="glass-card rounded-xl p-6 md:p-8 reveal-item"><h3 class="font-headline italic text-xl md:text-2xl t-text mb-3">Do I need to learn new software or change how I quote on site?</h3><p class="text-sm t-muted leading-relaxed">No. You keep quoting how you always have. The site does the front-of-house work, customer intake, scheduling, payment links, follow-ups, and review requests. On site, you still write the job, take photos on your phone, and mark it complete. Yukti pulls those signals and triggers the payment link and rebook reminder. The job runs the same. The office just disappears.</p></div>
+                </div>
+            </div>
+        </section>        <section class="relative py-20 md:py-28 frosted-section" id="book">
             <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
                 <div class="mb-12 md:mb-16 reveal-container">
                     <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">Book directly</span>
@@ -161,39 +261,43 @@
                     <div id="calendly-widget" class="calendly-inline-widget" data-url="https://calendly.com/hello-nunik/ai-strategy-call?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;background_color=111417&amp;text_color=e1e4e7&amp;primary_color=b45e45" style="width:100%;height:720px;"></div>
                 </div>
             </div>
-        </section>
-        <section class="relative py-20 md:py-28">
+        </section>        <section class="relative py-20 md:py-28">
             <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
                 <div class="mb-12 md:mb-16 reveal-container">
                     <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">Related</span>
-                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-7xl tracking-tighter reveal-item t-text">More for trades.</h2>
+                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-6xl tracking-tighter reveal-item t-text">More.</h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 reveal-container">
-                    <a href="/industries/trades/" class="glass-card rounded-xl p-6 md:p-8 reveal-item nav-link block group">
-                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">Hub</p>
-                        <h3 class="font-headline italic text-3xl t-text mb-3">All trades</h3>
-                        <p class="t-muted text-sm leading-relaxed">Browse the other trades we engineer for.</p>
-                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">Browse <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
-                    </a>
                     <a href="/services/automation/" class="glass-card rounded-xl p-6 md:p-8 reveal-item nav-link block group">
-                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">01 / युक्ति</p>
+                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">The engine</p>
                         <h3 class="font-headline italic text-3xl t-text mb-3">Yukti</h3>
-                        <p class="t-muted text-sm leading-relaxed">The automation service in full. n8n, GoHighLevel, integrations.</p>
-                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">Automation <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
+                        <p class="t-muted text-sm leading-relaxed">The intelligent layer that triages, dispatches, invoices, and follows up while you stay on the tools.</p>
+                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">More <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
+                    </a>
+                    <a href="/industries/trades/" class="glass-card rounded-xl p-6 md:p-8 reveal-item nav-link block group">
+                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">Parent hub</p>
+                        <h3 class="font-headline italic text-3xl t-text mb-3">All trades</h3>
+                        <p class="t-muted text-sm leading-relaxed">How we build booking and dispatch systems for plumbers, sparkies, builders, and other owner-operated trades.</p>
+                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">More <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
+                    </a>
+                    <a href="/services/web/" class="glass-card rounded-xl p-6 md:p-8 reveal-item nav-link block group">
+                        <p class="font-mono text-xs t-accent mb-3" style="opacity:0.6;">Foundation</p>
+                        <h3 class="font-headline italic text-3xl t-text mb-3">Web build</h3>
+                        <p class="t-muted text-sm leading-relaxed">The mobile-first site that holds the booking flow, the triage logic, and your trade credibility.</p>
+                        <span class="inline-flex items-center gap-1 mt-4 text-xs uppercase tracking-widest t-accent group-hover:translate-x-1 transition-transform">More <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></span>
                     </a>
                 </div>
             </div>
-        </section>
-    </main>
+        </section>    </main>
     <footer class="w-full pt-20 md:pt-32 pb-10 md:pb-12 px-6 md:px-8 flex flex-col items-start space-y-12 md:space-y-16">
         <div class="w-full reveal-container">
-            <h2 class="text-4xl sm:text-5xl md:text-[8rem] lg:text-[10rem] uppercase leading-none tracking-tighter font-headline t-accent reveal-item">
+            <h2 class="text-4xl sm:text-5xl md:text-[8rem] lg:text-[10rem] uppercase leading-none tracking-tight font-headline t-accent reveal-item">
                 START YOUR <br/><span class="editorial-reveal inline-block">TRANSFORMATION<span style="color:var(--accent);">.</span></span>
             </h2>
         </div>
         <div class="w-full grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 pt-8 md:pt-12" style="border-top:1px solid var(--divider);">
-            <div class="md:col-span-6 space-y-6 md:space-y-8">
-                <a class="group flex items-center gap-3 md:gap-4 text-xl sm:text-2xl md:text-4xl font-headline italic t-text nav-link" href="mailto:hello@nunik.co" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
+            <div class="md:col-span-4 space-y-6 md:space-y-8">
+                <a class="group flex items-center gap-3 md:gap-4 text-xl sm:text-2xl md:text-3xl font-headline italic t-text nav-link" href="mailto:hello@nunik.co" onmouseenter="this.style.color='var(--accent)'" onmouseleave="this.style.color=''">
                     hello@nunik.co
                     <svg class="t-accent group-hover:translate-x-2 transition-transform" width="24" height="24" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
                 </a>
@@ -201,6 +305,29 @@
                     Tell us what is slowing your business down. We reply with a scoped plan and a fixed price.
                     Enquiries are handled with absolute discretion.
                 </p>
+            </div>
+            <div class="md:col-span-3 space-y-3 md:space-y-4">
+                <p class="font-mono text-xs t-accent uppercase tracking-widest mb-2" style="opacity:0.6;">Services</p>
+                <ul class="space-y-2.5 t-footer text-xs uppercase tracking-widest">
+                    <li><a class="nav-link hover:t-text" href="/services/automation/">Automation</a></li>
+                    <li><a class="nav-link hover:t-text" href="/services/brand/">Brand</a></li>
+                    <li><a class="nav-link hover:t-text" href="/services/web/">Web</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-3 md:space-y-4">
+                <p class="font-mono text-xs t-accent uppercase tracking-widest mb-2" style="opacity:0.6;">Industries</p>
+                <ul class="space-y-2.5 t-footer text-xs uppercase tracking-widest">
+                    <li><a class="nav-link hover:t-text" href="/industries/trades/">Trades</a></li>
+                    <li><a class="nav-link hover:t-text" href="/industries/hospitality/">Hospitality</a></li>
+                    <li><a class="nav-link hover:t-text" href="/industries/automotive/">Automotive</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2 space-y-3 md:space-y-4">
+                <p class="font-mono text-xs t-accent uppercase tracking-widest mb-2" style="opacity:0.6;">Locations</p>
+                <ul class="space-y-2.5 t-footer text-xs uppercase tracking-widest">
+                    <li><a class="nav-link hover:t-text" href="/locations/canberra/">Canberra</a></li>
+                </ul>
+                <p class="t-faint text-[10px] tracking-widest mt-3">Delivered remotely worldwide.</p>
             </div>
             <div class="md:col-span-12 footer-glass-bar flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-2">
                 <div class="flex space-x-8 md:space-x-12">
@@ -219,7 +346,7 @@
     </footer>
 
     <div id="initiate-btn" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40 nav-link">
-        <a href="#book" class="initiate-pulse initiate-inner flex items-center gap-2 md:gap-4 rounded-full" style="background:var(--accent);border:1px solid rgba(255,255,255,0.15);padding:0.75rem 1rem;">
+        <a href="#book" class="initiate-pulse initiate-inner cursor-pointer no-underline flex items-center gap-2 md:gap-4 rounded-full" style="background:var(--accent);border:1px solid rgba(255,255,255,0.15);padding:0.75rem 1rem;text-decoration:none;color:#fff;">
             <span class="initiate-label text-[9px] md:text-[10px] font-bold tracking-widest px-1 md:px-4 uppercase text-white whitespace-nowrap">Book a Call</span>
             <div class="w-8 h-8 md:w-10 md:h-10 bg-white/15 rounded-full flex items-center justify-center flex-shrink-0">
                 <svg class="text-white" width="18" height="18" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M440-80v-320H280l360-480v320h160L440-80Z"/></svg>

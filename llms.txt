@@ -1,6 +1,6 @@
 # Nunik Co.
 
-> AI agency based in Australia, working with growth-focused businesses anywhere. We build custom automations, brand identity systems and high-performance websites for real estate, trades, automotive, hospitality and food and beverage.
+> AI agency based in Australia, working with growth-focused businesses anywhere. We build custom automations, brand identity systems and high-performance websites for trades, hospitality, automotive, real estate, and food and beverage.
 
 Nunik Co. is a South Asian heritage digital collective based in Canberra, Australia, delivering remotely worldwide. We work with anyone, anywhere, on one condition: you want execution like no one else. We operate under three principles: Yukti (automation), Rasa (brand), Artha (web and consulting). Contact: hello@nunik.co.
 
@@ -10,14 +10,32 @@ Nunik Co. is a South Asian heritage digital collective based in Canberra, Austra
 - [Web (Artha)](https://nunik.co/services/web/): custom websites in React, Next.js and WordPress, SEO and performance, marketing strategy consulting, staff training.
 
 ## Industries
-- [Trades hub](https://nunik.co/industries/trades/): all trade specialisations, problem-first.
-- [Pest Control](https://nunik.co/industries/trades/pest-control/)
-- [Electrical](https://nunik.co/industries/trades/electrical/)
-- [Plumbing](https://nunik.co/industries/trades/plumbing/)
-- [Cleaning](https://nunik.co/industries/trades/cleaning/)
-- [Landscaping](https://nunik.co/industries/trades/landscaping/)
 
-Other sectors served: real estate, automotive (auto repair), hospitality, food and beverage, allied health, founder and product brands.
+### Trades
+- [Trades hub](https://nunik.co/industries/trades/): all trade specialisations, problem-first.
+- [Pest Control](https://nunik.co/industries/trades/pest-control/): quarterly callbacks, recurring contracts, treatment selection, SMS reminders.
+- [Electrical](https://nunik.co/industries/trades/electrical/): COES compliance, after-hours intake, customer portal with photos and certificates.
+- [Plumbing](https://nunik.co/industries/trades/plumbing/): after-hours triage, geofenced routing, automated payment links.
+- [Cleaning](https://nunik.co/industries/trades/cleaning/): recurring bookings, route optimisation, instant invoicing.
+- [Landscaping](https://nunik.co/industries/trades/landscaping/): quote-to-job-to-invoice, seasonal contract renewals, crew dispatch.
+
+### Hospitality
+- [Hospitality hub](https://nunik.co/industries/hospitality/): brand-led venues and service businesses across Australia.
+- [Restaurants](https://nunik.co/industries/hospitality/restaurants/): reservation automation, menu management, review cycle CRM.
+- [Salons](https://nunik.co/industries/hospitality/salons/): stylist-specific bookings, colour formula records, loyalty stamps, SMS confirmations.
+- [Hotels](https://nunik.co/industries/hospitality/hotels/): direct booking that beats OTA margin, channel manager sync, guest journey CRM.
+- [Travel Agencies](https://nunik.co/industries/hospitality/travel-agencies/): quote-to-itinerary pipelines, supplier coordination, repeat-client trip automation.
+- [Massage and Wellness](https://nunik.co/industries/hospitality/massage-parlours/): online booking by therapist, intake automation, memberships, HICAPS receipting.
+
+### Automotive
+- [Automotive hub](https://nunik.co/industries/automotive/): mechanic and vehicle-fleet operations.
+- [Auto Repair](https://nunik.co/industries/automotive/auto-repair/): online booking, SMS quote approvals, customer portal, service reminder automation.
+- [Mobile Scratch and Dent](https://nunik.co/industries/automotive/scratch-and-dent/): photo-based quoting, geo-dispatch to nearest tech, fleet and dealership flows.
+- [Towing](https://nunik.co/industries/automotive/towing/): 24/7 dispatch, pickup-to-yard tracking, multi-payer invoicing.
+- [Removalists](https://nunik.co/industries/automotive/removalists/): guided inventory quoting, crew job sheets, damage capture, repeat-move CRM.
+- [Car Washing and Detailing](https://nunik.co/industries/automotive/car-washing/): online booking, membership plans, up-sell automation, mobile route optimisation.
+
+Other sectors served: real estate, allied health, founder and product brands.
 
 ## Locations
 - [Canberra (home base)](https://nunik.co/locations/canberra/): hospitality, trades, allied health, founder brands across the ACT. Remote delivery worldwide from this base.
