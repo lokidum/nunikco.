@@ -11,6 +11,8 @@ Nunik Co. is a South Asian heritage digital collective based in Canberra, Austra
 
 ## Industries
 
+- [Industries hub](https://nunik.co/industries/): all three branches in one place (trades, hospitality, automotive).
+
 ### Trades
 - [Trades hub](https://nunik.co/industries/trades/): all trade specialisations, problem-first.
 - [Pest Control](https://nunik.co/industries/trades/pest-control/): quarterly callbacks, recurring contracts, treatment selection, SMS reminders.
