@@ -576,10 +576,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ── Launch WebGL systems ──────────────────────────
-    if (typeof THREE !== "undefined") {
+    // Three.js is now lazy-loaded after window.load.
+    // If it's already present (cached, faster connection), init now.
+    // Otherwise expose an init hook the lazy-loader can fire later.
+    let threeInited = false;
+    function tryInitThreeScene() {
+        if (threeInited) return;
+        if (typeof THREE === "undefined") return;
+        threeInited = true;
         initWebGLBackground(lenis);
         initChakraBackground(lenis);
     }
+    window.initThreeScene = tryInitThreeScene;
+    tryInitThreeScene();
 });
 
 /* ================================================
