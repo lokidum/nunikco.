@@ -148,6 +148,12 @@ document.addEventListener("DOMContentLoaded", () => {
             };
             tick();
         }
+        // Google Ads conversion landing on booking completion — see /thank-you/booking/.
+        window.addEventListener("message", function (e) {
+            if (e && e.data && e.data.event === "calendly.event_scheduled") {
+                setTimeout(function () { window.location.href = "/thank-you/booking/"; }, 400);
+            }
+        });
     }
 
     // ── Mobile nav ────────────────────────────────────
@@ -543,10 +549,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (res.ok) {
                         const line = document.createElement("p");
                         line.style.color = green;
-                        line.textContent = "> TRANSMISSION COMPLETE. We will be in touch shortly.";
+                        line.textContent = "> TRANSMISSION COMPLETE. Redirecting...";
                         terminalBoot.appendChild(line);
                         submitLabel.textContent = "[ TRANSMITTED ]";
-                        terminalForm.reset();
+                        // Google Ads conversion landing — see /thank-you/inquiry/.
+                        setTimeout(function () { window.location.href = "/thank-you/inquiry/"; }, 600);
+                        return;
                     } else {
                         throw new Error("failed");
                     }
