@@ -5,7 +5,9 @@ module.exports = {
     './*.html',
     './services/**/*.html',
     './industries/**/*.html',
-    './locations/**/*.html'
+    './locations/**/*.html',
+    './contact/**/*.html',
+    './thank-you/**/*.html'
   ],
   darkMode: 'class',
   theme: {
