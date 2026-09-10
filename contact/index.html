@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
 <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18231203149"></script>
     <script>
@@ -9,8 +11,6 @@
         gtag('js', new Date());
         gtag('config', 'AW-18231203149');
     </script>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Contact Nunik Co. | Send Us a Brief or Book a Call</title>
     <meta name="description" content="Send Nunik Co. a short project brief, or book a 15-minute call. Automation, brand identity and high-performance web for businesses that move in the real world."/>
     <meta name="theme-color" content="#B45E45"/>
@@ -28,13 +28,16 @@
     <meta property="og:description" content="Send Nunik Co. a short project brief, or book a 15-minute call. Automation, brand identity and high-performance web for businesses that move in the real world."/>
     <meta property="og:url" content="https://nunik.co/contact/"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:image" content="https://nunik.co/og-image.jpg"/>
+    <meta property="og:image" content="https://nunik.co/public/brand/og-image-1200x630.png"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="Nunik Co. wordmark"/>
     <meta property="og:locale" content="en_AU"/>
     <meta property="og:site_name" content="Nunik Co."/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Contact Nunik Co. | Send Us a Brief or Book a Call"/>
     <meta name="twitter:description" content="Send Nunik Co. a short project brief, or book a 15-minute call. Automation, brand identity and high-performance web for businesses that move in the real world."/>
-    <meta name="twitter:image" content="https://nunik.co/og-image.jpg"/>
+    <meta name="twitter:image" content="https://nunik.co/public/brand/og-image-1200x630.png"/>
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ContactPage","@id":"https://nunik.co/contact/#contactpage","name":"Contact Nunik Co.","url":"https://nunik.co/contact/","description":"Send a brief or book a 15-minute call with Nunik Co."},{"@type":"ProfessionalService","name":"Nunik Co.","url":"https://nunik.co/","email":"hello@nunik.co","areaServed":"Australia","address":{"@type":"PostalAddress","addressLocality":"Canberra","addressRegion":"ACT","addressCountry":"AU"},"contactPoint":{"@type":"ContactPoint","email":"hello@nunik.co","contactType":"sales","areaServed":"AU","availableLanguage":"English"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nunik.co/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://nunik.co/contact/"}]}]}</script>
     <script>
         (function(){
@@ -45,9 +48,12 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com"/>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net"/>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="/tailwind.min.css" rel="stylesheet"/>
     <link href="/style.min.css" rel="stylesheet"/>
+    <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"/>
     <style>
         .brand-lockup.is-hidden { opacity: 1 !important; pointer-events: auto !important; transform: none !important; }
         .page-hero { padding-top: 9rem; padding-bottom: 4rem; }
@@ -81,7 +87,7 @@
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/services/brand/">Brand</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/services/web/">Web</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#archive">Archive</a>
-                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#research">Research</a>
+                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/research/">Research</a>
                 <a class="nav-link t-accent text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" style="border-bottom:1px solid var(--accent);padding-bottom:3px;" href="/contact/">Connect</a>
             </nav>
         </div>
@@ -101,7 +107,7 @@
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/services/brand/">Brand</a>
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/services/web/">Web</a>
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#archive">Archive</a>
-            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#research">Research</a>
+            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/research/">Research</a>
             <a class="nav-link t-accent text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/contact/">Connect</a>
             <div class="pt-2 border-t" style="border-color:var(--divider);">
                 <button id="theme-toggle-mobile" class="nav-link flex items-center gap-3 text-xs t-muted uppercase tracking-widest" aria-label="Toggle theme">
@@ -156,32 +162,32 @@
                             <form id="terminal-form" class="flex flex-col gap-5 md:gap-7" style="opacity:1;transform:none;">
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
                                     <div class="flex flex-col gap-2">
-                                        <label class="t-muted uppercase tracking-widest text-[10px]">&gt; FULL_NAME *</label>
-                                        <input type="text" name="name" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="name"/>
+                                        <label for="lead-name" class="t-muted uppercase tracking-widest text-[10px]">&gt; FULL_NAME *</label>
+                                        $1 id="lead-name" name="name" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="name"/>
                                     </div>
                                     <div class="flex flex-col gap-2">
-                                        <label class="t-muted uppercase tracking-widest text-[10px]">&gt; EMAIL *</label>
-                                        <input type="email" name="email" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="email"/>
-                                    </div>
-                                </div>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
-                                    <div class="flex flex-col gap-2">
-                                        <label class="t-muted uppercase tracking-widest text-[10px]">&gt; PHONE *</label>
-                                        <input type="tel" name="phone" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="tel"/>
-                                    </div>
-                                    <div class="flex flex-col gap-2">
-                                        <label class="t-muted uppercase tracking-widest text-[10px]">&gt; WEBSITE <span class="t-faint">[optional]</span></label>
-                                        <input type="url" name="website" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" autocomplete="url"/>
+                                        <label for="lead-email" class="t-muted uppercase tracking-widest text-[10px]">&gt; EMAIL *</label>
+                                        $1 id="lead-email" name="email" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="email"/>
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
                                     <div class="flex flex-col gap-2">
-                                        <label class="t-muted uppercase tracking-widest text-[10px]">&gt; BUSINESS_NAME <span class="t-faint">[optional]</span></label>
-                                        <input type="text" name="business" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" autocomplete="organization"/>
+                                        <label for="lead-phone" class="t-muted uppercase tracking-widest text-[10px]">&gt; PHONE *</label>
+                                        $1 id="lead-phone" name="phone" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="tel"/>
                                     </div>
                                     <div class="flex flex-col gap-2">
-                                        <label class="t-muted uppercase tracking-widest text-[10px]">&gt; QUERY_TYPE *</label>
-                                        <select name="service" class="terminal-input bg-transparent pb-2 t-text focus:outline-none appearance-none" style="border-bottom:1px solid var(--glass-border);" required>
+                                        <label for="lead-website" class="t-muted uppercase tracking-widest text-[10px]">&gt; WEBSITE <span class="t-faint">[optional]</span></label>
+                                        $1 id="lead-website" name="website" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" autocomplete="url"/>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
+                                    <div class="flex flex-col gap-2">
+                                        <label for="lead-business" class="t-muted uppercase tracking-widest text-[10px]">&gt; BUSINESS_NAME <span class="t-faint">[optional]</span></label>
+                                        $1 id="lead-business" name="business" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" autocomplete="organization"/>
+                                    </div>
+                                    <div class="flex flex-col gap-2">
+                                        <label for="lead-service" class="t-muted uppercase tracking-widest text-[10px]">&gt; QUERY_TYPE *</label>
+                                        $1 id="lead-service" name="service" class="terminal-input bg-transparent pb-2 t-text focus:outline-none appearance-none" style="border-bottom:1px solid var(--glass-border);" required>
                                             <option value="">Select...</option>
                                             <option value="Brand Identity">Brand Identity</option>
                                             <option value="Automation">Automation</option>
@@ -192,8 +198,8 @@
                                     </div>
                                 </div>
                                 <div class="flex flex-col gap-2">
-                                    <label class="t-muted uppercase tracking-widest text-[10px]">&gt; MISSION_BRIEF *</label>
-                                    <textarea rows="4" name="message" class="terminal-input bg-transparent pb-2 t-text focus:outline-none resize-none" style="border-bottom:1px solid var(--glass-border);" placeholder="Describe your vision..." required></textarea>
+                                    <label for="lead-message" class="t-muted uppercase tracking-widest text-[10px]">&gt; MISSION_BRIEF *</label>
+                                    $1 id="lead-message" name="message" class="terminal-input bg-transparent pb-2 t-text focus:outline-none resize-none" style="border-bottom:1px solid var(--glass-border);" placeholder="Describe your vision..." required></textarea>
                                 </div>
                                 <button type="submit" class="mt-2 md:mt-4 self-start flex items-center gap-2 group t-accent nav-link" onmouseenter="this.style.color='var(--accent-light)'" onmouseleave="this.style.color=''">
                                     <span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;&gt;</span>
@@ -215,7 +221,7 @@
                     <p class="t-muted text-sm md:text-base max-w-2xl mt-4 md:mt-5 reveal-item leading-relaxed">Fifteen minutes. We scope the right first move. No pitch deck.</p>
                 </div>
                 <div class="glass-card rounded-xl p-2 md:p-4 reveal-item overflow-hidden">
-                    <div id="calendly-widget" class="calendly-inline-widget" data-url="https://calendly.com/hello-nunik/ai-strategy-call?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;background_color=111417&amp;text_color=e1e4e7&amp;primary_color=b45e45" style="width:100%;height:720px;"></div>
+                    <div id="calendly-widget" style="width:100%;height:720px;" aria-busy="true"></div>
                 </div>
             </div>
         </section>
@@ -263,9 +269,8 @@
             </div>
             <div class="md:col-span-12 footer-glass-bar flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-2">
                 <div class="flex space-x-8 md:space-x-12">
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">Instagram</a>
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">LinkedIn</a>
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">Twitter</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://www.instagram.com/nunikco/" rel="me noopener" target="_blank">Instagram</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://www.linkedin.com/company/nunik-co/" rel="me noopener" target="_blank">LinkedIn</a>
                 </div>
                 <div class="flex items-center gap-3">
                     <svg class="brand-mark brand-mark-footer" viewBox="0 0 1080 1080" fill="currentColor" aria-hidden="true" width="22" height="22">
@@ -280,17 +285,6 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-    <script>
-        window.addEventListener('load', function() {
-            var s = document.createElement('script');
-            s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-            s.onload = function() {
-                if (typeof window.initThreeScene === 'function') window.initThreeScene();
-            };
-            document.head.appendChild(s);
-        });
-    </script>
-    <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
     <script defer src="/main.min.js"></script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
 <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18231203149"></script>
     <script>
@@ -17,8 +19,6 @@
             'currency': 'AUD'
         });
     </script>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Brief Received | Nunik Co.</title>
     <meta name="description" content="Your inquiry has been received by Nunik Co. We will reply within one working day."/>
     <meta name="robots" content="noindex, nofollow"/>
@@ -39,9 +39,12 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com"/>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net"/>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="/tailwind.min.css" rel="stylesheet"/>
     <link href="/style.min.css" rel="stylesheet"/>
+    <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"/>
     <style>
         .brand-lockup.is-hidden { opacity: 1 !important; pointer-events: auto !important; transform: none !important; }
         .page-hero { padding-top: 9rem; padding-bottom: 4rem; }
@@ -72,7 +75,7 @@
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/services/brand/">Brand</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/services/web/">Web</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#archive">Archive</a>
-                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#research">Research</a>
+                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/research/">Research</a>
                 <a class="nav-link t-accent text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" style="border-bottom:1px solid var(--accent);padding-bottom:3px;" href="/contact/">Connect</a>
             </nav>
         </div>
@@ -92,7 +95,7 @@
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/services/brand/">Brand</a>
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/services/web/">Web</a>
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#archive">Archive</a>
-            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#research">Research</a>
+            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/research/">Research</a>
             <a class="nav-link t-accent text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/contact/">Connect</a>
             <div class="pt-2 border-t" style="border-color:var(--divider);">
                 <button id="theme-toggle-mobile" class="nav-link flex items-center gap-3 text-xs t-muted uppercase tracking-widest" aria-label="Toggle theme">
@@ -147,7 +150,7 @@
                     <p class="t-muted text-sm md:text-base max-w-2xl mt-4 md:mt-5 leading-relaxed">Fifteen minutes. No pitch deck. The fastest way to find out if we are the right team for the job.</p>
                 </div>
                 <div class="glass-card rounded-xl p-2 md:p-4 overflow-hidden">
-                    <div id="calendly-widget" class="calendly-inline-widget" data-url="https://calendly.com/hello-nunik/ai-strategy-call?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;background_color=111417&amp;text_color=e1e4e7&amp;primary_color=b45e45" style="width:100%;height:720px;"></div>
+                    <div id="calendly-widget" style="width:100%;height:720px;" aria-busy="true"></div>
                 </div>
             </div>
         </section>
@@ -209,9 +212,8 @@
             </div>
             <div class="md:col-span-12 footer-glass-bar flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-2">
                 <div class="flex space-x-8 md:space-x-12">
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">Instagram</a>
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">LinkedIn</a>
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">Twitter</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://www.instagram.com/nunikco/" rel="me noopener" target="_blank">Instagram</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://www.linkedin.com/company/nunik-co/" rel="me noopener" target="_blank">LinkedIn</a>
                 </div>
                 <div class="flex items-center gap-3">
                     <svg class="brand-mark brand-mark-footer" viewBox="0 0 1080 1080" fill="currentColor" aria-hidden="true" width="22" height="22">
@@ -226,17 +228,6 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-    <script>
-        window.addEventListener('load', function() {
-            var s = document.createElement('script');
-            s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-            s.onload = function() {
-                if (typeof window.initThreeScene === 'function') window.initThreeScene();
-            };
-            document.head.appendChild(s);
-        });
-    </script>
-    <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
     <script defer src="/main.min.js"></script>
 </body>
 </html>

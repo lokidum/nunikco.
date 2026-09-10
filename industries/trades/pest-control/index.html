@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
 <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18231203149"></script>
     <script>
@@ -9,8 +11,6 @@
         gtag('js', new Date());
         gtag('config', 'AW-18231203149');
     </script>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Pest Control Website and Automation Agency | Nunik Co.</title>
     <meta name="description" content="Custom website, recurring contract automation, SMS reminders, and review flows for Australian pest control businesses. Quarterly callbacks that book themselves."/>
     <meta name="theme-color" content="#B45E45"/>
@@ -28,13 +28,16 @@
     <meta property="og:description" content="Custom website, recurring contract automation, SMS reminders, and review flows for Australian pest control businesses. Quarterly callbacks that book themselves."/>
     <meta property="og:url" content="https://nunik.co/industries/trades/pest-control/"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:image" content="https://nunik.co/og-image.jpg"/>
+    <meta property="og:image" content="https://nunik.co/public/brand/og-image-1200x630.png"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="Nunik Co. wordmark"/>
     <meta property="og:locale" content="en_AU"/>
     <meta property="og:site_name" content="Nunik Co."/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Pest Control Website and Automation Agency | Nunik Co."/>
     <meta name="twitter:description" content="Custom website, recurring contract automation, SMS reminders, and review flows for Australian pest control businesses. Quarterly callbacks that book themselves."/>
-    <meta name="twitter:image" content="https://nunik.co/og-image.jpg"/>
+    <meta name="twitter:image" content="https://nunik.co/public/brand/og-image-1200x630.png"/>
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://nunik.co/industries/trades/pest-control/#service","name":"Pest Control","serviceType":"Business automation for pest control","provider":{"@type":"ProfessionalService","name":"Nunik Co.","url":"https://nunik.co/","email":"hello@nunik.co","address":{"@type":"PostalAddress","addressLocality":"Canberra","addressRegion":"ACT","addressCountry":"AU"}},"areaServed":"Australia","description":"Custom website, recurring contract automation, SMS reminders, and review flows for Australian pest control businesses. Quarterly callbacks that book themselves.","url":"https://nunik.co/industries/trades/pest-control/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nunik.co/"},{"@type":"ListItem","position":2,"name":"Industries","item":"https://nunik.co/industries/"},{"@type":"ListItem","position":3,"name":"Trades","item":"https://nunik.co/industries/trades/"},{"@type":"ListItem","position":4,"name":"Pest Control","item":"https://nunik.co/industries/trades/pest-control/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I have to change the products or treatments I use?","acceptedAnswer":{"@type":"Answer","text":"No. We build the treatment selector and chemical register around your existing licence categories, your suppliers, and the products you already trust. The system reflects how you work, not the other way around. If you add a new product line later, we update the selector and the notes template so the change flows through to bookings, invoices, and the customer record without you having to remember three places to update."}},{"@type":"Question","name":"How do quarterly and monthly contracts get tracked?","acceptedAnswer":{"@type":"Answer","text":"Every recurring customer sits on a schedule with a next-due date, the treatment type, and the property notes. The system messages them inside their booking window with available slots, lets them self-book, and falls back to a call list if they do not respond. You see a single dashboard for what is due, what is overdue, and what has been confirmed, so a quarterly job never quietly slips a season."}},{"@type":"Question","name":"Can the SMS and review automation feel personal, not spammy?","acceptedAnswer":{"@type":"Answer","text":"Yes. SMS is timed to moments that genuinely matter: forty minutes out, on the way, job complete. The review request goes out shortly after the job, addressed by name, referencing the treatment, and only to customers who have not already left one. We tune the timing and wording with you, and any customer who replies is routed to a person, not a bot. The tone matches your business."}},{"@type":"Question","name":"What about my existing customer list and history?","acceptedAnswer":{"@type":"Answer","text":"We migrate your existing customers, their service history, and any recurring schedules from your current system, spreadsheet, or notebook. Property addresses, treatment notes, and contract terms come across cleanly. You start the new system with the relationships you have already built intact, so the first quarterly run after launch lands with the right customers on the right schedule."}}]}]}</script>
     <script>
         (function(){
@@ -45,9 +48,12 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com"/>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net"/>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="/tailwind.min.css" rel="stylesheet"/>
     <link href="/style.min.css" rel="stylesheet"/>
+    <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"/>
     <style>
         .brand-lockup.is-hidden { opacity: 1 !important; pointer-events: auto !important; transform: none !important; }
         .page-hero { padding-top: 9rem; padding-bottom: 4rem; }
@@ -78,7 +84,7 @@
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/services/brand/">Brand</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/services/web/">Web</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#archive">Archive</a>
-                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#research">Research</a>
+                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/research/">Research</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#connect">Connect</a>
             </nav>
         </div>
@@ -98,7 +104,7 @@
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/services/brand/">Brand</a>
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/services/web/">Web</a>
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#archive">Archive</a>
-            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#research">Research</a>
+            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/research/">Research</a>
             <a class="nav-link t-accent text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#connect">Connect</a>
             <div class="pt-2 border-t" style="border-color:var(--divider);">
                 <button id="theme-toggle-mobile" class="nav-link flex items-center gap-3 text-xs t-muted uppercase tracking-widest" aria-label="Toggle theme">
@@ -199,7 +205,7 @@
                     <p class="t-muted text-sm md:text-base max-w-2xl mt-4 md:mt-5 reveal-item leading-relaxed">Fifteen minutes. We scope the right first move. No pitch deck.</p>
                 </div>
                 <div class="glass-card rounded-xl p-2 md:p-4 reveal-item overflow-hidden">
-                    <div id="calendly-widget" class="calendly-inline-widget" data-url="https://calendly.com/hello-nunik/ai-strategy-call?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;background_color=111417&amp;text_color=e1e4e7&amp;primary_color=b45e45" style="width:100%;height:720px;"></div>
+                    <div id="calendly-widget" style="width:100%;height:720px;" aria-busy="true"></div>
                 </div>
             </div>
         </section>        <section class="relative py-20 md:py-28">
@@ -272,9 +278,8 @@
             </div>
             <div class="md:col-span-12 footer-glass-bar flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-2">
                 <div class="flex space-x-8 md:space-x-12">
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">Instagram</a>
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">LinkedIn</a>
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">Twitter</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://www.instagram.com/nunikco/" rel="me noopener" target="_blank">Instagram</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://www.linkedin.com/company/nunik-co/" rel="me noopener" target="_blank">LinkedIn</a>
                 </div>
                 <div class="flex items-center gap-3">
                     <svg class="brand-mark brand-mark-footer" viewBox="0 0 1080 1080" fill="currentColor" aria-hidden="true" width="22" height="22">
@@ -298,19 +303,6 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-    <script>
-        // Lazy-load Three.js after the page has finished initial render.
-        window.addEventListener('load', function() {
-            var s = document.createElement('script');
-            s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-            s.onload = function() {
-                // Wake the WebGL + chakra init if main.min.js already ran and registered a hook.
-                if (typeof window.initThreeScene === 'function') window.initThreeScene();
-            };
-            document.head.appendChild(s);
-        });
-    </script>
-    <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
     <script defer src="/main.min.js"></script>
 </body>
 </html>

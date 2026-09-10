@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "nunikco",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["-y", "serve", "-l", "8765", "."],
-      "port": 8765
+      "name": "static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8080", "--bind", "127.0.0.1"],
+      "port": 8080
     }
   ]
 }

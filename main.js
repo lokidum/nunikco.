@@ -8,6 +8,8 @@
    ================================================ */
 let webglUniforms = null;   // fluid background shader uniforms
 let chakraMaterial = null;  // 3D chakra material reference
+let fluidRequestRender = null;   // set by initWebGLBackground: forces a repaint
+let chakraRequestRender = null;  // set by initChakraBackground: forces a repaint
 
 /* ================================================
    Theme palettes (fluid background colours)
@@ -58,9 +60,64 @@ function mountCalendly() {
 }
 
 function remountCalendlyIfPresent() {
-    if (document.getElementById("calendly-widget")) {
+    if (document.getElementById("calendly-widget") && window.Calendly) {
         // Defer so theme CSS variables settle, then rebuild the widget.
         setTimeout(mountCalendly, 50);
+    }
+}
+
+let calendlyLoadPromise = null;
+function loadCalendly() {
+    if (window.Calendly) return Promise.resolve();
+    if (calendlyLoadPromise) return calendlyLoadPromise;
+    calendlyLoadPromise = new Promise((resolve, reject) => {
+        const s = document.createElement("script");
+        s.src = "https://assets.calendly.com/assets/external/widget.js";
+        s.async = true;
+        s.onload = resolve;
+        s.onerror = reject;
+        document.head.appendChild(s);
+    });
+    return calendlyLoadPromise;
+}
+
+function initCalendlyLazy() {
+    const el = document.getElementById("calendly-widget");
+    if (!el) return;
+
+    let started = false;
+    const start = () => {
+        if (started) return;
+        started = true;
+        loadCalendly().then(() => {
+            mountCalendly();
+            el.setAttribute("aria-busy", "false");
+        }).catch(() => { started = false; });
+    };
+
+    // Google Ads conversion landing on booking completion, see /thank-you/booking/.
+    window.addEventListener("message", function (e) {
+        if (e && e.data && e.data.event === "calendly.event_scheduled") {
+            setTimeout(function () { window.location.href = "/thank-you/booking/"; }, 400);
+        }
+    });
+
+    if (location.hash === "#book") { start(); return; }
+
+    document.querySelectorAll('a[href="#book"], a[href$="#book"]').forEach((a) => {
+        a.addEventListener("click", start, { once: true });
+    });
+
+    if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver((entries) => {
+            if (entries.some((en) => en.isIntersecting)) {
+                io.disconnect();
+                start();
+            }
+        }, { rootMargin: "800px 0px" });
+        io.observe(el);
+    } else {
+        start();
     }
 }
 
@@ -84,12 +141,14 @@ function setWebGLTheme(animate) {
                 webglUniforms.uColorBase.value.setRGB(cur.br, cur.bg, cur.bb);
                 webglUniforms.uColorAccent1.value.setRGB(cur.a1r, cur.a1g, cur.a1b);
                 webglUniforms.uColorAccent2.value.setRGB(cur.a2r, cur.a2g, cur.a2b);
+                if (fluidRequestRender) fluidRequestRender();
             }
         });
     } else {
         webglUniforms.uColorBase.value.set(palette.base);
         webglUniforms.uColorAccent1.value.set(palette.accent1);
         webglUniforms.uColorAccent2.value.set(palette.accent2);
+        if (fluidRequestRender) fluidRequestRender();
     }
 }
 
@@ -102,10 +161,14 @@ function setChakraTheme(animate) {
         gsap.to(cur, {
             r: target.r, g: target.g, b: target.b,
             duration: 1.2, ease: "power2.inOut",
-            onUpdate: () => { chakraMaterial.color.setRGB(cur.r, cur.g, cur.b); }
+            onUpdate: () => {
+                chakraMaterial.color.setRGB(cur.r, cur.g, cur.b);
+                if (chakraRequestRender) chakraRequestRender();
+            }
         });
     } else {
         chakraMaterial.color.set(targetHex);
+        if (chakraRequestRender) chakraRequestRender();
     }
 }
 
@@ -135,26 +198,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
     document.getElementById("theme-toggle-mobile")?.addEventListener("click", toggleTheme);
 
-    // Calendly: mount when widget script is ready
-    if (document.getElementById("calendly-widget")) {
-        if (window.Calendly) {
-            mountCalendly();
-        } else {
-            // Poll for Calendly to load (script is async)
-            const t0 = Date.now();
-            const tick = () => {
-                if (window.Calendly) { mountCalendly(); return; }
-                if (Date.now() - t0 < 8000) setTimeout(tick, 120);
-            };
-            tick();
-        }
-        // Google Ads conversion landing on booking completion — see /thank-you/booking/.
-        window.addEventListener("message", function (e) {
-            if (e && e.data && e.data.event === "calendly.event_scheduled") {
-                setTimeout(function () { window.location.href = "/thank-you/booking/"; }, 400);
-            }
-        });
-    }
+    // Calendly: the widget script and its iframe are only fetched when the
+    // booking section approaches the viewport (or someone jumps to #book).
+    // Keeping it out of the critical path stops it holding the load event.
+    initCalendlyLazy();
 
     // ── Mobile nav ────────────────────────────────────
     const mobileNav = document.getElementById("mobile-nav");
@@ -584,20 +631,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ── Launch WebGL systems ──────────────────────────
-    // Three.js is now lazy-loaded after window.load.
-    // If it's already present (cached, faster connection), init now.
-    // Otherwise expose an init hook the lazy-loader can fire later.
+    // three.min.js is preloaded from <head> so the bytes arrive during HTML
+    // parse. It is executed only after the hero has painted (double rAF), so
+    // the fluid appears within a frame or two of first paint without ever
+    // sitting in front of the LCP element.
     let threeInited = false;
     function tryInitThreeScene() {
         if (threeInited) return;
         if (typeof THREE === "undefined") return;
         threeInited = true;
         initWebGLBackground(lenis);
-        initChakraBackground(lenis);
+        const chakraLater = () => initChakraBackground(lenis);
+        if ("requestIdleCallback" in window) requestIdleCallback(chakraLater, { timeout: 600 });
+        else setTimeout(chakraLater, 120);
     }
     window.initThreeScene = tryInitThreeScene;
     tryInitThreeScene();
+
+    if (!threeInited) {
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            if (threeInited || typeof THREE !== "undefined") { tryInitThreeScene(); return; }
+            const s = document.createElement("script");
+            s.src = THREE_SRC;
+            s.onload = tryInitThreeScene;
+            document.head.appendChild(s);
+        }));
+    }
 });
+
+const THREE_SRC = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
+const REDUCED_MOTION = typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* Marks a background container as live once its first frame has rendered,
+   which lets the CSS fade the canvas in over the static gradient. */
+function markLive(container, name) {
+    requestAnimationFrame(() => {
+        container.classList.add("is-live");
+        if (window.performance && performance.mark) performance.mark("nunik:" + name + "-first-frame");
+    });
+}
 
 /* ================================================
    Fluid WebGL Background (original GLSL shader)
@@ -610,9 +682,11 @@ function initWebGLBackground(lenis) {
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
     camera.position.z = 1;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
+    // The noise field is low frequency and sits behind frosted sections, so
+    // rendering at 1x is indistinguishable from 2x and costs a quarter as much.
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false, powerPreference: "low-power" });
+    renderer.setPixelRatio(1);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
     const palette = isDark() ? THEME_COLORS.dark : THEME_COLORS.light;
@@ -686,15 +760,35 @@ function initWebGLBackground(lenis) {
     if (lenis) lenis.on("scroll", (e) => { currentScroll = e.animatedScroll; });
 
     const clock = new THREE.Clock();
-    (function animate() {
-        requestAnimationFrame(animate);
+    const renderFrame = () => {
         uniforms.uTime.value   = clock.getElapsedTime();
         uniforms.uScroll.value += (currentScroll - uniforms.uScroll.value) * 0.1;
         renderer.render(scene, camera);
-    })();
+    };
+
+    renderFrame();
+    markLive(container, "fluid");
+    // Theme changes ask for a frame directly whenever the loop is not
+    // running (reduced motion, or the tab is hidden), so the palette is
+    // never stale when the page next paints.
+    let running = false;
+    fluidRequestRender = () => { if (!running) renderFrame(); };
+
+    if (!REDUCED_MOTION) {
+        const loop = () => {
+            if (document.hidden) { running = false; return; }
+            renderFrame();
+            requestAnimationFrame(loop);
+        };
+        const startLoop = () => { if (!running) { running = true; requestAnimationFrame(loop); } };
+        startLoop();
+        document.addEventListener("visibilitychange", () => { if (!document.hidden) startLoop(); });
+    }
 
     window.addEventListener("resize", () => {
+        renderer.setPixelRatio(1);
         renderer.setSize(window.innerWidth, window.innerHeight);
+        if (REDUCED_MOTION) renderFrame();
     });
 }
 
@@ -709,9 +803,10 @@ function initChakraBackground(lenis) {
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
     camera.position.set(0, 0, 5);
 
+    const chakraDPR = () => Math.min(window.devicePixelRatio || 1, window.innerWidth < 768 ? 1 : 1.5);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setPixelRatio(chakraDPR());
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, window.innerWidth < 768 ? 1 : 2));
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
 
@@ -731,39 +826,62 @@ function initChakraBackground(lenis) {
     scene.add(rimLight);
     scene.add(new THREE.AmbientLight(0xFFFFFF, 0.15));
 
-    // Build Chakra compound group
-    const chakraGroup = new THREE.Group();
+    // Build the chakra as ONE merged geometry (hub, 6 rings, 108 teeth,
+    // 12 petals). Same shapes and placement as the original compound group,
+    // but a single draw call instead of 127 and one buffer upload.
+    const parts = [];
+    const pushPart = (geo, matrix) => {
+        const g = geo.toNonIndexed();
+        g.applyMatrix4(matrix);
+        parts.push(g);
+    };
+    const m = new THREE.Matrix4();
 
-    // Hub
-    const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.08, 8), chakraMaterial);
-    hub.rotation.x = Math.PI / 2;
-    chakraGroup.add(hub);
+    pushPart(new THREE.CylinderGeometry(0.15, 0.15, 0.08, 8), m.makeRotationX(Math.PI / 2));
 
-    // 6 concentric rings
+    const ringGeos = [];
     for (let i = 1; i <= 6; i++) {
-        const ring = new THREE.Mesh(new THREE.TorusGeometry(0.2 + i * 0.15, 0.015, 16, 64), chakraMaterial);
-        ring.rotation.x = Math.PI / 2;
-        chakraGroup.add(ring);
+        const geo = new THREE.TorusGeometry(0.2 + i * 0.15, 0.015, 16, 64);
+        ringGeos.push(geo);
+        pushPart(geo, m.makeRotationX(Math.PI / 2));
     }
 
-    // 108 serrated teeth
+    const toothGeo = new THREE.ConeGeometry(0.03, 0.12, 3);
     for (let i = 0; i < 108; i++) {
         const angle = (i / 108) * Math.PI * 2;
-        const tooth = new THREE.Mesh(new THREE.ConeGeometry(0.03, 0.12, 3), chakraMaterial);
-        tooth.position.set(Math.cos(angle) * 1.1, Math.sin(angle) * 1.1, 0);
-        tooth.rotation.z = angle + Math.PI / 2;
-        chakraGroup.add(tooth);
+        m.makeRotationZ(angle + Math.PI / 2);
+        m.setPosition(Math.cos(angle) * 1.1, Math.sin(angle) * 1.1, 0);
+        pushPart(toothGeo, m);
     }
 
-    // 12 lotus petals
+    const petalGeo = new THREE.BoxGeometry(0.05, 0.25, 0.01);
     for (let i = 0; i < 12; i++) {
         const angle = (i / 12) * Math.PI * 2;
-        const petal = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.25, 0.01), chakraMaterial);
-        petal.position.set(Math.cos(angle) * 0.6, Math.sin(angle) * 0.6, 0);
-        petal.rotation.z = angle;
-        chakraGroup.add(petal);
+        m.makeRotationZ(angle);
+        m.setPosition(Math.cos(angle) * 0.6, Math.sin(angle) * 0.6, 0);
+        pushPart(petalGeo, m);
     }
 
+    let vertexCount = 0;
+    parts.forEach((g) => { vertexCount += g.attributes.position.count; });
+    const positions = new Float32Array(vertexCount * 3);
+    const normals   = new Float32Array(vertexCount * 3);
+    let offset = 0;
+    parts.forEach((g) => {
+        positions.set(g.attributes.position.array, offset);
+        normals.set(g.attributes.normal.array, offset);
+        offset += g.attributes.position.array.length;
+        g.dispose();
+    });
+    ringGeos.forEach((g) => g.dispose());
+    toothGeo.dispose();
+    petalGeo.dispose();
+
+    const merged = new THREE.BufferGeometry();
+    merged.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    merged.setAttribute("normal",   new THREE.BufferAttribute(normals, 3));
+
+    const chakraGroup = new THREE.Mesh(merged, chakraMaterial);
     scene.add(chakraGroup);
 
     // Scroll-driven waypoints (normalised 0-1 scroll progress)
@@ -807,27 +925,65 @@ function initChakraBackground(lenis) {
         });
     }
 
-    // Render loop with lerp
-    const lf = 0.04;
-    (function animate() {
-        requestAnimationFrame(animate);
-        curX  += (tgtX  - curX)  * lf;
-        curY  += (tgtY  - curY)  * lf;
-        curS  += (tgtS  - curS)  * lf;
-        curRx += (tgtRx - curRx) * lf;
-        spinCurrent += (spinTarget - spinCurrent) * 0.06;
-
+    const applyTransform = () => {
         chakraGroup.position.set(curX, curY, 0);
         chakraGroup.scale.setScalar(curS);
         chakraGroup.rotation.x = curRx;
         chakraGroup.rotation.z = spinCurrent;
+    };
+    const renderFrame = () => { applyTransform(); renderer.render(scene, camera); };
 
-        renderer.render(scene, camera);
-    })();
+    renderFrame();
+    markLive(container, "chakra");
+
+    // Theme tweens change the material without moving anything, so they
+    // flag a frame explicitly (the loop below otherwise skips idle frames).
+    let dirty = false;
+    let running = false;
+    chakraRequestRender = () => {
+        dirty = true;
+        if (!running) { dirty = false; renderFrame(); }
+    };
+
+    if (REDUCED_MOTION) {
+        // No spin, no lerp: snap to the scroll waypoint and render once per scroll event.
+        if (lenis) {
+            let pending = false;
+            lenis.on("scroll", () => {
+                curX = tgtX; curY = tgtY; curS = tgtS; curRx = tgtRx;
+                if (pending) return;
+                pending = true;
+                requestAnimationFrame(() => { pending = false; renderFrame(); });
+            });
+        }
+    } else {
+        // Render loop with lerp. Skips the GPU when nothing is moving; the
+        // chakra only changes on scroll, so most idle frames cost nothing.
+        const lf = 0.04;
+        const EPS = 1e-4;
+        const loop = () => {
+            if (document.hidden) { running = false; return; }
+            requestAnimationFrame(loop);
+            const dx = (tgtX - curX) * lf, dy = (tgtY - curY) * lf;
+            const ds = (tgtS - curS) * lf, dr = (tgtRx - curRx) * lf;
+            const dspin = (spinTarget - spinCurrent) * 0.06;
+            const moving = Math.abs(dx) > EPS || Math.abs(dy) > EPS || Math.abs(ds) > EPS ||
+                           Math.abs(dr) > EPS || Math.abs(dspin) > EPS;
+            if (!moving && !dirty) return;
+            dirty = false;
+            curX += dx; curY += dy; curS += ds; curRx += dr; spinCurrent += dspin;
+            renderFrame();
+        };
+        const startLoop = () => { if (!running) { running = true; requestAnimationFrame(loop); } };
+        startLoop();
+        document.addEventListener("visibilitychange", () => { if (!document.hidden) startLoop(); });
+    }
 
     window.addEventListener("resize", () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
+        renderer.setPixelRatio(chakraDPR());
         renderer.setSize(window.innerWidth, window.innerHeight);
+        renderFrame();
     });
 }

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
 <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18231203149"></script>
     <script>
@@ -9,8 +11,6 @@
         gtag('js', new Date());
         gtag('config', 'AW-18231203149');
     </script>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Restaurant Website and Booking Automation | Nunik Co.</title>
     <meta name="description" content="Restaurant web and booking automation for Canberra and Australian venues. Brand-led site, reservation engine, guest CRM, review loop, and loyalty SMS in one system."/>
     <meta name="theme-color" content="#B45E45"/>
@@ -28,13 +28,16 @@
     <meta property="og:description" content="Restaurant web and booking automation for Canberra and Australian venues. Brand-led site, reservation engine, guest CRM, review loop, and loyalty SMS in one system."/>
     <meta property="og:url" content="https://nunik.co/industries/hospitality/restaurants/"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:image" content="https://nunik.co/og-image.jpg"/>
+    <meta property="og:image" content="https://nunik.co/public/brand/og-image-1200x630.png"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="Nunik Co. wordmark"/>
     <meta property="og:locale" content="en_AU"/>
     <meta property="og:site_name" content="Nunik Co."/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Restaurant Website and Booking Automation | Nunik Co."/>
     <meta name="twitter:description" content="Restaurant web and booking automation for Canberra and Australian venues. Brand-led site, reservation engine, guest CRM, review loop, and loyalty SMS in one system."/>
-    <meta name="twitter:image" content="https://nunik.co/og-image.jpg"/>
+    <meta name="twitter:image" content="https://nunik.co/public/brand/og-image-1200x630.png"/>
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://nunik.co/industries/hospitality/restaurants/#service","name":"Restaurants","serviceType":"Business automation for restaurants","provider":{"@type":"ProfessionalService","name":"Nunik Co.","url":"https://nunik.co/","email":"hello@nunik.co","address":{"@type":"PostalAddress","addressLocality":"Canberra","addressRegion":"ACT","addressCountry":"AU"}},"areaServed":"Australia","description":"Restaurant web and booking automation for Canberra and Australian venues. Brand-led site, reservation engine, guest CRM, review loop, and loyalty SMS in one system.","url":"https://nunik.co/industries/hospitality/restaurants/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nunik.co/"},{"@type":"ListItem","position":2,"name":"Industries","item":"https://nunik.co/industries/"},{"@type":"ListItem","position":3,"name":"Hospitality","item":"https://nunik.co/industries/hospitality/"},{"@type":"ListItem","position":4,"name":"Restaurants","item":"https://nunik.co/industries/hospitality/restaurants/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will this replace our current booking platform?","acceptedAnswer":{"@type":"Answer","text":"Usually yes, but only if it makes sense. If you are on a tool that works for your team, we integrate with it and build the brand layer, the CRM, and the SMS automations around it. If the current platform is the bottleneck (clunky widget, off-brand emails, no CRM), we replace it with a system that lives inside your own website and pays for itself in saved subscriptions and recovered covers."}},{"@type":"Question","name":"What happens to our menu when the chef changes a dish?","acceptedAnswer":{"@type":"Answer","text":"A manager updates the menu in one place, usually a simple admin view on a phone or tablet. The website updates instantly because it reads from the same source. No WordPress login, no plugin update, no waiting on a web person. If you run different menus for lunch, dinner, and functions, each one has its own view and its own schedule."}},{"@type":"Question","name":"Do the SMS automations feel automated to guests?","acceptedAnswer":{"@type":"Answer","text":"Only if you let them. We write the copy in your venue's voice, sign it from a real name, and keep messages short and human. Confirmations sound like a host wrote them. Birthday offers feel like a regular getting looked after, not a marketing blast. Guests can reply directly to a phone the team actually checks during the day."}},{"@type":"Question","name":"We are a small cafe, not a fine-dining room. Is this overbuilt?","acceptedAnswer":{"@type":"Answer","text":"The system scales down. A cafe might use the website, a simple table-reservation form for weekends, and the post-visit review SMS, and skip the floor plan and the loyalty layer entirely. A wine bar might want the waitlist and the regulars tagging, but not the function menus. We scope the build to the room you actually run, then leave room to add the rest later."}}]}]}</script>
     <script>
         (function(){
@@ -45,9 +48,12 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com"/>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net"/>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="/tailwind.min.css" rel="stylesheet"/>
     <link href="/style.min.css" rel="stylesheet"/>
+    <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"/>
     <style>
         .brand-lockup.is-hidden { opacity: 1 !important; pointer-events: auto !important; transform: none !important; }
         .page-hero { padding-top: 9rem; padding-bottom: 4rem; }
@@ -78,7 +84,7 @@
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/services/brand/">Brand</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/services/web/">Web</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#archive">Archive</a>
-                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#research">Research</a>
+                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/research/">Research</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#connect">Connect</a>
             </nav>
         </div>
@@ -98,7 +104,7 @@
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/services/brand/">Brand</a>
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/services/web/">Web</a>
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#archive">Archive</a>
-            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#research">Research</a>
+            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/research/">Research</a>
             <a class="nav-link t-accent text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#connect">Connect</a>
             <div class="pt-2 border-t" style="border-color:var(--divider);">
                 <button id="theme-toggle-mobile" class="nav-link flex items-center gap-3 text-xs t-muted uppercase tracking-widest" aria-label="Toggle theme">
@@ -199,7 +205,7 @@
                     <p class="t-muted text-sm md:text-base max-w-2xl mt-4 md:mt-5 reveal-item leading-relaxed">Fifteen minutes. We scope the right first move. No pitch deck.</p>
                 </div>
                 <div class="glass-card rounded-xl p-2 md:p-4 reveal-item overflow-hidden">
-                    <div id="calendly-widget" class="calendly-inline-widget" data-url="https://calendly.com/hello-nunik/ai-strategy-call?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;background_color=111417&amp;text_color=e1e4e7&amp;primary_color=b45e45" style="width:100%;height:720px;"></div>
+                    <div id="calendly-widget" style="width:100%;height:720px;" aria-busy="true"></div>
                 </div>
             </div>
         </section>        <section class="relative py-20 md:py-28">
@@ -272,9 +278,8 @@
             </div>
             <div class="md:col-span-12 footer-glass-bar flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-2">
                 <div class="flex space-x-8 md:space-x-12">
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">Instagram</a>
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">LinkedIn</a>
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">Twitter</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://www.instagram.com/nunikco/" rel="me noopener" target="_blank">Instagram</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://www.linkedin.com/company/nunik-co/" rel="me noopener" target="_blank">LinkedIn</a>
                 </div>
                 <div class="flex items-center gap-3">
                     <svg class="brand-mark brand-mark-footer" viewBox="0 0 1080 1080" fill="currentColor" aria-hidden="true" width="22" height="22">
@@ -298,19 +303,6 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-    <script>
-        // Lazy-load Three.js after the page has finished initial render.
-        window.addEventListener('load', function() {
-            var s = document.createElement('script');
-            s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-            s.onload = function() {
-                // Wake the WebGL + chakra init if main.min.js already ran and registered a hook.
-                if (typeof window.initThreeScene === 'function') window.initThreeScene();
-            };
-            document.head.appendChild(s);
-        });
-    </script>
-    <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
     <script defer src="/main.min.js"></script>
 </body>
 </html>

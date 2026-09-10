@@ -46,4 +46,12 @@ Other sectors served: real estate, allied health, founder and product brands.
 Direct Calendly: https://calendly.com/hello-nunik/ai-strategy-call
 
 ## Research
-- Digital Transformation in Australian SMBs: 2026 Benchmarks (publishing Q2 2026).
+Field reports from client work across Australian SMBs. Index: https://nunik.co/research/
+- [Digital Transformation in Australian SMBs: 2026 Benchmarks](https://nunik.co/research/digital-transformation-australian-smbs-2026/): digital adoption, automation ROI and brand investment across real estate, trades, automotive and hospitality. Published April 2026.
+- [Real Estate Lead Automation: What Actually Works in 2026](https://nunik.co/research/real-estate-lead-automation-2026/): which platforms and moves deliver ROI for agencies under twenty people. Published June 2026.
+- [Why Trades Businesses Lose Clients Before the First Call](https://nunik.co/research/trades-lose-clients-before-first-call/): how brand presentation decides conversion for plumbers, electricians and landscapers. Published May 2026.
+- [Page Speed and Restaurant Booking Rates](https://nunik.co/research/page-speed-restaurant-booking-rates/): load time against reservation volume across forty Australian hospitality venues. Published June 2026.
+
+## Other pages
+- [Services hub](https://nunik.co/services/)
+- [Locations hub](https://nunik.co/locations/)

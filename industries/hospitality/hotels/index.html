@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
 <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18231203149"></script>
     <script>
@@ -9,8 +11,6 @@
         gtag('js', new Date());
         gtag('config', 'AW-18231203149');
     </script>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Hotel Direct Booking and Guest Automation | Nunik Co.</title>
     <meta name="description" content="Direct booking websites, channel manager sync, and guest automation for boutique Australian hotels and guesthouses. Built and held by Nunik Co."/>
     <meta name="theme-color" content="#B45E45"/>
@@ -28,13 +28,16 @@
     <meta property="og:description" content="Direct booking websites, channel manager sync, and guest automation for boutique Australian hotels and guesthouses. Built and held by Nunik Co."/>
     <meta property="og:url" content="https://nunik.co/industries/hospitality/hotels/"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:image" content="https://nunik.co/og-image.jpg"/>
+    <meta property="og:image" content="https://nunik.co/public/brand/og-image-1200x630.png"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="Nunik Co. wordmark"/>
     <meta property="og:locale" content="en_AU"/>
     <meta property="og:site_name" content="Nunik Co."/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Hotel Direct Booking and Guest Automation | Nunik Co."/>
     <meta name="twitter:description" content="Direct booking websites, channel manager sync, and guest automation for boutique Australian hotels and guesthouses. Built and held by Nunik Co."/>
-    <meta name="twitter:image" content="https://nunik.co/og-image.jpg"/>
+    <meta name="twitter:image" content="https://nunik.co/public/brand/og-image-1200x630.png"/>
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Service","@id":"https://nunik.co/industries/hospitality/hotels/#service","name":"Hotels","serviceType":"Business automation for hotels","provider":{"@type":"ProfessionalService","name":"Nunik Co.","url":"https://nunik.co/","email":"hello@nunik.co","address":{"@type":"PostalAddress","addressLocality":"Canberra","addressRegion":"ACT","addressCountry":"AU"}},"areaServed":"Australia","description":"Direct booking websites, channel manager sync, and guest automation for boutique Australian hotels and guesthouses. Built and held by Nunik Co.","url":"https://nunik.co/industries/hospitality/hotels/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://nunik.co/"},{"@type":"ListItem","position":2,"name":"Industries","item":"https://nunik.co/industries/"},{"@type":"ListItem","position":3,"name":"Hospitality","item":"https://nunik.co/industries/hospitality/"},{"@type":"ListItem","position":4,"name":"Hotels","item":"https://nunik.co/industries/hospitality/hotels/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will this actually reduce our OTA dependency, or just add another channel?","acceptedAnswer":{"@type":"Answer","text":"It shifts the mix over time. We do not pretend you can turn off Booking.com next month, and you should not want to. The OTAs are a discovery channel. The direct site is where repeat guests, locals, and anyone who searches your hotel name should land and convert. We measure direct share as a percentage of total bookings month over month, and the retainer work is aimed at moving that number. Most properties see meaningful change within two to three quarters."}},{"@type":"Question","name":"How does the channel manager integration work, and what if we already have one?","acceptedAnswer":{"@type":"Answer","text":"We integrate with the major channel managers used in Australia (SiteMinder, Cloudbeds, Little Hotelier, and similar). If you already have one, we connect to it. If you do not, we recommend one based on your property size and PMS. The booking engine on your direct site writes back to the channel manager in real time, so an inventory drop on direct closes the room everywhere within seconds. Rate parity rules are enforced so you do not breach OTA contracts."}},{"@type":"Question","name":"What does the guest data look like, and who owns it?","acceptedAnswer":{"@type":"Answer","text":"You own it. The CRM holds the guest record, stay history, room preferences, dietary notes, and any tags your team adds at the front desk. It pulls what it can from the OTAs (which is limited by their policies) and captures the full picture on direct bookings. We do not sell or share the data, we do not use it to train anything, and you can export the database whenever you like. The loyalty tier and repeat-guest offers run off this record."}},{"@type":"Question","name":"What is the monthly retainer for, after the site is live?","acceptedAnswer":{"@type":"Answer","text":"Three things, mainly. Engine and integration health, which means watching the channel sync, rate updates, and payment flows so they keep working through OTA platform changes. Content freshness, which means seasonal pages, updated local guides, new upsell offers, and the pre-arrival sequence kept current. And new build work as you need it, like adding a spa booking flow, a new room type, or a partner offer with a nearby restaurant. The retainer scales with the property size and the work pattern."}}]}]}</script>
     <script>
         (function(){
@@ -45,9 +48,12 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com"/>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net"/>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
     <link href="/tailwind.min.css" rel="stylesheet"/>
     <link href="/style.min.css" rel="stylesheet"/>
+    <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"/>
     <style>
         .brand-lockup.is-hidden { opacity: 1 !important; pointer-events: auto !important; transform: none !important; }
         .page-hero { padding-top: 9rem; padding-bottom: 4rem; }
@@ -78,7 +84,7 @@
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/services/brand/">Brand</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/services/web/">Web</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#archive">Archive</a>
-                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#research">Research</a>
+                <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/research/">Research</a>
                 <a class="nav-link t-muted text-[10px] md:text-[11px] font-medium tracking-[0.12em] md:tracking-[0.15em] uppercase whitespace-nowrap" href="/#connect">Connect</a>
             </nav>
         </div>
@@ -98,7 +104,7 @@
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/services/brand/">Brand</a>
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/services/web/">Web</a>
             <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#archive">Archive</a>
-            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#research">Research</a>
+            <a class="nav-link t-text text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/research/">Research</a>
             <a class="nav-link t-accent text-sm font-medium tracking-[0.15em] uppercase block py-3" href="/#connect">Connect</a>
             <div class="pt-2 border-t" style="border-color:var(--divider);">
                 <button id="theme-toggle-mobile" class="nav-link flex items-center gap-3 text-xs t-muted uppercase tracking-widest" aria-label="Toggle theme">
@@ -199,7 +205,7 @@
                     <p class="t-muted text-sm md:text-base max-w-2xl mt-4 md:mt-5 reveal-item leading-relaxed">Fifteen minutes. We scope the right first move. No pitch deck.</p>
                 </div>
                 <div class="glass-card rounded-xl p-2 md:p-4 reveal-item overflow-hidden">
-                    <div id="calendly-widget" class="calendly-inline-widget" data-url="https://calendly.com/hello-nunik/ai-strategy-call?hide_event_type_details=1&amp;hide_gdpr_banner=1&amp;background_color=111417&amp;text_color=e1e4e7&amp;primary_color=b45e45" style="width:100%;height:720px;"></div>
+                    <div id="calendly-widget" style="width:100%;height:720px;" aria-busy="true"></div>
                 </div>
             </div>
         </section>        <section class="relative py-20 md:py-28">
@@ -272,9 +278,8 @@
             </div>
             <div class="md:col-span-12 footer-glass-bar flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mt-2">
                 <div class="flex space-x-8 md:space-x-12">
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">Instagram</a>
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">LinkedIn</a>
-                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="#">Twitter</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://www.instagram.com/nunikco/" rel="me noopener" target="_blank">Instagram</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://www.linkedin.com/company/nunik-co/" rel="me noopener" target="_blank">LinkedIn</a>
                 </div>
                 <div class="flex items-center gap-3">
                     <svg class="brand-mark brand-mark-footer" viewBox="0 0 1080 1080" fill="currentColor" aria-hidden="true" width="22" height="22">
@@ -298,19 +303,6 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-    <script>
-        // Lazy-load Three.js after the page has finished initial render.
-        window.addEventListener('load', function() {
-            var s = document.createElement('script');
-            s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-            s.onload = function() {
-                // Wake the WebGL + chakra init if main.min.js already ran and registered a hook.
-                if (typeof window.initThreeScene === 'function') window.initThreeScene();
-            };
-            document.head.appendChild(s);
-        });
-    </script>
-    <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
     <script defer src="/main.min.js"></script>
 </body>
 </html>
