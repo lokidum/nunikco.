@@ -55,3 +55,7 @@ Field reports from client work across Australian SMBs. Index: https://nunik.co/r
 ## Other pages
 - [Services hub](https://nunik.co/services/)
 - [Locations hub](https://nunik.co/locations/)
+
+## Products (free tools built by Nunik Co.)
+- ChromaMimic: a free LUT generator. Match any film look from two frames and export a .cube or .dng LUT for DaVinci Resolve, Premiere Pro and Final Cut. Runs in the browser, nothing uploaded. https://chromamimic.nunik.co/
+- we2gether: a free couples app and party game platform. Daily rituals, a garden that grows from time spent together, and 32 games for date nights and party rooms of up to 8 friends. https://we2gether.nunik.co/

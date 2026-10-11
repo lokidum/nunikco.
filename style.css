@@ -564,6 +564,24 @@ a, button, .glass-card, .nav-link, input, textarea, select {
 .terminal-input:focus {
     border-color: var(--accent) !important;
 }
+.terminal-input[aria-invalid="true"] {
+    border-color: var(--accent) !important;
+}
+.terminal-error,
+.terminal-hint {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+    margin-top: 0.1rem;
+}
+.terminal-error { color: var(--accent); }
+.terminal-error:empty { display: none; }
+.terminal-hint { color: var(--text-muted); opacity: 0.7; }
+.terminal-hint.is-met { color: var(--terminal-green); opacity: 1; }
+select.terminal-input {
+    cursor: pointer;
+}
 
 /* ================================================
    Keyboard focus polish.

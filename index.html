@@ -799,40 +799,45 @@
                 <!-- Terminal body -->
                 <div class="p-6 md:p-10 text-xs font-mono">
                     <div id="terminal-boot" class="flex flex-col gap-2 mb-6 md:mb-8"></div>
-                    <form id="terminal-form" class="flex flex-col gap-5 md:gap-7 opacity-0" style="transform:translateY(20px);">
+                    <form id="terminal-form" novalidate class="flex flex-col gap-5 md:gap-7 opacity-0" style="transform:translateY(20px);">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"/>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
                             <div class="flex flex-col gap-2">
                                 <label for="lead-name" class="t-muted uppercase tracking-widest text-[10px]">> FULL_NAME *</label>
-                                $1 id="lead-name" name="name" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
+                                <input type="text" id="lead-name" name="name" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
                                        style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="name"/>
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label for="lead-email" class="t-muted uppercase tracking-widest text-[10px]">> EMAIL *</label>
-                                $1 id="lead-email" name="email" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
+                                <input type="email" id="lead-email" name="email" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
                                        style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="email"/>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
                             <div class="flex flex-col gap-2">
                                 <label for="lead-phone" class="t-muted uppercase tracking-widest text-[10px]">> PHONE *</label>
-                                $1 id="lead-phone" name="phone" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
-                                       style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="tel"/>
+                                <div class="flex gap-3 items-end">
+                                    <select id="lead-country" name="country_code" class="terminal-input bg-transparent pb-2 t-text focus:outline-none appearance-none" style="border-bottom:1px solid var(--glass-border);width:7.5rem;flex-shrink:0;" required aria-label="Country code" autocomplete="tel-country-code">
+                                        <option value="">+ CODE</option>
+                                    </select>
+                                    <input type="tel" id="lead-phone" name="phone" class="terminal-input bg-transparent pb-2 t-text focus:outline-none flex-1 min-w-0" style="border-bottom:1px solid var(--glass-border);" placeholder="412 345 678" required autocomplete="tel-national" inputmode="tel"/>
+                                </div>
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label for="lead-website" class="t-muted uppercase tracking-widest text-[10px]">> WEBSITE <span class="t-faint">[optional]</span></label>
-                                $1 id="lead-website" name="website" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
+                                <input type="url" id="lead-website" name="website" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
                                        style="border-bottom:1px solid var(--glass-border);" placeholder="_" autocomplete="url"/>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
                             <div class="flex flex-col gap-2">
                                 <label for="lead-business" class="t-muted uppercase tracking-widest text-[10px]">> BUSINESS_NAME <span class="t-faint">[optional]</span></label>
-                                $1 id="lead-business" name="business" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
+                                <input type="text" id="lead-business" name="business" class="terminal-input bg-transparent pb-2 t-text focus:outline-none"
                                        style="border-bottom:1px solid var(--glass-border);" placeholder="_" autocomplete="organization"/>
                             </div>
                             <div class="flex flex-col gap-2">
                                 <label for="lead-service" class="t-muted uppercase tracking-widest text-[10px]">> QUERY_TYPE *</label>
-                                $1 id="lead-service" name="service" class="terminal-input bg-transparent pb-2 t-text focus:outline-none appearance-none"
+                                <select id="lead-service" name="service" class="terminal-input bg-transparent pb-2 t-text focus:outline-none appearance-none"
                                         style="border-bottom:1px solid var(--glass-border);" required>
                                     <option value="">Select...</option>
                                     <option value="Brand Identity">Brand Identity</option>
@@ -845,7 +850,7 @@
                         </div>
                         <div class="flex flex-col gap-2">
                             <label for="lead-message" class="t-muted uppercase tracking-widest text-[10px]">> MISSION_BRIEF *</label>
-                            $1 id="lead-message" name="message" class="terminal-input bg-transparent pb-2 t-text focus:outline-none resize-none"
+                            <textarea rows="4" id="lead-message" name="message" class="terminal-input bg-transparent pb-2 t-text focus:outline-none resize-none"
                                       style="border-bottom:1px solid var(--glass-border);" placeholder="Describe your vision..." required></textarea>
                         </div>
                         <button type="submit" class="mt-2 md:mt-4 self-start flex items-center gap-2 group t-accent nav-link"
@@ -903,6 +908,10 @@
                        onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">Instagram</a>
                     <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://www.linkedin.com/company/nunik-co/" rel="me noopener" target="_blank"
                        onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">LinkedIn</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://chromamimic.nunik.co/" title="ChromaMimic, a free LUT generator by Nunik Co."
+                       onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">ChromaMimic</a>
+                    <a class="t-footer uppercase text-xs tracking-widest nav-link" href="https://we2gether.nunik.co/" title="we2gether, a free couples app by Nunik Co."
+                       onmouseenter="this.style.color='var(--heading-sub)'" onmouseleave="this.style.color=''">we2gether</a>
                 </div>
                 <div class="flex items-center gap-3">
                     <svg class="brand-mark brand-mark-footer" viewBox="0 0 1080 1080" fill="currentColor" aria-hidden="true" width="22" height="22">
