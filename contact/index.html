@@ -139,8 +139,8 @@
             <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24">
                 <div class="mb-10 md:mb-14 reveal-container">
                     <span class="t-accent text-xs font-bold tracking-[0.3em] uppercase reveal-item eyebrow-rule">Option one</span>
-                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-6xl tracking-tighter reveal-item t-text">Mission brief.</h2>
-                    <p class="t-muted text-sm md:text-base max-w-2xl mt-4 md:mt-5 reveal-item leading-relaxed">Fill it in. Hit transmit. We will be back with the right questions and a clear next move.</p>
+                    <h2 class="font-headline italic text-4xl sm:text-5xl md:text-6xl tracking-tighter reveal-item t-text">Tell us what you need.</h2>
+                    <p class="t-muted text-sm md:text-base max-w-2xl mt-4 md:mt-5 reveal-item leading-relaxed">Six short questions, about a minute. We come back with the right questions and a clear next move.</p>
                 </div>
 
                 <div id="contact-expansion" class="w-full">
@@ -154,64 +154,139 @@
                             <div class="mx-auto text-[10px] tracking-widest uppercase font-mono t-faint">nunik_init.sh</div>
                             <div class="w-10"></div>
                         </div>
-                        <div class="p-6 md:p-10 text-xs font-mono">
-                            <div id="terminal-boot" class="flex flex-col gap-2 mb-6 md:mb-8">
-                                <p style="color:var(--terminal-green);">&gt; CONNECTION ESTABLISHED.</p>
-                                <p style="color:var(--text-muted);">&gt; Awaiting mission brief...</p>
-                            </div>
-                            <form id="terminal-form" novalidate class="flex flex-col gap-5 md:gap-7" style="opacity:1;transform:none;">
-                        <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"/>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
-                                    <div class="flex flex-col gap-2">
-                                        <label for="lead-name" class="t-muted uppercase tracking-widest text-[10px]">&gt; FULL_NAME *</label>
-                                        <input type="text" id="lead-name" name="name" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="name"/>
-                                    </div>
-                                    <div class="flex flex-col gap-2">
-                                        <label for="lead-email" class="t-muted uppercase tracking-widest text-[10px]">&gt; EMAIL *</label>
-                                        <input type="email" id="lead-email" name="email" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" required autocomplete="email"/>
-                                    </div>
+                        <div class="p-6 md:p-10">
+                            <form id="terminal-form" class="lead-flow" novalidate data-dir="fwd">
+                                <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+                            
+                                <div class="lf-head">
+                                    <span class="lf-count" aria-hidden="true"><b>01</b> / 06</span>
+                                    <button type="button" class="lf-back" hidden>
+                                        <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M313-440l224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+                                        Back
+                                    </button>
                                 </div>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
-                                    <div class="flex flex-col gap-2">
-                                        <label for="lead-phone" class="t-muted uppercase tracking-widest text-[10px]">&gt; PHONE *</label>
-                                        <div class="flex gap-3 items-end">
-                                            <select id="lead-country" name="country_code" class="terminal-input bg-transparent pb-2 t-text focus:outline-none appearance-none" style="border-bottom:1px solid var(--glass-border);width:7.5rem;flex-shrink:0;" required aria-label="Country code" autocomplete="tel-country-code">
-                                                <option value="">+ CODE</option>
-                                            </select>
-                                            <input type="tel" id="lead-phone" name="phone" class="terminal-input bg-transparent pb-2 t-text focus:outline-none flex-1 min-w-0" style="border-bottom:1px solid var(--glass-border);" placeholder="412 345 678" required autocomplete="tel-national" inputmode="tel"/>
+                                <div class="lf-progress" role="progressbar" aria-label="Enquiry progress" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1"><span></span></div>
+                            
+                                <div class="lf-stage">
+                                    <fieldset class="lf-step is-active" data-step="service">
+                                        <legend class="lf-q lf-anim" style="--i:0">What do you need a hand with?</legend>
+                                        <p class="lf-sub lf-anim" style="--i:1">Pick the closest fit. You can explain properly in a moment.</p>
+                                        <div class="lf-options">
+                                        <label class="lf-option lf-anim" style="--i:2">
+                                            <input type="radio" name="service" value="Web Development" class="lf-radio"/>
+                                            <span class="lf-key" aria-hidden="true">1</span>
+                                            <span class="lf-opt-text"><span class="lf-opt-title">A website</span><span class="lf-opt-note">A new build, or a rebuild that loads fast and wins the enquiry.</span></span>
+                                            <svg class="lf-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+                                        </label>
+                                        <label class="lf-option lf-anim" style="--i:3">
+                                            <input type="radio" name="service" value="Brand Identity" class="lf-radio"/>
+                                            <span class="lf-key" aria-hidden="true">2</span>
+                                            <span class="lf-opt-text"><span class="lf-opt-title">A brand identity</span><span class="lf-opt-note">Logo, colour, type and templates that make you look the part.</span></span>
+                                            <svg class="lf-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+                                        </label>
+                                        <label class="lf-option lf-anim" style="--i:4">
+                                            <input type="radio" name="service" value="Automation" class="lf-radio"/>
+                                            <span class="lf-key" aria-hidden="true">3</span>
+                                            <span class="lf-opt-text"><span class="lf-opt-title">Automation and CRM</span><span class="lf-opt-note">Follow-ups, bookings and lead handling that run themselves.</span></span>
+                                            <svg class="lf-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+                                        </label>
+                                        <label class="lf-option lf-anim" style="--i:5">
+                                            <input type="radio" name="service" value="Full Transformation" class="lf-radio"/>
+                                            <span class="lf-key" aria-hidden="true">4</span>
+                                            <span class="lf-opt-text"><span class="lf-opt-title">All of it</span><span class="lf-opt-note">Brand, website and the systems behind them, as one build.</span></span>
+                                            <svg class="lf-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+                                        </label>
+                                        <label class="lf-option lf-anim" style="--i:6">
+                                            <input type="radio" name="service" value="Other" class="lf-radio"/>
+                                            <span class="lf-key" aria-hidden="true">5</span>
+                                            <span class="lf-opt-text"><span class="lf-opt-title">Something else</span><span class="lf-opt-note">Not sure which box you fit. Tell us and we will work it out.</span></span>
+                                            <svg class="lf-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+                                        </label>
                                         </div>
-                                    </div>
-                                    <div class="flex flex-col gap-2">
-                                        <label for="lead-website" class="t-muted uppercase tracking-widest text-[10px]">&gt; WEBSITE <span class="t-faint">[optional]</span></label>
-                                        <input type="url" id="lead-website" name="website" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" autocomplete="url"/>
+                                        <p class="lf-error" id="lf-err-service" role="alert"></p>
+                                    </fieldset>
+                            
+                                    <fieldset class="lf-step" data-step="name" inert aria-hidden="true">
+                                        <legend class="lf-q lf-anim" style="--i:0">What should we call you?</legend>
+                                        <p class="lf-sub lf-anim" style="--i:1">First name is fine.</p>
+                                        <div class="lf-field lf-anim" style="--i:2">
+                                            <label class="lf-label" for="lead-name">Your name</label>
+                                            <input type="text" id="lead-name" name="name" class="lf-input" autocomplete="name" autocapitalize="words" spellcheck="false" aria-describedby="lf-err-name" required/>
+                                            <p class="lf-error" id="lf-err-name" role="alert"></p>
+                                        </div>
+                                    </fieldset>
+                            
+                                    <fieldset class="lf-step" data-step="email" inert aria-hidden="true">
+                                        <legend class="lf-q lf-anim" style="--i:0">Where should we send the plan<span data-lf-name></span>?</legend>
+                                        <p class="lf-sub lf-anim" style="--i:1">We reply with a scoped plan and a fixed price within one working day.</p>
+                                        <div class="lf-field lf-anim" style="--i:2">
+                                            <label class="lf-label" for="lead-email">Email address</label>
+                                            <input type="email" id="lead-email" name="email" class="lf-input" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="name@company.com" aria-describedby="lf-err-email lf-note-email" required/>
+                                            <p class="lf-error" id="lf-err-email" role="alert"></p>
+                                        </div>
+                                        <p class="lf-note lf-anim" id="lf-note-email" style="--i:3">If you stop part-way, we may send one email to see if we can help. No newsletters.</p>
+                                    </fieldset>
+                            
+                                    <fieldset class="lf-step" data-step="phone" inert aria-hidden="true">
+                                        <legend class="lf-q lf-anim" style="--i:0">Best number for a quick call?</legend>
+                                        <p class="lf-sub lf-anim" style="--i:1">Used for this enquiry only. Pick your country code first.</p>
+                                        <div class="lf-field lf-anim" style="--i:2">
+                                            <label class="lf-label" for="lead-phone">Phone number</label>
+                                            <div class="lf-phone">
+                                                <select id="lead-country" name="country_code" class="lf-input lf-select" aria-label="Country code" autocomplete="tel-country-code" required>
+                                                    <option value="">Code</option>
+                                                </select>
+                                                <input type="tel" id="lead-phone" name="phone" class="lf-input" autocomplete="tel-national" inputmode="tel" placeholder="412 345 678" aria-describedby="lf-err-phone" required/>
+                                            </div>
+                                            <p class="lf-error" id="lf-err-phone" role="alert"></p>
+                                        </div>
+                                    </fieldset>
+                            
+                                    <fieldset class="lf-step" data-step="business" inert aria-hidden="true">
+                                        <legend class="lf-q lf-anim" style="--i:0">What is the business called?</legend>
+                                        <p class="lf-sub lf-anim" style="--i:1">Both optional. A website helps us do our homework before we reply.</p>
+                                        <div class="lf-field lf-anim" style="--i:2">
+                                            <label class="lf-label" for="lead-business">Business name</label>
+                                            <input type="text" id="lead-business" name="business" class="lf-input" autocomplete="organization" autocapitalize="words"/>
+                                        </div>
+                                        <div class="lf-field lf-anim" style="--i:3">
+                                            <label class="lf-label" for="lead-website">Website, if you have one</label>
+                                            <input type="text" id="lead-website" name="website" class="lf-input" autocomplete="url" inputmode="url" autocapitalize="off" spellcheck="false" placeholder="yourbusiness.com.au" aria-describedby="lf-err-website"/>
+                                            <p class="lf-error" id="lf-err-website" role="alert"></p>
+                                        </div>
+                                    </fieldset>
+                            
+                                    <fieldset class="lf-step" data-step="message" inert aria-hidden="true">
+                                        <legend class="lf-q lf-anim" style="--i:0" data-lf-brief-q>What is slowing the business down?</legend>
+                                        <p class="lf-sub lf-anim" style="--i:1" data-lf-brief-sub>A few sentences is plenty. Tap an opener if you are not sure where to start.</p>
+                                        <div class="lf-starters lf-anim" style="--i:2" role="group" aria-label="Sentence starters"></div>
+                                        <div class="lf-field lf-anim" style="--i:3">
+                                            <label class="lf-label" for="lead-message">Your brief</label>
+                                            <div class="lf-brief">
+                                                <div class="lf-ghost" aria-hidden="true"><span class="lf-ghost-stem"></span><span class="lf-ghost-rest"></span><span class="lf-caret"></span></div>
+                                                <textarea id="lead-message" name="message" class="lf-input lf-textarea" rows="5" aria-describedby="lf-err-message lf-counter" required></textarea>
+                                            </div>
+                                            <div class="lf-brief-meta">
+                                                <span class="lf-counter" id="lf-counter">0 / 10 words</span>
+                                                <span class="lf-ghost-hint" aria-hidden="true">Press <kbd>&rarr;</kbd> to use the opener</span>
+                                            </div>
+                                            <p class="lf-error" id="lf-err-message" role="alert"></p>
+                                        </div>
+                                    </fieldset>
+                            
+                                    <div class="lf-step lf-done" data-step="done" inert aria-hidden="true">
+                                        <p class="lf-q lf-anim" style="--i:0">Sent<span data-lf-name></span>.</p>
+                                        <p class="lf-sub lf-anim" style="--i:1">We will be back within one working day with the right questions and a clear next move.</p>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-7">
-                                    <div class="flex flex-col gap-2">
-                                        <label for="lead-business" class="t-muted uppercase tracking-widest text-[10px]">&gt; BUSINESS_NAME <span class="t-faint">[optional]</span></label>
-                                        <input type="text" id="lead-business" name="business" class="terminal-input bg-transparent pb-2 t-text focus:outline-none" style="border-bottom:1px solid var(--glass-border);" placeholder="_" autocomplete="organization"/>
-                                    </div>
-                                    <div class="flex flex-col gap-2">
-                                        <label for="lead-service" class="t-muted uppercase tracking-widest text-[10px]">&gt; QUERY_TYPE *</label>
-                                        <select id="lead-service" name="service" class="terminal-input bg-transparent pb-2 t-text focus:outline-none appearance-none" style="border-bottom:1px solid var(--glass-border);" required>
-                                            <option value="">Select...</option>
-                                            <option value="Brand Identity">Brand Identity</option>
-                                            <option value="Automation">Automation</option>
-                                            <option value="Web Development">Web Development</option>
-                                            <option value="Full Transformation">Full Transformation</option>
-                                            <option value="Other">Other</option>
-                                        </select>
-                                    </div>
+                            
+                                <div class="lf-foot">
+                                    <button type="button" class="lf-btn lf-next"><span class="lf-btn-label">Continue</span> <svg width="16" height="16" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></button>
+                                    <button type="submit" class="lf-btn lf-submit" hidden><span class="lf-btn-label">Send the brief</span> <svg width="16" height="16" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg></button>
+                                    <button type="button" class="lf-skip" hidden>Skip this</button>
+                                    <span class="lf-enter" aria-hidden="true">or press <kbd>Enter</kbd></span>
                                 </div>
-                                <div class="flex flex-col gap-2">
-                                    <label for="lead-message" class="t-muted uppercase tracking-widest text-[10px]">&gt; MISSION_BRIEF *</label>
-                                    <textarea rows="4" id="lead-message" name="message" class="terminal-input bg-transparent pb-2 t-text focus:outline-none resize-none" style="border-bottom:1px solid var(--glass-border);" placeholder="Describe your vision..." required></textarea>
-                                </div>
-                                <button type="submit" class="mt-2 md:mt-4 self-start flex items-center gap-2 group t-accent nav-link" onmouseenter="this.style.color='var(--accent-light)'" onmouseleave="this.style.color=''">
-                                    <span class="opacity-0 group-hover:opacity-100 transition-opacity">&gt;&gt;</span>
-                                    <span class="tracking-widest uppercase">[ TRANSMIT_DATA ]</span>
-                                    <span class="animate-pulse block w-2 h-4 ml-1" style="background:var(--accent);"></span>
-                                </button>
+                                <p class="lf-status" role="status" aria-live="polite"></p>
                             </form>
                         </div>
                     </div>

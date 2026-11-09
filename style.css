@@ -200,16 +200,6 @@ body {
     border-color: var(--glass-border-hover);
 }
 
-/* ================================================
-   Contact expansion (hidden by default for GSAP)
-   ================================================ */
-#contact-expansion {
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    padding-top: 0;
-    padding-bottom: 0;
-}
 
 /* ================================================
    Editorial clip mask
@@ -555,13 +545,6 @@ a, button, .glass-card, .nav-link, input, textarea, select {
 }
 
 /* ================================================
-   Terminal form inputs
-   ================================================ */
-.terminal-input {
-    font-size: 13px;
-    letter-spacing: 0.02em;
-}
-/* ================================================
    Booking embed (Cal.com)
    --booking-bg matches the cal-bg token set in main.js
    (CAL_PALETTE), so the embed fills its card with no
@@ -583,26 +566,480 @@ a, button, .glass-card, .nav-link, input, textarea, select {
     background: var(--booking-bg);
 }
 
-.terminal-input:focus {
-    border-color: var(--accent) !important;
+
+/* ================================================
+   Enquiry flow: one question per screen
+   Motion rules: transform and opacity only, expo
+   ease-out on the way in, short ease-in on the way
+   out, direction follows Continue / Back.
+   ================================================ */
+:root { --lf-line: rgba(27, 30, 34, 0.26); }
+.dark { --lf-line: rgba(225, 228, 231, 0.24); }
+
+/* The form card must sit still: no hover lift while someone is typing. */
+.glass-card:has(.lead-flow):hover {
+    transform: none;
+    background: var(--glass-bg);
 }
-.terminal-input[aria-invalid="true"] {
-    border-color: var(--accent) !important;
+
+.lead-flow {
+    --lf-sign: 1;
+    --lf-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;
+    color: var(--text);
 }
-.terminal-error,
-.terminal-hint {
+.lead-flow[data-dir="back"] { --lf-sign: -1; }
+.lead-flow [hidden] { display: none !important; }
+.lead-flow kbd {
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 10px;
-    letter-spacing: 0.04em;
-    line-height: 1.4;
-    margin-top: 0.1rem;
+    font-size: 0.6875rem;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--lf-line);
+    border-radius: 4px;
 }
-.terminal-error { color: var(--accent); }
-.terminal-error:empty { display: none; }
-.terminal-hint { color: var(--text-muted); opacity: 0.7; }
-.terminal-hint.is-met { color: var(--terminal-green); opacity: 1; }
-select.terminal-input {
+
+/* Header: step count, back, progress */
+.lf-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 2.75rem;
+    margin-bottom: -1rem;
+}
+.lf-count {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+}
+.lf-count b { color: var(--accent); font-weight: 500; }
+.lf-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.75rem;
+    padding: 0 0 0 0.75rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+.lf-back svg { transition: transform 0.4s var(--lf-ease); }
+.lf-back:hover { color: var(--text); }
+.lf-back:hover svg { transform: translateX(-3px); }
+.lf-progress {
+    height: 2px;
+    border-radius: 2px;
+    background: var(--divider);
+    overflow: hidden;
+}
+.lf-progress span {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    transform: scaleX(var(--p, 0.1667));
+    transform-origin: left center;
+    transition: transform 0.7s var(--lf-ease);
+}
+
+/* Stage: every step shares one grid cell. The row eases to the height of
+   the current question (set from JS as --lf-h), so the card hugs its content. */
+.lf-stage {
+    display: grid;
+    align-items: start;
+    grid-template-rows: var(--lf-h, auto);
+    transition: grid-template-rows 0.6s var(--lf-ease);
+}
+.lf-step {
+    grid-area: 1 / 1;
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate3d(0, calc(var(--lf-sign) * 28px), 0);
+}
+.lf-step.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    transition: opacity 0.45s ease-out, transform 0.7s var(--lf-ease);
+}
+.lf-step.is-leaving {
+    visibility: visible;
+    opacity: 0;
+    transform: translate3d(0, calc(var(--lf-sign) * -18px), 0);
+    transition: opacity 0.2s ease-in, transform 0.22s ease-in;
+}
+
+/* Staggered entrance for the pieces of a step */
+.lf-anim {
+    opacity: 0;
+    transform: translate3d(0, calc(var(--lf-sign) * 14px), 0);
+}
+.lf-step.is-active .lf-anim {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.5s ease-out calc(var(--i, 0) * 55ms + 90ms),
+                transform 0.75s var(--lf-ease) calc(var(--i, 0) * 55ms + 90ms);
+}
+.lf-step.is-leaving .lf-anim {
+    opacity: 1;
+    transform: none;
+}
+
+.lf-q {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 0.6rem;
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.75rem, 1.2rem + 2.4vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--text);
+}
+.lf-sub {
+    max-width: 46ch;
+    margin-bottom: 1.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+}
+.lf-note {
+    max-width: 46ch;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+/* Choice rows */
+.lf-options {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--divider);
+}
+.lf-option {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 3.75rem;
+    padding: 0.85rem 0.75rem;
+    border-top: 1px solid var(--divider);
     cursor: pointer;
+    overflow: hidden;
+}
+.lf-option::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--accent-glow);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.5s var(--lf-ease);
+}
+.lf-option.is-checked::before { transform: scaleX(1); }
+.lf-radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+.lf-option:focus-within { outline: 2px solid var(--accent); outline-offset: -2px; }
+@supports selector(:has(a)) {
+    .lf-option:focus-within { outline: none; }
+    .lf-option:has(.lf-radio:focus-visible) { outline: 2px solid var(--accent); outline-offset: -2px; }
+}
+.lf-key {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border: 1px solid var(--lf-line);
+    border-radius: 4px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+.lf-option.is-checked .lf-key {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #FFF8F4;
+}
+.lf-opt-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    transition: transform 0.5s var(--lf-ease);
+}
+.lf-option:hover .lf-opt-text { transform: translateX(4px); }
+.lf-opt-title {
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--text);
+}
+.lf-opt-note {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+}
+.lf-check {
+    flex-shrink: 0;
+    color: var(--accent);
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+    transition: stroke-dashoffset 0.45s var(--lf-ease) 0.1s;
+}
+.lf-option.is-checked .lf-check { stroke-dashoffset: 0; }
+
+/* Fields */
+.lf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+}
+.lf-label {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.lf-input {
+    width: 100%;
+    padding: 0.6rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--lf-line);
+    border-radius: 0;
+    font-family: inherit;
+    font-size: 1.125rem;
+    line-height: 1.4;
+    color: var(--text);
+    caret-color: var(--accent);
+    background: linear-gradient(var(--accent), var(--accent)) no-repeat left bottom / 0% 2px transparent;
+    transition: background-size 0.6s var(--lf-ease), border-color 0.3s ease;
+}
+.lf-input::placeholder { color: var(--text-muted); opacity: 0.55; }
+.lf-input:focus,
+.lf-input:focus-visible {
+    outline: none;
+    background-size: 100% 2px;
+}
+.lf-input[aria-invalid="true"] { border-bottom-color: var(--accent); }
+.lf-phone {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.9rem;
+}
+.lf-select {
+    flex: 0 0 5.75rem;
+    width: 5.75rem;
+    padding-right: 1.1rem;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    background:
+        linear-gradient(45deg, transparent 50%, currentColor 50%) no-repeat calc(100% - 9px) 55% / 5px 5px,
+        linear-gradient(135deg, currentColor 50%, transparent 50%) no-repeat calc(100% - 4px) 55% / 5px 5px,
+        transparent;
+    transition: border-color 0.3s ease;
+}
+.lf-select:focus,
+.lf-select:focus-visible {
+    outline: none;
+    border-bottom-color: var(--accent);
+    background-size: 5px 5px, 5px 5px, auto;
+}
+.lf-select option { background: var(--select-bg); color: var(--text); }
+
+/* Brief: openers, ghost text, counter */
+.lf-starters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+.lf-chip {
+    min-height: 2.5rem;
+    padding: 0 0.9rem;
+    border: 1px solid var(--lf-line);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    line-height: 1.2;
+    color: var(--text);
+    text-align: left;
+    transition: border-color 0.3s ease, color 0.3s ease, opacity 0.3s ease, transform 0.25s var(--lf-ease);
+}
+.lf-chip:hover { border-color: var(--accent); color: var(--accent); }
+.lf-chip:active { transform: scale(0.97); }
+.lf-chip.is-used { opacity: 0.45; }
+.lf-brief { position: relative; }
+.lf-textarea {
+    display: block;
+    min-height: 8.75rem;
+    padding: 0.75rem 0;
+    line-height: 1.55;
+    resize: none;
+}
+.lf-ghost {
+    position: absolute;
+    inset: 0;
+    padding: 0.75rem 0;
+    font-size: 1.125rem;
+    line-height: 1.55;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+.lf-ghost.is-on { opacity: 1; }
+.lf-ghost.is-on.is-fading { opacity: 0; }
+.lf-ghost-stem { color: var(--text-muted); }
+.lf-ghost-rest { color: var(--text-muted); opacity: 0.55; }
+.lf-caret {
+    display: inline-block;
+    width: 1px;
+    height: 1.1em;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    background: var(--accent);
+    animation: lf-blink 1.05s steps(1) infinite;
+}
+@keyframes lf-blink { 50% { opacity: 0; } }
+.lf-brief-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+}
+.lf-counter { transition: color 0.3s ease; }
+.lf-counter.is-met { color: var(--terminal-green); }
+.lf-ghost-hint { opacity: 0; transition: opacity 0.35s ease; }
+.lf-ghost-hint.is-on { opacity: 0.85; }
+
+/* Errors and status */
+.lf-error,
+.lf-status {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--accent-light);
+}
+.lf-error:empty,
+.lf-status:empty { display: none; }
+.lf-step > .lf-error { margin-top: 0.75rem; }
+@keyframes lf-nudge {
+    0% { transform: translateX(0); }
+    30% { transform: translateX(-6px); }
+    100% { transform: translateX(0); }
+}
+.lf-nudge { animation: lf-nudge 0.34s var(--lf-ease); }
+
+/* Footer: primary action */
+.lf-foot {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+}
+.lf-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding: 0 1.5rem;
+    border-radius: 999px;
+    background: var(--accent);
+    background: color-mix(in srgb, var(--accent) 86%, #000);
+    color: #FFF8F4;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: transform 0.4s var(--lf-ease), filter 0.3s ease, opacity 0.3s ease;
+}
+.lf-btn svg { transition: transform 0.4s var(--lf-ease); }
+.lf-btn:hover { filter: brightness(1.1); }
+.lf-btn:hover svg { transform: translateX(4px); }
+.lf-btn:active { transform: scale(0.98); }
+.lf-btn.is-sending { opacity: 0.65; cursor: progress; }
+.lf-skip {
+    min-height: 2.75rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-decoration-color: var(--lf-line);
+    text-underline-offset: 5px;
+    transition: color 0.3s ease;
+}
+.lf-skip:hover { color: var(--text); }
+.lf-enter {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+.lead-flow.is-done .lf-foot,
+.lead-flow.is-done .lf-back { visibility: hidden; }
+
+/* Touch devices: no keyboard hints */
+@media (hover: none) {
+    .lf-key,
+    .lf-enter,
+    .lf-ghost-hint { display: none; }
+    .lf-option { padding-left: 0.25rem; padding-right: 0.25rem; }
+    .lf-chip { min-height: 2.75rem; }
+}
+
+@media (max-width: 480px) {
+    .lf-option { gap: 0.75rem; padding-top: 0.7rem; padding-bottom: 0.7rem; min-height: 3.5rem; }
+    .lf-opt-note { font-size: 0.78rem; }
+    .lf-sub { margin-bottom: 1.1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lf-step,
+    .lf-step.is-active,
+    .lf-step.is-leaving,
+    .lf-anim,
+    .lf-step.is-active .lf-anim {
+        transform: none !important;
+        transition: opacity 0.15s linear !important;
+        transition-delay: 0s !important;
+    }
+    .lf-progress span,
+    .lf-option::before,
+    .lf-check,
+    .lf-opt-text,
+    .lf-input,
+    .lf-btn,
+    .lf-btn svg,
+    .lf-back svg,
+    .lf-stage { transition: none; }
+    .lf-caret,
+    .lf-nudge { animation: none; }
 }
 
 /* ================================================
@@ -624,14 +1061,6 @@ textarea:focus-visible,
     outline-offset: 3px;
     border-radius: 4px;
     transition: outline-offset 0.2s ease;
-}
-.terminal-input:focus-visible {
-    outline: none;
-    border-color: var(--accent) !important;
-}
-select.terminal-input option {
-    background: var(--select-bg);
-    color: var(--text);
 }
 
 /* ================================================

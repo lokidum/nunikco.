@@ -43,6 +43,7 @@ const COUNTRY_CODES = [
 const NATIONAL_LENGTHS = { AU: [9, 9], NZ: [8, 10], US: [10, 10], CA: [10, 10], GB: [10, 10], IN: [10, 10], SG: [8, 8], AE: [9, 9], DE: [10, 11], IE: [9, 9] };
 const MIN_WORDS_OTHER = 50;
 const MIN_WORDS_DEFAULT = 10;
+const MIN_OWN_WORDS = 8;
 
 function countryName(iso) {
     if (iso === "XK") return "Kosovo";
@@ -79,62 +80,137 @@ function wordCount(text) {
     return (text || "").trim().split(/\s+/).filter((w) => /[A-Za-z0-9]/.test(w)).length;
 }
 
-function initLeadFormValidation(form) {
-    const field = (name) => form.querySelector(`[name="${name}"]`);
+/* ================================================
+   Enquiry flow: one question per screen
+   ================================================ */
+// Web3Forms delivers finished enquiries to hello@nunik.co.
+const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+const FORM_ACCESS_KEY = "17a1f44f-2499-4c3e-ba1a-7714fb693c59";
+
+// Optional automation hook (n8n, GoHighLevel, Zapier: any inbound webhook
+// that accepts form fields). When set, the flow posts these events with the
+// answers so far and a session_id:
+//   partial    after the email question and every question after it
+//   abandoned  the tab was hidden or closed before the enquiry was sent
+//   resumed    the visitor came back to the tab
+//   completed  the enquiry was sent
+// The automation should wait 30 seconds after "abandoned", and email the
+// visitor only if no "resumed" or "completed" arrived for that session_id.
+// Left empty, an unfinished enquiry is emailed to hello@nunik.co instead.
+const LEAD_WEBHOOK_URL = "";
+const LEAD_STORE_KEY = "nunik-lead-v1";
+
+// Brief question, and sentence openers with an example ending, per need.
+const LEAD_BRIEFS = {
+    "Web Development": {
+        q: "Tell us about the website.",
+        starters: [
+            ["Our current site", "is slow on a phone and nobody can find the booking button."],
+            ["People land on it and", "leave before they call us."],
+            ["We want visitors to", "book a job without having to ring."],
+            ["A site we like is", "the one our biggest competitor just launched."],
+            ["We need it live by", "the start of next quarter."]
+        ]
+    },
+    "Brand Identity": {
+        q: "Tell us about the brand.",
+        starters: [
+            ["Right now we look like", "every other business in our trade."],
+            ["We want people to feel", "they can trust us before the first call."],
+            ["Our best customers are", "owners who care about the details."],
+            ["We keep getting mistaken for", "a much smaller operation than we are."],
+            ["It has to work on", "the vans, the uniforms and the website."]
+        ]
+    },
+    "Automation": {
+        q: "What should be running itself?",
+        starters: [
+            ["Every day someone has to manually", "copy new enquiries into the calendar."],
+            ["Leads come in from", "the website, the phone and Facebook, all in different places."],
+            ["We lose track when", "a quote goes out and nobody follows up."],
+            ["We already use", "a CRM, but only half of it is set up."],
+            ["If one thing ran itself, it would be", "replying to missed calls."]
+        ]
+    },
+    "Full Transformation": {
+        q: "What is slowing the business down?",
+        starters: [
+            ["We are", "a six-van plumbing business that has outgrown its systems."],
+            ["The biggest bottleneck is", "everything running through one person."],
+            ["Our website and brand", "have not changed since we started."],
+            ["The admin that eats our week is", "quoting, chasing and rebooking."],
+            ["In twelve months we want", "to double the work without doubling the office."]
+        ]
+    },
+    "Other": {
+        q: "What do you need?",
+        starters: [
+            ["We are", "a small team that does a bit of everything."],
+            ["Right now we", "rely on word of mouth and a Facebook page."],
+            ["The problem is", "we do not know what to fix first."],
+            ["We have already tried", "a couple of tools that nobody kept using."],
+            ["A good result would be", "more of the right enquiries with less chasing."]
+        ]
+    }
+};
+
+function initLeadFlow(form) {
+    const $ = (sel) => form.querySelector(sel);
+    const steps = Array.from(form.querySelectorAll(".lf-step[data-step]")).filter((s) => s.dataset.step !== "done");
+    const doneStep = $('.lf-step[data-step="done"]');
+    const order = steps.map((s) => s.dataset.step);
     const f = {
-        name: field("name"), email: field("email"), country: field("country_code"), phone: field("phone"),
-        website: field("website"), business: field("business"), service: field("service"), message: field("message")
+        name: $('[name="name"]'), email: $('[name="email"]'), country: $('[name="country_code"]'), phone: $('[name="phone"]'),
+        website: $('[name="website"]'), business: $('[name="business"]'), message: $('[name="message"]')
     };
+    const radios = Array.from(form.querySelectorAll('input[name="service"]'));
+    const ui = {
+        count: $(".lf-count b"), back: $(".lf-back"), bar: $(".lf-progress"), next: $(".lf-next"), submit: $(".lf-submit"),
+        skip: $(".lf-skip"), enter: $(".lf-enter"), status: $(".lf-status"), starters: $(".lf-starters"),
+        ghost: $(".lf-ghost"), ghostStem: $(".lf-ghost-stem"), ghostRest: $(".lf-ghost-rest"), ghostHint: $(".lf-ghost-hint"),
+        counter: $(".lf-counter"), briefQ: $("[data-lf-brief-q]"), briefSub: $("[data-lf-brief-sub]")
+    };
+    const stepKeys = { service: ["service"], name: ["name"], email: ["email"], phone: ["phone"], business: ["website"], message: ["message"] };
+
+    let index = 0;
+    let submitted = false;
+    let sending = false;
+    let sid = "";
+
     if (f.country) populateCountryCodes(f.country);
 
-    // Inline message element under a control (created once per control).
-    const noteFor = (el, cls) => {
-        const host = el.closest(".flex.flex-col") || el.parentElement;
-        let note = host.querySelector(`.${cls}`);
-        if (!note) { note = document.createElement("p"); note.className = cls; note.setAttribute("aria-live", "polite"); host.appendChild(note); }
-        return note;
-    };
-    const setError = (el, msg) => {
-        const note = noteFor(el, "terminal-error");
-        note.textContent = msg ? `> ${msg}` : "";
-        el.setAttribute("aria-invalid", msg ? "true" : "false");
-        if (el === f.phone && f.country) f.country.setAttribute("aria-invalid", msg ? "true" : "false");
-    };
-
-    const minWords = () => (f.service && f.service.value === "Other") ? MIN_WORDS_OTHER : MIN_WORDS_DEFAULT;
-    const updateCounter = () => {
-        if (!f.message) return;
-        const n = wordCount(f.message.value);
-        const hint = noteFor(f.message, "terminal-hint");
-        hint.textContent = `${n} / ${minWords()} words${f.service && f.service.value === "Other" ? " (tell us what you actually need)" : ""}`;
-        hint.classList.toggle("is-met", n >= minWords());
-    };
-
+    const serviceValue = () => (radios.find((r) => r.checked) || {}).value || "";
+    const firstName = () => (f.name.value.trim().split(/\s+/)[0] || "").slice(0, 24);
     const nationalDigits = () => (f.phone.value || "").replace(/[\s().-]/g, "").replace(/^0+/, "");
+    const dialCode = () => (f.country.selectedOptions[0] ? f.country.selectedOptions[0].dataset.dial : "") || "";
+    const fullPhone = () => (dialCode() ? `+${dialCode()} ${nationalDigits()}` : nationalDigits());
+    const minWords = () => (serviceValue() === "Other" ? MIN_WORDS_OTHER : MIN_WORDS_DEFAULT);
 
+    /* ── Validation ─────────────────────────────── */
     const validators = {
+        service: () => (serviceValue() ? "" : "Pick the closest option to carry on."),
         name: () => {
             const v = f.name.value.trim();
-            if (!v) return "NAME is required";
-            if (v.length < 2) return "NAME looks too short";
+            if (!v) return "We need a name to reply to.";
+            if (v.length < 2) return "That looks too short for a name.";
             return "";
         },
         email: () => {
             const v = f.email.value.trim();
-            if (!v) return "EMAIL is required";
-            if (!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v)) return "EMAIL must be a valid address, e.g. name@company.com";
+            if (!v) return "We need an email to send the plan to.";
+            if (!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v)) return "That does not look like an email address. Try name@company.com.";
             return "";
         },
         phone: () => {
-            if (f.country && !f.country.value) return "Pick your country code first";
+            if (!f.country.value) return "Pick your country code first.";
             const raw = (f.phone.value || "").trim();
-            if (!raw) return "PHONE is required";
-            if (raw.startsWith("+") || raw.startsWith("00")) return "Choose the country code from the list, then enter the number without it";
-            if (/[^\d\s().-]/.test(raw)) return "PHONE can only contain digits";
+            if (!raw) return "We need a number to call you on.";
+            if (raw.startsWith("+") || raw.startsWith("00")) return "Choose the country code from the list, then type the number without it.";
+            if (/[^\d\s().-]/.test(raw)) return "A phone number can only contain digits.";
             const digits = nationalDigits();
-            const [lo, hi] = NATIONAL_LENGTHS[f.country ? f.country.value : ""] || [6, 14];
+            const [lo, hi] = NATIONAL_LENGTHS[f.country.value] || [6, 14];
             if (digits.length < lo || digits.length > hi) {
-                return lo === hi ? `PHONE needs ${lo} digits after +${f.country.selectedOptions[0].dataset.dial}` : `PHONE needs ${lo} to ${hi} digits`;
+                return lo === hi ? `That number needs ${lo} digits after +${dialCode()}.` : `That number needs ${lo} to ${hi} digits.`;
             }
             return "";
         },
@@ -147,54 +223,455 @@ function initLeadFormValidation(form) {
                 if (!/\./.test(u.hostname)) throw new Error("no tld");
                 f.website.value = withScheme;
                 return "";
-            } catch { return "WEBSITE must be a valid address, e.g. yourbusiness.com.au"; }
+            } catch { return "That does not look like a web address. Try yourbusiness.com.au, or leave it blank."; }
         },
-        service: () => (f.service.value ? "" : "Pick a QUERY_TYPE"),
         message: () => {
             const n = wordCount(f.message.value);
-            if (!f.message.value.trim()) return "MISSION_BRIEF is required";
+            if (!f.message.value.trim()) return "Tell us a little about what you need.";
             const need = minWords();
-            if (n < need) return `MISSION_BRIEF needs at least ${need} words (${n} so far)`;
+            if (n < need) return `A little more, please: at least ${need} words (${n} so far).`;
+            if (ownWords() < MIN_OWN_WORDS) return "Finish those openers in your own words, so we know what you actually need.";
             return "";
         }
     };
 
-    const validateOne = (key) => {
-        const el = f[key];
-        if (!el || !validators[key]) return true;
-        const msg = validators[key]();
-        setError(el, msg);
-        return !msg;
-    };
-
-    // Live feedback: validate on blur, clear as soon as the fix lands.
-    for (const key of Object.keys(validators)) {
-        const el = f[key];
-        if (!el) continue;
-        el.addEventListener("blur", () => validateOne(key));
-        el.addEventListener("input", () => { if (el.getAttribute("aria-invalid") === "true") validateOne(key); });
+    // Words the visitor wrote themselves, not counting any openers they tapped.
+    function ownWords() {
+        let text = f.message.value;
+        const cfg = LEAD_BRIEFS[serviceValue()] || LEAD_BRIEFS.Other;
+        cfg.starters.forEach(([stem]) => { text = text.split(stem).join(" "); });
+        return wordCount(text);
     }
-    if (f.country) f.country.addEventListener("change", () => { if (f.phone.value) validateOne("phone"); });
-    if (f.service) f.service.addEventListener("change", () => { updateCounter(); if (f.message.getAttribute("aria-invalid") === "true") validateOne("message"); });
-    if (f.message) { f.message.addEventListener("input", updateCounter); updateCounter(); }
+
+    function setError(key, msg) {
+        const note = $("#lf-err-" + key);
+        if (note) note.textContent = msg || "";
+        const input = f[key];
+        if (input) input.setAttribute("aria-invalid", msg ? "true" : "false");
+        if (key === "phone") f.country.setAttribute("aria-invalid", msg ? "true" : "false");
+    }
+
+    const stepIsValid = (i) => (stepKeys[order[i]] || []).every((k) => !validators[k]());
+
+    function focusTarget(i) {
+        const step = steps[i];
+        if (order[i] === "service") return radios.find((r) => r.checked) || radios[0];
+        if (order[i] === "phone") return f.country.value ? f.phone : f.country;
+        return step.querySelector("input:not([type=checkbox]), textarea, select");
+    }
+
+    function nudge(el) {
+        if (!el || REDUCED_MOTION) return;
+        el.classList.remove("lf-nudge");
+        void el.offsetWidth;
+        el.classList.add("lf-nudge");
+    }
+
+    function validateStep(i) {
+        let bad = null;
+        for (const key of stepKeys[order[i]] || []) {
+            const msg = validators[key]();
+            setError(key, msg);
+            if (msg && !bad) bad = key;
+        }
+        if (!bad) return true;
+        const anchor = bad === "service" ? steps[i].querySelector(".lf-options") : (f[bad] && f[bad].closest(".lf-field"));
+        nudge(anchor);
+        const target = bad === "service" ? focusTarget(i) : f[bad];
+        if (target) target.focus({ preventScroll: true });
+        return false;
+    }
+
+    /* ── Session persistence ────────────────────── */
+    const snapshot = () => ({
+        sid, step: index, service: serviceValue(), name: f.name.value, email: f.email.value, country: f.country.value,
+        phone: f.phone.value, website: f.website.value, business: f.business.value, message: f.message.value
+    });
+    let saveTimer = 0;
+    function save() {
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(() => {
+            if (submitted) return;
+            try { sessionStorage.setItem(LEAD_STORE_KEY, JSON.stringify(snapshot())); } catch { /* storage unavailable */ }
+        }, 250);
+    }
+    function restore() {
+        let saved = null;
+        try { saved = JSON.parse(sessionStorage.getItem(LEAD_STORE_KEY) || "null"); } catch { saved = null; }
+        sid = (saved && saved.sid) || (window.crypto && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`);
+        if (!saved) return;
+        radios.forEach((r) => { r.checked = r.value === saved.service; });
+        f.name.value = saved.name || "";
+        f.email.value = saved.email || "";
+        if (saved.country) { f.country.value = saved.country; f.country.dispatchEvent(new Event("change")); }
+        f.phone.value = saved.phone || "";
+        f.website.value = saved.website || "";
+        f.business.value = saved.business || "";
+        f.message.value = saved.message || "";
+        // Resume where they left off, but never past an unanswered question.
+        let to = Math.min(Number(saved.step) || 0, steps.length - 1);
+        for (let i = 0; i < to; i++) if (!stepIsValid(i)) { to = i; break; }
+        if (to > 0) {
+            steps[0].classList.remove("is-active");
+            setInert(steps[0], true);
+            steps[to].classList.add("is-active");
+            setInert(steps[to], false);
+            index = to;
+        }
+    }
+
+    function setInert(el, on) {
+        el.inert = on;
+        if (on) el.setAttribute("aria-hidden", "true"); else el.removeAttribute("aria-hidden");
+    }
+
+    /* ── Automation events and analytics ────────── */
+    const hasEmail = () => !validators.email();
+
+    function answers() {
+        const fd = new FormData();
+        fd.append("name", f.name.value.trim());
+        fd.append("email", f.email.value.trim());
+        fd.append("phone", f.phone.value.trim() ? fullPhone() : "");
+        fd.append("website", f.website.value.trim());
+        fd.append("business", f.business.value.trim());
+        fd.append("service", serviceValue());
+        fd.append("message", f.message.value.trim());
+        return fd;
+    }
+
+    function beacon(url, fd) {
+        try { if (navigator.sendBeacon && navigator.sendBeacon(url, fd)) return; } catch { /* fall through */ }
+        try { fetch(url, { method: "POST", body: fd, keepalive: true, mode: "no-cors" }); } catch { /* nothing else to try */ }
+    }
+
+    function sendLeadEvent(event) {
+        if (!LEAD_WEBHOOK_URL || !hasEmail()) return;
+        const fd = answers();
+        fd.append("event", event);
+        fd.append("session_id", sid);
+        fd.append("step", order[index]);
+        fd.append("step_number", String(index + 1));
+        fd.append("first_name", firstName());
+        fd.append("page", location.pathname);
+        fd.append("sent_at", new Date().toISOString());
+        beacon(LEAD_WEBHOOK_URL, fd);
+    }
+
+    // No webhook configured: tell hello@nunik.co about the unfinished enquiry, once.
+    function notifyUnfinished() {
+        if (!FORM_ACCESS_KEY) return;
+        try {
+            if (sessionStorage.getItem(LEAD_STORE_KEY + ":notified")) return;
+            sessionStorage.setItem(LEAD_STORE_KEY + ":notified", "1");
+        } catch { return; }
+        const fd = answers();
+        fd.append("access_key", FORM_ACCESS_KEY);
+        fd.append("subject", `Unfinished enquiry from ${f.name.value.trim() || f.email.value.trim()} | nunik.co`);
+        fd.append("from_name", "Nunik Co. Website");
+        fd.append("status", `Started the enquiry form on ${location.pathname} and left at question ${index + 1} of ${steps.length} (${order[index]}).`);
+        beacon(WEB3FORMS_URL, fd);
+    }
+
+    document.addEventListener("visibilitychange", () => {
+        if (submitted || !hasEmail()) return;
+        sendLeadEvent(document.hidden ? "abandoned" : "resumed");
+    });
+    window.addEventListener("pagehide", () => {
+        if (submitted || !hasEmail() || LEAD_WEBHOOK_URL) return;
+        notifyUnfinished();
+    });
+
+    function track(name, extra) {
+        if (typeof gtag === "function") gtag("event", name, Object.assign({ form: "lead_flow" }, extra || {}));
+    }
+
+    /* ── Brief: openers, ghost text, counter ────── */
+    let briefFor = null;
+    let ghostToken = 0;
+    let ghostStemNow = "";
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+    function showGhost(on) {
+        ui.ghost.classList.toggle("is-on", on);
+        ui.ghostHint.classList.toggle("is-on", on);
+    }
+    function stopGhost() { ghostToken++; showGhost(false); }
+
+    async function startGhost() {
+        const list = (LEAD_BRIEFS[serviceValue()] || LEAD_BRIEFS.Other).starters;
+        const token = ++ghostToken;
+        if (f.message.value) { showGhost(false); return; }
+        ui.ghost.classList.remove("is-fading");
+        showGhost(true);
+        for (let i = 0; token === ghostToken; i++) {
+            const [stem, rest] = list[i % list.length];
+            ghostStemNow = stem;
+            if (REDUCED_MOTION) {
+                ui.ghostStem.textContent = stem;
+                ui.ghostRest.textContent = " " + rest;
+                return;
+            }
+            ui.ghostStem.textContent = "";
+            ui.ghostRest.textContent = "";
+            ui.ghost.classList.remove("is-fading");
+            for (let c = 1; c <= stem.length && token === ghostToken; c++) {
+                ui.ghostStem.textContent = stem.slice(0, c);
+                await sleep(26 + Math.random() * 22);
+            }
+            const tail = " " + rest;
+            for (let c = 1; c <= tail.length && token === ghostToken; c++) {
+                ui.ghostRest.textContent = tail.slice(0, c);
+                await sleep(20 + Math.random() * 20);
+            }
+            await sleep(2400);
+            if (token !== ghostToken) return;
+            ui.ghost.classList.add("is-fading");
+            await sleep(380);
+        }
+    }
+
+    function updateCounter() {
+        const n = wordCount(f.message.value);
+        const need = minWords();
+        ui.counter.textContent = n >= need ? `${n} words` : `${n} / ${need} words`;
+        ui.counter.classList.toggle("is-met", n >= need && ownWords() >= MIN_OWN_WORDS);
+        ui.starters.querySelectorAll(".lf-chip").forEach((chip) => {
+            chip.classList.toggle("is-used", f.message.value.includes(chip.dataset.stem));
+        });
+    }
+
+    function insertStarter(stem) {
+        const t = f.message;
+        const cur = t.value.replace(/\s+$/, "");
+        // After a finished sentence carry on inline; otherwise start a new line.
+        const joiner = !cur ? "" : (/[.!?]$/.test(cur) ? " " : "\n");
+        t.value = cur + joiner + stem + " ";
+        t.focus({ preventScroll: true });
+        t.setSelectionRange(t.value.length, t.value.length);
+        t.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+
+    function prepareBrief() {
+        const svc = serviceValue() || "Other";
+        const cfg = LEAD_BRIEFS[svc] || LEAD_BRIEFS.Other;
+        if (briefFor !== svc) {
+            briefFor = svc;
+            ui.briefQ.textContent = cfg.q;
+            ui.briefSub.textContent = svc === "Other"
+                ? "Fifty words or more here, so we can point you the right way. The openers below make it quick."
+                : "A few sentences is plenty. Tap an opener if you are not sure where to start.";
+            ui.starters.textContent = "";
+            cfg.starters.forEach(([stem]) => {
+                const chip = document.createElement("button");
+                chip.type = "button";
+                chip.className = "lf-chip";
+                chip.dataset.stem = stem;
+                chip.textContent = stem + " …";
+                chip.addEventListener("click", () => insertStarter(stem));
+                ui.starters.appendChild(chip);
+            });
+        }
+        updateCounter();
+        startGhost();
+    }
+
+    /* ── Rendering and movement ─────────────────── */
+    // The stage row eases to the height of the current question, so the card
+    // hugs its content and the action row always sits right under the field.
+    const stage = $(".lf-stage");
+    function layoutStage() {
+        const current = form.classList.contains("is-done") ? doneStep : steps[index];
+        stage.style.setProperty("--lf-h", `${current.offsetHeight}px`);
+    }
+    if ("ResizeObserver" in window) {
+        const ro = new ResizeObserver(layoutStage);
+        steps.forEach((s) => ro.observe(s));
+        ro.observe(doneStep);
+    } else {
+        window.addEventListener("resize", layoutStage);
+    }
+
+    function syncOptions() {
+        radios.forEach((r) => r.closest(".lf-option").classList.toggle("is-checked", r.checked));
+    }
+
+    function render() {
+        const n = index + 1;
+        const total = steps.length;
+        const last = index === total - 1;
+        ui.count.textContent = String(n).padStart(2, "0");
+        ui.bar.style.setProperty("--p", String(n / total));
+        ui.bar.setAttribute("aria-valuenow", String(n));
+        ui.back.hidden = index === 0;
+        ui.next.hidden = last;
+        ui.submit.hidden = !last;
+        ui.skip.hidden = order[index] !== "business";
+        ui.enter.innerHTML = last ? "<kbd>Ctrl</kbd> + <kbd>Enter</kbd> to send" : "or press <kbd>Enter</kbd>";
+        const name = firstName();
+        form.querySelectorAll("[data-lf-name]").forEach((el) => { el.textContent = name ? `, ${name}` : ""; });
+        syncOptions();
+        if (order[index] === "message") prepareBrief(); else stopGhost();
+        layoutStage();
+    }
+
+    function go(to, dir) {
+        if (to === index || to < 0 || to >= steps.length) return;
+        const from = steps[index];
+        const next = steps[to];
+        form.dataset.dir = dir;
+        from.classList.remove("is-active");
+        from.classList.add("is-leaving");
+        setInert(from, true);
+        setTimeout(() => from.classList.remove("is-leaving"), 260);
+        setInert(next, false);
+        void next.offsetWidth; // start the entrance from the correct side
+        next.classList.add("is-active");
+        index = to;
+        ui.status.textContent = "";
+        render();
+        save();
+        if (dir === "fwd") track("lead_form_step", { step: order[index], step_number: index + 1 });
+        setTimeout(() => { const t = focusTarget(index); if (t) t.focus({ preventScroll: true }); }, 180);
+    }
+
+    function next() {
+        if (sending || submitted) return;
+        if (!validateStep(index)) return;
+        if (index >= order.indexOf("email")) sendLeadEvent("partial");
+        if (index === steps.length - 1) { submit(); return; }
+        go(index + 1, "fwd");
+    }
+
+    function setSending(on) {
+        sending = on;
+        form.setAttribute("aria-busy", on ? "true" : "false");
+        ui.submit.disabled = on;
+        ui.submit.classList.toggle("is-sending", on);
+        ui.submit.querySelector(".lf-btn-label").textContent = on ? "Sending" : "Send the brief";
+    }
+
+    function finish() {
+        submitted = true;
+        try { sessionStorage.removeItem(LEAD_STORE_KEY); sessionStorage.removeItem(LEAD_STORE_KEY + ":notified"); } catch { /* ignore */ }
+        sendLeadEvent("completed");
+        track("lead_form_submit", { service: serviceValue() });
+        stopGhost();
+        const from = steps[index];
+        form.dataset.dir = "fwd";
+        from.classList.remove("is-active");
+        from.classList.add("is-leaving");
+        setInert(from, true);
+        setTimeout(() => from.classList.remove("is-leaving"), 260);
+        setInert(doneStep, false);
+        void doneStep.offsetWidth;
+        doneStep.classList.add("is-active");
+        form.classList.add("is-done");
+        ui.bar.style.setProperty("--p", "1");
+        layoutStage();
+        // Google Ads conversion landing, see /thank-you/inquiry/.
+        setTimeout(() => { window.location.href = "/thank-you/inquiry/"; }, 1300);
+    }
+
+    async function submit() {
+        const honeypot = $('[name="botcheck"]');
+        if (honeypot && honeypot.checked) return;
+        const firstBad = steps.findIndex((_, i) => !stepIsValid(i));
+        if (firstBad !== -1) {
+            if (firstBad !== index) go(firstBad, "back");
+            setTimeout(() => validateStep(firstBad), firstBad !== index ? 420 : 0);
+            return;
+        }
+
+        if (!FORM_ACCESS_KEY || FORM_ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY") {
+            const body = [
+                `Name: ${f.name.value.trim()}`, `Email: ${f.email.value.trim()}`, `Phone: ${fullPhone()}`,
+                `Website: ${f.website.value.trim()}`, `Business: ${f.business.value.trim()}`, `Need: ${serviceValue()}`, "", f.message.value.trim()
+            ].join("\n");
+            window.location.href = `mailto:hello@nunik.co?subject=${encodeURIComponent(`New Inquiry | ${serviceValue()}`)}&body=${encodeURIComponent(body)}`;
+            return;
+        }
+
+        setSending(true);
+        ui.status.textContent = "";
+        try {
+            const fd = answers();
+            fd.append("access_key", FORM_ACCESS_KEY);
+            fd.append("subject", `New Inquiry from ${f.name.value.trim() || "Website"} | nunik.co`);
+            fd.append("from_name", "Nunik Co. Website");
+            const res = await fetch(WEB3FORMS_URL, { method: "POST", body: fd, headers: { Accept: "application/json" } });
+            if (!res.ok) throw new Error("failed");
+            finish();
+        } catch {
+            setSending(false);
+            ui.status.textContent = "That did not send. Try again, or email hello@nunik.co directly.";
+        }
+    }
+
+    /* ── Events ─────────────────────────────────── */
+    radios.forEach((r) => {
+        r.addEventListener("change", () => { syncOptions(); setError("service", ""); save(); });
+        // A real pointer press on the row advances; arrow-key selection does not.
+        r.closest(".lf-option").addEventListener("click", (e) => {
+            if (e.target === r || e.detail === 0) return;
+            setTimeout(() => { if (order[index] === "service" && r.checked) next(); }, 340);
+        });
+    });
+
+    Object.keys(f).forEach((key) => {
+        const el = f[key];
+        if (!el) return;
+        el.addEventListener("input", () => {
+            const vKey = key === "country" ? "phone" : key;
+            if (validators[vKey] && (f[vKey] || el).getAttribute("aria-invalid") === "true" && !validators[vKey]()) setError(vKey, "");
+            if (key === "message") {
+                updateCounter();
+                if (f.message.value) stopGhost(); else if (order[index] === "message") startGhost();
+            }
+            save();
+        });
+    });
+    f.country.addEventListener("change", () => { if (f.phone.getAttribute("aria-invalid") === "true" && !validators.phone()) setError("phone", ""); save(); });
+
+    form.addEventListener("keydown", (e) => {
+        const t = e.target;
+        if (e.key === "Enter") {
+            if (t === f.message) { if (e.metaKey || e.ctrlKey) { e.preventDefault(); next(); } return; }
+            if (t.tagName === "BUTTON" || t.tagName === "SELECT") return;
+            e.preventDefault();
+            next();
+            return;
+        }
+        if (t === f.message && e.key === "ArrowRight" && !f.message.value && ghostStemNow) {
+            e.preventDefault();
+            insertStarter(ghostStemNow);
+            return;
+        }
+        if (order[index] === "service" && /^[1-9]$/.test(e.key) && !e.metaKey && !e.ctrlKey && !e.altKey) {
+            const r = radios[Number(e.key) - 1];
+            if (!r) return;
+            e.preventDefault();
+            r.checked = true;
+            r.dispatchEvent(new Event("change", { bubbles: true }));
+            setTimeout(() => { if (order[index] === "service") next(); }, 340);
+        }
+    });
+
+    ui.next.addEventListener("click", next);
+    ui.back.addEventListener("click", () => go(index - 1, "back"));
+    ui.skip.addEventListener("click", () => {
+        if (validators.website()) f.website.value = "";
+        setError("website", "");
+        go(index + 1, "fwd");
+    });
+    form.addEventListener("submit", (e) => { e.preventDefault(); next(); });
+
+    restore();
+    render();
+    form.classList.add("is-ready");
 
     return {
-        validateAll() {
-            let firstBad = null;
-            for (const key of ["name", "email", "phone", "website", "service", "message"]) {
-                if (!validateOne(key) && !firstBad) firstBad = f[key];
-            }
-            if (firstBad) firstBad.focus({ preventScroll: false });
-            return !firstBad;
-        },
-        fullPhone() {
-            const dial = f.country && f.country.selectedOptions[0] ? f.country.selectedOptions[0].dataset.dial : "";
-            return dial ? `+${dial} ${nationalDigits()}` : nationalDigits();
-        },
-        isBot() {
-            const hp = form.querySelector('[name="botcheck"]');
-            return !!(hp && hp.checked);
-        }
+        focus() { const t = focusTarget(index); if (t) t.focus({ preventScroll: true }); }
     };
 }
 
@@ -672,80 +1149,31 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ── Contact / Terminal reveal ─────────────────────
+    // ── Enquiry form ──────────────────────────────────
     const initiateBtn = document.getElementById("initiate-btn");
     const contactExpansion = document.getElementById("contact-expansion");
-    const terminalBoot = document.getElementById("terminal-boot");
     const terminalForm = document.getElementById("terminal-form");
-    let protocolInitiated = false;
+    const leadFlow = terminalForm ? initLeadFlow(terminalForm) : null;
 
-    function typeTerminalLine(text, color, parent) {
-        return new Promise(resolve => {
-            const line = document.createElement("p");
-            line.style.color = color;
-            parent.appendChild(line);
-            let i = 0;
-            (function type() {
-                if (i < text.length) { line.textContent += text.charAt(i); i++; setTimeout(type, 18); }
-                else resolve();
-            })();
-        });
+    function goToForm() {
+        if (!contactExpansion) return;
+        if (lenis) lenis.scrollTo(contactExpansion, { duration: 1.4, offset: -96 });
+        else contactExpansion.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (leadFlow) setTimeout(() => leadFlow.focus(), 1500);
     }
 
-    function getThemeColor(v) {
-        return getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-    }
-
-    function expandAndBoot() {
-        gsap.to(contactExpansion, {
-            height: "auto", opacity: 1, paddingTop: "2rem", paddingBottom: "2rem",
-            duration: 0.6, ease: "power3.inOut", onComplete: runBootSequence
-        });
-    }
-
-    async function runBootSequence() {
-        if (!terminalBoot || !terminalForm) return;
-        terminalBoot.innerHTML = "";
-        const accent = getThemeColor("--accent");
-        const muted  = getThemeColor("--text-muted");
-        const green  = getThemeColor("--terminal-green");
-
-        await typeTerminalLine("> Initiating transformation protocol...", accent, terminalBoot);
-        await new Promise(r => setTimeout(r, 400));
-        await typeTerminalLine("> Loading secure data link...", muted, terminalBoot);
-        await new Promise(r => setTimeout(r, 300));
-        await typeTerminalLine("> Preparing interface...", muted, terminalBoot);
-        await new Promise(r => setTimeout(r, 500));
-
-        for (const c of ["3", "2", "1"]) {
-            const el = document.createElement("p");
-            el.style.color = accent;
-            el.textContent = c;
-            terminalBoot.appendChild(el);
-            gsap.fromTo(el, { scale: 1.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3 });
-            await new Promise(r => setTimeout(r, 600));
-            gsap.to(el, { opacity: 0.3, duration: 0.2 });
-        }
-
-        await new Promise(r => setTimeout(r, 200));
-        await typeTerminalLine("> CONNECTION ESTABLISHED.", green, terminalBoot);
-        await new Promise(r => setTimeout(r, 300));
-        gsap.to(terminalForm, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" });
-        if (lenis) lenis.scrollTo(contactExpansion, { duration: 1.2, offset: -80, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-    }
-
-    function triggerProtocol() {
-        if (protocolInitiated) return;
-        protocolInitiated = true;
-        if (initiateBtn) {
-            gsap.to(initiateBtn, { opacity: 0, scale: 0.8, duration: 0.4, onComplete: () => { initiateBtn.style.pointerEvents = "none"; } });
-        }
-        const connectSection = document.getElementById("connect");
-        if (lenis) lenis.scrollTo(connectSection || contactExpansion, { duration: 1.5, offset: 0 });
-        setTimeout(expandAndBoot, 1600);
-    }
-
-    initiateBtn?.addEventListener("click", triggerProtocol);
+    // Home page: the floating button and the Connect links go straight to
+    // the first question. Subpages keep the button as a plain link to #book.
+    initiateBtn?.addEventListener("click", (e) => {
+        if (!contactExpansion) return;
+        e.preventDefault();
+        goToForm();
+    });
+    initiateBtn?.addEventListener("keydown", (e) => {
+        if (!contactExpansion || e.target !== initiateBtn || (e.key !== "Enter" && e.key !== " ")) return;
+        e.preventDefault();
+        goToForm();
+    });
 
     // Hide Initiate button when the footer scrolls into view.
     // Home page has <footer id="connect">; subpages just have <footer>.
@@ -761,106 +1189,14 @@ document.addEventListener("DOMContentLoaded", () => {
         footerObs.observe(initiateFooterTrigger);
     }
 
-    // Connect nav links trigger protocol on first visit
     document.querySelectorAll('a[href="#connect"]').forEach(link => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
             closeMobileNav();
-            if (protocolInitiated) {
-                if (lenis) lenis.scrollTo("#connect", { offset: 0, duration: 1.5 });
-                else document.querySelector("#connect")?.scrollIntoView({ behavior: "smooth" });
-                return;
-            }
-            triggerProtocol();
+            if (contactExpansion) goToForm();
+            else document.querySelector("#connect")?.scrollIntoView({ behavior: "smooth" });
         });
     });
-
-    // ── Form submission to hello@nunik.co ─────────────
-    // Using Web3Forms (web3forms.com, free, no backend needed).
-    // 1. Go to web3forms.com and enter hello@nunik.co to get your access key.
-    // 2. Replace "YOUR_WEB3FORMS_ACCESS_KEY" below with that key.
-    // Until then, the form falls back to opening your mail client.
-    const FORM_ACCESS_KEY = "17a1f44f-2499-4c3e-ba1a-7714fb693c59";
-
-    if (terminalForm) {
-        const leadValidation = initLeadFormValidation(terminalForm);
-
-        terminalForm.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const submitLabel  = terminalForm.querySelector('button[type="submit"] .tracking-widest');
-            const cursorPulse  = terminalForm.querySelector(".animate-pulse");
-            const green        = getThemeColor("--terminal-green");
-            const accentColor  = getThemeColor("--accent");
-
-            if (leadValidation.isBot()) return;
-            if (!leadValidation.validateAll()) {
-                const msg = "> ERROR: Check the highlighted fields and transmit again.";
-                const last = terminalBoot.lastElementChild;
-                if (!last || last.textContent !== msg) {
-                    const line = document.createElement("p");
-                    line.style.color = accentColor;
-                    line.textContent = msg;
-                    terminalBoot.appendChild(line);
-                }
-                return;
-            }
-
-            if (FORM_ACCESS_KEY && FORM_ACCESS_KEY !== "YOUR_WEB3FORMS_ACCESS_KEY") {
-                // POST to Web3Forms
-                submitLabel.textContent = "[ TRANSMITTING... ]";
-                if (cursorPulse) cursorPulse.style.display = "none";
-
-                try {
-                    const formData = new FormData(terminalForm);
-                    formData.set("phone", leadValidation.fullPhone());
-                    formData.delete("country_code");
-                    formData.append("access_key", FORM_ACCESS_KEY);
-                    formData.append("subject", `New Inquiry from ${formData.get("name") || "Website"} | nunik.co`);
-                    formData.append("from_name", "Nunik Co. Website");
-
-                    const res = await fetch("https://api.web3forms.com/submit", {
-                        method: "POST",
-                        body: formData,
-                        headers: { "Accept": "application/json" }
-                    });
-
-                    if (res.ok) {
-                        const line = document.createElement("p");
-                        line.style.color = green;
-                        line.textContent = "> TRANSMISSION COMPLETE. Redirecting...";
-                        terminalBoot.appendChild(line);
-                        submitLabel.textContent = "[ TRANSMITTED ]";
-                        // Google Ads conversion landing — see /thank-you/inquiry/.
-                        setTimeout(function () { window.location.href = "/thank-you/inquiry/"; }, 600);
-                        return;
-                    } else {
-                        throw new Error("failed");
-                    }
-                } catch {
-                    submitLabel.textContent = "[ TRANSMIT_DATA ]";
-                    if (cursorPulse) cursorPulse.style.display = "";
-                    const line = document.createElement("p");
-                    line.style.color = accentColor;
-                    line.textContent = "> ERROR: Transmission failed. Email hello@nunik.co directly.";
-                    terminalBoot.appendChild(line);
-                }
-            } else {
-                // Fallback: mailto
-                const d = Object.fromEntries(new FormData(terminalForm).entries());
-                const body = [
-                    `Name: ${d.name || ""}`,
-                    `Email: ${d.email || ""}`,
-                    `Phone: ${leadValidation.fullPhone()}`,
-                    `Website: ${d.website || ""}`,
-                    `Business: ${d.business || ""}`,
-                    `Service: ${d.service || ""}`,
-                    ``,
-                    `${d.message || ""}`
-                ].join("\n");
-                window.location.href = `mailto:hello@nunik.co?subject=${encodeURIComponent(`New Inquiry | ${d.service || "nunik.co"}`)}&body=${encodeURIComponent(body)}`;
-            }
-        });
-    }
 
     // ── Launch WebGL systems ──────────────────────────
     // three.min.js is preloaded from <head> so the bytes arrive during HTML
