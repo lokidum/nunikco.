@@ -561,6 +561,28 @@ a, button, .glass-card, .nav-link, input, textarea, select {
     font-size: 13px;
     letter-spacing: 0.02em;
 }
+/* ================================================
+   Booking embed (Cal.com)
+   --booking-bg matches the cal-bg token set in main.js
+   (CAL_PALETTE), so the embed fills its card with no
+   seam and no card-inside-a-card framing.
+   ================================================ */
+:root { --booking-bg: #FBFAF8; }
+.dark { --booking-bg: #14181C; }
+.glass-card:has(> #booking-widget) {
+    padding: 0;
+    background: var(--booking-bg);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+.glass-card:has(> #booking-widget):hover {
+    transform: none;
+    background: var(--booking-bg);
+}
+#booking-widget {
+    background: var(--booking-bg);
+}
+
 .terminal-input:focus {
     border-color: var(--accent) !important;
 }

@@ -210,75 +210,110 @@ function applyThemeIcons() {
     // Kept as a stub to avoid breaking call sites that invoke it.
 }
 
-function buildCalendlyURL() {
-    const dark = isDark();
-    const params = new URLSearchParams({
-        hide_event_type_details: "1",
-        hide_gdpr_banner: "1",
-        background_color: dark ? "111417" : "f8f6f3",
-        text_color: dark ? "e1e4e7" : "1b1e22",
-        primary_color: "b45e45"
-    });
-    return `https://calendly.com/hello-nunik/ai-strategy-call?${params.toString()}`;
-}
-
-function mountCalendly() {
-    const el = document.getElementById("calendly-widget");
-    if (!el) return;
-    el.setAttribute("data-url", buildCalendlyURL());
-    el.innerHTML = "";
-    if (window.Calendly && typeof window.Calendly.initInlineWidget === "function") {
-        window.Calendly.initInlineWidget({
-            url: buildCalendlyURL(),
-            parentElement: el,
-            prefill: {},
-            utm: {}
-        });
+/* ================================================
+   Booking embed (Cal.com, inline, theme-aware)
+   ================================================ */
+const CAL_NAMESPACE = "strategy-call";
+const CAL_LINK = "nunikco/strategy-call";
+const CAL_ORIGIN = "https://app.cal.com";
+// Cal.com colour tokens mapped onto the site palette (see :root and .dark
+// in style.css). cal-bg must equal --booking-bg so the embed and the card
+// that holds it read as one surface.
+const CAL_PALETTE = {
+    dark: {
+        "cal-brand": "#B45E45", "cal-brand-emphasis": "#C56F55", "cal-brand-text": "#FFFFFF",
+        "cal-bg": "#14181C", "cal-bg-muted": "#171B1F", "cal-bg-subtle": "#1E2328", "cal-bg-emphasis": "#2A3036", "cal-bg-inverted": "#E1E4E7",
+        "cal-border": "#3A4148", "cal-border-subtle": "#242A2F", "cal-border-muted": "#1B2024", "cal-border-emphasis": "#5B646C",
+        "cal-border-booker": "transparent", "cal-border-booker-width": "0px",
+        "cal-text": "#C9CED3", "cal-text-emphasis": "#E1E4E7", "cal-text-subtle": "#949BA2", "cal-text-muted": "#7F878E", "cal-text-inverted": "#111417"
+    },
+    light: {
+        "cal-brand": "#B45E45", "cal-brand-emphasis": "#974730", "cal-brand-text": "#FFFFFF",
+        "cal-bg": "#FBFAF8", "cal-bg-muted": "#F4F1EC", "cal-bg-subtle": "#EFEBE5", "cal-bg-emphasis": "#E6E0D8", "cal-bg-inverted": "#1B1E22",
+        "cal-border": "#D3CCC2", "cal-border-subtle": "#E4DED5", "cal-border-muted": "#EDE8E1", "cal-border-emphasis": "#A69E93",
+        "cal-border-booker": "transparent", "cal-border-booker-width": "0px",
+        "cal-text": "#3A3E44", "cal-text-emphasis": "#1B1E22", "cal-text-subtle": "#666A70", "cal-text-muted": "#8A8D92", "cal-text-inverted": "#FBFAF8"
     }
+};
+let bookingMounted = false;
+
+function calTheme() { return isDark() ? "dark" : "light"; }
+
+// Cal.com's official embed bootstrap: defines window.Cal as a queueing
+// stub and injects embed.js on first use.
+function ensureCal() {
+    if (window.Cal) return;
+    (function (C, A, L) {
+        const p = function (a, ar) { a.q.push(ar); };
+        const d = C.document;
+        C.Cal = C.Cal || function () {
+            const cal = C.Cal;
+            const ar = arguments;
+            if (!cal.loaded) {
+                cal.ns = {};
+                cal.q = cal.q || [];
+                d.head.appendChild(d.createElement("script")).src = A;
+                cal.loaded = true;
+            }
+            if (ar[0] === L) {
+                const api = function () { p(api, arguments); };
+                const namespace = ar[1];
+                api.q = api.q || [];
+                if (typeof namespace === "string") {
+                    cal.ns[namespace] = cal.ns[namespace] || api;
+                    p(cal.ns[namespace], ar);
+                    p(cal, ["initNamespace", namespace]);
+                } else p(cal, ar);
+                return;
+            }
+            p(cal, ar);
+        };
+    })(window, CAL_ORIGIN + "/embed/embed.js", "init");
 }
 
-function remountCalendlyIfPresent() {
-    if (document.getElementById("calendly-widget") && window.Calendly) {
-        // Defer so theme CSS variables settle, then rebuild the widget.
-        setTimeout(mountCalendly, 50);
-    }
-}
-
-let calendlyLoadPromise = null;
-function loadCalendly() {
-    if (window.Calendly) return Promise.resolve();
-    if (calendlyLoadPromise) return calendlyLoadPromise;
-    calendlyLoadPromise = new Promise((resolve, reject) => {
-        const s = document.createElement("script");
-        s.src = "https://assets.calendly.com/assets/external/widget.js";
-        s.async = true;
-        s.onload = resolve;
-        s.onerror = reject;
-        document.head.appendChild(s);
+function applyBookingUi() {
+    if (!bookingMounted || !window.Cal || !window.Cal.ns || !window.Cal.ns[CAL_NAMESPACE]) return;
+    window.Cal.ns[CAL_NAMESPACE]("ui", {
+        theme: calTheme(),
+        hideEventTypeDetails: false,
+        layout: "month_view",
+        cssVarsPerTheme: CAL_PALETTE
     });
-    return calendlyLoadPromise;
 }
 
-function initCalendlyLazy() {
-    const el = document.getElementById("calendly-widget");
-    if (!el) return;
+function mountBooking(el) {
+    if (bookingMounted) return;
+    ensureCal();
+    window.Cal("init", CAL_NAMESPACE, { origin: CAL_ORIGIN });
+    const cal = window.Cal.ns[CAL_NAMESPACE];
+    cal("inline", {
+        elementOrSelector: el,
+        calLink: CAL_LINK,
+        // No theme here: a theme in the iframe URL is fixed for the life of the
+        // embed. The "ui" instruction below sets it and can change it live.
+        config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" }
+    });
+    bookingMounted = true;
+    applyBookingUi();
 
-    let started = false;
-    const start = () => {
-        if (started) return;
-        started = true;
-        loadCalendly().then(() => {
-            mountCalendly();
-            el.setAttribute("aria-busy", "false");
-        }).catch(() => { started = false; });
-    };
+    cal("on", { action: "linkReady", callback: () => el.setAttribute("aria-busy", "false") });
 
     // Google Ads conversion landing on booking completion, see /thank-you/booking/.
-    window.addEventListener("message", function (e) {
-        if (e && e.data && e.data.event === "calendly.event_scheduled") {
-            setTimeout(function () { window.location.href = "/thank-you/booking/"; }, 400);
-        }
-    });
+    let redirected = false;
+    const onBooked = () => {
+        if (redirected) return;
+        redirected = true;
+        setTimeout(function () { window.location.href = "/thank-you/booking/"; }, 400);
+    };
+    cal("on", { action: "bookingSuccessfulV2", callback: onBooked });
+    cal("on", { action: "bookingSuccessful", callback: onBooked });
+}
+
+function initBookingLazy() {
+    const el = document.getElementById("booking-widget");
+    if (!el) return;
+
+    const start = () => mountBooking(el);
 
     // Pages whose whole purpose is booking (/book/) mark the widget eager.
     if (location.hash === "#book" || el.hasAttribute("data-eager")) { start(); return; }
@@ -363,7 +398,7 @@ function toggleTheme() {
     applyThemeIcons();
     setWebGLTheme(true);
     setChakraTheme(true);
-    remountCalendlyIfPresent();
+    applyBookingUi();
 }
 
 /* ================================================
@@ -377,10 +412,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("theme-toggle")?.addEventListener("click", toggleTheme);
     document.getElementById("theme-toggle-mobile")?.addEventListener("click", toggleTheme);
 
-    // Calendly: the widget script and its iframe are only fetched when the
-    // booking section approaches the viewport (or someone jumps to #book).
-    // Keeping it out of the critical path stops it holding the load event.
-    initCalendlyLazy();
+    // Booking (Cal.com): the embed script and its iframe are only fetched
+    // when the booking section approaches the viewport (or someone jumps to
+    // #book). Keeping it out of the critical path stops it holding load.
+    initBookingLazy();
 
     // ── Mobile nav ────────────────────────────────────
     const mobileNav = document.getElementById("mobile-nav");
