@@ -280,7 +280,8 @@ function initCalendlyLazy() {
         }
     });
 
-    if (location.hash === "#book") { start(); return; }
+    // Pages whose whole purpose is booking (/book/) mark the widget eager.
+    if (location.hash === "#book" || el.hasAttribute("data-eager")) { start(); return; }
 
     document.querySelectorAll('a[href="#book"], a[href$="#book"]').forEach((a) => {
         a.addEventListener("click", start, { once: true });

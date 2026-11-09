@@ -8,6 +8,7 @@ module.exports = {
     './locations/**/*.html',
     './research/**/*.html',
     './contact/**/*.html',
+    './book/**/*.html',
     './thank-you/**/*.html'
   ],
   darkMode: 'class',
