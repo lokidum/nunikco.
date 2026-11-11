@@ -1263,6 +1263,39 @@ html.lenis, html.lenis body {
     padding: 1rem 1.5rem;
 }
 
+/* Phone footer: the three link columns stacked into one long list and the
+   four social links overflowed the glass bar. Services and Industries now sit
+   side by side, Locations becomes one line, and the bar wraps. */
+@media (max-width: 767px) {
+    footer > .grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 2rem 1.25rem;
+    }
+    footer > .grid > .md\:col-span-4,
+    footer > .grid > .md\:col-span-2,
+    footer > .grid > .md\:col-span-12 { grid-column: span 6; }
+    footer > .grid > .md\:col-span-3 { grid-column: span 3; }
+    footer > .grid ul { letter-spacing: 0.14em; }
+    footer > .grid ul li a { font-size: 11px; }
+    footer > .grid > .md\:col-span-2 {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.5rem 1rem;
+        border-top: 1px solid var(--divider);
+        padding-top: 1.25rem;
+    }
+    footer > .grid > .md\:col-span-2 > * { margin: 0 !important; }
+    footer > .grid > .md\:col-span-2 > p:last-child { width: 100%; }
+    .footer-glass-bar { padding: 1rem 1.25rem; }
+    .footer-glass-bar > div:first-child {
+        flex-wrap: wrap;
+        gap: 0.75rem 1.25rem;
+    }
+    .footer-glass-bar > div:first-child > * + * { margin-left: 0 !important; }
+    .footer-glass-bar > div:first-child a { font-size: 11px; letter-spacing: 0.14em; }
+}
+
 /* ================================================
    Brand mark (chakra), footer / archive only
    Header uses .brand-type typographic wordmark.
