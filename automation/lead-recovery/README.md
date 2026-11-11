@@ -4,6 +4,8 @@ Two importable workflows for the enquiry form on nunik.co. The form posts every 
 
 This folder is excluded from the published site by `_config.yml`.
 
+To run these on your own server instead of n8n Cloud (no execution quota, so the every-minute schedule is free), follow `SELF-HOSTING.md`; the Docker files are in `server/`.
+
 ## What the form sends
 
 `POST` as form fields (also `navigator.sendBeacon` when the tab is hidden or closed), set by `LEAD_WEBHOOK_URL` in `main.js`:

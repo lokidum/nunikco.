@@ -6,7 +6,9 @@
         "httpMethod": "POST",
         "path": "nunik-lead",
         "responseMode": "onReceived",
-        "options": {}
+        "options": {
+          "allowedOrigins": "https://nunik.co"
+        }
       },
       "id": "a1",
       "name": "Form webhook",
