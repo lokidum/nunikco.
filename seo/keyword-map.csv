@@ -1,0 +1,39 @@
+query,intent,local,volume,target_url,status,position,last_checked,notes
+ai automation agency australia,service,y,not measured,https://nunik.co/,live,not measured,2026-11-11,"title: Nunik Co. | Automation, Brand, Web | AI Agency Australia"
+nunik co contact,brand,n,not measured,https://nunik.co/contact/,live,not measured,2026-11-11,title: Contact Nunik Co. | Send Us a Brief or Book a Call
+n8n gohighlevel automation agency,service,n,not measured,https://nunik.co/services/automation/,live,not measured,2026-11-11,title: n8n & GoHighLevel Automation Agency | Nunik Co.
+nextjs web development agency australia,service,y,not measured,https://nunik.co/services/web/,live,not measured,2026-11-11,title: Website Developers Australia | Nunik Co.
+brand identity design agency australia,service,y,not measured,https://nunik.co/services/brand/,live,not measured,2026-11-11,title: Brand Identity Design Agency | Nunik Co.
+automation for trades hospitality automotive,service,n,not measured,https://nunik.co/industries/,live,not measured,2026-11-11,title: Industries | Nunik Co.
+automation for trades businesses,service,n,not measured,https://nunik.co/industries/trades/,live,not measured,2026-11-11,title: Automation for Trades Businesses | Nunik Co.
+pest control crm automation,service,n,not measured,https://nunik.co/industries/trades/pest-control/,live,not measured,2026-11-11,title: Pest Control Website and Automation Agency | Nunik Co.
+electrician crm automation,service,n,not measured,https://nunik.co/industries/trades/electrical/,live,not measured,2026-11-11,title: Electrical Contractor CRM and Automation | Nunik Co.
+plumber crm automation,service,n,not measured,https://nunik.co/industries/trades/plumbing/,live,not measured,2026-11-11,title: Plumbing Website and Booking Automation | Nunik Co.
+cleaning business booking automation,service,n,not measured,https://nunik.co/industries/trades/cleaning/,live,not measured,2026-11-11,title: Cleaning Business CRM and Booking Automation | Nunik Co.
+landscaping quote to invoice automation,service,n,not measured,https://nunik.co/industries/trades/landscaping/,live,not measured,2026-11-11,title: Landscaping Business Automation and CRM | Nunik Co.
+hospitality website and crm,service,n,not measured,https://nunik.co/industries/hospitality/,live,not measured,2026-11-11,title: Web and Automation for Hospitality Venues | Nunik Co.
+restaurant booking automation,service,n,not measured,https://nunik.co/industries/hospitality/restaurants/,live,not measured,2026-11-11,title: Restaurant Website and Booking Automation | Nunik Co.
+salon booking automation,service,n,not measured,https://nunik.co/industries/hospitality/salons/,live,not measured,2026-11-11,title: Salon Booking Automation and CRM | Nunik Co.
+hotel direct booking website,service,n,not measured,https://nunik.co/industries/hospitality/hotels/,live,not measured,2026-11-11,title: Hotel Direct Booking and Guest Automation | Nunik Co.
+travel agency crm automation,service,n,not measured,https://nunik.co/industries/hospitality/travel-agencies/,live,not measured,2026-11-11,title: Travel Agency Quote and Booking CRM | Nunik Co.
+massage therapy booking automation,service,n,not measured,https://nunik.co/industries/hospitality/massage-parlours/,live,not measured,2026-11-11,title: Massage Therapy Booking Automation | Nunik Co.
+automotive business automation,service,n,not measured,https://nunik.co/industries/automotive/,live,not measured,2026-11-11,title: Automation for Automotive Workshops | Nunik Co.
+auto repair shop booking automation,service,n,not measured,https://nunik.co/industries/automotive/auto-repair/,live,not measured,2026-11-11,title: Auto Repair Shop Website and Booking Automation | Nunik Co.
+scratch and dent repair booking automation,service,n,not measured,https://nunik.co/industries/automotive/scratch-and-dent/,live,not measured,2026-11-11,title: Mobile Scratch and Dent Repair Booking Automation | Nunik Co.
+towing dispatch automation,service,n,not measured,https://nunik.co/industries/automotive/towing/,live,not measured,2026-11-11,title: Towing Company Dispatch and CRM | Nunik Co.
+removalist quote automation,service,n,not measured,https://nunik.co/industries/automotive/removalists/,live,not measured,2026-11-11,title: Removalist Quote and Booking Automation | Nunik Co.
+car wash booking automation,service,n,not measured,https://nunik.co/industries/automotive/car-washing/,live,not measured,2026-11-11,title: Car Wash and Detailing Booking Automation | Nunik Co.
+ai automation agency canberra,service+suburb,y,not measured,https://nunik.co/locations/canberra/,live,not measured,2026-11-11,title: Digital Agency Canberra | Nunik Co.
+automation brand and web agency,service,n,not measured,https://nunik.co/services/,live,not measured,2026-11-11,"title: Services | Automation, Brand, Web | Nunik Co."
+ai agency australia locations,brand,y,not measured,https://nunik.co/locations/,live,not measured,2026-11-11,title: Locations | Canberra and Worldwide | Nunik Co.
+australian smb automation research,informational,y,not measured,https://nunik.co/research/,live,not measured,2026-11-11,title: Research | Field Reports for Australian SMBs | Nunik Co.
+digital transformation australian smbs 2026,informational,y,not measured,https://nunik.co/research/digital-transformation-australian-smbs-2026/,live,not measured,2026-11-11,title: Digital Transformation in Australian SMBs: 2026 Benchmarks | Nunik Co.
+real estate lead automation,informational,n,not measured,https://nunik.co/research/real-estate-lead-automation-2026/,live,not measured,2026-11-11,title: Real Estate Lead Automation: What Actually Works in 2026 | Nunik Co.
+why trades businesses lose clients,informational,n,not measured,https://nunik.co/research/trades-lose-clients-before-first-call/,live,not measured,2026-11-11,title: Why Trades Businesses Lose Clients Before the First Call | Nunik Co.
+page speed restaurant bookings,informational,n,not measured,https://nunik.co/research/page-speed-restaurant-booking-rates/,live,not measured,2026-11-11,title: Page Speed and Restaurant Booking Rates | Nunik Co.
+book a call nunik co,brand,n,not measured,https://nunik.co/book/,live,not measured,2026-11-11,title: Book a Call | Nunik Co.
+gohighlevel setup australia,service,n,not measured,https://nunik.co/services/automation/,gap,not measured,2026-11-11,secondary query for the automation page; no GSC data to confirm
+n8n consultant australia,service,n,not measured,https://nunik.co/services/automation/,gap,not measured,2026-11-11,secondary
+website for tradies,service,n,not measured,https://nunik.co/industries/trades/,gap,not measured,2026-11-11,secondary
+real estate crm automation australia,service,n,not measured,,gap,not measured,2026-11-11,no industry page for real estate yet; the research article exists and the home page names real estate as a sector
+missed call text back australia,service,n,not measured,,gap,not measured,2026-11-11,common trades problem search; no page

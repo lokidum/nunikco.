@@ -1,0 +1,15 @@
+# GitHub Pages builds this repo with Jekyll. Everything not listed here is published as-is.
+# The seo/ folder holds the SEO autopilot's working notes (backlog, competitor notes, client facts)
+# and must never be served at nunik.co/seo/.
+exclude:
+  - seo/
+  - README.md
+  - AGENTS.md
+  - CLAUDE.md
+  - DESIGN.md
+  - PRODUCT.md
+  - SKILLS.md
+  - tailwind.config.js
+  - tailwind.input.css
+  - .claude/
+  - .vscode/
