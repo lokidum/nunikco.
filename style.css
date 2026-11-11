@@ -1519,6 +1519,14 @@ html.lenis, html.lenis body {
     mask: url("/public/logos/clients/rda-mark.svg") center / contain no-repeat;
 }
 
+.archive-logo-nwd {
+    width: 72px;
+    height: 32px;
+    background-color: var(--accent);
+    -webkit-mask: url("/public/logos/clients/nwd-mark.svg") center / contain no-repeat;
+    mask: url("/public/logos/clients/nwd-mark.svg") center / contain no-repeat;
+}
+
 /* Project modal: screenshot shown for sites that refuse to be framed */
 .project-shot {
     position: absolute;
