@@ -1076,14 +1076,32 @@ document.addEventListener("DOMContentLoaded", () => {
         const fbPanel  = document.getElementById("project-modal-fallback");
         const closeBtn = document.getElementById("project-modal-close");
         const backdrop = document.getElementById("project-modal-backdrop");
+        const shot     = document.getElementById("project-modal-shot");
+        const shotFade = fbPanel.querySelector(".project-shot-fade");
+        const fbGeneric = fbPanel.querySelectorAll(".project-fb-generic");
+        const fbShot    = fbPanel.querySelectorAll(".project-fb-shot");
 
         let fbTimer = null;
         let lastFocus = null;
 
+        // Sites that refuse to be framed (X-Frame-Options, frame-ancestors)
+        // carry data-project-image: a screenshot shown instead of the iframe.
+        function showFallback(image) {
+            const useShot = !!image;
+            shot.src = useShot ? image : "";
+            shot.classList.toggle("hidden", !useShot);
+            shotFade.classList.toggle("hidden", !useShot);
+            fbGeneric.forEach((el) => el.classList.toggle("hidden", useShot));
+            fbShot.forEach((el) => el.classList.toggle("hidden", !useShot));
+            fbPanel.classList.toggle("has-shot", useShot);
+            fbPanel.classList.remove("hidden");
+        }
+
         function openProjectModal(card) {
-            const url  = card.getAttribute("data-project-url");
-            const name = card.getAttribute("data-project-name") || "Project preview";
-            const tag  = card.getAttribute("data-project-tag")  || "";
+            const url   = card.getAttribute("data-project-url");
+            const name  = card.getAttribute("data-project-name") || "Project preview";
+            const tag   = card.getAttribute("data-project-tag")  || "";
+            const image = card.getAttribute("data-project-image") || "";
             if (!url) return;
             lastFocus = document.activeElement;
             titleEl.textContent = name;
@@ -1091,15 +1109,20 @@ document.addEventListener("DOMContentLoaded", () => {
             openLink.href = url;
             fbLink.href   = url;
             fbPanel.classList.add("hidden");
-            iframe.src = url;
             projectModal.classList.remove("hidden");
             document.body.style.overflow = "hidden";
             if (lenis && typeof lenis.stop === "function") lenis.stop();
-            // If the iframe doesn't fire a load event within 6s (likely blocked), reveal the fallback.
             clearTimeout(fbTimer);
-            let loaded = false;
-            iframe.addEventListener("load", () => { loaded = true; }, { once: true });
-            fbTimer = setTimeout(() => { if (!loaded) fbPanel.classList.remove("hidden"); }, 6000);
+            if (image) {
+                iframe.src = "about:blank";
+                showFallback(image);
+            } else {
+                iframe.src = url;
+                // If the iframe doesn't fire a load event within 6s (likely blocked), reveal the fallback.
+                let loaded = false;
+                iframe.addEventListener("load", () => { loaded = true; }, { once: true });
+                fbTimer = setTimeout(() => { if (!loaded) showFallback(""); }, 6000);
+            }
             // Move focus into the modal for keyboard users.
             setTimeout(() => closeBtn.focus(), 50);
         }

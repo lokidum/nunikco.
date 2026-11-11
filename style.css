@@ -1488,6 +1488,60 @@ html.lenis, html.lenis body {
     filter: drop-shadow(0 0 20px var(--accent-glow-strong));
 }
 
+/* Archive client cards using the client's own logo */
+.archive-logo {
+    display: block;
+    width: 50px;
+    height: 50px;
+    opacity: 0.9;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.7s ease,
+                opacity 0.5s ease;
+}
+.archive-card:hover .archive-logo {
+    transform: scale(1.1);
+    opacity: 1;
+    filter: drop-shadow(0 0 16px var(--accent-glow-strong));
+}
+/* Multi-colour mark: navy version on light, knockout version on dark */
+.archive-logo-acda {
+    background: url("/public/logos/clients/acda-mark-navy.png") center / contain no-repeat;
+}
+.dark .archive-logo-acda {
+    background-image: url("/public/logos/clients/acda-mark-light.png");
+}
+/* Single-colour mark: masked so it takes the accent colour like the Nunik mark */
+.archive-logo-rda {
+    width: 58px;
+    height: 54px;
+    background-color: var(--accent);
+    -webkit-mask: url("/public/logos/clients/rda-mark.svg") center / contain no-repeat;
+    mask: url("/public/logos/clients/rda-mark.svg") center / contain no-repeat;
+}
+
+/* Project modal: screenshot shown for sites that refuse to be framed */
+.project-shot {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+.project-shot-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11, 14, 18, 0.1) 0%, rgba(11, 14, 18, 0.55) 55%, rgba(11, 14, 18, 0.92) 100%);
+}
+#project-modal-fallback.has-shot .project-fb-body {
+    align-self: flex-end;
+    margin-bottom: 4vh;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+}
+#project-modal-fallback.has-shot .t-muted { color: rgba(225, 228, 231, 0.78); }
+#project-modal-fallback.has-shot .t-accent { color: #D9A48E; }
+#project-modal-fallback.has-shot a { border-color: #D9A48E !important; }
+
 /* ================================================
    Section eyebrow rule, thin hairline sits ABOVE
    the eyebrow text, aligned to the natural left

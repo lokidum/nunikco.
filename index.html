@@ -592,12 +592,37 @@
                     <span class="font-headline italic text-sm md:text-base t-text text-center leading-tight mt-2">NetWorth Digital</span>
                     <span class="text-[10px] md:text-xs font-mono t-muted mt-2 text-center">RASA / Web Design</span>
                 </div>
+                <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square cursor-project reveal-item archive-card"
+                     data-project-url="https://www.adelaideconfidentdriving.com/"
+                     data-project-name="Adelaide Confident Driving Academy"
+                     data-project-tag="ARTHA + RASA / Web &amp; Brand"
+                     data-project-image="/public/archive/acda-home.jpg"
+                     role="button" tabindex="0"
+                     aria-label="Open Adelaide Confident Driving Academy project preview">
+                    <div class="w-full flex items-center justify-center" style="height:60px;">
+                        <span class="archive-logo archive-logo-acda" role="img" aria-label="Adelaide Confident Driving Academy logo"></span>
+                    </div>
+                    <span class="font-headline italic text-sm md:text-base t-text text-center leading-tight mt-2">Adelaide Confident Driving</span>
+                    <span class="text-[10px] md:text-xs font-mono t-muted mt-2 text-center">ARTHA + RASA / Web &amp; Brand</span>
+                </div>
+                <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square cursor-project reveal-item archive-card"
+                     data-project-url="https://ramsdrivingacademy.com/"
+                     data-project-name="Rams Driving Academy"
+                     data-project-tag="ARTHA + RASA + YUKTI / Web, Brand &amp; Automation"
+                     role="button" tabindex="0"
+                     aria-label="Open Rams Driving Academy project preview">
+                    <div class="w-full flex items-center justify-center" style="height:60px;">
+                        <span class="archive-logo archive-logo-rda" role="img" aria-label="Rams Driving Academy logo"></span>
+                    </div>
+                    <span class="font-headline italic text-sm md:text-base t-text text-center leading-tight mt-2">Rams Driving Academy</span>
+                    <span class="text-[10px] md:text-xs font-mono t-muted mt-2 text-center">ARTHA + RASA + YUKTI</span>
+                </div>
                 <!-- Incoming slots (fade progressively to suggest depth) -->
                 <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.35;">
                     <span class="font-mono text-[10px] md:text-xs t-muted text-center">INCOMING</span>
                     <span class="font-mono text-[9px] md:text-[10px] t-faint mt-1.5 text-center">// 2026</span>
                 </div>
-                <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.35;">
+                <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.3;">
                     <span class="font-mono text-[10px] md:text-xs t-muted text-center">INCOMING</span>
                     <span class="font-mono text-[9px] md:text-[10px] t-faint mt-1.5 text-center">// 2026</span>
                 </div>
@@ -605,15 +630,7 @@
                     <span class="font-mono text-[10px] md:text-xs t-muted text-center">INCOMING</span>
                     <span class="font-mono text-[9px] md:text-[10px] t-faint mt-1.5 text-center">// 2026</span>
                 </div>
-                <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.22;">
-                    <span class="font-mono text-[10px] md:text-xs t-muted text-center">INCOMING</span>
-                    <span class="font-mono text-[9px] md:text-[10px] t-faint mt-1.5 text-center">// 2026</span>
-                </div>
-                <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.12;">
-                    <span class="font-mono text-[10px] md:text-xs t-muted text-center">INCOMING</span>
-                    <span class="font-mono text-[9px] md:text-[10px] t-faint mt-1.5 text-center">// 2026</span>
-                </div>
-                <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.12;">
+                <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square reveal-item" style="opacity:0.15;">
                     <span class="font-mono text-[10px] md:text-xs t-muted text-center">INCOMING</span>
                     <span class="font-mono text-[9px] md:text-[10px] t-faint mt-1.5 text-center">// 2026</span>
                 </div>
@@ -1123,10 +1140,14 @@
                 <div class="flex-1 relative" style="background:var(--surface-container, #1d2024);">
                     <iframe id="project-modal-iframe" class="absolute inset-0 w-full h-full border-0" src="about:blank" loading="lazy" referrerpolicy="no-referrer" title="Project preview"></iframe>
                     <div id="project-modal-fallback" class="hidden absolute inset-0 flex items-center justify-center p-6 md:p-8" style="background:var(--bg);">
-                        <div class="max-w-md text-center">
-                            <p class="font-mono text-xs t-accent uppercase tracking-widest mb-3" style="opacity:0.6;">Preview blocked</p>
-                            <h4 class="font-headline italic text-2xl md:text-3xl t-text mb-4 leading-tight">This site does not allow embedding.</h4>
-                            <p class="t-muted text-sm mb-6 leading-relaxed">Most production sites block iframe previews for security. Open the live site in a new tab instead.</p>
+                        <img id="project-modal-shot" class="project-shot hidden" src="" alt="" decoding="async"/>
+                        <div class="project-shot-fade hidden" aria-hidden="true"></div>
+                        <div class="project-fb-body relative max-w-md text-center">
+                            <p class="font-mono text-xs t-accent uppercase tracking-widest mb-3 project-fb-generic" style="opacity:0.6;">Preview blocked</p>
+                            <h4 class="font-headline italic text-2xl md:text-3xl t-text mb-4 leading-tight project-fb-generic">This site does not allow embedding.</h4>
+                            <p class="t-muted text-sm mb-6 leading-relaxed project-fb-generic">Most production sites block iframe previews for security. Open the live site in a new tab instead.</p>
+                            <p class="font-mono text-xs t-accent uppercase tracking-widest mb-3 project-fb-shot hidden" style="opacity:0.7;">Live site</p>
+                            <p class="t-muted text-sm mb-6 leading-relaxed project-fb-shot hidden">This one opens in a new tab.</p>
                             <a id="project-modal-fallback-link" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 t-accent uppercase tracking-[0.3em] text-xs md:text-sm font-semibold nav-link" style="border-bottom:1px solid var(--accent);padding-bottom:4px;">
                                 Open live site
                                 <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
