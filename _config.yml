@@ -3,6 +3,7 @@
 # and must never be served at nunik.co/seo/.
 exclude:
   - seo/
+  - automation/
   - README.md
   - AGENTS.md
   - CLAUDE.md

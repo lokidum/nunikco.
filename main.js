@@ -88,17 +88,19 @@ const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 const FORM_ACCESS_KEY = "17a1f44f-2499-4c3e-ba1a-7714fb693c59";
 
 // Optional automation hook (n8n, GoHighLevel, Zapier: any inbound webhook
-// that accepts form fields). When set, the flow posts these events with the
-// answers so far and a session_id:
-//   partial    after the email question and every question after it
-//   abandoned  the tab was hidden or closed before the enquiry was sent
-//   resumed    the visitor came back to the tab
-//   completed  the enquiry was sent
-// The automation should wait 30 seconds after "abandoned", and email the
-// visitor only if no "resumed" or "completed" arrived for that session_id.
+// that accepts form fields). When set, the flow posts the answers so far with
+// a stable session_id, so the receiver can upsert one row per visitor:
+//   event      partial | abandoned | resumed | completed
+//   status     partial | complete
+//   last_step  1-based number of the furthest screen reached
+// "partial" is sent after the contact screen and every screen after it,
+// "abandoned" when the tab is hidden or closed, "resumed" when it comes back,
+// "completed" when the enquiry is sent. Importable n8n workflows that upsert
+// the row and run the recovery emails live in automation/lead-recovery/.
 // Left empty, an unfinished enquiry is emailed to hello@nunik.co instead.
 const LEAD_WEBHOOK_URL = "";
-const LEAD_STORE_KEY = "nunik-lead-v1";
+const LEAD_STORE_KEY = "nunik-lead-v2";
+const LEAD_STORE_DAYS = 30;
 
 // Brief question, and sentence openers with an example ending, per need.
 const LEAD_BRIEFS = {
@@ -161,16 +163,23 @@ function initLeadFlow(form) {
     const order = steps.map((s) => s.dataset.step);
     const f = {
         name: $('[name="name"]'), email: $('[name="email"]'), country: $('[name="country_code"]'), phone: $('[name="phone"]'),
-        website: $('[name="website"]'), business: $('[name="business"]'), message: $('[name="message"]')
+        whatsapp: $('[name="whatsapp"]'), website: $('[name="website"]'), business: $('[name="business"]'),
+        industry: $('[name="industry"]'), city: $('[name="city"]'), message: $('[name="message"]'), heard: $('[name="heard"]')
     };
     const radios = Array.from(form.querySelectorAll('input[name="service"]'));
+    const groups = {
+        timeline: Array.from(form.querySelectorAll('input[name="timeline"]')),
+        budget: Array.from(form.querySelectorAll('input[name="budget"]'))
+    };
+    const groupValue = (name) => (groups[name].find((r) => r.checked) || {}).value || "";
+    const ATTRIBUTION = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "referrer", "landing_page", "device"];
     const ui = {
         count: $(".lf-count b"), back: $(".lf-back"), bar: $(".lf-progress"), next: $(".lf-next"), submit: $(".lf-submit"),
         skip: $(".lf-skip"), enter: $(".lf-enter"), status: $(".lf-status"), starters: $(".lf-starters"),
         ghost: $(".lf-ghost"), ghostStem: $(".lf-ghost-stem"), ghostRest: $(".lf-ghost-rest"), ghostHint: $(".lf-ghost-hint"),
-        counter: $(".lf-counter"), briefQ: $("[data-lf-brief-q]"), briefSub: $("[data-lf-brief-sub]")
+        counter: $(".lf-counter"), briefQ: $("[data-lf-brief-q]"), briefSub: $("[data-lf-brief-sub]"), total: $("[data-lf-total]")
     };
-    const stepKeys = { service: ["service"], name: ["name"], email: ["email"], phone: ["phone"], business: ["website"], message: ["message"] };
+    const stepKeys = { service: ["service"], contact: ["name", "email"], phone: ["phone"], business: ["website"], goal: ["message", "timeline"], budget: ["budget"] };
 
     let index = 0;
     let submitted = false;
@@ -232,7 +241,9 @@ function initLeadFlow(form) {
             if (n < need) return `A little more, please: at least ${need} words (${n} so far).`;
             if (ownWords() < MIN_OWN_WORDS) return "Finish those openers in your own words, so we know what you actually need.";
             return "";
-        }
+        },
+        timeline: () => (groupValue("timeline") ? "" : "Pick a rough timeframe."),
+        budget: () => (groupValue("budget") ? "" : "Pick a band, or \"Not sure yet\".")
     };
 
     // Words the visitor wrote themselves, not counting any openers they tapped.
@@ -249,6 +260,10 @@ function initLeadFlow(form) {
         const input = f[key];
         if (input) input.setAttribute("aria-invalid", msg ? "true" : "false");
         if (key === "phone") f.country.setAttribute("aria-invalid", msg ? "true" : "false");
+        if (groups[key]) {
+            const box = groups[key][0] && groups[key][0].closest(".lf-segments");
+            if (box) box.setAttribute("aria-invalid", msg ? "true" : "false");
+        }
     }
 
     const stepIsValid = (i) => (stepKeys[order[i]] || []).every((k) => !validators[k]());
@@ -257,6 +272,7 @@ function initLeadFlow(form) {
         const step = steps[i];
         if (order[i] === "service") return radios.find((r) => r.checked) || radios[0];
         if (order[i] === "phone") return f.country.value ? f.phone : f.country;
+        if (order[i] === "budget") return groups.budget.find((r) => r.checked) || groups.budget[0];
         return step.querySelector("input:not([type=checkbox]), textarea, select");
     }
 
@@ -275,39 +291,69 @@ function initLeadFlow(form) {
             if (msg && !bad) bad = key;
         }
         if (!bad) return true;
-        const anchor = bad === "service" ? steps[i].querySelector(".lf-options") : (f[bad] && f[bad].closest(".lf-field"));
+        const anchor = bad === "service" ? steps[i].querySelector(".lf-options")
+            : groups[bad] ? groups[bad][0].closest(".lf-field")
+            : (f[bad] && f[bad].closest(".lf-field"));
         nudge(anchor);
-        const target = bad === "service" ? focusTarget(i) : f[bad];
+        const target = bad === "service" ? focusTarget(i) : groups[bad] ? (groups[bad].find((r) => r.checked) || groups[bad][0]) : f[bad];
         if (target) target.focus({ preventScroll: true });
         return false;
     }
 
-    /* ── Session persistence ────────────────────── */
+    /* ── Persistence (same device, 30 days) ─────── */
+    // Attribution is captured once, on the first page the visitor landed on,
+    // and travels with every event and the final enquiry.
+    function captureAttribution(saved) {
+        const q = new URLSearchParams(location.search);
+        const prior = (saved && saved.attribution) || {};
+        const first = Object.keys(prior).length ? prior : {
+            utm_source: q.get("utm_source") || "", utm_medium: q.get("utm_medium") || "", utm_campaign: q.get("utm_campaign") || "",
+            utm_term: q.get("utm_term") || "", utm_content: q.get("utm_content") || "",
+            referrer: document.referrer && !document.referrer.startsWith(location.origin) ? document.referrer : "",
+            landing_page: location.pathname + location.search,
+            device: /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? "mobile" : "desktop"
+        };
+        ATTRIBUTION.forEach((k) => { const el = $(`[name="${k}"]`); if (el) el.value = first[k] || ""; });
+        return first;
+    }
+    let attribution = {};
     const snapshot = () => ({
-        sid, step: index, service: serviceValue(), name: f.name.value, email: f.email.value, country: f.country.value,
-        phone: f.phone.value, website: f.website.value, business: f.business.value, message: f.message.value
+        sid, step: index, saved_at: Date.now(), attribution,
+        service: serviceValue(), name: f.name.value, email: f.email.value, country: f.country.value,
+        phone: f.phone.value, whatsapp: f.whatsapp.checked, website: f.website.value, business: f.business.value,
+        industry: f.industry.value, city: f.city.value, message: f.message.value,
+        timeline: groupValue("timeline"), budget: groupValue("budget"), heard: f.heard.value
     });
+    const store = { get() { return localStorage.getItem(LEAD_STORE_KEY); }, set(v) { localStorage.setItem(LEAD_STORE_KEY, v); }, del() { localStorage.removeItem(LEAD_STORE_KEY); } };
     let saveTimer = 0;
     function save() {
         clearTimeout(saveTimer);
         saveTimer = setTimeout(() => {
             if (submitted) return;
-            try { sessionStorage.setItem(LEAD_STORE_KEY, JSON.stringify(snapshot())); } catch { /* storage unavailable */ }
+            try { store.set(JSON.stringify(snapshot())); } catch { /* storage unavailable */ }
         }, 250);
     }
     function restore() {
         let saved = null;
-        try { saved = JSON.parse(sessionStorage.getItem(LEAD_STORE_KEY) || "null"); } catch { saved = null; }
+        try { saved = JSON.parse(store.get() || "null"); } catch { saved = null; }
+        if (saved && Date.now() - (saved.saved_at || 0) > LEAD_STORE_DAYS * 864e5) { saved = null; try { store.del(); } catch { /* ignore */ } }
         sid = (saved && saved.sid) || (window.crypto && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`);
+        attribution = captureAttribution(saved);
         if (!saved) return;
         radios.forEach((r) => { r.checked = r.value === saved.service; });
         f.name.value = saved.name || "";
         f.email.value = saved.email || "";
         if (saved.country) { f.country.value = saved.country; f.country.dispatchEvent(new Event("change")); }
         f.phone.value = saved.phone || "";
+        f.whatsapp.checked = !!saved.whatsapp;
         f.website.value = saved.website || "";
         f.business.value = saved.business || "";
+        f.industry.value = saved.industry || "";
+        f.city.value = saved.city || "";
         f.message.value = saved.message || "";
+        groups.timeline.forEach((r) => { r.checked = r.value === saved.timeline; });
+        groups.budget.forEach((r) => { r.checked = r.value === saved.budget; });
+        f.heard.value = saved.heard || "";
         // Resume where they left off, but never past an unanswered question.
         let to = Math.min(Number(saved.step) || 0, steps.length - 1);
         for (let i = 0; i < to; i++) if (!stepIsValid(i)) { to = i; break; }
@@ -333,10 +379,17 @@ function initLeadFlow(form) {
         fd.append("name", f.name.value.trim());
         fd.append("email", f.email.value.trim());
         fd.append("phone", f.phone.value.trim() ? fullPhone() : "");
+        fd.append("whatsapp", f.whatsapp.checked ? "yes" : "no");
         fd.append("website", f.website.value.trim());
         fd.append("business", f.business.value.trim());
+        fd.append("industry", f.industry.value);
+        fd.append("city", f.city.value.trim());
         fd.append("service", serviceValue());
         fd.append("message", f.message.value.trim());
+        fd.append("timeline", groupValue("timeline"));
+        fd.append("budget", groupValue("budget"));
+        fd.append("heard", f.heard.value);
+        ATTRIBUTION.forEach((k) => fd.append(k, attribution[k] || ""));
         return fd;
     }
 
@@ -349,9 +402,12 @@ function initLeadFlow(form) {
         if (!LEAD_WEBHOOK_URL || !hasEmail()) return;
         const fd = answers();
         fd.append("event", event);
+        fd.append("status", event === "completed" ? "complete" : "partial");
         fd.append("session_id", sid);
         fd.append("step", order[index]);
         fd.append("step_number", String(index + 1));
+        fd.append("last_step", String(index + 1));
+        fd.append("resume_url", `${location.origin}/contact/?resume=${encodeURIComponent(sid)}`);
         fd.append("first_name", firstName());
         fd.append("page", location.pathname);
         fd.append("sent_at", new Date().toISOString());
@@ -494,6 +550,7 @@ function initLeadFlow(form) {
 
     function syncOptions() {
         radios.forEach((r) => r.closest(".lf-option").classList.toggle("is-checked", r.checked));
+        Object.keys(groups).forEach((name) => groups[name].forEach((r) => r.closest(".lf-seg").classList.toggle("is-checked", r.checked)));
     }
 
     function render() {
@@ -501,17 +558,19 @@ function initLeadFlow(form) {
         const total = steps.length;
         const last = index === total - 1;
         ui.count.textContent = String(n).padStart(2, "0");
+        if (ui.total) ui.total.textContent = String(total).padStart(2, "0");
+        ui.bar.setAttribute("aria-valuemax", String(total));
         ui.bar.style.setProperty("--p", String(n / total));
         ui.bar.setAttribute("aria-valuenow", String(n));
         ui.back.hidden = index === 0;
         ui.next.hidden = last;
         ui.submit.hidden = !last;
         ui.skip.hidden = order[index] !== "business";
-        ui.enter.innerHTML = last ? "<kbd>Ctrl</kbd> + <kbd>Enter</kbd> to send" : "or press <kbd>Enter</kbd>";
+        ui.enter.innerHTML = last ? "or press <kbd>Enter</kbd> to send" : "or press <kbd>Enter</kbd>";
         const name = firstName();
         form.querySelectorAll("[data-lf-name]").forEach((el) => { el.textContent = name ? `, ${name}` : ""; });
         syncOptions();
-        if (order[index] === "message") prepareBrief(); else stopGhost();
+        if (order[index] === "goal") prepareBrief(); else stopGhost();
         layoutStage();
     }
 
@@ -538,7 +597,7 @@ function initLeadFlow(form) {
     function next() {
         if (sending || submitted) return;
         if (!validateStep(index)) return;
-        if (index >= order.indexOf("email")) sendLeadEvent("partial");
+        if (index >= order.indexOf("contact")) sendLeadEvent("partial");
         if (index === steps.length - 1) { submit(); return; }
         go(index + 1, "fwd");
     }
@@ -553,7 +612,7 @@ function initLeadFlow(form) {
 
     function finish() {
         submitted = true;
-        try { sessionStorage.removeItem(LEAD_STORE_KEY); sessionStorage.removeItem(LEAD_STORE_KEY + ":notified"); } catch { /* ignore */ }
+        try { store.del(); sessionStorage.removeItem(LEAD_STORE_KEY + ":notified"); } catch { /* ignore */ }
         sendLeadEvent("completed");
         track("lead_form_submit", { service: serviceValue() });
         stopGhost();
@@ -586,7 +645,9 @@ function initLeadFlow(form) {
         if (!FORM_ACCESS_KEY || FORM_ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY") {
             const body = [
                 `Name: ${f.name.value.trim()}`, `Email: ${f.email.value.trim()}`, `Phone: ${fullPhone()}`,
-                `Website: ${f.website.value.trim()}`, `Business: ${f.business.value.trim()}`, `Need: ${serviceValue()}`, "", f.message.value.trim()
+                `WhatsApp: ${f.whatsapp.checked ? "yes" : "no"}`, `Website: ${f.website.value.trim()}`, `Business: ${f.business.value.trim()}`,
+                `Industry: ${f.industry.value}`, `City: ${f.city.value.trim()}`, `Need: ${serviceValue()}`, `Timeline: ${groupValue("timeline")}`,
+                `Budget: ${groupValue("budget")}`, "", f.message.value.trim()
             ].join("\n");
             window.location.href = `mailto:hello@nunik.co?subject=${encodeURIComponent(`New Inquiry | ${serviceValue()}`)}&body=${encodeURIComponent(body)}`;
             return;
@@ -618,15 +679,26 @@ function initLeadFlow(form) {
         });
     });
 
+    Object.keys(groups).forEach((name) => {
+        groups[name].forEach((r) => r.addEventListener("change", () => {
+            groups[name].forEach((x) => x.closest(".lf-seg").classList.toggle("is-checked", x.checked));
+            setError(name, "");
+            save();
+        }));
+    });
+    f.whatsapp.addEventListener("change", save);
+    f.industry.addEventListener("change", save);
+    f.heard.addEventListener("change", save);
+
     Object.keys(f).forEach((key) => {
         const el = f[key];
-        if (!el) return;
+        if (!el || el.type === "checkbox" || el.tagName === "SELECT") return;
         el.addEventListener("input", () => {
             const vKey = key === "country" ? "phone" : key;
             if (validators[vKey] && (f[vKey] || el).getAttribute("aria-invalid") === "true" && !validators[vKey]()) setError(vKey, "");
             if (key === "message") {
                 updateCounter();
-                if (f.message.value) stopGhost(); else if (order[index] === "message") startGhost();
+                if (f.message.value) stopGhost(); else if (order[index] === "goal") startGhost();
             }
             save();
         });
@@ -669,6 +741,13 @@ function initLeadFlow(form) {
     restore();
     render();
     form.classList.add("is-ready");
+    const resumeId = new URLSearchParams(location.search).get("resume");
+    if (resumeId) {
+        ui.status.textContent = resumeId === sid && index > 0
+            ? `Welcome back${firstName() ? `, ${firstName()}` : ""}. We kept your answers; carry on from here.`
+            : "Your earlier answers were saved on another device, so this starts fresh. It only takes a minute.";
+        setTimeout(() => form.scrollIntoView({ block: "center", behavior: REDUCED_MOTION ? "auto" : "smooth" }), 400);
+    }
 
     return {
         focus() { const t = focusTarget(index); if (t) t.focus({ preventScroll: true }); }

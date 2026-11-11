@@ -1,0 +1,550 @@
+{
+  "name": "Nunik lead capture (A)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "nunik-lead",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "a1",
+      "name": "Form webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "nunik-lead"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f0",
+              "name": "session_id",
+              "type": "string",
+              "value": "={{ $json.body.session_id || '' }}"
+            },
+            {
+              "id": "f1",
+              "name": "status",
+              "type": "string",
+              "value": "={{ $json.body.status || '' }}"
+            },
+            {
+              "id": "f2",
+              "name": "last_step",
+              "type": "string",
+              "value": "={{ $json.body.last_step || '' }}"
+            },
+            {
+              "id": "f3",
+              "name": "step",
+              "type": "string",
+              "value": "={{ $json.body.step || '' }}"
+            },
+            {
+              "id": "f4",
+              "name": "event",
+              "type": "string",
+              "value": "={{ $json.body.event || '' }}"
+            },
+            {
+              "id": "f5",
+              "name": "first_name",
+              "type": "string",
+              "value": "={{ $json.body.first_name || '' }}"
+            },
+            {
+              "id": "f6",
+              "name": "name",
+              "type": "string",
+              "value": "={{ $json.body.name || '' }}"
+            },
+            {
+              "id": "f7",
+              "name": "email",
+              "type": "string",
+              "value": "={{ $json.body.email || '' }}"
+            },
+            {
+              "id": "f8",
+              "name": "phone",
+              "type": "string",
+              "value": "={{ $json.body.phone || '' }}"
+            },
+            {
+              "id": "f9",
+              "name": "whatsapp",
+              "type": "string",
+              "value": "={{ $json.body.whatsapp || '' }}"
+            },
+            {
+              "id": "f10",
+              "name": "business",
+              "type": "string",
+              "value": "={{ $json.body.business || '' }}"
+            },
+            {
+              "id": "f11",
+              "name": "website",
+              "type": "string",
+              "value": "={{ $json.body.website || '' }}"
+            },
+            {
+              "id": "f12",
+              "name": "industry",
+              "type": "string",
+              "value": "={{ $json.body.industry || '' }}"
+            },
+            {
+              "id": "f13",
+              "name": "city",
+              "type": "string",
+              "value": "={{ $json.body.city || '' }}"
+            },
+            {
+              "id": "f14",
+              "name": "service",
+              "type": "string",
+              "value": "={{ $json.body.service || '' }}"
+            },
+            {
+              "id": "f15",
+              "name": "message",
+              "type": "string",
+              "value": "={{ $json.body.message || '' }}"
+            },
+            {
+              "id": "f16",
+              "name": "timeline",
+              "type": "string",
+              "value": "={{ $json.body.timeline || '' }}"
+            },
+            {
+              "id": "f17",
+              "name": "budget",
+              "type": "string",
+              "value": "={{ $json.body.budget || '' }}"
+            },
+            {
+              "id": "f18",
+              "name": "heard",
+              "type": "string",
+              "value": "={{ $json.body.heard || '' }}"
+            },
+            {
+              "id": "f19",
+              "name": "utm_source",
+              "type": "string",
+              "value": "={{ $json.body.utm_source || '' }}"
+            },
+            {
+              "id": "f20",
+              "name": "utm_medium",
+              "type": "string",
+              "value": "={{ $json.body.utm_medium || '' }}"
+            },
+            {
+              "id": "f21",
+              "name": "utm_campaign",
+              "type": "string",
+              "value": "={{ $json.body.utm_campaign || '' }}"
+            },
+            {
+              "id": "f22",
+              "name": "utm_term",
+              "type": "string",
+              "value": "={{ $json.body.utm_term || '' }}"
+            },
+            {
+              "id": "f23",
+              "name": "utm_content",
+              "type": "string",
+              "value": "={{ $json.body.utm_content || '' }}"
+            },
+            {
+              "id": "f24",
+              "name": "referrer",
+              "type": "string",
+              "value": "={{ $json.body.referrer || '' }}"
+            },
+            {
+              "id": "f25",
+              "name": "landing_page",
+              "type": "string",
+              "value": "={{ $json.body.landing_page || '' }}"
+            },
+            {
+              "id": "f26",
+              "name": "device",
+              "type": "string",
+              "value": "={{ $json.body.device || '' }}"
+            },
+            {
+              "id": "f27",
+              "name": "page",
+              "type": "string",
+              "value": "={{ $json.body.page || '' }}"
+            },
+            {
+              "id": "f28",
+              "name": "resume_url",
+              "type": "string",
+              "value": "={{ $json.body.resume_url || '' }}"
+            },
+            {
+              "id": "f29",
+              "name": "last_activity",
+              "type": "string",
+              "value": "={{ $json.body.sent_at || new Date().toISOString() }}"
+            }
+          ]
+        },
+        "includeOtherFields": false,
+        "options": {}
+      },
+      "id": "a2",
+      "name": "Normalise fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        260,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "PASTE_GOOGLE_SHEET_ID"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Leads"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "session_id"
+          ],
+          "schema": [
+            {
+              "id": "session_id",
+              "displayName": "session_id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_step",
+              "displayName": "last_step",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "step",
+              "displayName": "step",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "event",
+              "displayName": "event",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "phone",
+              "displayName": "phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "whatsapp",
+              "displayName": "whatsapp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "business",
+              "displayName": "business",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "website",
+              "displayName": "website",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "industry",
+              "displayName": "industry",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "city",
+              "displayName": "city",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "service",
+              "displayName": "service",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "timeline",
+              "displayName": "timeline",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "budget",
+              "displayName": "budget",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "heard",
+              "displayName": "heard",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "referrer",
+              "displayName": "referrer",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "landing_page",
+              "displayName": "landing_page",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "device",
+              "displayName": "device",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "page",
+              "displayName": "page",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "resume_url",
+              "displayName": "resume_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "last_activity",
+              "displayName": "last_activity",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a3",
+      "name": "Upsert lead row",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        520,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Form webhook": {
+      "main": [
+        [
+          {
+            "node": "Normalise fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalise fields": {
+      "main": [
+        [
+          {
+            "node": "Upsert lead row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

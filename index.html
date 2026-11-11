@@ -800,9 +800,17 @@
                 <div class="p-6 md:p-10">
                     <form id="terminal-form" class="lead-flow" novalidate data-dir="fwd">
                         <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+                        <input type="hidden" name="utm_source" value=""/>
+                        <input type="hidden" name="utm_medium" value=""/>
+                        <input type="hidden" name="utm_campaign" value=""/>
+                        <input type="hidden" name="utm_term" value=""/>
+                        <input type="hidden" name="utm_content" value=""/>
+                        <input type="hidden" name="referrer" value=""/>
+                        <input type="hidden" name="landing_page" value=""/>
+                        <input type="hidden" name="device" value=""/>
                     
                         <div class="lf-head">
-                            <span class="lf-count" aria-hidden="true"><b>01</b> / 06</span>
+                            <span class="lf-count" aria-hidden="true"><b>01</b> / <span data-lf-total>06</span></span>
                             <button type="button" class="lf-back" hidden>
                                 <svg width="14" height="14" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M313-440l224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
                                 Back
@@ -842,36 +850,31 @@
                                 <label class="lf-option lf-anim" style="--i:6">
                                     <input type="radio" name="service" value="Other" class="lf-radio"/>
                                     <span class="lf-key" aria-hidden="true">5</span>
-                                    <span class="lf-opt-text"><span class="lf-opt-title">Something else</span><span class="lf-opt-note">Not sure which box you fit. Tell us and we will work it out.</span></span>
+                                    <span class="lf-opt-text"><span class="lf-opt-title">Not sure yet</span><span class="lf-opt-note">Tell us what is going on and we will work out the fit.</span></span>
                                     <svg class="lf-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
                                 </label>
                                 </div>
                                 <p class="lf-error" id="lf-err-service" role="alert"></p>
                             </fieldset>
                     
-                            <fieldset class="lf-step" data-step="name" inert aria-hidden="true">
-                                <legend class="lf-q lf-anim" style="--i:0">What should we call you?</legend>
-                                <p class="lf-sub lf-anim" style="--i:1">First name is fine.</p>
+                            <fieldset class="lf-step" data-step="contact" inert aria-hidden="true">
+                                <legend class="lf-q lf-anim" style="--i:0">Who are we talking to?</legend>
+                                <p class="lf-sub lf-anim" style="--i:1">First name and the best email for the plan.</p>
                                 <div class="lf-field lf-anim" style="--i:2">
                                     <label class="lf-label" for="lead-name">Your name</label>
-                                    <input type="text" id="lead-name" name="name" class="lf-input" autocomplete="name" autocapitalize="words" spellcheck="false" aria-describedby="lf-err-name" required/>
+                                    <input type="text" id="lead-name" name="name" class="lf-input" autocomplete="given-name" autocapitalize="words" spellcheck="false" aria-describedby="lf-err-name" required/>
                                     <p class="lf-error" id="lf-err-name" role="alert"></p>
                                 </div>
-                            </fieldset>
-                    
-                            <fieldset class="lf-step" data-step="email" inert aria-hidden="true">
-                                <legend class="lf-q lf-anim" style="--i:0">Where should we send the plan<span data-lf-name></span>?</legend>
-                                <p class="lf-sub lf-anim" style="--i:1">We reply with a scoped plan and a fixed price within one working day.</p>
-                                <div class="lf-field lf-anim" style="--i:2">
+                                <div class="lf-field lf-anim" style="--i:3">
                                     <label class="lf-label" for="lead-email">Email address</label>
                                     <input type="email" id="lead-email" name="email" class="lf-input" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="name@company.com" aria-describedby="lf-err-email lf-note-email" required/>
                                     <p class="lf-error" id="lf-err-email" role="alert"></p>
                                 </div>
-                                <p class="lf-note lf-anim" id="lf-note-email" style="--i:3">If you stop part-way, we may send one email to see if we can help. No newsletters.</p>
+                                <p class="lf-note lf-anim" id="lf-note-email" style="--i:4">We save your progress as you go and may email you a link to finish. No newsletters, and you can tell us to stop at any time.</p>
                             </fieldset>
                     
                             <fieldset class="lf-step" data-step="phone" inert aria-hidden="true">
-                                <legend class="lf-q lf-anim" style="--i:0">Best number for a quick call?</legend>
+                                <legend class="lf-q lf-anim" style="--i:0">Best number for a quick call<span data-lf-name></span>?</legend>
                                 <p class="lf-sub lf-anim" style="--i:1">Used for this enquiry only. Pick your country code first.</p>
                                 <div class="lf-field lf-anim" style="--i:2">
                                     <label class="lf-label" for="lead-phone">Phone number</label>
@@ -883,11 +886,16 @@
                                     </div>
                                     <p class="lf-error" id="lf-err-phone" role="alert"></p>
                                 </div>
+                                <label class="lf-toggle lf-anim" style="--i:3">
+                                    <input type="checkbox" name="whatsapp" value="yes" class="lf-toggle-input"/>
+                                    <span class="lf-toggle-track" aria-hidden="true"><span class="lf-toggle-knob"></span></span>
+                                    <span class="lf-toggle-text"><b>Prefer WhatsApp?</b><span>We will message you there instead of calling.</span></span>
+                                </label>
                             </fieldset>
                     
                             <fieldset class="lf-step" data-step="business" inert aria-hidden="true">
-                                <legend class="lf-q lf-anim" style="--i:0">What is the business called?</legend>
-                                <p class="lf-sub lf-anim" style="--i:1">Both optional. A website helps us do our homework before we reply.</p>
+                                <legend class="lf-q lf-anim" style="--i:0">Tell us about the business.</legend>
+                                <p class="lf-sub lf-anim" style="--i:1">All optional. A website and a location help us do our homework before we reply.</p>
                                 <div class="lf-field lf-anim" style="--i:2">
                                     <label class="lf-label" for="lead-business">Business name</label>
                                     <input type="text" id="lead-business" name="business" class="lf-input" autocomplete="organization" autocapitalize="words"/>
@@ -897,10 +905,30 @@
                                     <input type="text" id="lead-website" name="website" class="lf-input" autocomplete="url" inputmode="url" autocapitalize="off" spellcheck="false" placeholder="yourbusiness.com.au" aria-describedby="lf-err-website"/>
                                     <p class="lf-error" id="lf-err-website" role="alert"></p>
                                 </div>
+                                <div class="lf-pair lf-anim" style="--i:4">
+                                    <div class="lf-field">
+                                        <label class="lf-label" for="lead-industry">Industry</label>
+                                        <select id="lead-industry" name="industry" class="lf-input lf-select lf-select-wide">
+                                            <option value="">Choose</option>
+                                            <option value="Trades">Trades</option>
+                                            <option value="Hospitality">Hospitality</option>
+                                            <option value="Automotive">Automotive</option>
+                                            <option value="Real estate">Real estate</option>
+                                            <option value="Health and wellness">Health and wellness</option>
+                                            <option value="Retail">Retail</option>
+                                            <option value="Professional services">Professional services</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="lf-field">
+                                        <label class="lf-label" for="lead-city">Suburb or city</label>
+                                        <input type="text" id="lead-city" name="city" class="lf-input" autocomplete="address-level2" autocapitalize="words" placeholder="Belconnen"/>
+                                    </div>
+                                </div>
                             </fieldset>
                     
-                            <fieldset class="lf-step" data-step="message" inert aria-hidden="true">
-                                <legend class="lf-q lf-anim" style="--i:0" data-lf-brief-q>What is slowing the business down?</legend>
+                            <fieldset class="lf-step" data-step="goal" inert aria-hidden="true">
+                                <legend class="lf-q lf-anim" style="--i:0" data-lf-brief-q>What is the one thing you want fixed?</legend>
                                 <p class="lf-sub lf-anim" style="--i:1" data-lf-brief-sub>A few sentences is plenty. Tap an opener if you are not sure where to start.</p>
                                 <div class="lf-starters lf-anim" style="--i:2" role="group" aria-label="Sentence starters"></div>
                                 <div class="lf-field lf-anim" style="--i:3">
@@ -915,11 +943,72 @@
                                     </div>
                                     <p class="lf-error" id="lf-err-message" role="alert"></p>
                                 </div>
+                                <div class="lf-field lf-anim" style="--i:4">
+                                    <span class="lf-label" id="lf-label-timeline">When do you want it done?</span>
+                                    <div class="lf-segments" role="radiogroup" aria-labelledby="lf-label-timeline">
+                                    <label class="lf-seg lf-anim" style="--i:5">
+                                        <input type="radio" name="timeline" value="ASAP" class="lf-radio"/>
+                                        <span>As soon as possible</span>
+                                    </label>
+                                    <label class="lf-seg lf-anim" style="--i:6">
+                                        <input type="radio" name="timeline" value="1 to 3 months" class="lf-radio"/>
+                                        <span>In the next 1 to 3 months</span>
+                                    </label>
+                                    <label class="lf-seg lf-anim" style="--i:7">
+                                        <input type="radio" name="timeline" value="Just exploring" class="lf-radio"/>
+                                        <span>Just exploring</span>
+                                    </label>
+                                    </div>
+                                    <p class="lf-error" id="lf-err-timeline" role="alert"></p>
+                                </div>
+                            </fieldset>
+                    
+                            <fieldset class="lf-step" data-step="budget" inert aria-hidden="true">
+                                <legend class="lf-q lf-anim" style="--i:0">Roughly what budget do you have in mind?</legend>
+                                <p class="lf-sub lf-anim" style="--i:1">A band is enough. It helps us suggest the right first move rather than the biggest one.</p>
+                                <div class="lf-field lf-anim" style="--i:2">
+                                    <div class="lf-segments" role="radiogroup" aria-label="Budget">
+                                    <label class="lf-seg lf-anim" style="--i:3">
+                                        <input type="radio" name="budget" value="Under $2,000" class="lf-radio"/>
+                                        <span>Under $2k</span>
+                                    </label>
+                                    <label class="lf-seg lf-anim" style="--i:4">
+                                        <input type="radio" name="budget" value="$2,000 to $5,000" class="lf-radio"/>
+                                        <span>$2k to $5k</span>
+                                    </label>
+                                    <label class="lf-seg lf-anim" style="--i:5">
+                                        <input type="radio" name="budget" value="$5,000 to $15,000" class="lf-radio"/>
+                                        <span>$5k to $15k</span>
+                                    </label>
+                                    <label class="lf-seg lf-anim" style="--i:6">
+                                        <input type="radio" name="budget" value="More than $15,000" class="lf-radio"/>
+                                        <span>$15k and up</span>
+                                    </label>
+                                    <label class="lf-seg lf-anim" style="--i:7">
+                                        <input type="radio" name="budget" value="Not sure yet" class="lf-radio"/>
+                                        <span>Not sure yet</span>
+                                    </label>
+                                    </div>
+                                    <p class="lf-error" id="lf-err-budget" role="alert"></p>
+                                </div>
+                                <div class="lf-field lf-anim" style="--i:8">
+                                    <label class="lf-label" for="lead-heard">How did you hear about us? <span class="lf-optional">optional</span></label>
+                                    <select id="lead-heard" name="heard" class="lf-input lf-select lf-select-wide">
+                                        <option value="">Choose</option>
+                                        <option value="Google search">Google search</option>
+                                        <option value="An AI assistant (ChatGPT, Gemini, Claude)">An AI assistant (ChatGPT, Gemini, Claude)</option>
+                                        <option value="Instagram">Instagram</option>
+                                        <option value="LinkedIn">LinkedIn</option>
+                                        <option value="A referral">A referral</option>
+                                        <option value="Saw your work somewhere">Saw your work somewhere</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
                             </fieldset>
                     
                             <div class="lf-step lf-done" data-step="done" inert aria-hidden="true">
                                 <p class="lf-q lf-anim" style="--i:0">Sent<span data-lf-name></span>.</p>
-                                <p class="lf-sub lf-anim" style="--i:1">We will be back within one working day with the right questions and a clear next move.</p>
+                                <p class="lf-sub lf-anim" style="--i:1">We will be back within one working day with the right questions and a clear next move. Rather talk it through? <a href="/book/" class="lf-link">Book a 15-minute call</a>.</p>
                             </div>
                         </div>
                     
