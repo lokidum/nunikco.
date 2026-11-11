@@ -595,8 +595,9 @@
                 <div class="glass-card rounded-xl p-6 md:p-8 flex flex-col items-center justify-center aspect-square cursor-project reveal-item archive-card"
                      data-project-url="https://www.adelaideconfidentdriving.com/"
                      data-project-name="Adelaide Confident Driving Academy"
-                     data-project-tag="ARTHA + RASA / Web &amp; Brand"
-                     data-project-image="/public/archive/acda-home.jpg"
+                     data-project-tag="ARTHA + RASA / Web &amp; Brand / Before and after"
+                     data-project-before="/public/archive/acda-before.jpg"
+                     data-project-after="/public/archive/acda-after.jpg"
                      role="button" tabindex="0"
                      aria-label="Open Adelaide Confident Driving Academy project preview">
                     <div class="w-full flex items-center justify-center" style="height:60px;">
@@ -1139,6 +1140,22 @@
                 </div>
                 <div class="flex-1 relative" style="background:var(--surface-container, #1d2024);">
                     <iframe id="project-modal-iframe" class="absolute inset-0 w-full h-full border-0" src="about:blank" loading="lazy" referrerpolicy="no-referrer" title="Project preview"></iframe>
+                    <!-- Before and after: two full-page captures, drag the handle to compare, scroll to read down -->
+                    <div id="project-modal-compare" class="hidden absolute inset-0 project-compare">
+                        <div class="project-compare-scroll">
+                            <div class="project-compare-stage">
+                                <img class="project-compare-img project-compare-before" src="" alt="The site before the rebuild" decoding="async"/>
+                                <img class="project-compare-img project-compare-after" src="" alt="The site after the rebuild" decoding="async"/>
+                                <div class="project-compare-divider" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <span class="project-compare-label is-before" aria-hidden="true">Before</span>
+                        <span class="project-compare-label is-after" aria-hidden="true">After</span>
+                        <button type="button" class="project-compare-handle" role="slider" aria-label="Drag to compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                            <svg width="22" height="22" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M320-200 80-440l240-240 56 56-184 184 184 184-56 56Zm320 0-56-56 184-184-184-184 56-56 240 240-240 240Z"/></svg>
+                        </button>
+                        <a id="project-modal-compare-link" href="#" target="_blank" rel="noopener" class="project-compare-link">Open live site</a>
+                    </div>
                     <div id="project-modal-fallback" class="hidden absolute inset-0 flex items-center justify-center p-6 md:p-8" style="background:var(--bg);">
                         <img id="project-modal-shot" class="project-shot hidden" src="" alt="" decoding="async"/>
                         <div class="project-shot-fade hidden" aria-hidden="true"></div>

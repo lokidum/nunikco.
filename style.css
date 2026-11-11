@@ -1533,6 +1533,106 @@ html.lenis, html.lenis body {
     inset: 0;
     background: linear-gradient(180deg, rgba(11, 14, 18, 0.1) 0%, rgba(11, 14, 18, 0.55) 55%, rgba(11, 14, 18, 0.92) 100%);
 }
+/* Project modal: before and after comparison */
+.project-compare {
+    --split: 50%;
+    user-select: none;
+    -webkit-user-select: none;
+    background: #0b0e12;
+}
+.project-compare-scroll {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+}
+.project-compare-stage {
+    position: relative;
+    display: grid;
+    width: 100%;
+    touch-action: pan-y;
+    cursor: col-resize;
+}
+.project-compare-img {
+    grid-area: 1 / 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    align-self: start;
+    pointer-events: none;
+}
+.project-compare-after {
+    clip-path: inset(0 0 0 var(--split));
+}
+.project-compare-divider {
+    grid-area: 1 / 1;
+    justify-self: start;
+    width: 2px;
+    height: 100%;
+    margin-left: calc(var(--split) - 1px);
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+}
+.project-compare-handle {
+    position: absolute;
+    top: 50%;
+    left: var(--split);
+    transform: translate(-50%, -50%);
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.85);
+    cursor: col-resize;
+    z-index: 2;
+    touch-action: none;
+}
+.project-compare-handle:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+.project-compare-label {
+    position: absolute;
+    top: 0.75rem;
+    z-index: 2;
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(11, 14, 18, 0.78);
+    color: #E1E4E7;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+.project-compare-label.is-before { left: 0.75rem; }
+.project-compare-label.is-after  { right: 0.75rem; }
+.project-compare-link {
+    position: absolute;
+    left: 50%;
+    bottom: 0.9rem;
+    transform: translateX(-50%);
+    z-index: 2;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(11, 14, 18, 0.85);
+    color: #D9A48E;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+@media (min-width: 640px) {
+    .project-compare-link { display: none; } /* the header has its own link on wider screens */
+}
 #project-modal-fallback.has-shot .project-fb-body {
     align-self: flex-end;
     margin-bottom: 4vh;

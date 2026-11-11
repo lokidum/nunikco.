@@ -1084,6 +1084,59 @@ document.addEventListener("DOMContentLoaded", () => {
         let fbTimer = null;
         let lastFocus = null;
 
+        // Before and after: data-project-before and data-project-after are
+        // full-page captures. The after image is clipped at --split; dragging
+        // anywhere on the stage (or the handle) moves the split, vertical
+        // scrolling still works because the stage allows pan-y.
+        const compare   = document.getElementById("project-modal-compare");
+        const cmpStage  = compare.querySelector(".project-compare-stage");
+        const cmpBefore = compare.querySelector(".project-compare-before");
+        const cmpAfter  = compare.querySelector(".project-compare-after");
+        const cmpHandle = compare.querySelector(".project-compare-handle");
+        const cmpScroll = compare.querySelector(".project-compare-scroll");
+        const cmpLink   = document.getElementById("project-modal-compare-link");
+        let split = 50;
+        let dragging = false;
+
+        function setSplit(p) {
+            split = Math.max(2, Math.min(98, p));
+            compare.style.setProperty("--split", split + "%");
+            cmpHandle.setAttribute("aria-valuenow", String(Math.round(split)));
+        }
+        function splitFromPointer(e) {
+            const r = cmpStage.getBoundingClientRect();
+            if (r.width > 0) setSplit(((e.clientX - r.left) / r.width) * 100);
+        }
+        compare.addEventListener("pointerdown", (e) => {
+            if (e.button !== 0 && e.pointerType === "mouse") return;
+            if (!e.target.closest(".project-compare-stage, .project-compare-handle")) return;
+            dragging = true;
+            splitFromPointer(e);
+            if (compare.setPointerCapture) compare.setPointerCapture(e.pointerId);
+        });
+        compare.addEventListener("pointermove", (e) => { if (dragging) splitFromPointer(e); });
+        ["pointerup", "pointercancel"].forEach((t) => compare.addEventListener(t, () => { dragging = false; }));
+        cmpHandle.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowLeft")  { e.preventDefault(); setSplit(split - 4); }
+            if (e.key === "ArrowRight") { e.preventDefault(); setSplit(split + 4); }
+            if (e.key === "Home")       { e.preventDefault(); setSplit(2); }
+            if (e.key === "End")        { e.preventDefault(); setSplit(98); }
+        });
+
+        function showCompare(before, after, url) {
+            cmpBefore.src = before;
+            cmpAfter.src  = after;
+            cmpLink.href  = url;
+            cmpScroll.scrollTop = 0;
+            setSplit(50);
+            compare.classList.remove("hidden");
+        }
+        function hideCompare() {
+            compare.classList.add("hidden");
+            cmpBefore.removeAttribute("src");
+            cmpAfter.removeAttribute("src");
+        }
+
         // Sites that refuse to be framed (X-Frame-Options, frame-ancestors)
         // carry data-project-image: a screenshot shown instead of the iframe.
         function showFallback(image) {
@@ -1101,7 +1154,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const url   = card.getAttribute("data-project-url");
             const name  = card.getAttribute("data-project-name") || "Project preview";
             const tag   = card.getAttribute("data-project-tag")  || "";
-            const image = card.getAttribute("data-project-image") || "";
+            const image  = card.getAttribute("data-project-image")  || "";
+            const before = card.getAttribute("data-project-before") || "";
+            const after  = card.getAttribute("data-project-after")  || "";
             if (!url) return;
             lastFocus = document.activeElement;
             titleEl.textContent = name;
@@ -1109,11 +1164,15 @@ document.addEventListener("DOMContentLoaded", () => {
             openLink.href = url;
             fbLink.href   = url;
             fbPanel.classList.add("hidden");
+            hideCompare();
             projectModal.classList.remove("hidden");
             document.body.style.overflow = "hidden";
             if (lenis && typeof lenis.stop === "function") lenis.stop();
             clearTimeout(fbTimer);
-            if (image) {
+            if (before && after) {
+                iframe.src = "about:blank";
+                showCompare(before, after, url);
+            } else if (image) {
                 iframe.src = "about:blank";
                 showFallback(image);
             } else {
@@ -1132,6 +1191,7 @@ document.addEventListener("DOMContentLoaded", () => {
             iframe.src = "about:blank";
             document.body.style.overflow = "";
             fbPanel.classList.add("hidden");
+            hideCompare();
             clearTimeout(fbTimer);
             if (lenis && typeof lenis.start === "function") lenis.start();
             if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
