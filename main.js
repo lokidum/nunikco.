@@ -1216,16 +1216,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ── ScrollTrigger reveals ─────────────────────────
+    // Each container reveals once as it scrolls into view. A programmatic
+    // scroll (the Connect links, the Initiate button) can instead hold a
+    // container's reveal and play it when the scroll lands, so the animation
+    // happens in front of the visitor rather than mid-flight.
+    const reveals = new Map();
     document.querySelectorAll(".reveal-container").forEach(container => {
         const items = container.querySelectorAll(".reveal-item");
-        gsap.set(items, { y: 60, opacity: 0 });
-        ScrollTrigger.create({
+        const hide = () => gsap.set(items, { y: 60, opacity: 0 });
+        const play = () => gsap.to(items, { y: 0, opacity: 1, duration: 1.2, stagger: 0.1, ease: "power4.out" });
+        hide();
+        const trigger = ScrollTrigger.create({
             trigger: container,
             start: "top 88%",
-            onEnter: () => gsap.to(items, { y: 0, opacity: 1, duration: 1.2, stagger: 0.1, ease: "power4.out" }),
+            onEnter: () => { reveals.delete(container); play(); },
             once: true
         });
+        reveals.set(container, { trigger, hide, play });
     });
+
+    // Returns a function that plays the container's reveal, after making sure
+    // it will not fire on its own during the scroll. If the container is
+    // already revealed but off screen, it is reset so the visitor sees it
+    // again on arrival; a visible one is left alone.
+    function holdReveal(container) {
+        if (!container) return () => {};
+        const items = container.querySelectorAll(".reveal-item");
+        const pending = reveals.get(container);
+        if (pending) {
+            pending.trigger.kill();
+            reveals.delete(container);
+            return pending.play;
+        }
+        const r = container.getBoundingClientRect();
+        const onScreen = r.bottom > 0 && r.top < window.innerHeight;
+        if (onScreen || !items.length) return () => {};
+        gsap.set(items, { y: 60, opacity: 0 });
+        return () => gsap.to(items, { y: 0, opacity: 1, duration: 1.2, stagger: 0.1, ease: "power4.out" });
+    }
 
     // ── Parallax imagery ──────────────────────────────
     document.querySelectorAll(".parallax-img").forEach(img => {
@@ -1243,9 +1271,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function goToForm() {
         if (!contactExpansion) return;
-        if (lenis) lenis.scrollTo(contactExpansion, { duration: 1.4, offset: -96 });
-        else contactExpansion.scrollIntoView({ behavior: "smooth", block: "start" });
-        if (leadFlow) setTimeout(() => leadFlow.focus(), 1500);
+        // Land on the "Start your transformation" heading, not the form, so
+        // the heading's reveal plays in view once the scroll settles.
+        const section = contactExpansion.closest("footer");
+        const heading = section ? section.querySelector(".reveal-container") : null;
+        const target = heading || contactExpansion;
+        const play = holdReveal(heading);
+        let done = false;
+        const arrive = () => {
+            if (done) return;
+            done = true;
+            play();
+            if (leadFlow) leadFlow.focus();
+        };
+        if (lenis) {
+            lenis.scrollTo(target, { duration: 1.4, offset: -96, onComplete: arrive });
+            setTimeout(arrive, 1800); // in case the scroll is interrupted
+        } else {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            setTimeout(arrive, 700);
+        }
     }
 
     // Home page: the floating button and the Connect links go straight to
