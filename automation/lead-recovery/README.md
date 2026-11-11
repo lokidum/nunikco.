@@ -36,7 +36,9 @@ session_id,status,last_step,step,event,first_name,name,email,phone,whatsapp,busi
 
 ## Workflow B: recovery (`workflow-b-recovery.json`)
 
-Every 15 minutes: read the sheet, pick rows where `status` is `partial`, `email` is set, `unsubscribed` is not `yes`, fewer than three emails sent, and the spacing has passed (one hour of inactivity for the first, one day after the first for the second, three days after the second for the third). Sends the email, then bumps `emails_sent` and `last_email_at`.
+Every minute: read the sheet, pick rows where `status` is `partial`, `email` is set, `unsubscribed` is not `yes`, fewer than three emails sent, and the spacing has passed: the first email two minutes after the visitor last typed or moved (the form reports typing 20 seconds after the last keystroke, so the real gap is about two and a half minutes), the second one day after the first, the third three days after the second. Sends the email, then bumps `emails_sent` and `last_email_at`.
+
+Running every minute means about 1,450 executions a day on this workflow alone. On n8n Cloud that counts against the plan's execution quota; on a self-hosted n8n it is free. If that is too many, change the trigger to every 2 minutes (the first email then lands two to four minutes after they stop). `FIRST_AFTER` in the Code node sets the delay.
 
 Email copy lives in the Code node ("Pick who gets an email"); edit it there. Before switching it on:
 

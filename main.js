@@ -93,9 +93,9 @@ const FORM_ACCESS_KEY = "17a1f44f-2499-4c3e-ba1a-7714fb693c59";
 //   event      partial | abandoned | resumed | completed
 //   status     partial | complete
 //   last_step  1-based number of the furthest screen reached
-// "partial" is sent after the contact screen and every screen after it,
-// "abandoned" when the tab is hidden or closed, "resumed" when it comes back,
-// "completed" when the enquiry is sent. Importable n8n workflows that upsert
+// "partial" is sent after the contact screen, every screen after it, and
+// 20 s after the visitor stops typing; "abandoned" when the tab is hidden or
+// closed, "resumed" when it comes back, "completed" when the enquiry is sent. Importable n8n workflows that upsert
 // the row and run the recovery emails live in automation/lead-recovery/.
 // Left empty, an unfinished enquiry is emailed to hello@nunik.co instead.
 const LEAD_WEBHOOK_URL = "";
@@ -432,6 +432,13 @@ function initLeadFlow(form) {
     document.addEventListener("visibilitychange", () => {
         if (submitted || !hasEmail()) return;
         sendLeadEvent(document.hidden ? "abandoned" : "resumed");
+    });
+    // Typing counts as activity: 20 s after the last keystroke, post a "partial"
+    // so the receiver's last_activity reflects when they actually stopped.
+    let idleTimer = 0;
+    form.addEventListener("input", () => {
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(() => { if (!submitted && index >= order.indexOf("contact")) sendLeadEvent("partial"); }, 20000);
     });
     window.addEventListener("pagehide", () => {
         if (submitted || !hasEmail() || LEAD_WEBHOOK_URL) return;
