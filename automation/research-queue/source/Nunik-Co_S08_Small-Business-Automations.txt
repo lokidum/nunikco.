@@ -1,0 +1,83 @@
+      N U N I K C O. A R T I C L E
+
+
+      7 Automations Every Small Business
+      Should Set Up First
+      The automations that save owners the most time and win back lost customers, from
+      instant replies to review requests.
+      By Lokesh Barani Kumar, founder of Nunik Co. · November 2026
+
+
+
+The first automations a small business should set up are the ones that stop customers slipping
+through the cracks: an instant reply to enquiries, a lead alert to your phone, a follow-up on
+unaccepted quotes, appointment reminders, a review request after each job, a missed-call text
+back, and a check-in with past customers. Each one takes a few hours to set up and then runs on
+its own every day.
+
+The 7 automations
+ #    Automation                     Trigger                         What it saves you
+ 1    Instant enquiry reply          Form or message received        Leads going cold while they wait
+
+ 2    Lead alert to your phone       Form or message received        Missed enquiries buried in your inbox
+ 3    Missed-call text back          Call not answered               Callers ringing the next business
+
+ 4    Quote follow-up                Quote unanswered after 3 days   Jobs lost to silence
+
+ 5    Appointment reminders          24 hours before                 No-shows and late cancellations
+ 6    Review request                 Job marked complete             Forgetting to ask
+
+ 7    Past customer check-in         6 to 12 months since last job   Repeat work you never asked for
+
+1. Instant enquiry reply
+When someone fills in your form, they get an email or SMS straight away thanking them, confirming
+what they asked for, and saying when you'll be in touch. It buys you time and stops them moving
+on.
+
+2. Lead alert to your phone
+Every new enquiry gets pushed to your phone by SMS, WhatsApp or Telegram, with the key
+details. You see it on the job, not at 9pm.
+
+3. Missed-call text back
+If you can't answer, the caller gets a text: "Sorry we missed you, we're on a job. What can we help
+with?" Many people will reply by text when they wouldn't leave a voicemail. For more, an AI
+
+
+
+Nunik Co. · nunik.co                                                                                         1
+receptionist can answer the call itself.
+
+4. Quote follow-up
+If a quote hasn't been accepted after a few days, send a friendly check-in asking if they have any
+questions. Plenty of quotes go unanswered simply because people got busy.
+
+5. Appointment reminders
+A reminder the day before, with the time, address and anything they need to bring. One of the
+simplest ways to cut no-shows.
+
+6. Review request
+When a job is marked complete, the customer gets a thank-you with your Google review link. This
+is how review counts grow steadily without you having to remember.
+
+7. Past customer check-in
+A friendly message to past customers after a set time: a service reminder, a seasonal tip, or just
+checking in. Only send this with their consent, and include an unsubscribe option, as the Spam Act
+2003 requires.
+
+What tools do you need?
+Many booking systems, CRMs and form tools have some of these built in. To connect everything
+together, we use n8n, an automation tool that links your website forms, calendar, CRM and
+messaging apps. We set the workflows up in the client's own account, so the business owns them
+and is never locked in.
+Start with numbers 1, 2 and 6. They're the quickest to set up and usually make the biggest
+difference.
+
+
+    Want these seven running for your business?
+    Book a free automation chat.
+
+
+
+
+Nunik Co. · nunik.co                                                                                 2
+

@@ -1,0 +1,78 @@
+      N U N I K C O. A R T I C L E
+
+
+      How Much Should a Small Business
+      Spend on Ads?
+      A simple way to set an ad budget based on what a customer is worth, with a worked
+      example and a 4-week test plan.
+      By Lokesh Barani Kumar, founder of Nunik Co. · November 2026
+
+
+
+A small business should set its ad budget by working backwards from what a new customer is
+worth, not by picking a round number. Decide the most you'd pay to win one customer, estimate
+how many enquiries it takes to win one, and that gives you a target cost per enquiry. Then commit
+to a test budget you're comfortable spending for at least four weeks, so you have enough results to
+make a real decision.
+
+Step 1: Work out what a customer is worth
+Start with the average amount a new customer spends with you, in their first job or over a typical
+year. If customers come back, the yearly figure is the fairer one.
+
+Step 2: Decide what you'd pay to win one
+How much of that would you happily spend to win a new customer and still be glad you did? This is
+your target cost per customer. Be honest about your margins.
+
+Step 3: Work out your cost per enquiry
+Not every enquiry becomes a customer. If you know roughly what share of enquiries you win,
+divide your target cost per customer by the number of enquiries it takes.
+
+A worked example
+These numbers are illustrative. Swap in your own.
+ Step                                                                  Example
+ Average value of a new customer                                       $600
+
+ Most you'd pay to win one                                             $120
+ Enquiries it takes to win one customer                                4
+
+ Target cost per enquiry                                               $120 ÷ 4 = $30
+ Customers you want from ads each month                                5
+
+
+
+
+Nunik Co. · nunik.co                                                                                 1
+ Step                                                                   Example
+ Enquiries needed                                                       20
+
+ Monthly budget to test                                                 20 × $30 = $600
+
+If, after four weeks, enquiries are costing $30 or less and turning into customers at the rate you
+expected, you can scale up. If they're costing far more, change one thing (the offer, the creative,
+the landing page or the targeting) and test again before adding more money.
+
+Your 4-week test plan
+1. Before launch: set up conversion tracking so you can see every enquiry the ads produce. See
+   how to tell if your ads are working.
+2. Week 1: launch with two ad variations and a dedicated landing page. Don't touch anything for
+   the first few days.
+3. Week 2: check cost per enquiry. Pause anything clearly not working.
+4. Weeks 3 and 4: let the stronger version run. Track which enquiries become customers.
+5. End of week 4: compare actual cost per customer with your target, and decide: scale, change,
+   or stop.
+
+Common budget mistakes
+    Spending too little to learn anything. A handful of clicks a week won't show you a pattern.
+    Scaling before it works. More money on a weak campaign just loses money faster.
+    Judging on clicks. Cheap clicks that never enquire are worth nothing.
+    Forgetting the landing page. Most "the ads don't work" problems are really "the page doesn't
+    convert" problems.
+
+    Want help setting a budget that makes sense?
+    Book a free ads readiness check.
+
+
+
+
+Nunik Co. · nunik.co                                                                                  2
+

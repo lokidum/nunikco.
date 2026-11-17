@@ -1,0 +1,26 @@
+{
+  "slug": "ga4-tracking-for-ads",
+  "title": "GA4 Conversion Tracking for Ads: Is Your Ad Spend Working?",
+  "description": "GA4 conversion tracking for ads, step by step: key events, Google Ads and Meta pixel setup, UTM tags and a 10-minute weekly check on cost per enquiry.",
+  "h1_main": "How to Tell If Your Ads Are Working:",
+  "h1_em": "GA4 Basics",
+  "dek": "Track enquiries, not clicks. Record forms, calls and bookings as GA4 key events, connect them to Google Ads and Meta, tag every ad link, and check cost per enquiry each week.",
+  "breadcrumb": "GA4 Ad Tracking",
+  "primary_keyword": "ga4 conversion tracking for ads",
+  "faq": [
+    {
+      "q": "How do you tell if your ads are working?",
+      "a": "To tell if your ads are working, track enquiries, not clicks. Set up Google Analytics 4 (GA4) to record form submissions, phone calls and bookings as key events, connect those to Google Ads and Meta, tag every ad link with UTM parameters, and check cost per enquiry and cost per customer each week. Without this, you're judging ads on guesswork."
+    },
+    {
+      "q": "Do clicks and likes tell you if your ads are working?",
+      "a": "Clicks, impressions and likes are useful for diagnosing problems, but they don't tell you whether ads are making money."
+    },
+    {
+      "q": "Why ask every new customer how they found you?",
+      "a": "Tracking misses things: people who see an ad on their phone and call later from a laptop, or hear about you from a friend who saw it. A simple \"how did you hear about us?\" question fills the gaps."
+    }
+  ],
+  "related_title": "Websites and automation",
+  "related_blurb": "Nunik Co. builds the websites, landing pages and tracking that local business ads depend on, so every enquiry can be traced back to what it cost."
+}

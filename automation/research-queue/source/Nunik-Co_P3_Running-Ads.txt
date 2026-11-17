@@ -1,0 +1,198 @@
+        N U N I K C O. G U I D E
+
+
+        How to Run Ads That Actually Work
+        for a Local Business
+        Practical tips for running Google and Meta ads as an Australian small business:
+        budget, offer, platform, creative, landing pages and tracking.
+        By Lokesh Barani Kumar, founder of Nunik Co. · November 2026
+
+
+
+Ads work for a local business when five things line up: a clear offer, the right platform for how your
+customers buy, creative that stops the scroll, a landing page built for that one ad, and tracking that
+tells you what each enquiry cost. Get one wrong and you pay for clicks that go nowhere. Get all
+five right and ads become a tap you can turn up when you want more work.
+This guide is written for owners spending their own money, usually a few hundred to a few
+thousand dollars a month, not big brands with agency budgets.
+
+   Quick facts
+        Ads amplify what already works. Fix your Google profile, reviews and website first, or you'll
+        pay to send people somewhere that doesn't convert.
+        Google Ads catches people already searching for you. Meta ads (Facebook and Instagram)
+        reach people who aren't searching yet.
+        The number that matters is cost per paying customer, not cost per click.
+
+
+Before you spend a dollar: are you ready for ads?
+If you can't tick at least four of these, spend the next month on the basics in 10 ways to make your
+business stand out instead.
+    ☐ Your Google Business Profile is complete and has recent reviews
+    ☐ Your website loads fast on a phone and has one clear call to action
+    ☐ You reply to enquiries within a few hours
+    ☐ You know roughly what a new customer is worth to you
+    ☐ You can track where enquiries come from
+
+
+The 6 parts of an ad campaign that works
+ Part               The question it answers          Most common mistake
+ Budget             How much can I afford to test?   Spending too little to learn anything, or too much before
+                                                     anything is proven
+
+
+
+
+Nunik Co. · nunik.co                                                                                             1
+ Part              The question it answers         Most common mistake
+ Offer             Why should someone act now?     "Quality service, call today"
+
+ Platform          Where are my customers?         Picking a platform because a competitor uses it
+ Creative          Why would someone stop          Stock photos and a logo
+                   scrolling?
+ Landing           What happens after the click?   Sending everyone to the home page
+ page
+
+ Tracking          What did each customer cost?    Judging ads on clicks and likes
+
+
+1. Set a budget you can learn from
+Work backwards from what a customer is worth. If a new client spends $600 with you and you'd
+happily pay $100 to win one, that's your target cost per customer. If roughly one in four enquiries
+becomes a customer, you can afford about $25 per enquiry.
+Then give the test enough room to tell you something. A campaign that gets a handful of clicks a
+week won't show you what works. Pick a monthly amount you're comfortable treating as the cost
+of learning, commit to it for at least four weeks, and decide in advance what result would make you
+keep going. There's a worked example in how much a small business should spend on ads.
+
+2. Lead with a real offer
+An offer gives people a reason to act now rather than "sometime". It doesn't have to be a discount.
+    A free first consultation, quote or inspection
+    A package price that's easier to understand than hourly rates
+    A guarantee, such as a free re-do if they're not happy
+    Something time-bound and true, like limited spots before the school holidays
+Whatever you choose, it has to be genuine. Under Australian Consumer Law, fake urgency, made-
+up "was" prices and misleading claims can get you into real trouble.
+
+Google Ads vs Facebook Ads: which is better for a local business?
+Google Ads is usually better for local service businesses whose customers search when they have
+a need, like plumbers, driving schools and accountants. Facebook and Instagram ads usually work
+better for businesses that need to create demand or show something visual, like food, events,
+products and experiences. Many businesses end up using both for different jobs.
+                           Google Ads                                     Meta ads (Facebook and Instagram)
+ Reaches people who        Searching right now                            Scrolling, not searching yet
+ are
+
+
+
+
+Nunik Co. · nunik.co                                                                                          2
+                          Google Ads                                       Meta ads (Facebook and Instagram)
+ Best for                 Urgent or planned services                       Visual products, events, offers, brand
+                                                                           awareness
+ Targeting by             Keywords and location                            Location, age, interests, lookalike
+                                                                           audiences
+ Creative needed          Mostly text                                      Images and short video
+
+ Typical cost per click   Higher, because intent is higher                 Lower, but fewer people are ready to buy
+
+ Good first test for      Trades, driving schools, clinics, professional   Food trucks, cafes, makers, events, retail
+                          services
+
+If your budget only covers one, start where your customers already are. Someone with a burst pipe
+searches Google. Someone who might fancy a Pakistani dessert this weekend scrolls Instagram.
+Google's Local Services Ads may also be worth checking if they're offered for your category and
+area. Full comparison in Google Ads vs Meta Ads for a local service business.
+
+Google Ads tips for local businesses
+    Target a tight radius around where you actually work
+    Use specific keywords ("driving lessons Marion") rather than broad ones ("driving")
+    Add negative keywords to block searches like "jobs", "free" and "DIY"
+    Run ads during the hours you can answer the phone
+    Use call assets so people can ring you straight from the ad
+
+Meta ads tips for local businesses
+    Use video wherever you can, and keep it short and vertical
+    Start with a local radius and let Meta's targeting do more of the work than detailed interest lists
+    Run two or three different creatives, not one
+    Look at the Meta Ad Library to see what competitors are running, then do something different
+
+How do you make ad creative that converts?
+Ad creative converts when it hooks attention in the first second, shows a real person or real result,
+speaks to one specific problem, and gives one clear next step. Polished production matters much
+less than relevance. A phone video of you explaining something useful usually beats a glossy
+brand ad for a local business.
+A simple structure for a 15 to 30 second video ad:
+1. Hook (first 1 to 2 seconds): name the problem or say something surprising
+2. Proof (next 5 to 10 seconds): show the work, the result, or a customer
+3. Offer (next 5 seconds): what they get and why now
+4. Action (last 3 seconds): exactly what to tap
+
+
+
+Nunik Co. · nunik.co                                                                                                    3
+Always add captions. Many people watch with the sound off. For ready-made openings, see 10 ad
+hooks that work for local businesses.
+
+Test properly
+Change one thing at a time. Run two versions with different hooks and the same everything else.
+After a week or two, keep the winner and test a new challenger against it. Over a few months, this
+compounds.
+
+Ad landing page best practices
+The best landing page for an ad is a page built for that ad alone: the same message and offer the
+person just clicked, one clear action, proof right beside it, and nothing else to wander off to.
+Sending ad traffic to your home page is one of the most expensive habits in small business
+marketing.
+    A headline that matches the ad. If the ad says "Free roof inspection in Canberra", so does the
+    page.
+    One action. A short form, a call button or a booking link. Not all three competing.
+    Proof next to the action. Reviews, star rating, licence numbers, before and after photos.
+    Fast loading on a phone. Most ad clicks come from mobile. A slow page wastes paid clicks.
+    No main navigation menu, so visitors stay focused on the one thing.
+    Short answers to common objections: price, timing, service area.
+
+Track what each customer actually costs
+If you can't see which ads led to enquiries, you're guessing. Set up conversion tracking before the
+first ad goes live:
+1. Install Google Analytics 4 and mark form submissions, calls and bookings as key events
+2. Connect conversion tracking in Google Ads and the Meta pixel or Conversions API
+3. Use UTM tags on every ad link so you can see the source in your analytics
+4. Ask every new customer how they found you, and write it down
+5. If you show a cookie banner, make sure your tracking respects people's choices
+Check once a week: spend, enquiries, cost per enquiry, and how many became customers. Step-
+by-step setup in how to tell if your ads are working.
+
+Frequently asked questions
+What is the best advertising for a small local business?
+For most local service businesses, Google Ads targeting local search terms is the best starting
+point, because it reaches people who already need you. For visual or impulse businesses like food,
+retail and events, Instagram and Facebook ads often work better.
+How much should a small business spend on ads?
+
+
+
+Nunik Co. · nunik.co                                                                                  4
+Work backwards from what a customer is worth and what you can afford to spend finding one.
+Commit to a test budget you're comfortable losing for at least four weeks, so you get enough data
+to make a decision.
+Why are my ads getting clicks but no enquiries?
+Usually it's the landing page or the offer, not the ad. Check that the page matches the ad, loads fast
+on mobile, has one clear action and shows proof. Also check that your conversion tracking is
+working.
+Should I run ads myself or hire someone?
+You can run a small Google or Meta campaign yourself if you're willing to learn and check it
+weekly. Hire help when your spend grows, when results stall, or when your time is worth more
+doing the actual work.
+How long until ads start working?
+You'll see clicks within days, but give a campaign about four weeks of steady spend before judging
+it. The ad platforms need time to learn who responds, and you need enough enquiries to see a
+pattern.
+
+    Thinking about ads but not sure your site is ready?
+    Get a free landing page review before you spend a dollar.
+
+
+
+
+Nunik Co. · nunik.co                                                                                 5
+

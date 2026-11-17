@@ -1,5 +1,5 @@
 query,intent,local,volume,target_url,status,position,last_checked,notes
-ai automation agency australia,service,y,not measured,https://nunik.co/,live,not measured,2026-11-11,"title: Nunik Co. | Automation, Brand, Web | AI Agency Australia"
+web design and growth consultancy,service,n,not measured,https://nunik.co/,live,not measured,2026-11-17,"home retitled 2026-11-17: Nunik Co. | Web Design and Growth Consultancy, Canberra; ""business consultant canberra"" is 10/mo so it rides on this page"
 nunik co contact,brand,n,not measured,https://nunik.co/contact/,live,not measured,2026-11-11,title: Contact Nunik Co. | Send Us a Brief or Book a Call
 n8n gohighlevel automation agency,service,n,not measured,https://nunik.co/services/automation/,live,not measured,2026-11-11,title: n8n & GoHighLevel Automation Agency | Nunik Co.
 nextjs web development agency australia,service,y,not measured,https://nunik.co/services/web/,live,not measured,2026-11-11,title: Website Developers Australia | Nunik Co.
@@ -23,7 +23,7 @@ scratch and dent repair booking automation,service,n,not measured,https://nunik.
 towing dispatch automation,service,n,not measured,https://nunik.co/industries/automotive/towing/,live,not measured,2026-11-11,title: Towing Company Dispatch and CRM | Nunik Co.
 removalist quote automation,service,n,not measured,https://nunik.co/industries/automotive/removalists/,live,not measured,2026-11-11,title: Removalist Quote and Booking Automation | Nunik Co.
 car wash booking automation,service,n,not measured,https://nunik.co/industries/automotive/car-washing/,live,not measured,2026-11-11,title: Car Wash and Detailing Booking Automation | Nunik Co.
-ai automation agency canberra,service+suburb,y,not measured,https://nunik.co/locations/canberra/,live,not measured,2026-11-11,title: Digital Agency Canberra | Nunik Co.
+web design canberra,service+suburb,y,1000 (OpenSEO AU 2026-11-17; KD 4),https://nunik.co/locations/canberra/,live,not ranking (GSC 90d),2026-11-17,"rebuilt 2026-11-17 as the money page; also targets website design canberra (1000, KD 6) and web developer canberra (1000, KD 25)"
 automation brand and web agency,service,n,not measured,https://nunik.co/services/,live,not measured,2026-11-11,"title: Services | Automation, Brand, Web | Nunik Co."
 ai agency australia locations,brand,y,not measured,https://nunik.co/locations/,live,not measured,2026-11-11,title: Locations | Canberra and Worldwide | Nunik Co.
 australian smb automation research,informational,y,not measured,https://nunik.co/research/,live,not measured,2026-11-11,title: Research | Field Reports for Australian SMBs | Nunik Co.
@@ -37,3 +37,20 @@ n8n consultant australia,service,n,not measured,https://nunik.co/services/automa
 website for tradies,service,n,not measured,https://nunik.co/industries/trades/,gap,not measured,2026-11-11,secondary
 real estate crm automation australia,service,n,not measured,,gap,not measured,2026-11-11,no industry page for real estate yet; the research article exists and the home page names real estate as a sector
 missed call text back australia,service,n,not measured,,gap,not measured,2026-11-11,common trades problem search; no page
+how much does a website cost australia,informational,n,not measured,https://nunik.co/research/how-much-does-a-website-cost-australia/,live,not measured,2026-11-17,research queue No. 05
+how to make your business stand out,informational,n,not measured,https://nunik.co/research/how-to-make-your-business-stand-out-2027/,planned 2026-11-20,not measured,2026-11-17,research queue No. 06
+driving school website case study,informational,n,not measured,https://nunik.co/research/case-study-adelaide-confident-driving-academy/,planned 2026-11-23,not measured,2026-11-17,research queue No. 07
+google business profile checklist,informational,n,not measured,https://nunik.co/research/google-business-profile-checklist/,planned 2026-11-26,not measured,2026-11-17,research queue No. 08
+what is aeo and geo,informational,n,not measured,https://nunik.co/research/aeo-and-geo-explained-small-business/,planned 2026-11-29,not measured,2026-11-17,research queue No. 09
+driving school website case study,informational,n,not measured,https://nunik.co/research/case-study-rams-driving-academy/,planned 2026-12-02,not measured,2026-11-17,research queue No. 10
+how to get more google reviews,informational,n,not measured,https://nunik.co/research/how-to-get-more-google-reviews/,planned 2026-12-05,not measured,2026-11-17,research queue No. 11
+lead generation for small business,informational,n,not measured,https://nunik.co/research/lead-generation-and-client-onboarding/,planned 2026-12-08,not measured,2026-11-17,research queue No. 12
+lead response time,informational,n,not measured,https://nunik.co/research/how-fast-should-you-reply-to-a-lead/,planned 2026-12-11,not measured,2026-11-17,research queue No. 13
+small business automation,informational,n,not measured,https://nunik.co/research/small-business-automations-to-set-up-first/,planned 2026-12-14,not measured,2026-11-17,research queue No. 14
+ai receptionist for tradies,informational,n,not measured,https://nunik.co/research/ai-receptionist-for-tradies/,planned 2026-12-17,not measured,2026-11-17,research queue No. 15
+client onboarding checklist,informational,n,not measured,https://nunik.co/research/client-onboarding-checklist/,planned 2026-12-20,not measured,2026-11-17,research queue No. 16
+how to run ads for a local business,informational,n,not measured,https://nunik.co/research/how-to-run-ads-for-a-local-business/,planned 2026-12-23,not measured,2026-11-17,research queue No. 17
+how much should a small business spend on advertising,informational,n,not measured,https://nunik.co/research/how-much-should-a-small-business-spend-on-ads/,planned 2026-12-26,not measured,2026-11-17,research queue No. 18
+google ads vs meta ads,informational,n,not measured,https://nunik.co/research/google-ads-vs-meta-ads-local-business/,planned 2026-12-29,not measured,2026-11-17,research queue No. 19
+ad hooks,informational,n,not measured,https://nunik.co/research/ad-hooks-for-local-businesses/,planned 2027-01-01,not measured,2026-11-17,research queue No. 20
+ga4 conversion tracking for ads,informational,n,not measured,https://nunik.co/research/ga4-tracking-for-ads/,planned 2027-01-04,not measured,2026-11-17,research queue No. 21

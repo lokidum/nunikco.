@@ -1,0 +1,38 @@
+{
+  "slug": "lead-generation-and-client-onboarding",
+  "title": "Lead Generation for Small Business and Client Onboarding",
+  "description": "Lead generation for small business in Australia: get found, capture enquiries, reply fast and onboard clients well. Includes a checklist and automations.",
+  "h1_main": "Lead Generation and Client Onboarding",
+  "h1_em": "for Small Businesses",
+  "dek": "How Australian small businesses can get more leads, reply faster, onboard new clients smoothly and automate the follow-up.",
+  "breadcrumb": "Lead Generation and Onboarding",
+  "primary_keyword": "lead generation for small business",
+  "faq": [
+    {
+      "q": "What is the best way to generate leads for a small business in Australia?",
+      "a": "For most local businesses, the best lead source is Google: a complete Business Profile, plenty of recent reviews, and a website built to turn visitors into enquiries. Referrals from happy customers come a close second, and both cost far less than paid ads."
+    },
+    {
+      "q": "How quickly should I respond to a new lead?",
+      "a": "As fast as you can. Send an automatic reply instantly, and aim for a personal reply within the hour during business hours. People often contact several businesses at once, so the first helpful reply has a real advantage."
+    },
+    {
+      "q": "Is an AI receptionist worth it for a small business?",
+      "a": "If you regularly miss calls because you're on the tools or with a customer, usually yes. If you rarely miss calls, an instant SMS reply to missed calls may be enough."
+    },
+    {
+      "q": "What is client onboarding?",
+      "a": "Everything that happens between a customer saying yes and their first great experience with you: welcome message, confirmation, preparation, reminders and the first follow-up. Good onboarding cuts no-shows and makes referrals more likely."
+    },
+    {
+      "q": "Do I need a CRM as a small business?",
+      "a": "You need one place where every lead is stored and tracked. That can start as a spreadsheet. Move to a proper CRM once you're losing track of follow-ups or more than one person handles enquiries."
+    },
+    {
+      "q": "Can I send marketing texts to my past customers?",
+      "a": "Only with their consent, and every message must identify your business and include an easy way to unsubscribe, under the Spam Act 2003."
+    }
+  ],
+  "related_title": "Business automation",
+  "related_blurb": "Nunik Co. builds lead capture, instant replies, reminders and review requests in n8n, and the client owns the workflows and accounts, so they're never locked in."
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "small-business-automations-to-set-up-first",
+  "title": "Small Business Automation: 7 Automations to Set Up First",
+  "description": "Small business automation, simply: the 7 to set up first, from instant enquiry replies to review requests, and the three that make the biggest difference.",
+  "h1_main": "7 Automations Every Small Business",
+  "h1_em": "Should Set Up First",
+  "dek": "The automations that save owners the most time and win back lost customers, from instant replies to review requests.",
+  "breadcrumb": "Small Business Automations",
+  "primary_keyword": "small business automation",
+  "faq": [
+    {
+      "q": "What automations should a small business set up first?",
+      "a": "The ones that stop customers slipping through the cracks: an instant reply to enquiries, a lead alert to your phone, a follow-up on unaccepted quotes, appointment reminders, a review request after each job, a missed-call text back, and a check-in with past customers. Each one takes a few hours to set up and then runs on its own every day."
+    },
+    {
+      "q": "What tools do you need?",
+      "a": "Many booking systems, CRMs and form tools have some of these built in. To connect everything together, we use n8n, an automation tool that links your website forms, calendar, CRM and messaging apps. We set the workflows up in the client's own account, so the business owns them and is never locked in."
+    }
+  ],
+  "related_title": "Automation",
+  "related_blurb": "Nunik Co. builds these workflows in n8n inside your own account, so your business owns them and is never locked in."
+}

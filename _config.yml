@@ -4,6 +4,7 @@
 exclude:
   - seo/
   - automation/
+  - _queue/
   - README.md
   - AGENTS.md
   - CLAUDE.md

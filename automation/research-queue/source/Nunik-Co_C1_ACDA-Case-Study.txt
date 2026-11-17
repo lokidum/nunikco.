@@ -1,0 +1,99 @@
+      N U N I K C O. CAS E S T U DY
+
+
+      Adelaide Confident Driving Academy
+      How we rebranded an Adelaide driving school, moved it to a new domain and built a
+      WhatsApp booking site now getting around 300 clicks a month.
+      By Lokesh Barani Kumar, founder of Nunik Co. · November 2026
+
+
+
+Adelaide Confident Driving Academy (ACDA) is an Adelaide driving school that has been teaching
+learners since 2006. We rebranded the business from its old name, moved it to a new domain with
+every old page redirected, and built a fast website around WhatsApp booking. The site now gets
+around 300 clicks a month.
+ Snapshot
+ Client         Adelaide Confident Driving Academy (formerly Adelaide Driver Training Academy SA)
+
+ Industry       Driving school
+ Location       Adelaide, southern suburbs to Marion
+
+ Services       Rebrand, website, domain migration, SEO, AEO and GEO setup, business cards, vehicle magnets
+
+ Stack          Static site on Vercel behind Cloudflare
+ Result         Around 300 website clicks a month
+
+
+The problem
+Gopi, the instructor behind the business, had a strong reputation and a perfect 5.0 Google rating,
+but an online presence that didn't match it. The old website even listed the wrong founding year,
+claiming 1990 when the business started in 2006.
+He also offers two different tests, the CBT&A final drive and the VORT test in the instructor's
+vehicle, and wanted students to tell them apart at a glance.
+
+What we did
+Brand
+We renamed the business Adelaide Confident Driving Academy. It says what the school does,
+where it is, and what students actually want to feel by the end.
+The standout idea came from Gopi himself. He wanted each test colour-coded to match the real
+Australian plates students already know: the CBT&A final drive in the learner plate's yellow and
+black, and the VORT test in the P1 plate's red and white. We carried that system through the
+website, the business cards and the car magnets, so a student recognises it everywhere.
+
+
+
+Nunik Co. · nunik.co                                                                                          1
+Print included a double-sided business card with a WhatsApp QR code, and vehicle door magnets
+in three sizes. At Gopi's request, we left the star rating off the printed pieces.
+
+Website and growth
+    New domain with 301 redirects. We moved the business to adelaideconfidentdriving.com.au
+    and redirected every old page to its new equivalent, so the history built under the old name
+    carried across.
+    A hybrid layout. A single main page that tells the whole story, plus separate pages for each
+    service, so each one can rank for its own searches.
+    WhatsApp as the main action. One clear button on every page. A nervous learner can ask a
+    quick question without the pressure of a phone call.
+    Clear service areas. The site covers the southern suburbs, with Marion as the boundary, so the
+    school stops getting enquiries from areas it doesn't serve.
+    Built for AI answers too. Structured data for the business and its services, FAQ sections
+    answering real student questions, and settings that let AI crawlers read the site.
+    Fast and secure. A static build served through Cloudflare loads quickly on phones, which is how
+    most learners and their parents browse.
+
+Results
+The site now gets around 300 clicks a month, with enquiries landing straight on Gopi's phone
+through WhatsApp.
+
+What other service businesses can take from this
+1. A rename doesn't have to reset your Google rankings. Map every old URL to a new one with
+   301 redirects before you switch.
+2. Use the channel your customers prefer. For ACDA, that's WhatsApp. For you, it might be calls
+   or online booking.
+3. Let the client's own ideas lead. The plate colour system came from Gopi, and it's the most
+   memorable part of the brand.
+4. Fix the small untruths. A wrong founding year looks minor, but trust is built on details.
+
+Frequently asked questions
+Can I change my business name without losing Google rankings?
+Yes, if you plan it. Keep the old domain, redirect every old page to its matching new page with 301
+redirects, update your Google Business Profile and listings, and tell Google about the move in
+Search Console.
+Is WhatsApp a good booking channel for a service business?
+For businesses where customers want to ask a quick question first, like driving schools, trades and
+beauty services, it often works better than a form. It feels personal and low-pressure.
+What should a driving school website include?
+
+
+Nunik Co. · nunik.co                                                                                  2
+Clear services and prices, the suburbs you cover, your reviews, instructor details and credentials,
+answers to common learner questions, and one easy way to book.
+
+    Run a driving school or local service business?
+    Get a free mock-up of what your new site could look like.
+
+
+
+
+Nunik Co. · nunik.co                                                                                  3
+

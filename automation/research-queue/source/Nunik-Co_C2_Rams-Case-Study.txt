@@ -1,0 +1,97 @@
+      N U N I K C O. CAS E S T U DY
+
+
+      Rams Driving Academy
+      How a local driving school grew to 100+ Google reviews, around 300 website clicks a
+      month and about 5 new paying students a month from its website.
+      By Lokesh Barani Kumar, founder of Nunik Co. · November 2026
+
+
+
+Rams Driving Academy is a local, owner-operated driving school. We rebuilt its website three times
+as we learned what worked, set up and managed its Google Business Profile, and built it for both
+search engines and AI tools. Today it has over 100 Google reviews, gets around 300 website clicks
+a month, and turns about 5 of those leads into paying students every month.
+ Snapshot
+ Client        Rams Driving Academy
+
+ Industry      Driving school
+ Services      Website (three build cycles), Google Business Profile setup and management, review replies, brand
+               assets, local SEO, AEO and GEO setup
+
+ Result        100+ Google reviews, around 300 clicks a month, about 5 paying students a month from the website
+
+
+The problem
+Word of mouth is a great base for a driving school, but it's invisible to anyone searching "driving
+lessons near me". Rams needed to be found on Google, trusted on first look, and easy to contact.
+
+What we did
+Google Business Profile
+We set up and verified the Google Business Profile, then built it out properly: services, service
+areas, photos and a profile image designed for a circular avatar. The school's horizontal logo would
+have cropped badly, so we made a square icon version.
+Every review gets a personal reply written in the owner's own voice, not a template. New profiles
+go through a trust period with Google, so we kept the flow of reviews natural rather than chasing a
+sudden spike.
+
+Website, three rounds
+We didn't get it perfect the first time, and that's part of the story. Each rebuild fixed what we
+learned from the last one:
+    A memorable design. A scroll-driven road that draws itself down the page as visitors scroll,
+    with smooth animations, so the site feels like a driving school rather than a template.
+
+
+Nunik Co. · nunik.co                                                                                               1
+    Suburb coverage. The suburbs the school serves are listed clearly, so it shows up for local
+    searches and learners can see straight away whether they're covered.
+    Structured data. Schema markup tells Google and AI tools exactly what the business is, where it
+    operates, and what it offers.
+    Open to AI crawlers. The site lets the bots used by ChatGPT, Claude, Perplexity and others read
+    it, so the school can be recommended in AI answers.
+    WhatsApp contact. One tap to message the school directly.
+
+Results
+ Metric                                                              Now
+ Google reviews                                                      100+
+
+ Website clicks per month                                            Around 300
+
+ New paying students from the website                                About 5 a month
+
+For a local driving school, about 5 new students a month from the website is real, steady income
+that keeps coming in month after month.
+
+What other local businesses can take from this
+1. Reviews compound. Each new review makes the next customer more likely to call. Replying
+   personally shows future customers there's a real person behind the business.
+2. Your first website doesn't have to be your last. Launch, learn what customers respond to, and
+   improve.
+3. Small technical details matter. Schema, suburb lists and AI crawler access take a day to set up
+   and keep paying off.
+4. Measure paying customers, not just traffic. 300 clicks is a good number. 5 new students a
+   month is the one that pays the bills.
+
+Frequently asked questions
+How do driving instructors get more students online?
+Start with a complete Google Business Profile and a steady flow of reviews, then a fast website that
+lists your suburbs, prices and services clearly and makes booking easy.
+Do suburb pages help local SEO?
+Yes, when each one is useful and specific. Listing the suburbs you serve helps Google match you
+to local searches. Avoid copy-paste pages that only swap the suburb name.
+Should a small business reply to every Google review?
+Yes. Replies show future customers you care, and a personal reply in the owner's voice reads far
+better than a template. Reply to negative reviews calmly and offer to sort it out offline.
+
+
+
+
+Nunik Co. · nunik.co                                                                                 2
+    Want results like this for your local business?
+    Get a free website audit and we'll show you where to start.
+
+
+
+
+Nunik Co. · nunik.co                                              3
+

@@ -1,0 +1,83 @@
+      N U N I K C O. A R T I C L E
+
+
+      What Are AEO and GEO, and Does My
+      Business Need Them?
+      How to get your small business mentioned in ChatGPT, Google AI Overviews,
+      Perplexity and voice answers, and what to do first.
+      By Lokesh Barani Kumar, founder of Nunik Co. · November 2026
+
+
+
+AEO (answer engine optimisation) means making your content easy for search engines and voice
+assistants to pull out as a direct answer. GEO (generative engine optimisation) means making your
+business easy for AI tools like ChatGPT, Claude, Perplexity, Gemini and Google's AI Overviews to
+understand, trust and recommend. Both build on good SEO. If your customers ask AI tools for
+recommendations, and more of them do every year, you need them.
+
+SEO, AEO and GEO compared
+                   SEO                        AEO                         GEO
+ Goal              Rank in search results     Be the direct answer        Be mentioned or cited by AI
+
+ Where it          Google and Bing results    Featured snippets, voice    ChatGPT, Claude, Perplexity,
+ shows                                        answers, People Also Ask    Gemini, Google AI Overviews
+
+ What helps        Relevant pages, links,     Clear question-and-answer   Clear facts, consistent details,
+ most              speed, technical health    content                     structured data, trust signals
+ Measured by       Rankings and clicks        Snippets and answer         How often AI tools name you
+                                              placements
+
+
+How AI tools decide who to recommend
+AI tools build answers from content they can read and trust. When someone asks "best driving
+school in Adelaide" or "who can fix my hot water system in Canberra", the tool looks for businesses
+with clear, consistent information across several sources. That includes your website, your Google
+profile, reviews and directory listings.
+If your website is vague, blocks AI crawlers, or lists a different phone number from your Google
+profile, you're harder to recommend with confidence.
+
+7 things to do first
+1. Answer real questions on your website. Put the direct answer in the first sentence, then the
+   detail.
+
+
+
+
+Nunik Co. · nunik.co                                                                                         1
+2. Add an FAQ section to your home and service pages, using the questions customers actually
+   ask.
+3. Add schema markup so search engines and AI tools can read your business details reliably.
+4. Let AI crawlers in. Check your robots.txt file doesn't block the bots used by ChatGPT, Claude,
+   Perplexity and others.
+5. Add an llms.txt file: a short plain-text summary of your business and key pages for AI tools.
+6. Keep your details identical everywhere: name, address, phone, hours.
+7. Publish specific facts: prices, service areas, years in business, licences, real results. Specific
+   facts are easier to quote than vague claims.
+We built these into the Rams Driving Academy site from the start. Read the case study.
+
+How to check whether AI tools mention you
+Once a month, ask ChatGPT, Perplexity, Gemini and Claude the questions your customers would
+ask, like "who's a good [your service] in [your suburb]?". Note whether you're mentioned and
+whether the details are correct. If they get something wrong, fix the source: usually your website or
+Google profile.
+
+Frequently asked questions
+Is SEO dead because of AI?
+No. AEO and GEO build on the same foundations as SEO: useful content, a fast and technically
+sound site, and trust. Good SEO makes AEO and GEO much easier.
+Can I pay to appear in ChatGPT answers?
+Not in the normal answers. Being mentioned comes from having clear, trustworthy information
+about your business across the web.
+What is an llms.txt file?
+A plain-text file at the root of your website that summarises your business and links to your most
+important pages, written for AI tools to read. It's a newer, emerging convention, quick to add.
+
+
+    Want to know what AI tools say about your business?
+    Get a free AI visibility check.
+
+
+
+
+Nunik Co. · nunik.co                                                                                    2
+

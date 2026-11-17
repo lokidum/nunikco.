@@ -1,0 +1,26 @@
+{
+  "slug": "aeo-and-geo-explained-small-business",
+  "title": "What Are AEO and GEO? How to Show Up in ChatGPT Answers",
+  "description": "What is AEO and GEO? How to show up in ChatGPT, Google AI Overviews and Perplexity, the 7 things to do first, and how to check if AI tools mention you.",
+  "h1_main": "What Are AEO and GEO,",
+  "h1_em": "and Does My Business Need Them?",
+  "dek": "How to get your small business mentioned in ChatGPT, Google AI Overviews, Perplexity and voice answers, and what to do first.",
+  "breadcrumb": "AEO and GEO Explained",
+  "primary_keyword": "what is aeo and geo",
+  "faq": [
+    {
+      "q": "Is SEO dead because of AI?",
+      "a": "No. AEO and GEO build on the same foundations as SEO: useful content, a fast and technically sound site, and trust. Good SEO makes AEO and GEO much easier."
+    },
+    {
+      "q": "Can I pay to appear in ChatGPT answers?",
+      "a": "Not in the normal answers. Being mentioned comes from having clear, trustworthy information about your business across the web."
+    },
+    {
+      "q": "What is an llms.txt file?",
+      "a": "A plain-text file at the root of your website that summarises your business and links to your most important pages, written for AI tools to read. It's a newer, emerging convention, quick to add."
+    }
+  ],
+  "related_title": "Web design in Canberra",
+  "related_blurb": "Nunik Co. builds websites with schema markup, FAQ content, open AI crawler access and an llms.txt file from the start, so search engines and AI tools can read and recommend your business."
+}

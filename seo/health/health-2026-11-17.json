@@ -1,0 +1,2153 @@
+{
+  "site": "https://nunik.co",
+  "date": "2026-11-17",
+  "site_level": {
+    "http_to_https": false,
+    "http_error": null,
+    "hsts": false,
+    "robots_txt": 200,
+    "robots_blocks_all": false,
+    "crawler_access": {
+      "search_and_answers": {
+        "Googlebot": "allowed",
+        "Bingbot": "allowed",
+        "OAI-SearchBot": "allowed",
+        "ChatGPT-User": "allowed",
+        "PerplexityBot": "allowed",
+        "Perplexity-User": "allowed",
+        "Claude-SearchBot": "allowed",
+        "Claude-User": "allowed",
+        "Applebot": "allowed",
+        "DuckAssistBot": "allowed"
+      },
+      "training_only": {
+        "GPTBot": "allowed",
+        "ClaudeBot": "allowed",
+        "Google-Extended": "allowed",
+        "Applebot-Extended": "allowed",
+        "CCBot": "allowed",
+        "meta-externalagent": "allowed",
+        "Bytespider": "allowed",
+        "Amazonbot": "allowed"
+      }
+    },
+    "llms_txt": true,
+    "sitemap": "https://nunik.co/sitemap.xml",
+    "urls_checked": 33
+  },
+  "pages": [
+    {
+      "url": "https://nunik.co/",
+      "final_url": "https://nunik.co/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/",
+          "status": 200,
+          "ms": 72
+        }
+      ],
+      "ms": 72,
+      "error": null,
+      "issues": [],
+      "title": "Nunik Co. | Automation, Brand, Web | AI Agency Australia",
+      "title_len": 56,
+      "description": "Nunik Co., an AI agency based in Australia, delivers n8n automation, GoHighLevel CRM, brand identity and fast websites to growth-focused businesses anywhere.",
+      "description_len": 157,
+      "canonical": "https://nunik.co/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Nunik Co."
+      ],
+      "words": 1723,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "ProfessionalService",
+        "Service",
+        "Service",
+        "Service",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/research/digital-transformation-australian-smbs-2026/",
+        "https://nunik.co/research/page-speed-restaurant-booking-rates/",
+        "https://nunik.co/research/real-estate-lead-automation-2026/",
+        "https://nunik.co/research/trades-lose-clients-before-first-call/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 5
+    },
+    {
+      "url": "https://nunik.co/contact/",
+      "final_url": "https://nunik.co/contact/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/contact/",
+          "status": 200,
+          "ms": 1146
+        }
+      ],
+      "ms": 1146,
+      "error": null,
+      "issues": [],
+      "title": "Contact Nunik Co. | Send Us a Brief or Book a Call",
+      "title_len": 50,
+      "description": "Send Nunik Co. a short project brief, or book a 15-minute call. Automation, brand identity and high-performance web for businesses that move in the real world.",
+      "description_len": 159,
+      "canonical": "https://nunik.co/contact/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Send the brief."
+      ],
+      "words": 555,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "ContactPage",
+        "ProfessionalService",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/contact/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/contact/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/contact/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/services/automation/",
+      "final_url": "https://nunik.co/services/automation/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/services/automation/",
+          "status": 200,
+          "ms": 379
+        }
+      ],
+      "ms": 379,
+      "error": null,
+      "issues": [],
+      "title": "n8n & GoHighLevel Automation Agency | Nunik Co.",
+      "title_len": 47,
+      "description": "Custom n8n workflows and GoHighLevel CRM integration for real estate, trades, automotive and hospitality businesses. Built in Australia, delivered worldwide.",
+      "description_len": 157,
+      "canonical": "https://nunik.co/services/automation/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "AI Automation and Workflow Engineering"
+      ],
+      "words": 702,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/services/automation/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/services/automation/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 4
+    },
+    {
+      "url": "https://nunik.co/services/web/",
+      "final_url": "https://nunik.co/services/web/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/services/web/",
+          "status": 200,
+          "ms": 434
+        }
+      ],
+      "ms": 434,
+      "error": null,
+      "issues": [],
+      "title": "Website Developers Australia | Nunik Co.",
+      "title_len": 40,
+      "description": "Custom React, Next.js and WordPress websites built for speed, conversion and search. Marketing strategy consulting and staff training included.",
+      "description_len": 143,
+      "canonical": "https://nunik.co/services/web/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "High-Performance Web and Strategic Consulting"
+      ],
+      "words": 639,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/services/web/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/services/web/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 4
+    },
+    {
+      "url": "https://nunik.co/services/brand/",
+      "final_url": "https://nunik.co/services/brand/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/services/brand/",
+          "status": 200,
+          "ms": 443
+        }
+      ],
+      "ms": 443,
+      "error": null,
+      "issues": [],
+      "title": "Brand Identity Design Agency | Nunik Co.",
+      "title_len": 40,
+      "description": "Logo and brand mark systems, full Tech Pack delivery, marketing collateral, UX and UI design, social media templates for SMBs.",
+      "description_len": 126,
+      "canonical": "https://nunik.co/services/brand/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Brand Identity and Visual Systems"
+      ],
+      "words": 612,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/services/brand/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/services/brand/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 4
+    },
+    {
+      "url": "https://nunik.co/industries/",
+      "final_url": "https://nunik.co/industries/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/",
+          "status": 200,
+          "ms": 371
+        }
+      ],
+      "ms": 371,
+      "error": null,
+      "issues": [],
+      "title": "Industries: Trades, Hospitality, Automotive | Nunik Co.",
+      "title_len": 55,
+      "description": "Trades, hospitality and automotive industry pages. Owner-operated Australian businesses where website plus CRM plus automation is the engine.",
+      "description_len": 141,
+      "canonical": "https://nunik.co/industries/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Industries"
+      ],
+      "words": 504,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "CollectionPage",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/automotive/auto-repair/",
+        "https://nunik.co/industries/automotive/car-washing/",
+        "https://nunik.co/industries/automotive/removalists/",
+        "https://nunik.co/industries/automotive/scratch-and-dent/",
+        "https://nunik.co/industries/automotive/towing/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/hospitality/hotels/",
+        "https://nunik.co/industries/hospitality/massage-parlours/",
+        "https://nunik.co/industries/hospitality/restaurants/",
+        "https://nunik.co/industries/hospitality/salons/",
+        "https://nunik.co/industries/hospitality/travel-agencies/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/industries/trades/cleaning/",
+        "https://nunik.co/industries/trades/electrical/",
+        "https://nunik.co/industries/trades/landscaping/",
+        "https://nunik.co/industries/trades/pest-control/",
+        "https://nunik.co/industries/trades/plumbing/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/industries/trades/",
+      "final_url": "https://nunik.co/industries/trades/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/trades/",
+          "status": 200,
+          "ms": 366
+        }
+      ],
+      "ms": 366,
+      "error": null,
+      "issues": [],
+      "title": "Automation for Trades Businesses | Nunik Co.",
+      "title_len": 44,
+      "description": "Booking automation, GoHighLevel CRM and lead follow-up for plumbers, electricians, pest control, cleaning and landscaping businesses across Australia.",
+      "description_len": 150,
+      "canonical": "https://nunik.co/industries/trades/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Trades"
+      ],
+      "words": 396,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/trades/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/trades/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/industries/trades/cleaning/",
+        "https://nunik.co/industries/trades/electrical/",
+        "https://nunik.co/industries/trades/landscaping/",
+        "https://nunik.co/industries/trades/pest-control/",
+        "https://nunik.co/industries/trades/plumbing/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/industries/trades/pest-control/",
+      "final_url": "https://nunik.co/industries/trades/pest-control/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/trades/pest-control/",
+          "status": 200,
+          "ms": 367
+        }
+      ],
+      "ms": 367,
+      "error": null,
+      "issues": [],
+      "title": "Pest Control Website and Automation Agency | Nunik Co.",
+      "title_len": 54,
+      "description": "Custom website, recurring contract automation, SMS reminders, and review flows for Australian pest control businesses. Quarterly callbacks that book themselves.",
+      "description_len": 160,
+      "canonical": "https://nunik.co/industries/trades/pest-control/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Pest Control"
+      ],
+      "words": 1164,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/trades/pest-control/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/trades/pest-control/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 4
+    },
+    {
+      "url": "https://nunik.co/industries/trades/electrical/",
+      "final_url": "https://nunik.co/industries/trades/electrical/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/trades/electrical/",
+          "status": 200,
+          "ms": 375
+        }
+      ],
+      "ms": 375,
+      "error": null,
+      "issues": [],
+      "title": "Electrical Contractor CRM and Automation | Nunik Co.",
+      "title_len": 52,
+      "description": "Electrical contractor CRM and automation for Australian sparkies. Auto COES certificates, after-hours intake, quote-to-invoice, and customer portal by Nunik Co.",
+      "description_len": 160,
+      "canonical": "https://nunik.co/industries/trades/electrical/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Electrical"
+      ],
+      "words": 1121,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/trades/electrical/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/trades/electrical/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 4
+    },
+    {
+      "url": "https://nunik.co/industries/trades/plumbing/",
+      "final_url": "https://nunik.co/industries/trades/plumbing/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/trades/plumbing/",
+          "status": 200,
+          "ms": 347
+        }
+      ],
+      "ms": 347,
+      "error": null,
+      "issues": [],
+      "title": "Plumbing Website and Booking Automation | Nunik Co.",
+      "title_len": 51,
+      "description": "Plumbing website and booking automation built for Australian owner-operators. After-hours triage, geofenced dispatch, landlord contracts, automatic payments.",
+      "description_len": 157,
+      "canonical": "https://nunik.co/industries/trades/plumbing/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Plumbing"
+      ],
+      "words": 1161,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/trades/plumbing/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/trades/plumbing/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 4
+    },
+    {
+      "url": "https://nunik.co/industries/trades/cleaning/",
+      "final_url": "https://nunik.co/industries/trades/cleaning/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/trades/cleaning/",
+          "status": 200,
+          "ms": 427
+        }
+      ],
+      "ms": 427,
+      "error": null,
+      "issues": [],
+      "title": "Cleaning Business CRM and Booking Automation | Nunik Co.",
+      "title_len": 56,
+      "description": "Cleaning business CRM and booking automation built for Australian operators. Recurring schedules, route optimisation, instant invoicing, calm onboarding.",
+      "description_len": 153,
+      "canonical": "https://nunik.co/industries/trades/cleaning/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Cleaning"
+      ],
+      "words": 1193,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/trades/cleaning/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/trades/cleaning/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 4
+    },
+    {
+      "url": "https://nunik.co/industries/trades/landscaping/",
+      "final_url": "https://nunik.co/industries/trades/landscaping/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/trades/landscaping/",
+          "status": 200,
+          "ms": 432
+        }
+      ],
+      "ms": 432,
+      "error": null,
+      "issues": [],
+      "title": "Landscaping Business Automation and CRM | Nunik Co.",
+      "title_len": 51,
+      "description": "Landscaping business automation and CRM for Australian crews. Quote to invoice in one system, seasonal renewals, crew dispatch with photos, material tracking.",
+      "description_len": 158,
+      "canonical": "https://nunik.co/industries/trades/landscaping/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Landscaping"
+      ],
+      "words": 1130,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/trades/landscaping/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/trades/landscaping/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/industries/trades/cleaning/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 4
+    },
+    {
+      "url": "https://nunik.co/industries/hospitality/",
+      "final_url": "https://nunik.co/industries/hospitality/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/hospitality/",
+          "status": 200,
+          "ms": 418
+        }
+      ],
+      "ms": 418,
+      "error": null,
+      "issues": [],
+      "title": "Web and Automation for Hospitality Venues | Nunik Co.",
+      "title_len": 53,
+      "description": "Brand-led websites, reservation automation and review-cycle CRM for restaurants, cafes and bars across Canberra and Australia.",
+      "description_len": 126,
+      "canonical": "https://nunik.co/industries/hospitality/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Hospitality"
+      ],
+      "words": 423,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/hospitality/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/hospitality/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/hospitality/hotels/",
+        "https://nunik.co/industries/hospitality/massage-parlours/",
+        "https://nunik.co/industries/hospitality/restaurants/",
+        "https://nunik.co/industries/hospitality/salons/",
+        "https://nunik.co/industries/hospitality/travel-agencies/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/industries/hospitality/restaurants/",
+      "final_url": "https://nunik.co/industries/hospitality/restaurants/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/hospitality/restaurants/",
+          "status": 200,
+          "ms": 420
+        }
+      ],
+      "ms": 420,
+      "error": null,
+      "issues": [],
+      "title": "Restaurant Website and Booking Automation | Nunik Co.",
+      "title_len": 53,
+      "description": "Restaurant web and booking automation for Australian venues. Brand-led site, reservation engine, guest CRM, review loop and loyalty SMS in one system.",
+      "description_len": 150,
+      "canonical": "https://nunik.co/industries/hospitality/restaurants/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Restaurants"
+      ],
+      "words": 1127,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/hospitality/restaurants/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/hospitality/restaurants/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 4
+    },
+    {
+      "url": "https://nunik.co/industries/hospitality/salons/",
+      "final_url": "https://nunik.co/industries/hospitality/salons/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/hospitality/salons/",
+          "status": 200,
+          "ms": 417
+        }
+      ],
+      "ms": 417,
+      "error": null,
+      "issues": [],
+      "title": "Salon Booking Automation and CRM | Nunik Co.",
+      "title_len": 44,
+      "description": "Salon booking automation and CRM for owner-operated Australian salons. Stylist bookings, SMS confirmations, client formulas and loyalty, held by Nunik Co.",
+      "description_len": 154,
+      "canonical": "https://nunik.co/industries/hospitality/salons/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Salons"
+      ],
+      "words": 1341,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/hospitality/salons/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/hospitality/salons/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 5
+    },
+    {
+      "url": "https://nunik.co/industries/hospitality/hotels/",
+      "final_url": "https://nunik.co/industries/hospitality/hotels/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/hospitality/hotels/",
+          "status": 200,
+          "ms": 338
+        }
+      ],
+      "ms": 338,
+      "error": null,
+      "issues": [],
+      "title": "Hotel Direct Booking and Guest Automation | Nunik Co.",
+      "title_len": 53,
+      "description": "Direct booking websites, channel manager sync, and guest automation for boutique Australian hotels and guesthouses. Built and held by Nunik Co.",
+      "description_len": 143,
+      "canonical": "https://nunik.co/industries/hospitality/hotels/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Hotels"
+      ],
+      "words": 1355,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/hospitality/hotels/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/hospitality/hotels/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 4
+    },
+    {
+      "url": "https://nunik.co/industries/hospitality/travel-agencies/",
+      "final_url": "https://nunik.co/industries/hospitality/travel-agencies/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/hospitality/travel-agencies/",
+          "status": 200,
+          "ms": 334
+        }
+      ],
+      "ms": 334,
+      "error": null,
+      "issues": [],
+      "title": "Travel Agency Quote and Booking CRM | Nunik Co.",
+      "title_len": 47,
+      "description": "Website, CRM and automation for Australian travel agencies. Quote-to-booking workflow, multi-leg itineraries, client history and repeat-booking triggers.",
+      "description_len": 153,
+      "canonical": "https://nunik.co/industries/hospitality/travel-agencies/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Travel Agencies"
+      ],
+      "words": 1407,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/hospitality/travel-agencies/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/hospitality/travel-agencies/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 5
+    },
+    {
+      "url": "https://nunik.co/industries/hospitality/massage-parlours/",
+      "final_url": "https://nunik.co/industries/hospitality/massage-parlours/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/hospitality/massage-parlours/",
+          "status": 200,
+          "ms": 362
+        }
+      ],
+      "ms": 362,
+      "error": null,
+      "issues": [],
+      "title": "Massage Therapy Booking Automation | Nunik Co.",
+      "title_len": 46,
+      "description": "Massage therapy booking automation for Australian owner-operators. Website, bookings, intake forms, SMS reminders, memberships and HICAPS receipts, on retainer.",
+      "description_len": 160,
+      "canonical": "https://nunik.co/industries/hospitality/massage-parlours/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Massage and Wellness"
+      ],
+      "words": 1404,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/hospitality/massage-parlours/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/hospitality/massage-parlours/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 5
+    },
+    {
+      "url": "https://nunik.co/industries/automotive/",
+      "final_url": "https://nunik.co/industries/automotive/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/automotive/",
+          "status": 200,
+          "ms": 342
+        }
+      ],
+      "ms": 342,
+      "error": null,
+      "issues": [],
+      "title": "Automation for Automotive Workshops | Nunik Co.",
+      "title_len": 47,
+      "description": "Booking automation, service-reminder CRM and customer portals for mechanics and auto repair shops across Australia.",
+      "description_len": 115,
+      "canonical": "https://nunik.co/industries/automotive/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Automotive"
+      ],
+      "words": 438,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/automotive/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/automotive/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/automotive/auto-repair/",
+        "https://nunik.co/industries/automotive/car-washing/",
+        "https://nunik.co/industries/automotive/removalists/",
+        "https://nunik.co/industries/automotive/scratch-and-dent/",
+        "https://nunik.co/industries/automotive/towing/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/industries/automotive/auto-repair/",
+      "final_url": "https://nunik.co/industries/automotive/auto-repair/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/automotive/auto-repair/",
+          "status": 200,
+          "ms": 352
+        }
+      ],
+      "ms": 352,
+      "error": null,
+      "issues": [],
+      "title": "Auto Repair Shop Website and Booking Automation | Nunik Co.",
+      "title_len": 59,
+      "description": "Online booking, SMS quote approvals, photo reports, and service reminders for Australian auto repair shops. Built by Nunik Co. for owner-operated workshops.",
+      "description_len": 156,
+      "canonical": "https://nunik.co/industries/automotive/auto-repair/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Auto Repair"
+      ],
+      "words": 1156,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/automotive/auto-repair/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/automotive/auto-repair/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 4
+    },
+    {
+      "url": "https://nunik.co/industries/automotive/scratch-and-dent/",
+      "final_url": "https://nunik.co/industries/automotive/scratch-and-dent/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/automotive/scratch-and-dent/",
+          "status": 200,
+          "ms": 337
+        }
+      ],
+      "ms": 337,
+      "error": null,
+      "issues": [],
+      "title": "Scratch and Dent Repair Booking Automation | Nunik Co.",
+      "title_len": 54,
+      "description": "Mobile scratch and dent repair website and automation. Photo-based quotes, geo-located dispatch, SMS reminders, payment links and dealership portals.",
+      "description_len": 149,
+      "canonical": "https://nunik.co/industries/automotive/scratch-and-dent/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Mobile Scratch and Dent Repair"
+      ],
+      "words": 1295,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/automotive/scratch-and-dent/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/automotive/scratch-and-dent/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 5
+    },
+    {
+      "url": "https://nunik.co/industries/automotive/towing/",
+      "final_url": "https://nunik.co/industries/automotive/towing/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/automotive/towing/",
+          "status": 200,
+          "ms": 334
+        }
+      ],
+      "ms": 334,
+      "error": null,
+      "issues": [],
+      "title": "Towing Company Dispatch and CRM | Nunik Co.",
+      "title_len": 43,
+      "description": "A towing company dispatch and CRM, driver app, and customer portal built and held on retainer for owner-operators across Australia.",
+      "description_len": 131,
+      "canonical": "https://nunik.co/industries/automotive/towing/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Towing"
+      ],
+      "words": 1395,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/automotive/towing/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/automotive/towing/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/automotive/auto-repair/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 5
+    },
+    {
+      "url": "https://nunik.co/industries/automotive/removalists/",
+      "final_url": "https://nunik.co/industries/automotive/removalists/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/automotive/removalists/",
+          "status": 200,
+          "ms": 341
+        }
+      ],
+      "ms": 341,
+      "error": null,
+      "issues": [],
+      "title": "Removalist Quote and Booking Automation | Nunik Co.",
+      "title_len": 51,
+      "description": "A guided inventory website, instant quote engine and dispatch CRM for Australian removalists. Quote to deposit to job to invoice in one pipeline, on retainer.",
+      "description_len": 158,
+      "canonical": "https://nunik.co/industries/automotive/removalists/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Removalists"
+      ],
+      "words": 1546,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/automotive/removalists/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/automotive/removalists/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 5
+    },
+    {
+      "url": "https://nunik.co/industries/automotive/car-washing/",
+      "final_url": "https://nunik.co/industries/automotive/car-washing/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/industries/automotive/car-washing/",
+          "status": 200,
+          "ms": 614
+        }
+      ],
+      "ms": 614,
+      "error": null,
+      "issues": [],
+      "title": "Car Wash and Detailing Booking Automation | Nunik Co.",
+      "title_len": 53,
+      "description": "Car wash and detailing booking automation by Nunik Co. Site, CRM, memberships, SMS reminders, route optimisation, upsells and fleet plans, on retainer.",
+      "description_len": 151,
+      "canonical": "https://nunik.co/industries/automotive/car-washing/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Car Washing and Detailing"
+      ],
+      "words": 1484,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/industries/automotive/car-washing/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/industries/automotive/car-washing/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ],
+      "faq_questions": 5
+    },
+    {
+      "url": "https://nunik.co/locations/canberra/",
+      "final_url": "https://nunik.co/locations/canberra/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/locations/canberra/",
+          "status": 200,
+          "ms": 1127
+        }
+      ],
+      "ms": 1127,
+      "error": null,
+      "issues": [],
+      "title": "Digital Agency Canberra | Nunik Co.",
+      "title_len": 35,
+      "description": "AI automation, brand identity and high-performance web for Canberra hospitality, trades and founder brands. Locally based, nationally delivered.",
+      "description_len": 144,
+      "canonical": "https://nunik.co/locations/canberra/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Canberra"
+      ],
+      "words": 326,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "ProfessionalService",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/locations/canberra/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/locations/canberra/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/services/",
+      "final_url": "https://nunik.co/services/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/services/",
+          "status": 200,
+          "ms": 385
+        }
+      ],
+      "ms": 385,
+      "error": null,
+      "issues": [],
+      "title": "Services | Automation, Brand, Web | Nunik Co.",
+      "title_len": 45,
+      "description": "Automation, brand identity and web development from Nunik Co. Three services, one operating model: the build is the front door, the retainer is the engine room.",
+      "description_len": 160,
+      "canonical": "https://nunik.co/services/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Services"
+      ],
+      "words": 444,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "CollectionPage",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/services/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/services/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/locations/",
+      "final_url": "https://nunik.co/locations/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/locations/",
+          "status": 200,
+          "ms": 383
+        }
+      ],
+      "ms": 383,
+      "error": null,
+      "issues": [],
+      "title": "Locations | Canberra and Worldwide | Nunik Co.",
+      "title_len": 46,
+      "description": "Nunik Co. is based in Canberra, Australia, and delivers automation, brand and web work remotely to businesses in any city or country.",
+      "description_len": 133,
+      "canonical": "https://nunik.co/locations/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Locations"
+      ],
+      "words": 293,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "CollectionPage",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/locations/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/locations/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/research/",
+      "final_url": "https://nunik.co/research/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/research/",
+          "status": 200,
+          "ms": 371
+        }
+      ],
+      "ms": 371,
+      "error": null,
+      "issues": [],
+      "title": "Research | Field Reports for Australian SMBs | Nunik Co.",
+      "title_len": 56,
+      "description": "Field reports from Nunik Co. on automation ROI, brand presentation and web performance across Australian real estate, trades, automotive and hospitality.",
+      "description_len": 153,
+      "canonical": "https://nunik.co/research/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Research"
+      ],
+      "words": 308,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "CollectionPage",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/research/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/research/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/research/digital-transformation-australian-smbs-2026/",
+        "https://nunik.co/research/page-speed-restaurant-booking-rates/",
+        "https://nunik.co/research/real-estate-lead-automation-2026/",
+        "https://nunik.co/research/trades-lose-clients-before-first-call/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/research/digital-transformation-australian-smbs-2026/",
+      "final_url": "https://nunik.co/research/digital-transformation-australian-smbs-2026/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/research/digital-transformation-australian-smbs-2026/",
+          "status": 200,
+          "ms": 363
+        }
+      ],
+      "ms": 363,
+      "error": null,
+      "issues": [],
+      "title": "Digital Transformation in Australian SMBs: 2026 Benchmarks",
+      "title_len": 58,
+      "description": "What digital adoption, automation ROI and brand investment actually look like across Australian real estate, trades, automotive and hospitality in 2026.",
+      "description_len": 152,
+      "canonical": "https://nunik.co/research/digital-transformation-australian-smbs-2026/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Digital Transformation in Australian SMBs, the 2026 benchmarks."
+      ],
+      "words": 1797,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Article",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/research/digital-transformation-australian-smbs-2026/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/research/digital-transformation-australian-smbs-2026/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/research/real-estate-lead-automation-2026/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/research/real-estate-lead-automation-2026/",
+      "final_url": "https://nunik.co/research/real-estate-lead-automation-2026/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/research/real-estate-lead-automation-2026/",
+          "status": 200,
+          "ms": 372
+        }
+      ],
+      "ms": 372,
+      "error": null,
+      "issues": [],
+      "title": "Real Estate Lead Automation: What Actually Works in 2026",
+      "title_len": 56,
+      "description": "A breakdown of which automation platforms and moves deliver the best ROI for Australian real estate agencies under 20 people in 2026.",
+      "description_len": 133,
+      "canonical": "https://nunik.co/research/real-estate-lead-automation-2026/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Real Estate Lead Automation, what actually works in 2026."
+      ],
+      "words": 1400,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Article",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/research/real-estate-lead-automation-2026/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/research/real-estate-lead-automation-2026/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/research/trades-lose-clients-before-first-call/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/research/trades-lose-clients-before-first-call/",
+      "final_url": "https://nunik.co/research/trades-lose-clients-before-first-call/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/research/trades-lose-clients-before-first-call/",
+          "status": 200,
+          "ms": 273
+        }
+      ],
+      "ms": 273,
+      "error": null,
+      "issues": [],
+      "title": "Why Trades Businesses Lose Clients Before the First Call",
+      "title_len": 56,
+      "description": "How brand presentation quietly decides conversion for plumbers, electricians and landscapers, long before anyone picks up the phone.",
+      "description_len": 132,
+      "canonical": "https://nunik.co/research/trades-lose-clients-before-first-call/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Why Trades Businesses Lose Clients before the first call."
+      ],
+      "words": 1474,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Article",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/research/trades-lose-clients-before-first-call/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/research/trades-lose-clients-before-first-call/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/research/page-speed-restaurant-booking-rates/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/research/page-speed-restaurant-booking-rates/",
+      "final_url": "https://nunik.co/research/page-speed-restaurant-booking-rates/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/research/page-speed-restaurant-booking-rates/",
+          "status": 200,
+          "ms": 336
+        }
+      ],
+      "ms": 336,
+      "error": null,
+      "issues": [],
+      "title": "Page Speed and Restaurant Booking Rates | Nunik Co.",
+      "title_len": 51,
+      "description": "What we found linking website load time to reservation volume across forty Australian hospitality venues, and why the booking button is all that matters.",
+      "description_len": 153,
+      "canonical": "https://nunik.co/research/page-speed-restaurant-booking-rates/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Page Speed and restaurant booking rates."
+      ],
+      "words": 1406,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "Article",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/research/page-speed-restaurant-booking-rates/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/research/page-speed-restaurant-booking-rates/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/book/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/hospitality/restaurants/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/locations/canberra/",
+        "https://nunik.co/research/",
+        "https://nunik.co/research/digital-transformation-australian-smbs-2026/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    },
+    {
+      "url": "https://nunik.co/book/",
+      "final_url": "https://nunik.co/book/",
+      "status": 200,
+      "redirect_hops": 0,
+      "chain": [
+        {
+          "url": "https://nunik.co/book/",
+          "status": 200,
+          "ms": 347
+        }
+      ],
+      "ms": 347,
+      "error": null,
+      "issues": [],
+      "title": "Book a 15-Minute Strategy Call | Nunik Co.",
+      "title_len": 42,
+      "description": "Book a fifteen-minute call with Nunik Co. Pick a time, tell us what is slowing the business down, and get the right first move. Video, wherever you are.",
+      "description_len": 152,
+      "canonical": "https://nunik.co/book/",
+      "meta_robots": null,
+      "x_robots_tag": null,
+      "h1": [
+        "Book a call."
+      ],
+      "words": 210,
+      "jsonld_blocks": 1,
+      "jsonld_types": [
+        "WebPage",
+        "BreadcrumbList"
+      ],
+      "jsonld_invalid": 0,
+      "hreflang": [
+        [
+          "en-au",
+          "https://nunik.co/book/"
+        ],
+        [
+          "x-default",
+          "https://nunik.co/book/"
+        ]
+      ],
+      "lang": "en",
+      "imgs_missing_alt": 0,
+      "internal_links": [
+        "https://nunik.co/",
+        "https://nunik.co/contact/",
+        "https://nunik.co/industries/",
+        "https://nunik.co/industries/automotive/",
+        "https://nunik.co/industries/hospitality/",
+        "https://nunik.co/industries/trades/",
+        "https://nunik.co/research/",
+        "https://nunik.co/services/automation/",
+        "https://nunik.co/services/brand/",
+        "https://nunik.co/services/web/"
+      ]
+    }
+  ],
+  "duplicate_titles": {},
+  "duplicate_descriptions": {},
+  "orphans": [],
+  "internal_links_not_in_sitemap": [],
+  "structured_data_types": {
+    "BreadcrumbList": 32,
+    "Service": 22,
+    "FAQPage": 19,
+    "CollectionPage": 4,
+    "Article": 4,
+    "ProfessionalService": 3,
+    "ContactPage": 1,
+    "WebPage": 1
+  },
+  "drift": [
+    {
+      "level": "warning",
+      "url": "https://nunik.co/book",
+      "change": "title changed: 'Book a Call | Nunik Co.' to 'Book a 15-Minute Strategy Call | Nunik Co.'"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/book",
+      "change": "meta description changed"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/industries",
+      "change": "title changed: 'Industries | Nunik Co.' to 'Industries: Trades, Hospitality, Automotive | Nunik Co.'"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/industries/automotive/car-washing",
+      "change": "meta description changed"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/industries/automotive/removalists",
+      "change": "meta description changed"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/industries/automotive/scratch-and-dent",
+      "change": "title changed: 'Mobile Scratch and Dent Repair Booking Automation | Nunik Co.' to 'Scratch and Dent Repair Booking Automation | Nunik Co.'"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/industries/automotive/scratch-and-dent",
+      "change": "meta description changed"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/industries/hospitality/massage-parlours",
+      "change": "meta description changed"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/industries/hospitality/restaurants",
+      "change": "meta description changed"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/industries/hospitality/salons",
+      "change": "meta description changed"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/industries/hospitality/travel-agencies",
+      "change": "meta description changed"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/research",
+      "change": "meta description changed"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/research/digital-transformation-australian-smbs-2026",
+      "change": "title changed: 'Digital Transformation in Australian SMBs: 2026 Benchmarks | Nunik Co.' to 'Digital Transformation in Australian SMBs: 2026 Benchmarks'"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/research/page-speed-restaurant-booking-rates",
+      "change": "meta description changed"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/research/real-estate-lead-automation-2026",
+      "change": "title changed: 'Real Estate Lead Automation: What Actually Works in 2026 | Nunik Co.' to 'Real Estate Lead Automation: What Actually Works in 2026'"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/research/trades-lose-clients-before-first-call",
+      "change": "title changed: 'Why Trades Businesses Lose Clients Before the First Call | Nunik Co.' to 'Why Trades Businesses Lose Clients Before the First Call'"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/services",
+      "change": "meta description changed"
+    },
+    {
+      "level": "warning",
+      "url": "https://nunik.co/services/automation",
+      "change": "meta description changed"
+    }
+  ],
+  "compared_to": "seo/health/health-2026-11-11.json",
+  "blockers": [
+    "the http version of the site does not redirect to https"
+  ]
+}

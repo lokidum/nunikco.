@@ -1,0 +1,22 @@
+{
+  "_comment": "One research article every three days. publish.py releases every item whose date is on or before today (Canberra time). Change a date here to move an article; the GitHub Action does the rest.",
+  "articles": [
+    {"no": 5,  "publish": "2026-11-17", "slug": "how-much-does-a-website-cost-australia",           "source": "Nunik-Co_S01_Website-Cost",                  "section": "Web Design",   "service": "/locations/canberra/"},
+    {"no": 6,  "publish": "2026-11-20", "slug": "how-to-make-your-business-stand-out-2027",          "source": "Nunik-Co_P1_Stand-Out-2027",                 "section": "Growth Guide", "service": "/locations/canberra/"},
+    {"no": 7,  "publish": "2026-11-23", "slug": "case-study-adelaide-confident-driving-academy",     "source": "Nunik-Co_C1_ACDA-Case-Study",                "section": "Case Study",   "service": "/locations/canberra/"},
+    {"no": 8,  "publish": "2026-11-26", "slug": "google-business-profile-checklist",                 "source": "Nunik-Co_S02_Google-Business-Profile-Checklist", "section": "Local Search", "service": "/locations/canberra/"},
+    {"no": 9,  "publish": "2026-11-29", "slug": "aeo-and-geo-explained-small-business",              "source": "Nunik-Co_S04_AEO-and-GEO",                   "section": "AI Search",    "service": "/locations/canberra/"},
+    {"no": 10, "publish": "2026-12-02", "slug": "case-study-rams-driving-academy",                    "source": "Nunik-Co_C2_Rams-Case-Study",                "section": "Case Study",   "service": "/locations/canberra/"},
+    {"no": 11, "publish": "2026-12-05", "slug": "how-to-get-more-google-reviews",                    "source": "Nunik-Co_S03_Google-Reviews",                "section": "Local Search", "service": "/locations/canberra/"},
+    {"no": 12, "publish": "2026-12-08", "slug": "lead-generation-and-client-onboarding",             "source": "Nunik-Co_P2_Lead-Gen-and-Onboarding",        "section": "Growth Guide", "service": "/services/automation/"},
+    {"no": 13, "publish": "2026-12-11", "slug": "how-fast-should-you-reply-to-a-lead",               "source": "Nunik-Co_S06_Lead-Response-Time",            "section": "Automation",   "service": "/services/automation/"},
+    {"no": 14, "publish": "2026-12-14", "slug": "small-business-automations-to-set-up-first",        "source": "Nunik-Co_S08_Small-Business-Automations",    "section": "Automation",   "service": "/services/automation/"},
+    {"no": 15, "publish": "2026-12-17", "slug": "ai-receptionist-for-tradies",                       "source": "Nunik-Co_S05_AI-Receptionist",               "section": "Automation",   "service": "/industries/trades/"},
+    {"no": 16, "publish": "2026-12-20", "slug": "client-onboarding-checklist",                       "source": "Nunik-Co_S07_Client-Onboarding-Checklist",   "section": "Operations",   "service": "/services/automation/"},
+    {"no": 17, "publish": "2026-12-23", "slug": "how-to-run-ads-for-a-local-business",               "source": "Nunik-Co_P3_Running-Ads",                    "section": "Advertising",  "service": "/services/"},
+    {"no": 18, "publish": "2026-12-26", "slug": "how-much-should-a-small-business-spend-on-ads",     "source": "Nunik-Co_S09_How-Much-to-Spend-on-Ads",      "section": "Advertising",  "service": "/services/"},
+    {"no": 19, "publish": "2026-12-29", "slug": "google-ads-vs-meta-ads-local-business",             "source": "Nunik-Co_S10_Google-Ads-vs-Meta-Ads",        "section": "Advertising",  "service": "/services/"},
+    {"no": 20, "publish": "2027-01-01", "slug": "ad-hooks-for-local-businesses",                     "source": "Nunik-Co_S11_Ad-Hooks",                      "section": "Advertising",  "service": "/services/"},
+    {"no": 21, "publish": "2027-01-04", "slug": "ga4-tracking-for-ads",                              "source": "Nunik-Co_S12_GA4-Ad-Tracking",               "section": "Advertising",  "service": "/services/"}
+  ]
+}

@@ -6,3 +6,8 @@
 | 2026-11-11 | Footer "Book a 15-minute call" link on every page; /book/ no longer an orphan | https://nunik.co/book/ | pending | not measured | 2026-11-25 |
 | 2026-11-11 | 12 meta descriptions and 4 titles brought within length; social tags synced | 16 pages, see seo/health/health-2026-11-11.md | pending | not measured | 2026-11-25 |
 | 2026-11-11 | `_config.yml` excludes seo/ and internal docs from GitHub Pages | https://nunik.co/seo/context.md (must 404 after deploy) | pending | - | after deploy |
+2026-11-17 | /locations/canberra/ | Rebuilt as the "web design canberra" page: title, H1, prices, proof, process, FAQ and schema | https://nunik.co/locations/canberra/
+2026-11-17 | / | Title, description, H1 label and hero line now say web design and growth consultancy | https://nunik.co/
+2026-11-17 | /industries/* | 19 one-word H1s now carry a keyword line; footer "Canberra" link reads "Web design Canberra" site-wide | https://nunik.co/industries/
+2026-11-17 | /research/how-much-does-a-website-cost-australia/ | Published No. 05, first of 17 queued articles (one every three days) | https://nunik.co/research/how-much-does-a-website-cost-australia/
+

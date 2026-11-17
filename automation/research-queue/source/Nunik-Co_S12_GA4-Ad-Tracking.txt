@@ -1,0 +1,85 @@
+      N U N I K C O. A R T I C L E
+
+
+      How to Tell If Your Ads Are Working:
+      GA4 Basics
+      Track whether your Google and Meta ads bring in enquiries, using GA4 key events,
+      UTM tags and a simple weekly check.
+      By Lokesh Barani Kumar, founder of Nunik Co. · November 2026
+
+
+
+To tell if your ads are working, track enquiries, not clicks. Set up Google Analytics 4 (GA4) to
+record form submissions, phone calls and bookings as key events, connect those to Google Ads
+and Meta, tag every ad link with UTM parameters, and check cost per enquiry and cost per
+customer each week. Without this, you're judging ads on guesswork.
+
+What to measure
+ Metric                      What it tells you                       Where to find it
+ Spend                       What you paid                           Google Ads, Meta Ads Manager
+ Enquiries                   Forms, calls and bookings from ads      GA4 key events, ad platform conversions
+
+ Cost per enquiry            Spend divided by enquiries              Work it out weekly
+ Customers                   Enquiries that became paying jobs       Your CRM or booking system
+
+ Cost per customer           Spend divided by customers              Work it out monthly
+
+Clicks, impressions and likes are useful for diagnosing problems, but they don't tell you whether
+ads are making money.
+
+Step-by-step setup
+1. Install GA4 on your website
+Create a GA4 property in Google Analytics and add the tag to every page of your site, either
+directly or through Google Tag Manager.
+
+2. Track the actions that matter
+Set up events for form submissions (ideally fired when the thank-you message appears), clicks on
+your phone number, clicks on WhatsApp or booking buttons, and completed bookings or
+purchases. Then mark them as key events in GA4, which is GA4's name for the actions you care
+most about.
+
+
+
+
+Nunik Co. · nunik.co                                                                                           1
+3. Connect Google Ads
+Link Google Ads to GA4 and import your key events as conversions, or set up conversion tracking
+with the Google tag. Add call tracking if phone calls are a big part of your business.
+
+4. Set up the Meta pixel
+Install the Meta pixel on your site and set up events for the same actions. The Conversions API,
+which sends events from your server, makes tracking more reliable as browsers block more
+cookies.
+
+5. Tag every ad link with UTMs
+Add UTM parameters to each ad's link so GA4 knows exactly where a visitor came from:
+?utm_source=facebook&utm_medium=paid_social&utm_campaign=summer_offer
+
+Use the same naming every time, or your reports become a mess.
+
+6. Ask every new customer how they found you
+Tracking misses things: people who see an ad on their phone and call later from a laptop, or hear
+about you from a friend who saw it. A simple "how did you hear about us?" question fills the gaps.
+
+7. Respect privacy choices
+If your site shows a cookie banner, make sure your tracking follows the choices people make, and
+that your privacy policy explains what you collect.
+
+Your weekly 10-minute check
+1. Spend this week, per platform
+2. Enquiries this week, per platform
+3. Cost per enquiry, compared with your target
+4. Any ad or keyword spending money with no enquiries, paused
+5. Enquiries from last week that became customers, logged
+If you don't have a target cost per enquiry yet, read how much a small business should spend on
+ads.
+
+
+    Not sure your tracking is working?
+    Get a free tracking check.
+
+
+
+
+Nunik Co. · nunik.co                                                                                 2
+

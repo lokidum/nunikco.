@@ -1,0 +1,49 @@
+name: Publish scheduled research
+
+# Every morning at 7:30 Canberra time (summer), release any queued research article whose
+# date in automation/research-queue/schedule.json has arrived. Nothing happens on days
+# with nothing due. Run it by hand from the Actions tab to publish immediately.
+on:
+  schedule:
+    - cron: "30 20 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: publish-research
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Release articles that are due
+        run: python3 automation/research-queue/publish.py
+
+      - name: Commit and push
+        id: push
+        run: |
+          if git diff --quiet; then
+            echo "Nothing due today."
+            exit 0
+          fi
+          MSG_FILE=automation/research-queue/.commit-message
+          MSG="Update research listings"
+          [ -f "$MSG_FILE" ] && MSG="$(cat "$MSG_FILE")"
+          git config user.name "nunik-publisher"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research sitemap.xml llms.txt _queue
+          git commit -m "$MSG"
+          git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Rebuild GitHub Pages
+        if: steps.push.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages build request failed; the push itself will normally trigger a build."

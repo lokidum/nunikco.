@@ -164,7 +164,7 @@
   </url>
   <url>
     <loc>https://nunik.co/research/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -198,4 +198,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+<!-- queue:start -->
+  <url>
+    <loc>https://nunik.co/research/how-much-does-a-website-cost-australia/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+<!-- queue:end -->
 </urlset>
