@@ -15,3 +15,4 @@
 2026-11-19 | /industries/trades/ | Retitled for tradie websites; description, H1 line and link to Canberra prices | https://nunik.co/industries/trades/
 2026-11-19 | /services/web/ | Retitled for small business website design and development; description with starting price | https://nunik.co/services/web/
 2026-11-19 | / and research articles | Founder Person entity with photo on the home page and in every research article's author | https://nunik.co/
+2026-11-19 | Search Console | Indexing requested for 6 URLs and sitemap resubmitted (via the owner's Search Console in Chrome) | https://nunik.co/sitemap.xml
