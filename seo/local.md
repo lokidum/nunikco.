@@ -17,7 +17,7 @@ ABN shown publicly:       no
 
 ## Google Business Profile
 
-Not verified on 2026-11-11: it is not known whether a profile exists. Backlog item 8.
+A profile exists: the owner supplied its profile photo on 2026-11-19. Category, review count and website link not yet recorded (backlog 8). Posts and the review request are drafted in drafts/2026-11-19-gbp-posts.md.
 
 | Field | Current | Proposed | Why | Verified on |
 | --- | --- | --- | --- | --- |

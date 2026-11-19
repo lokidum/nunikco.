@@ -21,21 +21,21 @@ State folder:  seo/ is excluded from the published site by `_config.yml` (GitHub
 | Hours | none published | site | 2026-11-11 |
 | Years trading | not published | site | 2026-11-11 |
 | Licences, memberships, ABN | none published | site | 2026-11-11 |
-| Prices | none published ("scoped plan and a fixed price within one working day") | /contact/ | 2026-11-11 |
-| Reviews | none on site; GBP not verified | site | 2026-11-11 |
+| Prices | from $1,250 (site), $2,400 (6 to 15 pages), $600 SEO foundation, $650 logo, $45/month hosting, SEO retainer $300 or $550/month (3 month minimum); not GST registered | /locations/canberra/#pricing, owner's S01 article | 2026-11-19 |
+| Reviews | none on site; a Google Business Profile exists (owner supplied its profile photo 2026-11-19); review count not checked | owner | 2026-11-19 |
 | Social | instagram.com/nunikco, linkedin.com/company/nunik-co | JSON-LD sameAs on / | 2026-11-11 |
 
 ## Data sources
 
 | Source | Connected | What it unlocks |
 | --- | --- | --- |
-| Google Search Console | no | queries, positions, indexing status, page two pushes, CTR rewrites |
+| Google Search Console | yes, read-only API (gscServer MCP); indexing requests and sitemap submits done by hand in the owner's Chrome | queries, positions, indexing status, page two pushes, CTR rewrites |
 | Google Business Profile | not verified (unknown whether one exists) | calls, direction requests, reviews, map pack for "ai agency canberra" |
 | Analytics | gtag present (`lead_form_step`, `lead_form_submit` events); GA4 property not checked from here | enquiries by channel |
 | Rank tracker | no | positions by location |
 
 ## How the site is built
 
-Static HTML, one self-contained `index.html` per folder, no templating and no build step for pages. Titles, descriptions, canonicals, hreflang (en-AU + x-default), Open Graph, Twitter cards and JSON-LD all live in each page's `<head>`; a change to a shared element is a scripted edit across every page (see the scratch scripts described in the repo's past commits). `sitemap.xml`, `robots.txt` and `llms.txt` are hand-maintained files at the root. `main.js` and `style.css` are minified with esbuild into `main.min.js` and `style.min.css`, which the pages load. Tailwind is prebuilt into `tailwind.min.css`; only classes already present exist. Hosting is GitHub Pages (legacy Jekyll build from `main`, CNAME nunik.co). No HTTP headers can be set; HSTS and the HTTP to HTTPS redirect depend on the repository's "Enforce HTTPS" setting, which is off as of 2026-11-11.
+Static HTML, one self-contained `index.html` per folder, no templating and no build step for pages. Titles, descriptions, canonicals, hreflang (en-AU + x-default), Open Graph, Twitter cards and JSON-LD all live in each page's `<head>`; a change to a shared element is a scripted edit across every page (see the scratch scripts described in the repo's past commits). `sitemap.xml`, `robots.txt` and `llms.txt` are hand-maintained files at the root. `main.js` and `style.css` are minified with esbuild into `main.min.js` and `style.min.css`, which the pages load. Tailwind is prebuilt into `tailwind.min.css`; only classes already present exist. Hosting is GitHub Pages (legacy Jekyll build from `main`, CNAME nunik.co). No HTTP headers can be set; HSTS and the HTTP to HTTPS redirect depend on the repository's "Enforce HTTPS" setting, which is on as of 2026-11-19 (http://nunik.co/ returns 301).
 
 Structured data on 2026-11-11 (from the health check): BreadcrumbList on 32 pages, Service on 24, FAQPage on 19 (no rich result since Google ended FAQ rich results; harmless), Article on 4, CollectionPage on 4, ProfessionalService on 3, ContactPage 1, WebPage 1. All blocks parse.

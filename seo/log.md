@@ -16,3 +16,7 @@
 2026-11-19 | /services/web/ | Retitled for small business website design and development; description with starting price | https://nunik.co/services/web/
 2026-11-19 | / and research articles | Founder Person entity with photo on the home page and in every research article's author | https://nunik.co/
 2026-11-19 | Search Console | Indexing requested for 6 URLs and sitemap resubmitted (via the owner's Search Console in Chrome) | https://nunik.co/sitemap.xml
+2026-11-19 | queued articles | "Around 300 clicks a month" replaced with Search Console figures in four queued articles (stand-out guide, both case studies, lead-gen guide) | https://nunik.co/research/
+2026-11-19 | /locations/canberra/ | Sector list now links to the three industry hubs and seven industry pages (they had one internal link each) | https://nunik.co/locations/canberra/
+2026-11-19 | Search Console | Indexing requested for plumbing, electrical and restaurants industry pages (last crawled Jul to Sep) | https://nunik.co/industries/
+2026-11-19 | seo/parasite.md | Parasite SEO plan, tracking sheet and 6 drafts for the owner (GBP posts and review request, Region Canberra pitch, Clutch/Bark/Calso profiles, LinkedIn article, Quora answer, Reddit answers) | n/a
