@@ -28,6 +28,7 @@ AUTHOR = {
     "name": "Lokesh Barani Kumar",
     "alternateName": "Loki Kumar",
     "jobTitle": "Founder",
+    "image": f"{SITE}/public/team/loki-kumar.jpg",
     "worksFor": {"@id": f"{SITE}/#organization"},
     "url": f"{SITE}/",
 }

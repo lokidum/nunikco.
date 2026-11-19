@@ -2,10 +2,10 @@ query,intent,local,volume,target_url,status,position,last_checked,notes
 web design and growth consultancy,service,n,not measured,https://nunik.co/,live,not measured,2026-11-17,"home retitled 2026-11-17: Nunik Co. | Web Design and Growth Consultancy, Canberra; ""business consultant canberra"" is 10/mo so it rides on this page"
 nunik co contact,brand,n,not measured,https://nunik.co/contact/,live,not measured,2026-11-11,title: Contact Nunik Co. | Send Us a Brief or Book a Call
 n8n gohighlevel automation agency,service,n,not measured,https://nunik.co/services/automation/,live,not measured,2026-11-11,title: n8n & GoHighLevel Automation Agency | Nunik Co.
-nextjs web development agency australia,service,y,not measured,https://nunik.co/services/web/,live,not measured,2026-11-11,title: Website Developers Australia | Nunik Co.
+small business website design,service,y,not measured,https://nunik.co/services/web/,live,not measured,2026-11-19,retitled 2026-11-19: Small Business Website Design and Development | Nunik Co.
 brand identity design agency australia,service,y,not measured,https://nunik.co/services/brand/,live,not measured,2026-11-11,title: Brand Identity Design Agency | Nunik Co.
 automation for trades hospitality automotive,service,n,not measured,https://nunik.co/industries/,live,not measured,2026-11-11,title: Industries | Nunik Co.
-automation for trades businesses,service,n,not measured,https://nunik.co/industries/trades/,live,not measured,2026-11-11,title: Automation for Trades Businesses | Nunik Co.
+tradie websites,service,n,not measured,https://nunik.co/industries/trades/,live,not measured,2026-11-19,"retitled 2026-11-19: Tradie Websites and Booking Automation | Nunik Co.; also tradie web design canberra, websites for tradies (autocomplete AU)"
 pest control crm automation,service,n,not measured,https://nunik.co/industries/trades/pest-control/,live,not measured,2026-11-11,title: Pest Control Website and Automation Agency | Nunik Co.
 electrician crm automation,service,n,not measured,https://nunik.co/industries/trades/electrical/,live,not measured,2026-11-11,title: Electrical Contractor CRM and Automation | Nunik Co.
 plumber crm automation,service,n,not measured,https://nunik.co/industries/trades/plumbing/,live,not measured,2026-11-11,title: Plumbing Website and Booking Automation | Nunik Co.
@@ -34,7 +34,7 @@ page speed restaurant bookings,informational,n,not measured,https://nunik.co/res
 book a call nunik co,brand,n,not measured,https://nunik.co/book/,live,not measured,2026-11-11,title: Book a Call | Nunik Co.
 gohighlevel setup australia,service,n,not measured,https://nunik.co/services/automation/,gap,not measured,2026-11-11,secondary query for the automation page; no GSC data to confirm
 n8n consultant australia,service,n,not measured,https://nunik.co/services/automation/,gap,not measured,2026-11-11,secondary
-website for tradies,service,n,not measured,https://nunik.co/industries/trades/,gap,not measured,2026-11-11,secondary
+website for tradies,service,n,not measured,https://nunik.co/industries/trades/,live,not measured,2026-11-19,secondary for /industries/trades/ since 2026-11-19
 real estate crm automation australia,service,n,not measured,,gap,not measured,2026-11-11,no industry page for real estate yet; the research article exists and the home page names real estate as a sector
 missed call text back australia,service,n,not measured,,gap,not measured,2026-11-11,common trades problem search; no page
 how much does a website cost australia,informational,n,not measured,https://nunik.co/research/how-much-does-a-website-cost-australia/,live,not measured,2026-11-17,research queue No. 05
@@ -54,3 +54,9 @@ how much should a small business spend on advertising,informational,n,not measur
 google ads vs meta ads,informational,n,not measured,https://nunik.co/research/google-ads-vs-meta-ads-local-business/,planned 2026-12-29,not measured,2026-11-17,research queue No. 19
 ad hooks,informational,n,not measured,https://nunik.co/research/ad-hooks-for-local-businesses/,planned 2027-01-01,not measured,2026-11-17,research queue No. 20
 ga4 conversion tracking for ads,informational,n,not measured,https://nunik.co/research/ga4-tracking-for-ads/,planned 2027-01-04,not measured,2026-11-17,research queue No. 21
+seo canberra,service+suburb,y,in AU autocomplete (volume not measured),https://nunik.co/locations/canberra/,gap,not ranking (GSC 90d),2026-11-19,"also small business seo canberra, seo services canberra; section 03 of the Canberra page for now; own page needs retainer scope from owner"
+web design agency canberra,service+suburb,y,in AU autocomplete,https://nunik.co/locations/canberra/,live,not ranking (GSC 90d),2026-11-19,"also web design company canberra, web designers in canberra; new FAQ answers agency vs freelancer"
+affordable web design canberra,service+suburb,y,in AU autocomplete,https://nunik.co/locations/canberra/,live,not ranking (GSC 90d),2026-11-19,price comparison sentence added 2026-11-19
+business growth consultant for small business,service,n,in AU autocomplete,https://nunik.co/,live,not ranking (GSC 90d),2026-11-19,rides on the home page title
+google business profile setup,informational,n,in AU autocomplete,https://nunik.co/research/google-business-profile-checklist/,planned,n/a,2026-11-19,"research queue No. 08, 2026-11-26"
+ai receptionist australia,service,y,in AU autocomplete,https://nunik.co/research/ai-receptionist-for-tradies/,planned,n/a,2026-11-19,"research queue No. 15, 2026-12-17"

@@ -375,6 +375,36 @@ body {
     color: var(--text);
     margin: 2.25rem 0 0.75rem;
 }
+.research-article .ra-founder {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin: 0 0 1.75rem;
+}
+.research-article .ra-founder img {
+    width: 160px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    flex-shrink: 0;
+}
+.research-article .ra-founder figcaption {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+.research-article .ra-founder figcaption strong {
+    display: block;
+    font-family: 'Newsreader', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.35rem;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+}
+@media (max-width: 480px) {
+    .research-article .ra-founder img { width: 112px; height: 140px; }
+}
 .research-article ol {
     list-style: decimal;
     margin: 0 0 2rem;
